@@ -1,0 +1,203 @@
+.megamenu #nav{position:relative !important;height:55px;}
+.megamenu #nav ul,.megamenu #nav div{background:none !important;}
+.megamenu #nav .magestore-megamenu{left:0 !important;width:100% !important;border:none !important;z-index:1000 !important;visibility:hidden !important;margin:0 !important;padding:0 !important;background:none !important;position:absolute !important;top:55px !important;}
+.megamenu #nav .magestore-megamenu .sub-menu{left:0 !important;width:100% !important;height:auto !important;float:left !important;visibility:hidden !important;position:static !important;padding:0 !important;border-top:0 !important;}
+.megamenu #nav li:hover .sub-menu{visibility:visible !important;}
+.megamenu #nav a.megamenu-lable{letter-spacing:1.5px;text-transform:uppercase !important;line-height:50px !important;padding:3px 15px 2px 15px !important;font-family:GalsC Pro !important;font-weight:normal !important;height:33px;}
+.megamenu #nav li.over a.megamenu-lable.over{background-color:#FFFFFF !important;color:#112233 !important;margin-top:3px !important;padding-top:0 !important;}
+.megamenu #nav a.megamenu-lable:hover{color:#112233 !important;margin-top:3px !important;padding-top:0 !important;}
+.megamenu #nav li ul.shown-sub,.megamenu #nav li div.shown-sub{padding:0 !important;margin:0 !important;background:none !important;border:none !important;}
+.megamenu #nav div ul li{background:none !important;}
+.megamenu #nav div ul li div{position:static !important;border:none;}
+.megamenu #nav .magestore-megamenu li a{background:none repeat scroll 0 0 transparent !important;color:#666666 !important;font-size:11px !important;height:20px !important;text-align:left !important;}
+.megamenu #nav button.button{border:1px solid #F79343;color:#fff;float:none;font-size:21px;height:25px;padding:0 15px;border-radius:10px;box-shadow:0 1px 2px rgba(0, 0, 0, 0.2);cursor:pointer;display:inline-block;letter-spacing:-1px;outline:medium none;position:relative;text-decoration:none;text-shadow:0 1px 1px rgba(0, 0, 0, 0.3);background:#fe8900;background:-webkit-gradient(linear, left top, left bottom, from(#feb900), to(#fe8900));background:-moz-linear-gradient(#feb900, #fe8900);background:-ms-linear-gradient(#feb900, #fe8900);background:linear-gradient(#feb900, #fe8900);font-size:12px;-pie-background:linear-gradient(#feb900, #fe8900);}
+.megamenu #nav button.button:hover{background:#CE662B;background:-webkit-gradient(linear, left top, left bottom, from(#F3C812), to(#CE662B));background:-moz-linear-gradient(#F3C812, #CE662B);background:-ms-linear-gradient(#F3C812, #CE662B);background:linear-gradient(#F3C812, #CE662B);-pie-background:linear-gradient(#F3C812, #CE662B);}
+.megamenu #nav button.button:active{color:#ccc;border:solid 1px #1D74B9;background:-webkit-gradient(linear, left top, left bottom, from(#003061), to(#0059b2));background:-moz-linear-gradient(#003061, #0059b2);background:-ms-linear-gradient(#003061, #0059b2);background:linear-gradient(#003061, #0059b2);-pie-background:linear-gradient(#003061, #0059b2);}
+.megamenu #nav .block-megamenu ul.block-home{float:left;margin:0 !important;padding:10px 2% !important;width:96% !important;}
+.megamenu #nav ul.block-home li{float:left !important;margin-bottom:15px !important;background:none !important;}
+.megamenu #nav ul.block-home li label{float:left;width:100%;text-align:left;padding:0 0 10px;font-weight:normal;text-transform:uppercase;border-bottom-width:1px;border-bottom-style:dashed;margin-bottom:10px;}
+.megamenu #nav ul.block-home li.first{width:330px !important;padding-left:10px !important;padding-right:10px !important;border-right-width:1px !important;border-right-style:solid !important;text-align:left !important;}
+.megamenu #nav ul.block-home li.first img{border:1px solid #d5d5d5;}
+.megamenu #nav ul.block-home li.last{width:545px !important;padding-left:15px !important;}
+.megamenu #nav ul.block-home li.last span{line-height:20px;padding:0 0 10px 0;float:left;width:100%;}
+.megamenu #nav .grid-categories-megamenu{}
+.megamenu #nav .grid-categories-megamenu span{float:left;font-family:tahoma;font-size:11px;padding:0;color:#505050;}
+.megamenu #nav .grid-categories-megamenu a:hover span{color:#fff !important;background:#000;}
+.megamenu #nav .grid-categories-megamenu ul.level0-megamenu{float:left;width:100%;padding:0;margin:0;}
+.megamenu #nav .grid-categories-megamenu ul.level0-megamenu li.level1-megamenu{float:left !important;padding:15px 0 30px 0 !important;margin:0px 0 0 0 !important;border-right:1px solid #707070;}
+.megamenu #nav .grid-categories-megamenu ul.level0-megamenu li.level1-megamenu li.level2-megamenu{float:left !important;padding:20px 0 0 0 !important;margin:0 !important;}
+.megamenu #nav .grid-categories-megamenu ul.level0-megamenu li.featured{width:29% !important;float:right !important;border:none !important;padding:0 0 0 10px !important;}
+.megamenu #nav .grid-categ.megamenu #nav{position:relative !important;height:55px;}
+.megamenu #nav ul,.megamenu #nav div{background:none !important;}
+.megamenu #nav .magestore-megamenu{left:0 !important;width:100% !important;border:none !important;z-index:1000 !important;visibility:hidden !important;margin:0 !important;padding:0 !important;background:none !important;position:absolute !important;top:55px !important;}
+.megamenu #nav .magestore-megamenu .sub-menu{left:0 !important;width:100% !important;height:auto !important;float:left !important;visibility:hidden !important;position:static !important;padding:0 !important;border-top:0 !important;}
+.megamenu #nav li:hover .sub-menu{visibility:visible !important;}
+.megamenu #nav a.megamenu-lable{letter-spacing:1.5px;text-transform:uppercase !important;line-height:50px !important;padding:3px 15px 2px 15px !important;font-family:GalsC Pro !important;font-weight:normal !important;height:33px;}
+.megamenu #nav li.over a.megamenu-lable.over{background-color:#FFFFFF !important;color:#112233 !important;margin-top:3px !important;padding-top:0 !important;}
+.megamenu #nav a.megamenu-lable:hover{color:#112233 !important;margin-top:3px !important;padding-top:0 !important;}
+.megamenu #nav li ul.shown-sub,.megamenu #nav li div.shown-sub{padding:0 !important;margin:0 !important;background:none !important;border:none !important;}
+.megamenu #nav div ul li{background:none !important;}
+.megamenu #nav div ul li div{position:static !important;border:none;}
+.megamenu #nav .magestore-megamenu li a{background:none repeat scroll 0 0 transparent !important;color:#666666 !important;font-size:11px !important;height:20px !important;text-align:left !important;}
+.megamenu #nav button.button{border:1px solid #F79343;color:#fff;float:none;font-size:21px;height:25px;padding:0 15px;border-radius:10px;box-shadow:0 1px 2px rgba(0, 0, 0, 0.2);cursor:pointer;display:inline-block;letter-spacing:-1px;outline:medium none;position:relative;text-decoration:none;text-shadow:0 1px 1px rgba(0, 0, 0, 0.3);background:#fe8900;background:-webkit-gradient(linear, left top, left bottom, from(#feb900), to(#fe8900));background:-moz-linear-gradient(#feb900, #fe8900);background:-ms-linear-gradient(#feb900, #fe8900);background:linear-gradient(#feb900, #fe8900);font-size:12px;-pie-background:linear-gradient(#feb900, #fe8900);}
+.megamenu #nav button.button:hover{background:#CE662B;background:-webkit-gradient(linear, left top, left bottom, from(#F3C812), to(#CE662B));background:-moz-linear-gradient(#F3C812, #CE662B);background:-ms-linear-gradient(#F3C812, #CE662B);background:linear-gradient(#F3C812, #CE662B);-pie-background:linear-gradient(#F3C812, #CE662B);}
+.megamenu #nav button.button:active{color:#ccc;border:solid 1px #1D74B9;background:-webkit-gradient(linear, left top, left bottom, from(#003061), to(#0059b2));background:-moz-linear-gradient(#003061, #0059b2);background:-ms-linear-gradient(#003061, #0059b2);background:linear-gradient(#003061, #0059b2);-pie-background:linear-gradient(#003061, #0059b2);}
+.megamenu #nav .block-megamenu ul.block-home{float:left;margin:0 !important;padding:10px 2% !important;width:96% !important;}
+.megamenu #nav ul.block-home li{float:left !important;margin-bottom:15px !important;background:none !important;}
+.megamenu #nav ul.block-home li label{float:left;width:100%;text-align:left;padding:0 0 10px;font-weight:normal;text-transform:uppercase;border-bottom-width:1px;border-bottom-style:dashed;margin-bottom:10px;}
+.megamenu #nav ul.block-home li.first{width:330px !important;padding-left:10px !important;padding-right:10px !important;border-right-width:1px !important;border-right-style:solid !important;text-align:left !important;}
+.megamenu #nav ul.block-home li.first img{border:1px solid #d5d5d5;}
+.megamenu #nav ul.block-home li.last{width:545px !important;padding-left:15px !important;}
+.megamenu #nav ul.block-home li.last span{line-height:20px;padding:0 0 10px 0;float:left;width:100%;}
+.megamenu #nav .grid-categories-megamenu{}
+.megamenu #nav .grid-categories-megamenu span{float:left;font-family:tahoma;font-size:11px;padding:0;color:#505050;}
+.megamenu #nav .grid-categories-megamenu a:hover span{color:#fff !important;background:#000;}
+.megamenu #nav .grid-categories-megamenu ul.level0-megamenu{float:left;width:100%;padding:0;margin:0;}
+.megamenu #nav .grid-categories-megamenu ul.level0-megamenu li.level1-megamenu{float:left !important;padding:15px 0 30px 0 !important;margin:0px 0 0 0 !important;border-right:1px solid #707070;}
+.megamenu #nav .grid-categories-megamenu ul.level0-megamenu li.level1-megamenu li.level2-megamenu{float:left !important;padding:20px 0 0 0 !important;margin:0 !important;}
+.megamenu #nav .grid-categories-megamenu ul.level0-megamenu li.featured{width:29% !important;float:right !important;border:none !important;padding:0 0 0 10px !important;}
+.megamenu #nav .grid-categories-megamenu li .level1-title{float:left;width:100%;padding:0 10px;overflow-x:hidden;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;}
+.megamenu #nav .grid-categories-megamenu li .level2-title{float:left;width:100%;padding:0 10px;overflow-x:hidden;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;}
+.megamenu #nav .grid-categories-megamenu li .level1-title a{height:30px !important;}
+.megamenu #nav .grid-categories-megamenu .level2-megamenu .level2-title a{}
+.megamenu #nav .grid-categories-megamenu li .level2-title span{padding:0;float:left;height:12px;text-transform:uppercase;font-weight:bold;font-family:GalsC pro;}
+.megamenu #nav .grid-categories-megamenu li .level1-title span{cursor:text;padding:0;float:left;height:12px;text-transform:uppercase;font-weight:bold;font-family:GalsC pro;}
+.megamenu #nav .grid-categories-megamenu li .level1-title a span{cursor:pointer;}
+.megamenu #nav .grid-categories-megamenu li ol.level2-megamenu{float:left;width:100%;padding:0;}
+.megamenu #nav .grid-categories-megamenu li ol li{display:block;float:left;width:100%;padding:0 4px 0 11px;-moz-box-sizing:border-box;box-sizing:border-box;}
+.megamenu #nav .grid-categories-megamenu li ol li:hover{}
+.megamenu #nav .grid-categories-megamenu li.featured .level1-content{float:left;width:100%;padding:15px 0 !important;}
+.megamenu #nav li.featured .level1-content a.product-image{float:left;width:110px;margin:0;}
+.megamenu #nav li.featured .level1-content .product-shop{float:left;width:100px;padding-left:10px;}
+.megamenu #nav li.featured .level1-content .product-shop span.product-name{font-weight:normal;border:none;}
+.megamenu #nav li.featured .level1-content .product-shop span{float:left;width:100%;padding:5px 0 0;}
+.megamenu #nav li.featured .level1-content .product-shop .price-box{float:left;width:100%;padding:5px 0;}
+.megamenu #nav li.featured .level1-content .product-shop .price{font-size:18px;color:#000;}
+.megamenu #nav .list-categories-megamenu ul.level0-megamenu{float:left !important;margin:0 !important;padding:10px 15px !important;width:96% !important;}
+.megamenu #nav .grid-categories-megamenu .block-title{float:left !important;width:92% !important;margin:0 4% !important;padding:0 !important;}
+.megamenu #nav .list-categories-megamenu ul.level0-megamenu li.level1-megamenu{border-right:1px solid #D5D5D5 !important;float:left !important;margin:10px 0 0 !important;padding:0 !important;width:15% !important;}
+.megamenu #nav .list-categories-megamenu ul.level0-megamenu li.featured{width:220px !important;float:left !important;border:none !important;padding:0 0 0 5px !important;}
+.megamenu #nav .list-categories-megamenu ul.level0-megamenu li ul.level2-megamenu,
+.megamenu #nav .list-categories-megamenu ul.level0-megamenu li ul.level2-megamenu ol,
+.megamenu #nav .list-categories-megamenu ul.level0-megamenu li ul.level2-megamenu li .level1-title{float:left;width:100%;}
+.megamenu #nav .list-categories-megamenu ul.level0-megamenu li ul.level2-megamenu li .level1-title{border-top:1px dashed #d5d5d5;padding-top:5px;}
+.megamenu #nav .list-categories-megamenu ul.level0-megamenu li ul.level2-megamenu li.first .level1-title{border-top:none;padding-top:0;}
+.megamenu #nav .list-categories-megamenu li .level1-title span{padding:5px 0 !important;margin:0 0 5px !important;float:left !important;width:100% !important;text-transform:uppercase !important;font-weight:normal !important;border-bottom:1px dashed #d5d5d5 !important;}
+.megamenu #nav li.featured .product-item{float:left;width:100%;padding:15px 0 !important;}
+.megamenu #nav li.featured .product-item a{float:left;width:110px;margin:0;}
+.megamenu #nav li.featured .product-item .product-shop{float:right;width:105px !important;padding:0 0 0 5px !important;}
+.megamenu #nav li.featured .product-item .product-shop span.product-name{font-weight:normal;border:none !important;}
+.megamenu #nav li.featured .product-item .product-shop span{float:left;width:100%;padding:0;height:38px;overflow:hidden;}
+.megamenu #nav li.featured .product-item .product-shop .price-box{float:left;width:100%;padding:0;}
+.megamenu #nav li.featured .product-item .product-shop .price{font-size:18px;color:#000;}
+.megamenu #nav .products-megamenu-grid ul.level0-megamenu{float:left;margin:0;padding:10px 10px;}
+.megamenu #nav .products-megamenu-grid li.item{float:left;width:190px;border-right:1px solid #d5d5d5;padding-left:5px;}
+.megamenu #nav .products-megamenu-grid li.item.last{border:none;}
+.megamenu #nav .products-megamenu-grid li.item span.product-name{border-bottom:1px dashed #D5D5D5;float:left;font-weight:normal;margin:0 5% 10px;padding:5px 0;text-transform:uppercase;width:90%;}
+.megamenu #nav .products-megamenu-grid li.item a.product-image{float:left;width:100%;text-align:center !important;}
+.megamenu #nav .products-megamenu-grid li.item .product-shop{float:left;width:80%;padding:10px 10%;text-align:center;}
+.megamenu #nav .products-megamenu-grid li.item .product-shop label{float:left;padding-right:10px;}
+.megamenu #nav .products-megamenu-grid li.item .product-shop .price{font-size:18px;color:#000;padding:0;width:auto;}
+.megamenu #nav .products-megamenu-grid li.item .product-shop span{width:100%;padding:5px 0 0;text-align:center;}
+.megamenu #nav .products-megamenu-grid li.item .product-shop .price-box{float:left;width:100%;padding:0;}
+.megamenu #nav .products-megamenu-grid li.item .product-shop button{}
+.megamenu #nav .products-megamenu-list ul.level0-megamenu{float:left !important;margin:0 !important;padding:10px 10px !important;width:96% !important;}
+.megamenu #nav .products-megamenu-list ul.level0-megamenu li.level1-megamenu{float:left !important;width:69%;border-right:1px solid #d5d5d5;}
+.megamenu #nav .products-megamenu-list ul.level0-megamenu li.level1-megamenu h4{border-bottom:1px dashed #D5D5D5 !important;float:left !important;font-weight:normal !important;margin:0 0 5px !important;padding:5px 0 15px !important;text-transform:uppercase !important;width:98% !important;}
+.megamenu #nav .products-megamenu-list ul.level0-megamenu li.level1-megamenu ul.level2-megamenu{float:left;}
+.megamenu #nav .products-megamenu-list ul.level0-megamenu li.level1-megamenu ul.level2-megamenu li{float:left;width:100%;padding:0;margin:0;}
+.megamenu #nav .products-megamenu-list ul.level0-megamenu li.level1-megamenu ul.level2-megamenu li a{float:left;line-height:25px;}
+.megamenu #nav .products-megamenu-list ul.level0-megamenu li.featured{float:right !important;border:none !important;padding:0 0 0 1% !important;}
+.megamenu #nav .products-megamenu-list ul.level0-megamenu li.featured .level1-title span{border-bottom:1px dashed #D5D5D5 !important;float:left !important;font-weight:normal !important;padding:15px 0 5px;margin:0 0 10px;text-transform:uppercase !important;width:100% !important;}
+.megamenu #nav ul.block-contact{float:left !important;margin:0 !important;padding:10px 2% !important;width:96% !important;}
+.megamenu #nav ul.block-contact li.first{float:left !important;width:310px !important;border-right:1px solid #d5d5d5 !important;padding:15px 15px 0 0 !important;margin:0 0 15px;}
+.megamenu #nav ul.block-contact li.last{float:left;width:610px;padding:0 10px;}
+.megamenu #nav ul.block-contact li span.block-title{float:left !important;width:100% !important;border-bottom:1px dashed #d5d5d5 !important;padding:0 0 5px !important;margin:0 0 15px !important;border-bottom:1px dashed #D5D5D5 !important;font-weight:normal !important;text-transform:uppercase !important;}
+.megamenu #nav ul.block-contact li.first .address{float:left !important;width:70% !important;margin:0 0 15px !important;}
+.megamenu #nav ul.block-contact li.first .map{float:left !important;width:100% !important;}
+.megamenu #nav ul.block-contact li.last .contact-form{float:left !important;width:100% !important;}
+.megamenu #nav ul.block-contact li.last span{float:left !important;width:100% !important;padding:0 !important;}
+.megamenu #nav ul.block-contact li.last .input-box{float:left !important;width:100% !important;padding:15px 0 !important;}
+.megamenu #nav ul.block-contact li.last .input-box .input{float:left !important;width:160px !important;margin-right:10px !important;}
+.megamenu #nav ul.block-contact li.last .input-box .input input{width:160px !important;border-radius:5px;height:25px !important;border:1px solid #d5d5d5 !important;background:#efefef !important;}
+.megamenu #nav ul.block-contact li.last .comment{float:left !important;width:100% !important;padding:10px 0 !important;}
+.megamenu #nav ul.block-contact li.last .comment label{float:left !important;width:100% !important;}
+.megamenu #nav ul.block-contact li.last .comment textarea{width:100% !important;float:left !important;height:150px !important;background:#efefef !important;}
+.megamenu #nav ul.block-contact li.last .comment .button-set{float:left !important;width:100% !important;padding:10px 0 0 !important;text-align:right;}
+.megamenu .footer-megamenu{float:left;width:96%;padding:0 4%;}
+.megamenu .megamenu-home{height:38px !important;background:#000;}
+.megamenu .megamenu-home .megamenu-lable .home-icon{background:url("../images/home-icon.png") no-repeat scroll 0 0 transparent;color:#FFFFFF;font-size:11px !important;height:15px;line-height:33px !important;margin-top:7px;width:17px;}
+.megamenu .megamenu-home .megamenu-lable .home-icon:hover{background-position:0 -15px;}
+.megamenu .megamenu-home .over .home-icon{background-position:0 -15px;}ories-megamenu li .level1-title{float:left;width:100%;padding:0 10px;overflow-x:hidden;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;}
+.megamenu #nav .grid-categories-megamenu li .level2-title{float:left;width:100%;padding:0 10px;overflow-x:hidden;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;}
+.megamenu #nav .grid-categories-megamenu li .level1-title a{height:30px !important;}
+.megamenu #nav .grid-categories-megamenu .level2-megamenu .level2-title a{}
+.megamenu #nav .grid-categories-megamenu li .level2-title span{padding:0;float:left;height:12px;text-transform:uppercase;font-weight:bold;font-family:GalsC pro;}
+.megamenu #nav .grid-categories-megamenu li .level1-title span{cursor:text;padding:0;float:left;height:12px;text-transform:uppercase;font-weight:bold;font-family:GalsC pro;}
+.megamenu #nav .grid-categories-megamenu li .level1-title a span{cursor:pointer;}
+.megamenu #nav .grid-categories-megamenu li ol.level2-megamenu{float:left;width:100%;padding:0;}
+.megamenu #nav .grid-categories-megamenu li ol li{display:block;float:left;width:100%;padding:0 4px 0 11px;-moz-box-sizing:border-box;box-sizing:border-box;}
+.megamenu #nav .grid-categories-megamenu li ol li:hover{}
+.megamenu #nav .grid-categories-megamenu li.featured .level1-content{float:left;width:100%;padding:15px 0 !important;}
+.megamenu #nav li.featured .level1-content a.product-image{float:left;width:110px;margin:0;}
+.megamenu #nav li.featured .level1-content .product-shop{float:left;width:100px;padding-left:10px;}
+.megamenu #nav li.featured .level1-content .product-shop span.product-name{font-weight:normal;border:none;}
+.megamenu #nav li.featured .level1-content .product-shop span{float:left;width:100%;padding:5px 0 0;}
+.megamenu #nav li.featured .level1-content .product-shop .price-box{float:left;width:100%;padding:5px 0;}
+.megamenu #nav li.featured .level1-content .product-shop .price{font-size:18px;color:#000;}
+.megamenu #nav .list-categories-megamenu ul.level0-megamenu{float:left !important;margin:0 !important;padding:10px 15px !important;width:96% !important;}
+.megamenu #nav .grid-categories-megamenu .block-title{float:left !important;width:92% !important;margin:0 4% !important;padding:0 !important;}
+.megamenu #nav .list-categories-megamenu ul.level0-megamenu li.level1-megamenu{border-right:1px solid #D5D5D5 !important;float:left !important;margin:10px 0 0 !important;padding:0 !important;width:15% !important;}
+.megamenu #nav .list-categories-megamenu ul.level0-megamenu li.featured{width:220px !important;float:left !important;border:none !important;padding:0 0 0 5px !important;}
+.megamenu #nav .list-categories-megamenu ul.level0-megamenu li ul.level2-megamenu,
+.megamenu #nav .list-categories-megamenu ul.level0-megamenu li ul.level2-megamenu ol,
+.megamenu #nav .list-categories-megamenu ul.level0-megamenu li ul.level2-megamenu li .level1-title{float:left;width:100%;}
+.megamenu #nav .list-categories-megamenu ul.level0-megamenu li ul.level2-megamenu li .level1-title{border-top:1px dashed #d5d5d5;padding-top:5px;}
+.megamenu #nav .list-categories-megamenu ul.level0-megamenu li ul.level2-megamenu li.first .level1-title{border-top:none;padding-top:0;}
+.megamenu #nav .list-categories-megamenu li .level1-title span{padding:5px 0 !important;margin:0 0 5px !important;float:left !important;width:100% !important;text-transform:uppercase !important;font-weight:normal !important;border-bottom:1px dashed #d5d5d5 !important;}
+.megamenu #nav li.featured .product-item{float:left;width:100%;padding:15px 0 !important;}
+.megamenu #nav li.featured .product-item a{float:left;width:110px;margin:0;}
+.megamenu #nav li.featured .product-item .product-shop{float:right;width:105px !important;padding:0 0 0 5px !important;}
+.megamenu #nav li.featured .product-item .product-shop span.product-name{font-weight:normal;border:none !important;}
+.megamenu #nav li.featured .product-item .product-shop span{float:left;width:100%;padding:0;height:38px;overflow:hidden;}
+.megamenu #nav li.featured .product-item .product-shop .price-box{float:left;width:100%;padding:0;}
+.megamenu #nav li.featured .product-item .product-shop .price{font-size:18px;color:#000;}
+.megamenu #nav .products-megamenu-grid ul.level0-megamenu{float:left;margin:0;padding:10px 10px;}
+.megamenu #nav .products-megamenu-grid li.item{float:left;width:190px;border-right:1px solid #d5d5d5;padding-left:5px;}
+.megamenu #nav .products-megamenu-grid li.item.last{border:none;}
+.megamenu #nav .products-megamenu-grid li.item span.product-name{border-bottom:1px dashed #D5D5D5;float:left;font-weight:normal;margin:0 5% 10px;padding:5px 0;text-transform:uppercase;width:90%;}
+.megamenu #nav .products-megamenu-grid li.item a.product-image{float:left;width:100%;text-align:center !important;}
+.megamenu #nav .products-megamenu-grid li.item .product-shop{float:left;width:80%;padding:10px 10%;text-align:center;}
+.megamenu #nav .products-megamenu-grid li.item .product-shop label{float:left;padding-right:10px;}
+.megamenu #nav .products-megamenu-grid li.item .product-shop .price{font-size:18px;color:#000;padding:0;width:auto;}
+.megamenu #nav .products-megamenu-grid li.item .product-shop span{width:100%;padding:5px 0 0;text-align:center;}
+.megamenu #nav .products-megamenu-grid li.item .product-shop .price-box{float:left;width:100%;padding:0;}
+.megamenu #nav .products-megamenu-grid li.item .product-shop button{}
+.megamenu #nav .products-megamenu-list ul.level0-megamenu{float:left !important;margin:0 !important;padding:10px 10px !important;width:96% !important;}
+.megamenu #nav .products-megamenu-list ul.level0-megamenu li.level1-megamenu{float:left !important;width:69%;border-right:1px solid #d5d5d5;}
+.megamenu #nav .products-megamenu-list ul.level0-megamenu li.level1-megamenu h4{border-bottom:1px dashed #D5D5D5 !important;float:left !important;font-weight:normal !important;margin:0 0 5px !important;padding:5px 0 15px !important;text-transform:uppercase !important;width:98% !important;}
+.megamenu #nav .products-megamenu-list ul.level0-megamenu li.level1-megamenu ul.level2-megamenu{float:left;}
+.megamenu #nav .products-megamenu-list ul.level0-megamenu li.level1-megamenu ul.level2-megamenu li{float:left;width:100%;padding:0;margin:0;}
+.megamenu #nav .products-megamenu-list ul.level0-megamenu li.level1-megamenu ul.level2-megamenu li a{float:left;line-height:25px;}
+.megamenu #nav .products-megamenu-list ul.level0-megamenu li.featured{float:right !important;border:none !important;padding:0 0 0 1% !important;}
+.megamenu #nav .products-megamenu-list ul.level0-megamenu li.featured .level1-title span{border-bottom:1px dashed #D5D5D5 !important;float:left !important;font-weight:normal !important;padding:15px 0 5px;margin:0 0 10px;text-transform:uppercase !important;width:100% !important;}
+.megamenu #nav ul.block-contact{float:left !important;margin:0 !important;padding:10px 2% !important;width:96% !important;}
+.megamenu #nav ul.block-contact li.first{float:left !important;width:310px !important;border-right:1px solid #d5d5d5 !important;padding:15px 15px 0 0 !important;margin:0 0 15px;}
+.megamenu #nav ul.block-contact li.last{float:left;width:610px;padding:0 10px;}
+.megamenu #nav ul.block-contact li span.block-title{float:left !important;width:100% !important;border-bottom:1px dashed #d5d5d5 !important;padding:0 0 5px !important;margin:0 0 15px !important;border-bottom:1px dashed #D5D5D5 !important;font-weight:normal !important;text-transform:uppercase !important;}
+.megamenu #nav ul.block-contact li.first .address{float:left !important;width:70% !important;margin:0 0 15px !important;}
+.megamenu #nav ul.block-contact li.first .map{float:left !important;width:100% !important;}
+.megamenu #nav ul.block-contact li.last .contact-form{float:left !important;width:100% !important;}
+.megamenu #nav ul.block-contact li.last span{float:left !important;width:100% !important;padding:0 !important;}
+.megamenu #nav ul.block-contact li.last .input-box{float:left !important;width:100% !important;padding:15px 0 !important;}
+.megamenu #nav ul.block-contact li.last .input-box .input{float:left !important;width:160px !important;margin-right:10px !important;}
+.megamenu #nav ul.block-contact li.last .input-box .input input{width:160px !important;border-radius:5px;height:25px !important;border:1px solid #d5d5d5 !important;background:#efefef !important;}
+.megamenu #nav ul.block-contact li.last .comment{float:left !important;width:100% !important;padding:10px 0 !important;}
+.megamenu #nav ul.block-contact li.last .comment label{float:left !important;width:100% !important;}
+.megamenu #nav ul.block-contact li.last .comment textarea{width:100% !important;float:left !important;height:150px !important;background:#efefef !important;}
+.megamenu #nav ul.block-contact li.last .comment .button-set{float:left !important;width:100% !important;padding:10px 0 0 !important;text-align:right;}
+.megamenu .footer-megamenu{float:left;width:96%;padding:0 4%;}
+.megamenu .megamenu-home{height:38px !important;background:#000;}
+.megamenu .megamenu-home .megamenu-lable .home-icon{background:url("../images/home-icon.png") no-repeat scroll 0 0 transparent;color:#FFFFFF;font-size:11px !important;height:15px;line-height:33px !important;margin-top:7px;width:17px;}
+.megamenu .megamenu-home .megamenu-lable .home-icon:hover{background-position:0 -15px;}
+.megamenu .megamenu-home .over .home-icon{background-position:0 -15px;}

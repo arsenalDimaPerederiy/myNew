@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<config>
+  <modules>
+    <Artle_Productimport>
+      <version>0.1.0</version>
+    </Artle_Productimport>
+  </modules>
+   <global>
+       <models>
+           <dataflow>
+             <rewrite>
+              <convert_parser_csv>Artle_Productimport_Model_Export</convert_parser_csv>
+             </rewrite>
+           </dataflow>
+       </models>
+   </global> 
+</config> 

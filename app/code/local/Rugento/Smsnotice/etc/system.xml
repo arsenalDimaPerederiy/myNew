@@ -1,0 +1,900 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright (c) <2013>, <Rugento.ru>
+ * License URL http://www.rugento.ru/oferta.html
+ * Support URL http://support.rugento.ru
+ * Support EMAIL support@rugento.ru
+ */
+-->
+<config>
+    <tabs>
+        <rugento module="core">
+            <label>Rugento</label>
+            <sort_order>400</sort_order>
+        </rugento>
+    </tabs>
+    <sections>
+        <rugento_smsnotice>
+            <label>&#x423;&#x432;&#x435;&#x434;&#x43E;&#x43C;&#x43B;&#x435;&#x43D;&#x438;&#x44F; &#x43F;&#x43E; &#x421;&#x41C;&#x421;</label>
+            <tab>rugento</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>300</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <general>
+                    <label>&#x41E;&#x431;&#x449;&#x438;&#x435; &#x43D;&#x430;&#x441;&#x442;&#x440;&#x43E;&#x439;&#x43A;&#x438;</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>0</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <gateway>
+                            <label>&#x41E;&#x43F;&#x435;&#x440;&#x430;&#x442;&#x43E;&#x440; &#x421;&#x41C;&#x421;</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>smsnotice/source_operator</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment/>
+                        </gateway>
+                        <username>
+                            <label>&#x41B;&#x43E;&#x433;&#x438;&#x43D;</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment/>
+                        </username>
+                        <sec_key translate="label">
+                            <label>&#x41F;&#x430;&#x440;&#x43E;&#x43B;&#x44C;</label>
+                            <frontend_type>obscure</frontend_type>
+                            <backend_model>adminhtml/system_config_backend_encrypted</backend_model>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>&#x418;&#x43B;&#x438; &#x43A;&#x43B;&#x44E;&#x447; API</comment>
+                        </sec_key>
+                        <format>
+                            <label>&#x424;&#x43E;&#x440;&#x43C;&#x430;&#x442; &#x43D;&#x43E;&#x43C;&#x435;&#x440;&#x430;</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>smsnotice/source_number</source_model>
+                            <sort_order>35</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>&#x412; &#x43D;&#x43E;&#x43C;&#x435;&#x440;&#x435; &#x43F;&#x43E;&#x43A;&#x443;&#x43F;&#x430;&#x442;&#x435;&#x43B;&#x44F; &#x444;&#x438;&#x43B;&#x44C;&#x442;&#x440;&#x443;&#x44E;&#x442;&#x441;&#x44F; &#x442;&#x43E;&#x43B;&#x44C;&#x43A;&#x43E; &#x446;&#x438;&#x444;&#x440;&#x44B; &#x438; &#x43F;&#x440;&#x438;&#x432;&#x43E;&#x434;&#x44F;&#x442;&#x441;&#x44F; &#x43A; &#x432;&#x44B;&#x431;&#x440;&#x430;&#x43D;&#x43D;&#x43E;&#x43C;&#x443; &#x432;&#x438;&#x434;&#x443; &#x43D;&#x43E;&#x43C;&#x435;&#x440;&#x430;. RU - 10 &#x438;&#x43B;&#x438; 11 &#x446;&#x438;&#x444;&#x440;, UA - 9 &#x438;&#x43B;&#x438; 12 &#x446;&#x438;&#x444;&#x440;.</comment>
+                        </format>
+                        <sender_number>
+                            <label>&#x41D;&#x43E;&#x43C;&#x435;&#x440; &#x438;&#x43B;&#x438; &#x41F;&#x43E;&#x434;&#x43F;&#x438;&#x441;&#x44C; &#x43E;&#x442;&#x43F;&#x440;&#x430;&#x432;&#x438;&#x442;&#x435;&#x43B;&#x44F;</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>&#x412;&#x44B;&#x434;&#x430;&#x435;&#x442;&#x441;&#x44F; &#x441;&#x43B;&#x443;&#x436;&#x431;&#x43E;&#x439; &#x43F;&#x43E;&#x434;&#x434;&#x435;&#x440;&#x436;&#x43A;&#x438;</comment>
+                        </sender_number>
+                        <admin_number>
+                            <label>&#x41D;&#x43E;&#x43C;&#x435;&#x440; &#x430;&#x434;&#x43C;&#x438;&#x43D;&#x438;&#x441;&#x442;&#x440;&#x430;&#x442;&#x43E;&#x440;&#x430;</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>&#x41D;&#x430; &#x44D;&#x442;&#x43E;&#x442; &#x43D;&#x43E;&#x43C;&#x435;&#x440; &#x431;&#x443;&#x434;&#x443;&#x442; &#x43E;&#x442;&#x43F;&#x440;&#x430;&#x432;&#x43B;&#x44F;&#x442;&#x44C;&#x441;&#x44F; &#x441;&#x43C;&#x441; &#x434;&#x43B;&#x44F; &#x430;&#x434;&#x43C;&#x438;&#x43D;&#x438;&#x441;&#x442;&#x440;&#x430;&#x442;&#x43E;&#x440;&#x430;</comment>
+                        </admin_number>
+                        <admin_from_hour>
+                            <label>&#x412;&#x440;&#x435;&#x43C;&#x44F; &#x43E;&#x442;&#x43F;&#x440;&#x430;&#x432;&#x43A;&#x438; &#x441;&#x43C;&#x441; &#x430;&#x434;&#x43C;&#x438;&#x43D;&#x438;&#x441;&#x442;&#x440;&#x430;&#x442;&#x43E;&#x440;&#x443; &#x421;</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>smsnotice/source_hours</source_model>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>&#x412; &#x447;&#x430;&#x441;&#x430;&#x445;</comment>
+                        </admin_from_hour>
+                         <admin_to_hour>
+                            <label>&#x412;&#x440;&#x435;&#x43C;&#x44F; &#x43E;&#x442;&#x43F;&#x440;&#x430;&#x432;&#x43A;&#x438; &#x441;&#x43C;&#x441; &#x430;&#x434;&#x43C;&#x438;&#x43D;&#x438;&#x441;&#x442;&#x440;&#x430;&#x442;&#x43E;&#x440;&#x443; &#x414;&#x43E;</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>smsnotice/source_hours</source_model>
+                            <sort_order>70</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>&#x412; &#x447;&#x430;&#x441;&#x430;&#x445;</comment>
+                        </admin_to_hour>
+                         <user_from_hour>
+                            <label>&#x412;&#x440;&#x435;&#x43C;&#x44F; &#x43E;&#x442;&#x43F;&#x440;&#x430;&#x432;&#x43A;&#x438; &#x441;&#x43C;&#x441; &#x43F;&#x43E;&#x43B;&#x44C;&#x437;&#x43E;&#x432;&#x430;&#x442;&#x43B;&#x44E; &#x421;</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>smsnotice/source_hours</source_model>
+                            <sort_order>80</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>&#x412; &#x447;&#x430;&#x441;&#x430;&#x445;, &#x431;&#x443;&#x434;&#x435;&#x442; &#x43F;&#x440;&#x438;&#x43C;&#x435;&#x43D;&#x435;&#x43D;&#x43E; &#x43A;&#x430;&#x43A; &#x437;&#x43D;&#x430;&#x447;&#x435;&#x43D;&#x438;&#x435; &#x43F;&#x43E; &#x443;&#x43C;&#x43E;&#x43B;&#x447;&#x430;&#x43D;&#x438;&#x44E;.</comment>
+                        </user_from_hour>
+                         <user_to_hour>
+                            <label>&#x412;&#x440;&#x435;&#x43C;&#x44F; &#x43E;&#x442;&#x43F;&#x440;&#x430;&#x432;&#x43A;&#x438; &#x441;&#x43C;&#x441; &#x43F;&#x43E;&#x43B;&#x44C;&#x437;&#x43E;&#x432;&#x430;&#x442;&#x435;&#x43B;&#x44E; &#x414;&#x43E;</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>smsnotice/source_hours</source_model>
+                            <sort_order>90</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>&#x412; &#x447;&#x430;&#x441;&#x430;&#x445;, &#x431;&#x443;&#x434;&#x435;&#x442; &#x43F;&#x440;&#x438;&#x43C;&#x435;&#x43D;&#x435;&#x43D;&#x43E; &#x43A;&#x430;&#x43A; &#x437;&#x43D;&#x430;&#x447;&#x435;&#x43D;&#x438;&#x435; &#x43F;&#x43E; &#x443;&#x43C;&#x43E;&#x43B;&#x447;&#x430;&#x43D;&#x438;&#x44E;.</comment>
+                        </user_to_hour>
+                        <phone_source>
+                            <label>&#x411;&#x440;&#x430;&#x442;&#x44C; &#x43D;&#x43E;&#x43C;&#x435;&#x440; &#x442;&#x435;&#x43B;&#x435;&#x444;&#x43E;&#x43D;&#x430; &#x43F;&#x43E;&#x43A;&#x443;&#x43F;&#x430;&#x442;&#x435;&#x43B;&#x44F; &#x438;&#x437;</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>smsnotice/source_phone</source_model>
+                            <sort_order>94</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>&#x415;&#x441;&#x43B;&#x438; &#x43F;&#x43E;&#x43A;&#x443;&#x43F;&#x430;&#x442;&#x435;&#x43B;&#x44C; &#x443;&#x43A;&#x430;&#x437;&#x430;&#x43B; &#x441;&#x432;&#x43E;&#x439; &#x43D;&#x43E;&#x43C;&#x435;&#x440; &#x432; &#x43B;&#x438;&#x447;&#x43D;&#x43E;&#x43C; &#x43A;&#x430;&#x431;&#x438;&#x43D;&#x435;&#x442;&#x435;, &#x442;&#x43E; &#x43D;&#x43E;&#x43C;&#x435;&#x440; &#x432;&#x441;&#x435;&#x433;&#x434;&#x430; &#x431;&#x443;&#x434;&#x435;&#x442; &#x438;&#x437; &#x43B;&#x438;&#x447;&#x43D;&#x43E;&#x433;&#x43E; &#x43A;&#x430;&#x431;&#x438;&#x43D;&#x435;&#x442;&#x430;, &#x43D;&#x435; &#x437;&#x430;&#x432;&#x438;&#x441;&#x438;&#x43C;&#x43E; &#x43E;&#x442; &#x43D;&#x430;&#x441;&#x442;&#x440;&#x43E;&#x435;&#x43A;.</comment>
+                        </phone_source>
+                        <customer_note>
+                            <label>&#x41F;&#x430;&#x43C;&#x44F;&#x442;&#x43A;&#x430; &#x434;&#x43B;&#x44F; &#x432;&#x44B;&#x431;&#x43E;&#x440;&#x430; &#x432;&#x440;&#x435;&#x43C;&#x435;&#x43D;&#x438; &#x43E;&#x43F;&#x43E;&#x432;&#x435;&#x449;&#x435;&#x43D;&#x438;&#x44F; &#x43F;&#x43E; &#x441;&#x43C;&#x441;</label>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>100</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>&#x411;&#x443;&#x434;&#x435;&#x442; &#x43F;&#x43E;&#x43A;&#x430;&#x437;&#x430;&#x43D;&#x430; &#x432; &#x43B;&#x438;&#x447;&#x43D;&#x43E;&#x43C; &#x43A;&#x430;&#x431;&#x438;&#x43D;&#x435;&#x442;&#x435; &#x43F;&#x43E;&#x43A;&#x443;&#x43F;&#x430;&#x442;&#x435;&#x43B;&#x44F;.</comment>
+                        </customer_note>
+                         <version>
+                            <frontend_model>smsnotice/adminhtml_version</frontend_model>
+                            <sort_order>0</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </version>
+                         <disable_observer>
+                            <label>&#x412;&#x44B;&#x43A;&#x43B;&#x44E;&#x447;&#x438;&#x442;&#x44C; &#x43E;&#x431;&#x441;&#x435;&#x440;&#x432;&#x435;&#x440;</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>1000</sort_order>
+                            <show_in_default>0</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment/>
+                        </disable_observer>
+                    </fields>
+                </general>
+                <balance>
+                    <label>&#x41D;&#x430;&#x441;&#x442;&#x440;&#x43E;&#x439;&#x43A;&#x438; &#x431;&#x430;&#x43B;&#x430;&#x43D;&#x441;&#x430; &#x421;&#x41C;&#x421;</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>10</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                         <level>
+                            <label>&#x423;&#x432;&#x435;&#x434;&#x43E;&#x43C;&#x43B;&#x44F;&#x442;&#x44C; &#x43E; &#x431;&#x430;&#x43B;&#x430;&#x43D;&#x441;&#x435; &#x43D;&#x438;&#x436;&#x435;</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>validate-number</validate>
+                            <comment>0 - &#x43D;&#x435; &#x443;&#x432;&#x435;&#x434;&#x43E;&#x43C;&#x43B;&#x44F;&#x442;&#x44C;.</comment>
+                        </level>
+                    </fields>
+                </balance>
+                <other>
+                    <label>&#x420;&#x430;&#x437;&#x43D;&#x43E;&#x435;</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>14</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <show_order_admin>
+                            <label>&#x41F;&#x43E;&#x43A;&#x430;&#x437;&#x44B;&#x432;&#x430;&#x442;&#x44C; &#x444;&#x43E;&#x440;&#x43C;&#x443; &#x43E;&#x442;&#x43F;&#x440;&#x430;&#x432;&#x43A;&#x438; &#x441;&#x43C;&#x441; &#x432; &#x437;&#x430;&#x43A;&#x430;&#x437;&#x435;</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment/>
+                        </show_order_admin>
+                         <eraselog>
+                            <label>&#x425;&#x440;&#x430;&#x43D;&#x438;&#x442;&#x44C; &#x43B;&#x43E;&#x433;&#x438; (&#x434;&#x43D;&#x435;&#x439;)</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>validate-number</validate>
+                            <comment/>
+                        </eraselog>
+                    </fields>
+                </other>
+                <jabber>
+                    <label>Jabber</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>16</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <host>
+                            <label>Host</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>&#x425;&#x43E;&#x441;&#x442; &#x434;&#x43B;&#x44F; &#x43F;&#x43E;&#x434;&#x43A;&#x43B;&#x44E;&#x447;&#x435;&#x43D;&#x438;&#x44F;</comment>
+                        </host>
+                        <port>
+                            <label>Port</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>validate-number</validate>
+                            <comment>&#x41F;&#x43E;&#x440;&#x442; &#x434;&#x43B;&#x44F; &#x43F;&#x43E;&#x434;&#x43A;&#x43B;&#x44E;&#x447;&#x435;&#x43D;&#x438;&#x44F; (5222, 5223)</comment>
+                        </port>
+                        <user>
+                            <label>User</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>&#x41B;&#x43E;&#x433;&#x438;&#x43D;: &#x438;&#x43C;&#x44F; &#x443;&#x447;&#x451;&#x442;&#x43D;&#x43E;&#x439; &#x437;&#x430;&#x43F;&#x438;&#x441;&#x438;</comment>
+                        </user>
+                        <password>
+                            <label>Password</label>
+                            <frontend_type>obscure</frontend_type>
+                            <backend_model>adminhtml/system_config_backend_encrypted</backend_model>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>&#x41F;&#x430;&#x440;&#x43E;&#x43B;&#x44C;</comment>
+                        </password>
+                        <server>
+                            <label>Server</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>&#x421;&#x435;&#x440;&#x432;&#x435;&#x440; &#x441; &#x443;&#x447;&#x435;&#x442;&#x43D;&#x44B;&#x43C;&#x438; &#x434;&#x430;&#x43D;&#x43D;&#x44B;&#x43C;&#x438;</comment>
+                        </server>
+                        <encription>
+                            <label>Encription</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment/>
+                        </encription>
+                        <test translate="label">
+                            <frontend_model>smsnotice/adminhtml_testjabber</frontend_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                        </test>
+                    </fields>
+                </jabber>
+                <event_order>
+                    <label>&#x421;&#x41C;&#x421; &#x43E; &#x437;&#x430;&#x43A;&#x430;&#x437;&#x435;</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>20</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <active_admin>
+                            <label>&#x41E;&#x442;&#x43F;&#x440;&#x430;&#x432;&#x43B;&#x44F;&#x442;&#x44C; &#x430;&#x434;&#x43C;&#x438;&#x43D;&#x438;&#x441;&#x442;&#x440;&#x430;&#x442;&#x43E;&#x440;&#x443;</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment/>
+                        </active_admin>
+                        <text_admin>
+                            <label>&#x421;&#x43E;&#x43E;&#x431;&#x449;&#x435;&#x43D;&#x438;&#x435;</label>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends><active_admin>1</active_admin></depends>
+                            <comment/>
+                        </text_admin>
+                         <flash_admin>
+                            <label>&#x41E;&#x442;&#x43F;&#x440;&#x430;&#x432;&#x43B;&#x44F;&#x442;&#x44C; &#x43A;&#x430;&#x43A; flash &#x441;&#x43E;&#x43E;&#x431;&#x449;&#x435;&#x43D;&#x438;&#x435;</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends><active_admin>1</active_admin></depends>
+                            <comment>&#x41D;&#x435; &#x441;&#x43E;&#x445;&#x440;&#x430;&#x43D;&#x44F;&#x435;&#x442;&#x441;&#x44F; &#x432;&#x43E; &#x412;&#x445;&#x43E;&#x434;&#x44F;&#x449;&#x438;&#x445;, &#x430; &#x43F;&#x440;&#x43E;&#x441;&#x442;&#x43E; &#x43F;&#x43E;&#x44F;&#x432;&#x43B;&#x44F;&#x435;&#x442;&#x441;&#x44F; &#x43D;&#x430; &#x44D;&#x43A;&#x440;&#x430;&#x43D;&#x435; &#x442;&#x435;&#x43B;&#x435;&#x444;&#x43E;&#x43D;&#x430;.</comment>
+                        </flash_admin>
+                        <ignore_queue_admin>
+                            <label>&#x418;&#x433;&#x43D;&#x43E;&#x440;&#x438;&#x440;&#x43E;&#x432;&#x430;&#x442;&#x44C; &#x43E;&#x447;&#x435;&#x440;&#x435;&#x434;&#x44C;</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends><active_admin>1</active_admin></depends>
+                            <comment>&#x421;&#x43C;&#x441; &#x431;&#x443;&#x434;&#x435;&#x442; &#x43E;&#x442;&#x43F;&#x440;&#x430;&#x432;&#x43B;&#x435;&#x43D;&#x430; &#x441;&#x440;&#x430;&#x437;&#x443;, &#x43E;&#x447;&#x435;&#x440;&#x435;&#x434;&#x44C; &#x438; &#x432;&#x440;&#x435;&#x43C;&#x44F; &#x43E;&#x442;&#x43F;&#x440;&#x430;&#x432;&#x43A;&#x438; &#x431;&#x443;&#x434;&#x443;&#x442; &#x43F;&#x440;&#x43E;&#x438;&#x433;&#x43D;&#x43E;&#x440;&#x438;&#x440;&#x43E;&#x432;&#x430;&#x43D;&#x44B;.</comment>
+                        </ignore_queue_admin>
+                         <active_user>
+                            <label>&#x41E;&#x442;&#x43F;&#x440;&#x430;&#x432;&#x43B;&#x44F;&#x442;&#x44C; &#x43F;&#x43E;&#x43A;&#x443;&#x43F;&#x430;&#x442;&#x435;&#x43B;&#x44E;</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>100</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment/>
+                        </active_user>
+                        <text_user>
+                            <label>&#x421;&#x43E;&#x43E;&#x431;&#x449;&#x435;&#x43D;&#x438;&#x435;</label>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>110</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends><active_user>1</active_user></depends>
+                            <comment/>
+                        </text_user>
+                         <flash_user>
+                            <label>&#x41E;&#x442;&#x43F;&#x440;&#x430;&#x432;&#x43B;&#x44F;&#x442;&#x44C; &#x43A;&#x430;&#x43A; flash &#x441;&#x43E;&#x43E;&#x431;&#x449;&#x435;&#x43D;&#x438;&#x435;</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>120</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends><active_user>1</active_user></depends>
+                            <comment>&#x41D;&#x435; &#x441;&#x43E;&#x445;&#x440;&#x430;&#x43D;&#x44F;&#x435;&#x442;&#x441;&#x44F; &#x432;&#x43E; &#x412;&#x445;&#x43E;&#x434;&#x44F;&#x449;&#x438;&#x445;, &#x430; &#x43F;&#x440;&#x43E;&#x441;&#x442;&#x43E; &#x43F;&#x43E;&#x44F;&#x432;&#x43B;&#x44F;&#x435;&#x442;&#x441;&#x44F; &#x43D;&#x430; &#x44D;&#x43A;&#x440;&#x430;&#x43D;&#x435; &#x442;&#x435;&#x43B;&#x435;&#x444;&#x43E;&#x43D;&#x430;.</comment>
+                        </flash_user>
+                        <ignore_queue_user>
+                            <label>&#x418;&#x433;&#x43D;&#x43E;&#x440;&#x438;&#x440;&#x43E;&#x432;&#x430;&#x442;&#x44C; &#x43E;&#x447;&#x435;&#x440;&#x435;&#x434;&#x44C;</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>130</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends><active_user>1</active_user></depends>
+                            <comment>&#x421;&#x43C;&#x441; &#x431;&#x443;&#x434;&#x435;&#x442; &#x43E;&#x442;&#x43F;&#x440;&#x430;&#x432;&#x43B;&#x435;&#x43D;&#x430; &#x441;&#x440;&#x430;&#x437;&#x443;, &#x43E;&#x447;&#x435;&#x440;&#x435;&#x434;&#x44C; &#x438; &#x432;&#x440;&#x435;&#x43C;&#x44F; &#x43E;&#x442;&#x43F;&#x440;&#x430;&#x432;&#x43A;&#x438; &#x431;&#x443;&#x434;&#x443;&#x442; &#x43F;&#x440;&#x43E;&#x438;&#x433;&#x43D;&#x43E;&#x440;&#x438;&#x440;&#x43E;&#x432;&#x430;&#x43D;&#x44B;.</comment>
+                        </ignore_queue_user>
+                         <subcribe_user>
+                            <label>&#x41F;&#x43E;&#x434;&#x43F;&#x438;&#x441;&#x430;&#x442;&#x44C; &#x43F;&#x43E;&#x43A;&#x443;&#x43F;&#x430;&#x442;&#x435;&#x43B;&#x44F;</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>140</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends><active_user>1</active_user></depends>
+                            <comment>&#x41F;&#x43E;&#x43A;&#x443;&#x43F;&#x430;&#x442;&#x435;&#x43B;&#x44C; &#x431;&#x443;&#x434;&#x435;&#x442; &#x43F;&#x43E;&#x434;&#x43F;&#x438;&#x441;&#x430;&#x43D; &#x43D;&#x430; &#x44D;&#x442;&#x43E; &#x441;&#x43E;&#x43E;&#x431;&#x449;&#x435;&#x43D;&#x438;&#x435; &#x43F;&#x43E; &#x443;&#x43C;&#x43E;&#x43B;&#x447;&#x430;&#x43D;&#x438;&#x44E;.</comment>
+                        </subcribe_user>
+                         <subcribe_guest>
+                            <label>&#x41E;&#x442;&#x43F;&#x440;&#x430;&#x432;&#x43B;&#x44F;&#x442;&#x44C; &#x433;&#x43E;&#x441;&#x442;&#x44F;&#x43C;</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>150</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends><active_user>1</active_user></depends>
+                            <comment/>
+                        </subcribe_guest>
+                        <active_jabber>
+                            <label>&#x41E;&#x442;&#x43F;&#x440;&#x430;&#x432;&#x43B;&#x44F;&#x442;&#x44C; &#x447;&#x435;&#x440;&#x435;&#x437; Jabber</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>160</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment/>
+                        </active_jabber>
+                        <jabber_text>
+                            <label>&#x421;&#x43E;&#x43E;&#x431;&#x449;&#x435;&#x43D;&#x438;&#x435;</label>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>170</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends><active_jabber>1</active_jabber></depends>
+                            <comment/>
+                        </jabber_text>
+                        <jabber_to>
+                            <label>&#x41F;&#x43E;&#x43B;&#x443;&#x447;&#x430;&#x442;&#x435;&#x43B;&#x438;</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>180</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends><active_jabber>1</active_jabber></depends>
+                            <comment>&#x41F;&#x43E;&#x43B;&#x443;&#x447;&#x430;&#x442;&#x435;&#x43B;&#x438; (&#x440;&#x430;&#x437;&#x434;&#x435;&#x43B;&#x438;&#x442;&#x435;&#x43B;&#x44C; ;)</comment>
+                        </jabber_to>
+                    </fields>
+                </event_order>
+                 <event_invoice>
+                    <label>&#x421;&#x41C;&#x421; &#x43E; &#x43F;&#x43B;&#x430;&#x442;&#x435;&#x436;&#x435;</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>30</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <active_admin>
+                            <label>&#x41E;&#x442;&#x43F;&#x440;&#x430;&#x432;&#x43B;&#x44F;&#x442;&#x44C; &#x430;&#x434;&#x43C;&#x438;&#x43D;&#x438;&#x441;&#x442;&#x440;&#x430;&#x442;&#x43E;&#x440;&#x443;</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment/>
+                        </active_admin>
+                        <text_admin>
+                            <label>&#x421;&#x43E;&#x43E;&#x431;&#x449;&#x435;&#x43D;&#x438;&#x435;</label>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends><active_admin>1</active_admin></depends>
+                            <comment/>
+                        </text_admin>
+                         <flash_admin>
+                            <label>&#x41E;&#x442;&#x43F;&#x440;&#x430;&#x432;&#x43B;&#x44F;&#x442;&#x44C; &#x43A;&#x430;&#x43A; flash &#x441;&#x43E;&#x43E;&#x431;&#x449;&#x435;&#x43D;&#x438;&#x435;</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends><active_admin>1</active_admin></depends>
+                            <comment>&#x41D;&#x435; &#x441;&#x43E;&#x445;&#x440;&#x430;&#x43D;&#x44F;&#x435;&#x442;&#x441;&#x44F; &#x432;&#x43E; &#x412;&#x445;&#x43E;&#x434;&#x44F;&#x449;&#x438;&#x445;, &#x430; &#x43F;&#x440;&#x43E;&#x441;&#x442;&#x43E; &#x43F;&#x43E;&#x44F;&#x432;&#x43B;&#x44F;&#x435;&#x442;&#x441;&#x44F; &#x43D;&#x430; &#x44D;&#x43A;&#x440;&#x430;&#x43D;&#x435; &#x442;&#x435;&#x43B;&#x435;&#x444;&#x43E;&#x43D;&#x430;.</comment>
+                        </flash_admin>
+                        <ignore_queue_admin>
+                            <label>&#x418;&#x433;&#x43D;&#x43E;&#x440;&#x438;&#x440;&#x43E;&#x432;&#x430;&#x442;&#x44C; &#x43E;&#x447;&#x435;&#x440;&#x435;&#x434;&#x44C;</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends><active_admin>1</active_admin></depends>
+                            <comment>&#x421;&#x43C;&#x441; &#x431;&#x443;&#x434;&#x435;&#x442; &#x43E;&#x442;&#x43F;&#x440;&#x430;&#x432;&#x43B;&#x435;&#x43D;&#x430; &#x441;&#x440;&#x430;&#x437;&#x443;, &#x43E;&#x447;&#x435;&#x440;&#x435;&#x434;&#x44C; &#x438; &#x432;&#x440;&#x435;&#x43C;&#x44F; &#x43E;&#x442;&#x43F;&#x440;&#x430;&#x432;&#x43A;&#x438; &#x431;&#x443;&#x434;&#x443;&#x442; &#x43F;&#x440;&#x43E;&#x438;&#x433;&#x43D;&#x43E;&#x440;&#x438;&#x440;&#x43E;&#x432;&#x430;&#x43D;&#x44B;.</comment>
+                        </ignore_queue_admin>
+                         <active_user>
+                            <label>&#x41E;&#x442;&#x43F;&#x440;&#x430;&#x432;&#x43B;&#x44F;&#x442;&#x44C; &#x43F;&#x43E;&#x43A;&#x443;&#x43F;&#x430;&#x442;&#x435;&#x43B;&#x44E;</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>100</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment/>
+                        </active_user>
+                        <text_user>
+                            <label>&#x421;&#x43E;&#x43E;&#x431;&#x449;&#x435;&#x43D;&#x438;&#x435;</label>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>110</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends><active_user>1</active_user></depends>
+                            <comment/>
+                        </text_user>
+                         <flash_user>
+                            <label>&#x41E;&#x442;&#x43F;&#x440;&#x430;&#x432;&#x43B;&#x44F;&#x442;&#x44C; &#x43A;&#x430;&#x43A; flash &#x441;&#x43E;&#x43E;&#x431;&#x449;&#x435;&#x43D;&#x438;&#x435;</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>120</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends><active_user>1</active_user></depends>
+                            <comment>&#x41D;&#x435; &#x441;&#x43E;&#x445;&#x440;&#x430;&#x43D;&#x44F;&#x435;&#x442;&#x441;&#x44F; &#x432;&#x43E; &#x412;&#x445;&#x43E;&#x434;&#x44F;&#x449;&#x438;&#x445;, &#x430; &#x43F;&#x440;&#x43E;&#x441;&#x442;&#x43E; &#x43F;&#x43E;&#x44F;&#x432;&#x43B;&#x44F;&#x435;&#x442;&#x441;&#x44F; &#x43D;&#x430; &#x44D;&#x43A;&#x440;&#x430;&#x43D;&#x435; &#x442;&#x435;&#x43B;&#x435;&#x444;&#x43E;&#x43D;&#x430;.</comment>
+                        </flash_user>
+                        <ignore_queue_user>
+                            <label>&#x418;&#x433;&#x43D;&#x43E;&#x440;&#x438;&#x440;&#x43E;&#x432;&#x430;&#x442;&#x44C; &#x43E;&#x447;&#x435;&#x440;&#x435;&#x434;&#x44C;</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>130</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends><active_user>1</active_user></depends>
+                            <comment>&#x421;&#x43C;&#x441; &#x431;&#x443;&#x434;&#x435;&#x442; &#x43E;&#x442;&#x43F;&#x440;&#x430;&#x432;&#x43B;&#x435;&#x43D;&#x430; &#x441;&#x440;&#x430;&#x437;&#x443;, &#x43E;&#x447;&#x435;&#x440;&#x435;&#x434;&#x44C; &#x438; &#x432;&#x440;&#x435;&#x43C;&#x44F; &#x43E;&#x442;&#x43F;&#x440;&#x430;&#x432;&#x43A;&#x438; &#x431;&#x443;&#x434;&#x443;&#x442; &#x43F;&#x440;&#x43E;&#x438;&#x433;&#x43D;&#x43E;&#x440;&#x438;&#x440;&#x43E;&#x432;&#x430;&#x43D;&#x44B;.</comment>
+                        </ignore_queue_user>
+                         <subcribe_user>
+                            <label>&#x41F;&#x43E;&#x434;&#x43F;&#x438;&#x441;&#x430;&#x442;&#x44C; &#x43F;&#x43E;&#x43A;&#x443;&#x43F;&#x430;&#x442;&#x435;&#x43B;&#x44F;</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>140</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends><active_user>1</active_user></depends>
+                            <comment>&#x41F;&#x43E;&#x43A;&#x443;&#x43F;&#x430;&#x442;&#x435;&#x43B;&#x44C; &#x431;&#x443;&#x434;&#x435;&#x442; &#x43F;&#x43E;&#x434;&#x43F;&#x438;&#x441;&#x430;&#x43D; &#x43D;&#x430; &#x44D;&#x442;&#x43E; &#x441;&#x43E;&#x43E;&#x431;&#x449;&#x435;&#x43D;&#x438;&#x435; &#x43F;&#x43E; &#x443;&#x43C;&#x43E;&#x43B;&#x447;&#x430;&#x43D;&#x438;&#x44E;.</comment>
+                        </subcribe_user>
+                         <subcribe_guest>
+                            <label>&#x41E;&#x442;&#x43F;&#x440;&#x430;&#x432;&#x43B;&#x44F;&#x442;&#x44C; &#x433;&#x43E;&#x441;&#x442;&#x44F;&#x43C;</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>150</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends><active_user>1</active_user></depends>
+                            <comment/>
+                        </subcribe_guest>
+                        <active_jabber>
+                            <label>&#x41E;&#x442;&#x43F;&#x440;&#x430;&#x432;&#x43B;&#x44F;&#x442;&#x44C; &#x447;&#x435;&#x440;&#x435;&#x437; Jabber</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>160</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment/>
+                        </active_jabber>
+                        <jabber_text>
+                            <label>&#x421;&#x43E;&#x43E;&#x431;&#x449;&#x435;&#x43D;&#x438;&#x435;</label>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>170</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends><active_jabber>1</active_jabber></depends>
+                            <comment/>
+                        </jabber_text>
+                        <jabber_to>
+                            <label>&#x41F;&#x43E;&#x43B;&#x443;&#x447;&#x430;&#x442;&#x435;&#x43B;&#x438;</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>180</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends><active_jabber>1</active_jabber></depends>
+                            <comment>&#x41F;&#x43E;&#x43B;&#x443;&#x447;&#x430;&#x442;&#x435;&#x43B;&#x438; (&#x440;&#x430;&#x437;&#x434;&#x435;&#x43B;&#x438;&#x442;&#x435;&#x43B;&#x44C; ;)</comment>
+                        </jabber_to>
+                    </fields>
+                </event_invoice>
+                <event_shipment>
+                    <label>&#x421;&#x41C;&#x421; &#x43E; &#x43E;&#x442;&#x433;&#x440;&#x443;&#x437;&#x43A;&#x435; &#x438; &#x43D;&#x43E;&#x43C;&#x435;&#x440; &#x43E;&#x442;&#x441;&#x43B;&#x435;&#x436;&#x438;&#x432;&#x430;&#x43D;&#x438;&#x44F;</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>40</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <active_admin>
+                            <label>&#x41E;&#x442;&#x43F;&#x440;&#x430;&#x432;&#x43B;&#x44F;&#x442;&#x44C; &#x430;&#x434;&#x43C;&#x438;&#x43D;&#x438;&#x441;&#x442;&#x440;&#x430;&#x442;&#x43E;&#x440;&#x443;</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment/>
+                        </active_admin>
+                        <text_admin>
+                            <label>&#x421;&#x43E;&#x43E;&#x431;&#x449;&#x435;&#x43D;&#x438;&#x435;</label>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends><active_admin>1</active_admin></depends>
+                            <comment/>
+                        </text_admin>
+                         <flash_admin>
+                            <label>&#x41E;&#x442;&#x43F;&#x440;&#x430;&#x432;&#x43B;&#x44F;&#x442;&#x44C; &#x43A;&#x430;&#x43A; flash &#x441;&#x43E;&#x43E;&#x431;&#x449;&#x435;&#x43D;&#x438;&#x435;</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends><active_admin>1</active_admin></depends>
+                            <comment>&#x41D;&#x435; &#x441;&#x43E;&#x445;&#x440;&#x430;&#x43D;&#x44F;&#x435;&#x442;&#x441;&#x44F; &#x432;&#x43E; &#x412;&#x445;&#x43E;&#x434;&#x44F;&#x449;&#x438;&#x445;, &#x430; &#x43F;&#x440;&#x43E;&#x441;&#x442;&#x43E; &#x43F;&#x43E;&#x44F;&#x432;&#x43B;&#x44F;&#x435;&#x442;&#x441;&#x44F; &#x43D;&#x430; &#x44D;&#x43A;&#x440;&#x430;&#x43D;&#x435; &#x442;&#x435;&#x43B;&#x435;&#x444;&#x43E;&#x43D;&#x430;.</comment>
+                        </flash_admin>
+                        <ignore_queue_admin>
+                            <label>&#x418;&#x433;&#x43D;&#x43E;&#x440;&#x438;&#x440;&#x43E;&#x432;&#x430;&#x442;&#x44C; &#x43E;&#x447;&#x435;&#x440;&#x435;&#x434;&#x44C;</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends><active_admin>1</active_admin></depends>
+                            <comment>&#x421;&#x43C;&#x441; &#x431;&#x443;&#x434;&#x435;&#x442; &#x43E;&#x442;&#x43F;&#x440;&#x430;&#x432;&#x43B;&#x435;&#x43D;&#x430; &#x441;&#x440;&#x430;&#x437;&#x443;, &#x43E;&#x447;&#x435;&#x440;&#x435;&#x434;&#x44C; &#x438; &#x432;&#x440;&#x435;&#x43C;&#x44F; &#x43E;&#x442;&#x43F;&#x440;&#x430;&#x432;&#x43A;&#x438; &#x431;&#x443;&#x434;&#x443;&#x442; &#x43F;&#x440;&#x43E;&#x438;&#x433;&#x43D;&#x43E;&#x440;&#x438;&#x440;&#x43E;&#x432;&#x430;&#x43D;&#x44B;.</comment>
+                        </ignore_queue_admin>
+                         <active_user>
+                            <label>&#x41E;&#x442;&#x43F;&#x440;&#x430;&#x432;&#x43B;&#x44F;&#x442;&#x44C; &#x43F;&#x43E;&#x43A;&#x443;&#x43F;&#x430;&#x442;&#x435;&#x43B;&#x44E;</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>100</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment/>
+                        </active_user>
+                        <text_user>
+                            <label>&#x421;&#x43E;&#x43E;&#x431;&#x449;&#x435;&#x43D;&#x438;&#x435;</label>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>110</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends><active_user>1</active_user></depends>
+                            <comment/>
+                        </text_user>
+                        <text_user_track>
+                            <label>&#x421;&#x43E;&#x43E;&#x431;&#x449;&#x435;&#x43D;&#x438;&#x435; &#x434;&#x43B;&#x44F; &#x441;&#x43C;&#x441; &#x441; &#x442;&#x440;&#x435;&#x43A;&#x438;&#x43D;&#x433;&#x43E;&#x43C;</label>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>115</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends><active_user>1</active_user></depends>
+                            <comment>&#x415;&#x441;&#x43B;&#x438; &#x43E;&#x442;&#x433;&#x440;&#x443;&#x437;&#x43A;&#x430; &#x441;&#x43E;&#x434;&#x435;&#x440;&#x436;&#x438;&#x442; &#x43D;&#x43E;&#x43C;&#x435;&#x440; &#x43E;&#x442;&#x441;&#x43B;&#x435;&#x436;&#x438;&#x432;&#x430;&#x43D;&#x438;&#x44F; &#x431;&#x443;&#x434;&#x435;&#x442; &#x43E;&#x442;&#x43F;&#x440;&#x430;&#x432;&#x43B;&#x435;&#x43D;&#x43E; &#x44D;&#x442;&#x43E; &#x441;&#x43E;&#x43E;&#x431;&#x449;&#x435;&#x43D;&#x438;&#x435;</comment>
+                        </text_user_track>
+                        <only_tracking>
+                            <label>&#x41E;&#x442;&#x43F;&#x440;&#x430;&#x432;&#x43B;&#x44F;&#x442;&#x44C; &#x441;&#x43E;&#x43E;&#x431;&#x449;&#x435;&#x43D;&#x438;&#x44F; &#x442;&#x43E;&#x43B;&#x44C;&#x43A;&#x43E; &#x441; &#x442;&#x440;&#x435;&#x43A;&#x438;&#x43D;&#x433;&#x43E;&#x43C;</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>116</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends><active_user>1</active_user></depends>
+                            <comment/>
+                        </only_tracking>
+                         <flash_user>
+                            <label>&#x41E;&#x442;&#x43F;&#x440;&#x430;&#x432;&#x43B;&#x44F;&#x442;&#x44C; &#x43A;&#x430;&#x43A; flash &#x441;&#x43E;&#x43E;&#x431;&#x449;&#x435;&#x43D;&#x438;&#x435;</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>120</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends><active_user>1</active_user></depends>
+                            <comment>&#x41D;&#x435; &#x441;&#x43E;&#x445;&#x440;&#x430;&#x43D;&#x44F;&#x435;&#x442;&#x441;&#x44F; &#x432;&#x43E; &#x412;&#x445;&#x43E;&#x434;&#x44F;&#x449;&#x438;&#x445;, &#x430; &#x43F;&#x440;&#x43E;&#x441;&#x442;&#x43E; &#x43F;&#x43E;&#x44F;&#x432;&#x43B;&#x44F;&#x435;&#x442;&#x441;&#x44F; &#x43D;&#x430; &#x44D;&#x43A;&#x440;&#x430;&#x43D;&#x435; &#x442;&#x435;&#x43B;&#x435;&#x444;&#x43E;&#x43D;&#x430;.</comment>
+                        </flash_user>
+                        <ignore_queue_user>
+                            <label>&#x418;&#x433;&#x43D;&#x43E;&#x440;&#x438;&#x440;&#x43E;&#x432;&#x430;&#x442;&#x44C; &#x43E;&#x447;&#x435;&#x440;&#x435;&#x434;&#x44C;</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>130</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends><active_user>1</active_user></depends>
+                            <comment>&#x421;&#x43C;&#x441; &#x431;&#x443;&#x434;&#x435;&#x442; &#x43E;&#x442;&#x43F;&#x440;&#x430;&#x432;&#x43B;&#x435;&#x43D;&#x430; &#x441;&#x440;&#x430;&#x437;&#x443;, &#x43E;&#x447;&#x435;&#x440;&#x435;&#x434;&#x44C; &#x438; &#x432;&#x440;&#x435;&#x43C;&#x44F; &#x43E;&#x442;&#x43F;&#x440;&#x430;&#x432;&#x43A;&#x438; &#x431;&#x443;&#x434;&#x443;&#x442; &#x43F;&#x440;&#x43E;&#x438;&#x433;&#x43D;&#x43E;&#x440;&#x438;&#x440;&#x43E;&#x432;&#x430;&#x43D;&#x44B;.</comment>
+                        </ignore_queue_user>
+                         <subcribe_user>
+                            <label>&#x41F;&#x43E;&#x434;&#x43F;&#x438;&#x441;&#x430;&#x442;&#x44C; &#x43F;&#x43E;&#x43A;&#x443;&#x43F;&#x430;&#x442;&#x435;&#x43B;&#x44F;</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>140</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends><active_user>1</active_user></depends>
+                            <comment>&#x41F;&#x43E;&#x43A;&#x443;&#x43F;&#x430;&#x442;&#x435;&#x43B;&#x44C; &#x431;&#x443;&#x434;&#x435;&#x442; &#x43F;&#x43E;&#x434;&#x43F;&#x438;&#x441;&#x430;&#x43D; &#x43D;&#x430; &#x44D;&#x442;&#x43E; &#x441;&#x43E;&#x43E;&#x431;&#x449;&#x435;&#x43D;&#x438;&#x435; &#x43F;&#x43E; &#x443;&#x43C;&#x43E;&#x43B;&#x447;&#x430;&#x43D;&#x438;&#x44E;.</comment>
+                        </subcribe_user>
+                         <subcribe_guest>
+                            <label>&#x41E;&#x442;&#x43F;&#x440;&#x430;&#x432;&#x43B;&#x44F;&#x442;&#x44C; &#x433;&#x43E;&#x441;&#x442;&#x44F;&#x43C;</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>150</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends><active_user>1</active_user></depends>
+                            <comment/>
+                        </subcribe_guest>
+                        <active_jabber>
+                            <label>&#x41E;&#x442;&#x43F;&#x440;&#x430;&#x432;&#x43B;&#x44F;&#x442;&#x44C; &#x447;&#x435;&#x440;&#x435;&#x437; Jabber</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>160</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment/>
+                        </active_jabber>
+                        <jabber_text>
+                            <label>&#x421;&#x43E;&#x43E;&#x431;&#x449;&#x435;&#x43D;&#x438;&#x435;</label>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>170</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends><active_jabber>1</active_jabber></depends>
+                            <comment/>
+                        </jabber_text>
+                        <jabber_to>
+                            <label>&#x41F;&#x43E;&#x43B;&#x443;&#x447;&#x430;&#x442;&#x435;&#x43B;&#x438;</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>180</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends><active_jabber>1</active_jabber></depends>
+                            <comment>&#x41F;&#x43E;&#x43B;&#x443;&#x447;&#x430;&#x442;&#x435;&#x43B;&#x438; (&#x440;&#x430;&#x437;&#x434;&#x435;&#x43B;&#x438;&#x442;&#x435;&#x43B;&#x44C; ;)</comment>
+                        </jabber_to>
+                    </fields>
+                </event_shipment>
+                <event_order_cancel>
+                    <label>&#x421;&#x41C;&#x421; &#x43E;&#x431; &#x43E;&#x442;&#x43C;&#x435;&#x43D;&#x435; &#x437;&#x430;&#x43A;&#x430;&#x437;&#x430;</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>50</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <active_admin>
+                            <label>&#x41E;&#x442;&#x43F;&#x440;&#x430;&#x432;&#x43B;&#x44F;&#x442;&#x44C; &#x430;&#x434;&#x43C;&#x438;&#x43D;&#x438;&#x441;&#x442;&#x440;&#x430;&#x442;&#x43E;&#x440;&#x443;</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment/>
+                        </active_admin>
+                        <text_admin>
+                            <label>&#x421;&#x43E;&#x43E;&#x431;&#x449;&#x435;&#x43D;&#x438;&#x435;</label>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends><active_admin>1</active_admin></depends>
+                            <comment/>
+                        </text_admin>
+                         <flash_admin>
+                            <label>&#x41E;&#x442;&#x43F;&#x440;&#x430;&#x432;&#x43B;&#x44F;&#x442;&#x44C; &#x43A;&#x430;&#x43A; flash &#x441;&#x43E;&#x43E;&#x431;&#x449;&#x435;&#x43D;&#x438;&#x435;</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends><active_admin>1</active_admin></depends>
+                            <comment>&#x41D;&#x435; &#x441;&#x43E;&#x445;&#x440;&#x430;&#x43D;&#x44F;&#x435;&#x442;&#x441;&#x44F; &#x432;&#x43E; &#x412;&#x445;&#x43E;&#x434;&#x44F;&#x449;&#x438;&#x445;, &#x430; &#x43F;&#x440;&#x43E;&#x441;&#x442;&#x43E; &#x43F;&#x43E;&#x44F;&#x432;&#x43B;&#x44F;&#x435;&#x442;&#x441;&#x44F; &#x43D;&#x430; &#x44D;&#x43A;&#x440;&#x430;&#x43D;&#x435; &#x442;&#x435;&#x43B;&#x435;&#x444;&#x43E;&#x43D;&#x430;.</comment>
+                        </flash_admin>
+                        <ignore_queue_admin>
+                            <label>&#x418;&#x433;&#x43D;&#x43E;&#x440;&#x438;&#x440;&#x43E;&#x432;&#x430;&#x442;&#x44C; &#x43E;&#x447;&#x435;&#x440;&#x435;&#x434;&#x44C;</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends><active_admin>1</active_admin></depends>
+                            <comment>&#x421;&#x43C;&#x441; &#x431;&#x443;&#x434;&#x435;&#x442; &#x43E;&#x442;&#x43F;&#x440;&#x430;&#x432;&#x43B;&#x435;&#x43D;&#x430; &#x441;&#x440;&#x430;&#x437;&#x443;, &#x43E;&#x447;&#x435;&#x440;&#x435;&#x434;&#x44C; &#x438; &#x432;&#x440;&#x435;&#x43C;&#x44F; &#x43E;&#x442;&#x43F;&#x440;&#x430;&#x432;&#x43A;&#x438; &#x431;&#x443;&#x434;&#x443;&#x442; &#x43F;&#x440;&#x43E;&#x438;&#x433;&#x43D;&#x43E;&#x440;&#x438;&#x440;&#x43E;&#x432;&#x430;&#x43D;&#x44B;.</comment>
+                        </ignore_queue_admin>
+                         <active_user>
+                            <label>&#x41E;&#x442;&#x43F;&#x440;&#x430;&#x432;&#x43B;&#x44F;&#x442;&#x44C; &#x43F;&#x43E;&#x43A;&#x443;&#x43F;&#x430;&#x442;&#x435;&#x43B;&#x44E;</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>100</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment/>
+                        </active_user>
+                        <text_user>
+                            <label>&#x421;&#x43E;&#x43E;&#x431;&#x449;&#x435;&#x43D;&#x438;&#x435;</label>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>110</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends><active_user>1</active_user></depends>
+                            <comment/>
+                        </text_user>
+                         <flash_user>
+                            <label>&#x41E;&#x442;&#x43F;&#x440;&#x430;&#x432;&#x43B;&#x44F;&#x442;&#x44C; &#x43A;&#x430;&#x43A; flash &#x441;&#x43E;&#x43E;&#x431;&#x449;&#x435;&#x43D;&#x438;&#x435;</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>120</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends><active_user>1</active_user></depends>
+                            <comment>&#x41D;&#x435; &#x441;&#x43E;&#x445;&#x440;&#x430;&#x43D;&#x44F;&#x435;&#x442;&#x441;&#x44F; &#x432;&#x43E; &#x412;&#x445;&#x43E;&#x434;&#x44F;&#x449;&#x438;&#x445;, &#x430; &#x43F;&#x440;&#x43E;&#x441;&#x442;&#x43E; &#x43F;&#x43E;&#x44F;&#x432;&#x43B;&#x44F;&#x435;&#x442;&#x441;&#x44F; &#x43D;&#x430; &#x44D;&#x43A;&#x440;&#x430;&#x43D;&#x435; &#x442;&#x435;&#x43B;&#x435;&#x444;&#x43E;&#x43D;&#x430;.</comment>
+                        </flash_user>
+                        <ignore_queue_user>
+                            <label>&#x418;&#x433;&#x43D;&#x43E;&#x440;&#x438;&#x440;&#x43E;&#x432;&#x430;&#x442;&#x44C; &#x43E;&#x447;&#x435;&#x440;&#x435;&#x434;&#x44C;</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>130</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends><active_user>1</active_user></depends>
+                            <comment>&#x421;&#x43C;&#x441; &#x431;&#x443;&#x434;&#x435;&#x442; &#x43E;&#x442;&#x43F;&#x440;&#x430;&#x432;&#x43B;&#x435;&#x43D;&#x430; &#x441;&#x440;&#x430;&#x437;&#x443;, &#x43E;&#x447;&#x435;&#x440;&#x435;&#x434;&#x44C; &#x438; &#x432;&#x440;&#x435;&#x43C;&#x44F; &#x43E;&#x442;&#x43F;&#x440;&#x430;&#x432;&#x43A;&#x438; &#x431;&#x443;&#x434;&#x443;&#x442; &#x43F;&#x440;&#x43E;&#x438;&#x433;&#x43D;&#x43E;&#x440;&#x438;&#x440;&#x43E;&#x432;&#x430;&#x43D;&#x44B;.</comment>
+                        </ignore_queue_user>
+                         <subcribe_user>
+                            <label>&#x41F;&#x43E;&#x434;&#x43F;&#x438;&#x441;&#x430;&#x442;&#x44C; &#x43F;&#x43E;&#x43A;&#x443;&#x43F;&#x430;&#x442;&#x435;&#x43B;&#x44F;</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>140</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends><active_user>1</active_user></depends>
+                            <comment>&#x41F;&#x43E;&#x43A;&#x443;&#x43F;&#x430;&#x442;&#x435;&#x43B;&#x44C; &#x431;&#x443;&#x434;&#x435;&#x442; &#x43F;&#x43E;&#x434;&#x43F;&#x438;&#x441;&#x430;&#x43D; &#x43D;&#x430; &#x44D;&#x442;&#x43E; &#x441;&#x43E;&#x43E;&#x431;&#x449;&#x435;&#x43D;&#x438;&#x435; &#x43F;&#x43E; &#x443;&#x43C;&#x43E;&#x43B;&#x447;&#x430;&#x43D;&#x438;&#x44E;.</comment>
+                        </subcribe_user>
+                         <subcribe_guest>
+                            <label>&#x41E;&#x442;&#x43F;&#x440;&#x430;&#x432;&#x43B;&#x44F;&#x442;&#x44C; &#x433;&#x43E;&#x441;&#x442;&#x44F;&#x43C;</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>150</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends><active_user>1</active_user></depends>
+                            <comment/>
+                        </subcribe_guest>
+                        <active_jabber>
+                            <label>&#x41E;&#x442;&#x43F;&#x440;&#x430;&#x432;&#x43B;&#x44F;&#x442;&#x44C; &#x447;&#x435;&#x440;&#x435;&#x437; Jabber</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>160</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment/>
+                        </active_jabber>
+                        <jabber_text>
+                            <label>&#x421;&#x43E;&#x43E;&#x431;&#x449;&#x435;&#x43D;&#x438;&#x435;</label>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>170</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends><active_jabber>1</active_jabber></depends>
+                            <comment/>
+                        </jabber_text>
+                        <jabber_to>
+                            <label>&#x41F;&#x43E;&#x43B;&#x443;&#x447;&#x430;&#x442;&#x435;&#x43B;&#x438;</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>180</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends><active_jabber>1</active_jabber></depends>
+                            <comment>&#x41F;&#x43E;&#x43B;&#x443;&#x447;&#x430;&#x442;&#x435;&#x43B;&#x438; (&#x440;&#x430;&#x437;&#x434;&#x435;&#x43B;&#x438;&#x442;&#x435;&#x43B;&#x44C; ;)</comment>
+                        </jabber_to>
+                    </fields>
+                </event_order_cancel>
+            </groups>
+        </rugento_smsnotice>
+    </sections>
+</config>

@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+
+<layout version="0.1.0">
+    <default>
+        <reference name="head" before="-">
+            <block type="googleanalytics/ga" name="google_analytics" as="google_analytics"
+                   template="WebinseAll/ga.phtml"/>
+        </reference>
+    </default>
+</layout>

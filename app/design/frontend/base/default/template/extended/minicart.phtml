@@ -1,0 +1,35 @@
+<?php
+$shippingMethod = Mage::getModel('checkout/session')->getQuote()->getShippingAddress();
+$costAmount = $shippingMethod['shipping_amount'];
+$subtotal = $this->getSubtotal();
+if ((int)$this->getStep() == 2) {
+    $grandTotal = $this->getSubtotal();
+}
+else {
+    $grandTotal = $this->getQuote()->getGrandTotal();
+}
+?>
+<div id="ext_minicart">
+    <span class="subtitle"><?php echo $this->helper('extended')->__('Review Order')?>:</span><a class="edit-link" href="<?php echo $this->getUrl('checkout/cart')?>"><?php echo $this->helper('extended')->__('Change')?></a>
+    <div class="subtotal"><span><?php echo $this->helper('extended')->__('%s Item(s)', $this->getSummaryCount())?></span> = <span><?php echo Mage::helper('checkout')->formatPrice($subtotal) ?></span></div>
+    <?php if($this->getShowAll()):?>
+        <?php if ((int)$this->getStep() == 3): ?>
+            <div class="shipping"><?php echo $this->helper('extended')->__('Delivery')?> ~ <span><?php echo Mage::helper('checkout')->formatPrice($costAmount) ?></span></div>
+        <?php endif; ?>
+        <div class="total"><?php echo $this->helper('extended')->__('Grand Total')?> = <span><?php echo Mage::helper('checkout')->formatPrice($grandTotal) ?></span></div>
+    <?php endif;?>
+	
+	
+<script type="text/javascript">	
+
+jQuery( document ).ready(function() {
+	
+	if(jQuery('.step-2').is(':visible')) {
+		jQuery('#ext_minicart .total').css('display','none');
+	}
+
+
+});
+</script>
+
+</div>

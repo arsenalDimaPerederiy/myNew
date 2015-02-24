@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<config>
+	<modules>
+		<Mementia_Expressdelivery>
+			<active>true</active>
+			<codePool>local</codePool>
+			<depends>
+				<Mage_Catalog />
+				<Mage_Checkout />
+			</depends>
+		</Mementia_Expressdelivery>
+	</modules>
+</config> 

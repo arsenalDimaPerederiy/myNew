@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Qaz_All>
+            <active>true</active>
+            <codePool>community</codePool>
+        </Qaz_All>
+    </modules>
+</config> 
+<!--Qazware Magento Oscommerce All -->

@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<config>
+    <menu>
+         <sales>
+            <children>
+                <expressdelivery translate="title" module="expressdelivery">
+                    <sort_order>210</sort_order>
+                    <title>Express Delivery</title>
+                    <children>
+                        <cities translate="title" module="expressdelivery">
+                            <sort_order>10</sort_order>
+                            <title>Cities</title>
+                            <action>expressdelivery/cities/</action>
+                        </cities>
+                    </children>
+                </expressdelivery>
+            </children>
+         </sales>
+    </menu>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <sales>
+                        <children>
+                            <expressdelivery translate="title" module="expressdelivery">
+                                <title>Express Delivery</title>
+                                <sort_order>210</sort_order>
+                                <children>
+                                    <cities translate="title" module="expressdelivery">
+                                        <sort_order>10</sort_order>
+                                        <title>Cities</title>
+                                    </cities>
+                                </children>
+                            </expressdelivery>
+                        </children>
+                    </sales>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</config>

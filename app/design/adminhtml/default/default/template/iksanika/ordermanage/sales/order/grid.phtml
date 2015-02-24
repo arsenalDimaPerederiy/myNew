@@ -1,0 +1,942 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     default_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php
+/**
+ * Template for Mage_Adminhtml_Block_Widget_Grid
+ *
+ *  getId()
+ *  getCollection()
+ *  getColumns()
+ *  getPagerVisibility()
+ *  getVarNamePage()
+ */
+    
+    function displayRoundedPrices($basePrice, $price, $precision=2, $strong = false, $separator = '<br />', $order = false)
+    {
+        if ($order->isCurrencyDifferent()) {
+            $res = '';
+            $res.= $order->formatBasePricePrecision($basePrice, $precision);
+            $res.= $separator;
+            $res.= $order->formatPricePrecision($price, $precision, true);
+        }
+        else {
+            $res = $order->formatPricePrecision($price, $precision);
+            if ($strong) {
+                $res = '<strong>'.$res.'</strong>';
+            }
+        }
+        return $res;
+    }
+    
+    function displayPrices($basePrice, $price, $strong = false, $separator = '<br />', $order = false)
+    {
+        return displayRoundedPrices($basePrice, $price, 2, $strong, $separator, $order);
+    }
+
+    $colDataWith = array(
+        'billing_name' => false,
+        'shipping_name' => false,
+        
+        'billing_full_form' => false,
+        'billing_firstname' => false,
+        'billing_middlename' => false,
+        'billing_lastname' => false,
+        'billing_company' => false,
+        'billing_street' => false,
+        'billing_city' => false,
+        'billing_region' => false,
+        'billing_postcode' => false,
+        'billing_email' => false,
+        'billing_telephone' => false,
+        'billing_country' => false,
+        'billing_fax' => false,
+
+        'shipping_full_form' => false,
+        'shipping_firstname' => false,
+        'shipping_middlename' => false,
+        'shipping_lastname' => false,
+        'shipping_company' => false,
+        'shipping_street' => false,
+        'shipping_city' => false,
+        'shipping_region' => false,
+        'shipping_postcode' => false,
+        'shipping_email' => false,
+        'shipping_telephone' => false,
+        'shipping_country' => false,
+        'shipping_fax' => false,
+        
+        'shipping_tracking_number' => false,
+
+        'payment_method' => false,
+        'payment_code' => false,
+        'payment_cc_type' => false,
+        
+        'special_qty_uniq_prods' => false,
+    );
+    
+    $numColumns = sizeof($this->getColumns());
+    
+    
+    $includeProducts = Mage::getStoreConfig('ordermanage/products/includeproducts');
+    $showProducts = Mage::getStoreConfig('ordermanage/products/showproducts');
+    $productsAttributes = Mage::getStoreConfig('ordermanage/products/showattr');
+
+    $productsAttributes = explode(',',$productsAttributes);
+    $productsAttributes = array_flip($productsAttributes);
+    
+    $productsData = array();
+    foreach(Iksanika_Ordermanage_Model_System_Config_Source_Columns_Products::$columnsTitleProducts as $indexKey => $value)
+    {
+        $productsData[$indexKey] = (isset($productsAttributes[$indexKey])) ? true : false;
+    }
+    
+?>
+
+<style media="screen" type="text/css">
+/*override default css of magento*/
+.grid table td {
+    border-width: 0 1px 1px 1px;
+    border-color: rgb(224, 224, 224) rgb(233, 233, 233) rgb(204, 204, 204) rgb(252, 252, 252);
+    border-style: solid;
+}
+.grid table .orderExpanded td {
+    border-bottom: 1px;
+    border-bottom-color: rgb(233, 233, 233);
+    border-style: solid;
+}
+
+
+.grid tr.even, 
+.grid tr.even tr {
+    background: #f5f5f5;
+}
+
+.grid tr.on-mouse
+{
+    cursor: pointer;
+    background: rgb(239,246,255); /* Old browsers */
+    background: -moz-linear-gradient(top,  rgb(239,246,255) 0%, rgb(224,236,255) 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgb(239,246,255)), color-stop(100%,rgb(224,236,255))); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  rgb(239,246,255) 0%,rgb(224,236,255) 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  rgb(239,246,255) 0%,rgb(224,236,255) 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  rgb(239,246,255) 0%,rgb(224,236,255) 100%); /* IE10+ */
+    background: linear-gradient(to bottom,  rgb(239,246,255) 0%,rgb(224,236,255) 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eff6ff', endColorstr='#e0ecff',GradientType=0 ); /* IE6-9 */
+}
+</style>
+
+
+
+
+<?php if($this->getCollection()): ?>
+    <?php if($this->canDisplayContainer()): ?>
+        <?php if($this->getGridHeader()): ?>
+        <div class="content-header">
+            <table cellspacing="0">
+                <tr>
+                    <td style="width:50%;"><h2><?php echo $this->getGridHeader(); ?></h2></td>
+                </tr>
+            </table>
+        </div>
+        <?php endif ?>
+
+        <div id="<?php echo $this->getId() ?>">
+    <?php else: ?>
+        <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+    <?php endif; ?>
+<?php if($this->getPagerVisibility() || $this->getExportTypes() || $this->getFilterVisibility()): ?>
+    <table cellspacing="0" class="actions">
+        <tr>
+        <?php if($this->getPagerVisibility()): ?>
+            <td class="pager">
+            <?php echo $this->__('Page') ?>
+                
+            <?php $_curPage  = $this->getCollection()->getCurPage() ?>
+            <?php $_lastPage = $this->getCollection()->getLastPageNumber() ?>
+            <?php if($_curPage>1): ?>
+                <a href="#" title="<?php echo $this->__('Previous page') ?>" onclick="<?php echo $this->getJsObjectName() ?>.setPage('<?php echo ($_curPage-1) ?>');return false;"><img src="<?php echo $this->getSkinUrl('images/pager_arrow_left.gif') ?>" alt="Go to Previous page" class="arrow"/></a>
+            <?php else: ?>
+                <img src="<?php echo $this->getSkinUrl('images/pager_arrow_left_off.gif') ?>" alt="Go to Previous page" class="arrow"/>
+            <?php endif; ?>
+
+            <input type="text" name="<?php echo $this->getVarNamePage() ?>" value="<?php echo $_curPage ?>" class="input-text page" onkeypress="<?php echo $this->getJsObjectName() ?>.inputPage(event, '<?php echo $_lastPage ?>')"/>
+
+            <?php if($_curPage < $_lastPage): ?>
+                <a href="#" title="<?php echo $this->__('Next page') ?>" onclick="<?php echo $this->getJsObjectName() ?>.setPage('<?php echo ($_curPage+1) ?>');return false;"><img src="<?php echo $this->getSkinUrl('images/pager_arrow_right.gif') ?>" alt="Go to Next page" class="arrow"/></a>
+            <?php else: ?>
+                <img src="<?php echo $this->getSkinUrl('images/pager_arrow_right_off.gif') ?>" alt="Go to Previous page" class="arrow"/>
+            <?php endif; ?>
+
+            <?php echo $this->__('of %s pages', $this->getCollection()->getLastPageNumber()) ?>
+            <span class="separator">|</span>
+            <?php echo $this->__('View') ?>
+            <select name="<?php echo $this->getVarNameLimit() ?>" onchange="<?php echo $this->getJsObjectName() ?>.loadByElement(this)">
+                <option value="20"<?php if($this->getCollection()->getPageSize()==20): ?> selected="selected"<?php endif; ?>>20</option>
+                <option value="30"<?php if($this->getCollection()->getPageSize()==30): ?> selected="selected"<?php endif; ?>>30</option>
+                <option value="50"<?php if($this->getCollection()->getPageSize()==50): ?> selected="selected"<?php endif; ?>>50</option>
+                <option value="100"<?php if($this->getCollection()->getPageSize()==100): ?> selected="selected"<?php endif; ?>>100</option>
+                <option value="200"<?php if($this->getCollection()->getPageSize()==200): ?> selected="selected"<?php endif; ?>>200</option>
+            </select>
+            <?php echo $this->__('per page') ?><span class="separator">|</span>
+            <?php echo $this->__('Total %d records found', $this->getCollection()->getSize()) ?>
+            <span id="<?php echo $this->getHtmlId() ?>-total-count" class="no-display"><?php echo $this->getCollection()->getSize() ?></span>
+            <?php if($this->getRssLists()): ?>
+                <?php foreach ($this->getRssLists() as $_rss): ?>
+                <span class="separator">|</span><a href="<?php echo $_rss->getUrl() ?>" class="link-feed"><?php echo $_rss->getLabel() ?></a>
+                <?php endforeach ?>
+            <?php endif; ?>
+        </td>
+    <?php endif ?>
+    <?php if($this->getExportTypes()): ?>
+        <td class="export a-right">
+            <img src="<?php echo $this->getSkinUrl('images/icon_export.gif') ?>" alt="" class="v-middle"/>&nbsp; <?php echo $this->__('Export to:') ?>
+            <select name="<?php echo $this->getId() ?>_export" id="<?php echo $this->getId() ?>_export" style="width:8em;">
+            <?php foreach ($this->getExportTypes() as $_type): ?>
+                <option value="<?php echo $_type->getUrl() ?>"><?php echo $_type->getLabel() ?></option>
+            <?php endforeach; ?>
+            </select>
+            <?php echo $this->getExportButtonHtml() ?>
+        </td>
+    <?php endif; ?>
+        <td class="filter-actions a-right">
+            <?php echo $this->getMainButtonsHtml() ?>
+        </td>
+        </tr>
+    </table>
+<?php endif; ?>
+<?php if($this->getMassactionBlock()->isAvailable()): ?>
+<?php echo $this->getMassactionBlockHtml() ?>
+<?php endif ?>
+<div class="grid" id="editData">
+    <div class="hor-scroll">
+    <table cellspacing="0" class="data" id="<?php echo $this->getId() ?>_table">
+        
+        <?php /* order manage injection - start */ ?>
+        <?php if($includeProducts) :?>
+        <col width="20"></col>
+        <?php endif; ?>
+        <?php /*order injection - end */?>
+        
+        <?php 
+            $colCount = count($this->getColumns());
+            foreach ($this->getColumns() as $_column): ?>
+
+            <?php
+                $colData = $_column->getData();
+                
+                if(isset($colData['index']))
+                {
+                    foreach($colDataWith as $indexKey => $value)
+                    {
+                        if($colData['index'] == $indexKey)
+                            $colDataWith[$indexKey] = true;
+                    }
+                }
+
+            ?>
+        
+        <col <?php echo $_column->getHtmlProperty() ?> />
+        <?php endforeach; ?>
+        
+        
+        
+        <?php if ($this->getHeadersVisibility() || $this->getFilterVisibility()): ?>
+            <thead>
+                <?php if ($this->getHeadersVisibility()): ?>
+                    <tr class="headings">
+                        
+                        <?php /* order manage injection */ ?>
+                        <?php if($includeProducts) :?>
+                        <th></th>
+                        <?php endif; ?>
+                        
+                    <?php foreach ($this->getColumns() as $_column): ?>
+                        <th<?php echo $_column->getHeaderHtmlProperty() ?>><span class="nobr"><?php echo $_column->getHeaderHtml() ?></span></th>
+                    <?php endforeach; ?>
+                    </tr>
+                <?php endif; ?>
+                <?php if ($this->getFilterVisibility()): ?>
+                    
+                    <tr class="filter">
+                    
+                        <?php /* order manage injection */ ?>
+                        <?php if($includeProducts) :?>
+                        <th>
+                            <div class="text cellexpander parbase">
+                                <a href="#" class="triggerAll"><i class="icon-plus-sign"></i></a>
+                                <a href="#" class="triggerAll"><i class="icon-minus-sign"></i></a>
+                            </div>
+                        </th>
+                        <?php endif; ?>
+                        
+                        
+                    <?php $i=0;foreach ($this->getColumns() as $_column): ?>
+                        <th<?php echo $_column->getHeaderHtmlProperty() ?>><?php echo $_column->getFilterHtml() ?></th>
+                    <?php endforeach; ?>
+                    </tr>
+                <?php endif ?>
+            </thead>
+        <?php endif; ?>
+        <?php if ($this->getCountTotals()): ?>
+            <tfoot>
+                <tr class="totals">
+                <?php foreach ($this->getColumns() as $_column): ?>
+                    <th class="<?php echo $_column->getCssProperty() ?>"><?php echo ($_column->hasTotalsLabel()) ? $_column->getTotalsLabel() : $_column->getRowField($_column->getGrid()->getTotals()) ?>&nbsp;</th>
+               <?php endforeach; ?>
+                </tr>
+            </tfoot>
+        <?php endif; ?>
+
+        <tbody>
+        <?php if (($this->getCollection()->getSize()>0) && (!$this->getIsCollapsed())): ?>
+        <?php foreach ($this->getCollection() as $_index=>$_item): ?>
+            
+            
+            <?php
+//            var_dump($_item->getData());die();
+//                var_dump($_item->getTrackingNumbers());
+//                var_dump($_item->getShippingCarrier()->getAllowedMethods());
+                
+                //$_item->printLogQuery(true);
+                //echo get_class($this->getCollection());
+                foreach($colDataWith as $indexKey => $value)
+                {
+                    if($colDataWith[$indexKey])
+                    {
+                        if($indexKey == 'billing_full_form')
+                            $_item->setData('billing_full_form', $_item->getBillingAddress()->getFormated(true));
+                        
+                        //if($indexKey == 'billing_firstname')
+                        //    $_item->setData('billing_firstname', $_item->getBillingAddress()->getData('firstname'));
+                        //if($indexKey == 'billing_middlename')
+                        //    $_item->setData('billing_middlename', $_item->getBillingAddress()->getData('middlename'));
+                        //if($indexKey == 'billing_lastname')
+                        //    $_item->setData('billing_lastname', $_item->getBillingAddress()->getData('lastname'));
+                        
+                        if($indexKey == 'billing_name')
+                            $_item->setData('billing_name', $_item->getBillingAddress()->getName());
+                        
+                        //if($indexKey == 'billing_company')
+                        //    $_item->setData('billing_company', $_item->getBillingAddress()->getData('company'));
+                        if($indexKey == 'billing_street')
+                        {
+                            $streets = $_item->getBillingAddress()->getStreet();
+                            $_item->setData('billing_street', ($streets && isset($streets[0])) ? $streets[0] : '');
+                        }
+                        //if($indexKey == 'billing_city')
+                        //    $_item->setData('billing_city', $_item->getBillingAddress()->getCity());
+                        if($indexKey == 'billing_region')
+                            $_item->setData('billing_region', $_item->getBillingAddress()->getRegion());
+                        //if($indexKey == 'billing_postcode')
+                        //    $_item->setData('billing_postcode', $_item->getBillingAddress()->getData('postcode'));
+                        //if($indexKey == 'billing_email')
+                        //    $_item->setData('billing_email', $_item->getBillingAddress()->getData('email'));
+                        //if($indexKey == 'billing_telephone')
+                        //    $_item->setData('billing_telephone', $_item->getBillingAddress()->getData('telephone'));
+                        if($indexKey == 'billing_country')
+                            $_item->setData('billing_country', $_item->getBillingAddress()->getCountry());
+                        //if($indexKey == 'billing_fax')
+                        //    $_item->setData('billing_fax', $_item->getBillingAddress()->getData('fax'));
+                        
+                        if($indexKey == 'shipping_full_form')
+                            $_item->setData('shipping_full_form', $_item->getShippingAddress()->getFormated(true));
+                        //if($indexKey == 'shipping_firstname')
+                        //    $_item->setData('shipping_firstname', $_item->getShippingAddress()->getData('firstname'));
+                        //if($indexKey == 'shipping_middlename')
+                        //    $_item->setData('shipping_middlename', $_item->getShippingAddress()->getData('middlename'));
+                        //if($indexKey == 'shipping_lastname')
+                        //    $_item->setData('shipping_lastname', $_item->getShippingAddress()->getData('lastname'));
+                        
+                        if($indexKey == 'shipping_name')
+                            $_item->setData('shipping_name', $_item->getShippingAddress()->getName());
+                        
+                        //if($indexKey == 'shipping_company')
+                        //    $_item->setData('shipping_company', $_item->getShippingAddress()->getData('company'));
+                        if($indexKey == 'shipping_street')
+                        {
+                            $streets = $_item->getShippingAddress()->getStreet();
+                            $_item->setData('shipping_street', ($streets && isset($streets[0])) ? $streets[0] : '');
+                        }
+                        //if($indexKey == 'shipping_city')
+                        //    $_item->setData('shipping_city', $_item->getShippingAddress()->getCity());
+                        if($indexKey == 'shipping_region')
+                            $_item->setData('shipping_region', $_item->getShippingAddress()->getRegion());
+                        //if($indexKey == 'shipping_postcode')
+                        //    $_item->setData('shipping_postcode', $_item->getShippingAddress()->getData('postcode'));
+                        //if($indexKey == 'shipping_email')
+                        //    $_item->setData('shipping_email', $_item->getShippingAddress()->getData('email'));
+                        //if($indexKey == 'shipping_telephone')
+                        //    $_item->setData('shipping_telephone', $_item->getShippingAddress()->getData('telephone'));
+                        if($indexKey == 'shipping_country')
+                            $_item->setData('shipping_country', $_item->getShippingAddress()->getCountry());
+                        //if($indexKey == 'shipping_fax')
+                        //    $_item->setData('shipping_fax', $_item->getShippingAddress()->getData('fax'));
+                        
+                        if($indexKey == 'shipping_tracking_number')
+                        {
+                            $trackingNumbers = $_item->getTracksCollection();
+                            if(count($trackingNumbers))
+                            {
+                                $trackNumber = '';
+                                foreach($trackingNumbers as $track)
+                                {
+                                    //var_dump($track->getData());
+                                    $trackNumber .= '<strong>'.(!Mage::getStoreConfig("carriers/".$track['carrier_code']) ? 'Custom' : Mage::getStoreConfig("carriers/".$track['carrier_code']."/title")).'</strong><br/>';
+                                    //$trackNumber .= $track['carrier_code'];
+                                    //$trackNumber .= $track['title'];
+                                    $trackNumber .= $track['track_number'];
+                                }
+                                //$_item->setData('shipping_tracking_number', $_item->getTrackingNumbers());
+                                $_item->setData('shipping_tracking_number', $trackNumber);
+                            }else
+                            {
+                                //$_item->setData('shipping_tracking_number', '[NOT SPECIFIED]');
+                            }
+                            
+                            /*                            
+                            public function getAllShippingMethods()
+                            {
+                                $methods = Mage::getSingleton('shipping/config')->getActiveCarriers();
+
+                                $options = array();
+
+                                foreach($methods as $_ccode => $_carrier)
+                                {
+                                    $_methodOptions = array();
+                                    if($_methods = $_carrier->getAllowedMethods())
+                                    {
+                                        foreach($_methods as $_mcode => $_method)
+                                        {
+                                            $_code = $_ccode . '_' . $_mcode;
+                                            $_methodOptions[] = array('value' => $_code, 'label' => $_method);
+                                        }
+
+                                        if(!$_title = Mage::getStoreConfig("carriers/$_ccode/title"))
+                                            $_title = $_ccode;
+
+                                        $options[] = array('value' => $_methodOptions, 'label' => $_title);
+                                    }
+                                }
+
+                                return $options;
+                            }*/
+                            
+                            
+                        }
+                        
+                        if($indexKey == 'payment_method')
+                            $_item->setData('payment_method', $_item->getPayment()->getMethodInstance()->getTitle());
+                        if($indexKey == 'payment_code')
+                            $_item->setData('payment_code', $_item->getPayment()->getMethodInstance()->getCode());
+                        if($indexKey == 'payment_cc_type')
+                            $_item->setData('payment_cc_type', $_item->getPayment()->getData('cc_type') == null ? '[NO CC TYPE]' : $_item->getPayment()->getData('cc_type'));
+
+                        if($indexKey == 'special_qty_uniq_prods')
+                            $_item->setData('special_qty_uniq_prods', count($_item->getAllItems()));
+    
+/*                        
+                <?php echo $this->helper('sales')->__('Product') ?>
+                <?php echo $this->helper('sales')->__('Item Status') ?>
+                <?php echo $this->helper('sales')->__('Original Price') ?>
+                <?php echo $this->helper('sales')->__('Price') ?>
+                <?php echo $this->helper('sales')->__('Qty') ?>
+                <?php echo $this->helper('sales')->__('Subtotal') ?>
+                <?php echo $this->helper('sales')->__('Tax Amount') ?>
+                <?php echo $this->helper('sales')->__('Tax Percent') ?>
+                <?php echo $this->helper('sales')->__('Discount Amount') ?>
+                <?php echo $this->helper('sales')->__('Row Total') ?>
+*/                        
+                        
+                        
+                    }
+                }
+            ?>
+            
+            
+            <tr title="<?php echo $this->getRowUrl($_item) ?>"<?php if ($_class = $this->getRowClass($_item)):?> class="<?php echo $_class; ?>"<?php endif;?> id="order<?php echo $_item->getId();?>" class="orderExpanded">
+                
+                <?php /* order manage injection */ ?>
+                <?php if($includeProducts) :?>
+                <td class="a-center">
+                    <div class="text cellexpander parbase">
+                        <a href="#" class="trigger"><i class="<?php if($showProducts):?>icon-minus-sign<?php else:?>icon-plus-sign<?php endif;?>"></i></a>
+                    </div>
+                </td>
+                <?php endif;?>
+                
+                
+            <?php $i=0;foreach ($this->getColumns() as $_column): ?>
+
+                <?php if ($this->shouldRenderCell($_item, $_column)):?>
+                    <?php $_rowspan = $this->getRowspan($_item, $_column);?>
+                    <td <?php echo ($_rowspan ? 'rowspan="' . $_rowspan . '" ' : '') ?>class="<?php echo $_column->getCssProperty() ?> <?php echo ++$i==$numColumns?'last':'' ?>">
+                        <?php echo (($_html = $_column->getRowField($_item)) != '' ? $_html : '&nbsp;') ?>
+                    </td>
+                    <?php if ($this->shouldRenderEmptyCell($_item, $_column)):?>
+                        <td colspan="<?php echo $this->getEmptyCellColspan($_item)?>" class="last"><?php echo $this->getEmptyCellLabel()?></td>
+                    <?php endif;?>
+                <?php endif;?>
+
+            <?php endforeach; ?>
+            </tr>
+
+            
+            
+            
+            <?php // injection of products row - start ?>
+            <?php /* order manage injection */ ?>
+            <?php if($includeProducts) :?>
+            
+            <?php
+            $orderItems = $_item->getAllItems();
+            $count = count($orderItems); 
+            if($count):
+            ?>
+            
+            <tr id="order<?php echo $_item->getId();?>Products" class="orderProducts" <?php if(!$showProducts) : ?>style="display: none;"<?php endif; ?>>
+                <td></td>
+                <td></td>
+                <td colspan="<?php echo ($colCount-1); ?>">
+                    
+                    <?php foreach($orderItems as $orderItem) : ?>
+                    
+                    <?php if($orderItem->getParentItem()) continue; ?>
+                    
+                    <div class="productItem">
+                        
+                        <?php if($productsData['small_image']) :?>
+                        <div class="image"><?php echo Mage::helper('ordermanage')->getImage($orderItem); ?></div>
+                        <?php endif;?>
+                        
+                        <?php if($productsData['title']) :?>
+                        <div class="name"><span title="<?php echo $orderItem->getName();?>" alt="<?php echo $orderItem->getName();?>"><?php echo $orderItem->getName();?></span></div>
+                        <?php endif;?>
+                        
+                        <?php if($productsData['options']) :?>
+                        <div class="name"><?php echo $orderItem->getProductOptions();?></div>
+                        <?php endif;?>
+                        
+                        <?php if($productsData['sku']) :?>
+                        <div class="sku">[SKU]: <?php echo $orderItem->getSku();?></div>
+                        <?php endif;?>
+                        
+                        <?php if($productsData['qty_ordered']) :?>
+                        <div class="qty">[QTY]: <?php echo $orderItem->getQtyOrdered();//getData('qty_ordered');//getQtyToInvoice(); ?></div>
+                        <?php endif;?>
+                        
+                        <?php if($productsData['product_id']) :?>
+                        <div class="productId">[PID]: <?php echo $orderItem->getProductId(); ?></div>
+                        <?php endif;?>
+                        
+                        <?php if($productsData['status']) :?>
+                        <div class="status">[Status]: <?php echo $orderItem->getStatus(); ?></div>
+                        <?php endif;?>
+                        
+                        <?php if($productsData['original_price']) :?>
+                        <div class="original_price">[Original Price]: <?php echo Mage::getModel('directory/currency')->format($orderItem->getOriginalPrice(), array('display'=>$_item->getBaseCurrencyCode()), false);?></div>
+                        <?php endif;?>
+                        
+                        <?php if($productsData['price']) :?>
+                        <div class="price">[Price]: 
+<?php /*                        <div class="price">[Price]: <?php echo Mage::getModel('directory/currency')->format($orderItem->getPrice(), array('display'=>$_item->getBaseCurrencyCode()), false); ?></div> */ ?>
+                                <?php if ($this->helper('tax')->displaySalesBothPrices() || $this->helper('tax')->displaySalesPriceExclTax()): ?>
+                                    <span class="price-excl-tax">
+                                        <?php if ($this->helper('tax')->displaySalesBothPrices()): ?>
+                                            <span class="label"><?php echo $this->__('Excl. Tax'); ?>:</span>
+                                        <?php endif; ?>
+
+                                        <?php if (Mage::helper('weee')->typeOfDisplay($_item, array(0, 1, 4), 'sales', $orderItem->getStoreId())): ?>
+                                            <?php
+                                            echo displayPrices(
+                                                $orderItem->getBasePrice()+$orderItem->getBaseWeeeTaxAppliedAmount()+$orderItem->getBaseWeeeTaxDisposition(),
+                                                $orderItem->getPrice()+$orderItem->getWeeeTaxAppliedAmount()+$orderItem->getWeeeTaxDisposition(),2,'&nbsp;&nbsp;',$_item
+                                            );
+                                            ?>
+                                        <?php else: ?>
+                                            <?php echo displayPrices($orderItem->getBasePrice(), $orderItem->getPrice(),2,'&nbsp;&nbsp;',$_item) ?>
+                                        <?php endif; ?>
+
+
+                                        <?php if (Mage::helper('weee')->getApplied($orderItem)): ?>
+                                            <br />
+                                            <?php if (Mage::helper('weee')->typeOfDisplay($orderItem, 1, 'sales', $orderItem->getStoreId())): ?>
+                                                <small>
+                                                <?php foreach (Mage::helper('weee')->getApplied($orderItem) as $tax): ?>
+                                                    <span class="nobr"><?php echo $tax['title']; ?>: <?php echo $this->displayPrices($tax['base_amount'], $tax['amount'],2,'&nbsp;&nbsp;',$_item); ?></span>
+                                                <?php endforeach; ?>
+                                                </small>
+                                            <?php elseif (Mage::helper('weee')->typeOfDisplay($orderItem, 2, 'sales', $orderItem->getStoreId())): ?>
+                                                <?php foreach (Mage::helper('weee')->getApplied($orderItem) as $tax): ?>
+                                                    <span class="nobr"><small><?php echo $tax['title']; ?>: <?php echo displayPrices($tax['base_amount_incl_tax'], $tax['amount_incl_tax'],2,'&nbsp;&nbsp;',$_item); ?></small></span>
+                                                <?php endforeach; ?>
+                                            <?php elseif (Mage::helper('weee')->typeOfDisplay($orderItem, 4, 'sales', $orderItem->getStoreId())): ?>
+                                                <small>
+                                                <?php foreach (Mage::helper('weee')->getApplied($orderItem) as $tax): ?>
+                                                    <span class="nobr"><?php echo $tax['title']; ?>: <?php echo $displayPrices($tax['base_amount_incl_tax'], $tax['amount_incl_tax'],2,'&nbsp;&nbsp;',$_item); ?></span>
+                                                <?php endforeach; ?>
+                                                </small>
+                                            <?php endif; ?>
+
+                                            <?php if (Mage::helper('weee')->typeOfDisplay($orderItem, 2, 'sales', $orderItem->getStoreId())): ?>
+                                                <br />
+                                                <span class="nobr"><?php echo Mage::helper('weee')->__('Total'); ?>:<br />
+                                                <?php
+                                                echo displayPrices(
+                                                    $orderItem->getBasePrice()+$orderItem->getBaseWeeeTaxAppliedAmount()+$orderItem->getBaseWeeeTaxDisposition(),
+                                                    $orderItem->getPrice()+$orderItem->getWeeeTaxAppliedAmount()+$orderItem->getWeeeTaxDisposition(),2,'&nbsp;&nbsp;',$_item
+                                                );
+                                                ?>
+                                                </span>
+                                            <?php endif; ?>
+                                        <?php endif; ?>
+                                    </span>
+                                    <?php if ($this->helper('tax')->displaySalesBothPrices() || $this->helper('tax')->displaySalesPriceInclTax()): ?>
+                                    <br />
+                                    <?php endif; ?>
+                                <?php endif; ?>
+                                <?php if ($this->helper('tax')->displaySalesBothPrices() || $this->helper('tax')->displaySalesPriceInclTax()): ?>
+                                    <span class="price-incl-tax">
+                                        <?php if ($this->helper('tax')->displaySalesBothPrices()): ?>
+                                            <span class="label"><?php echo $this->__('Incl. Tax'); ?>:</span>
+                                        <?php endif; ?>
+                                        <?php $_incl = $this->helper('checkout')->getPriceInclTax($_item); ?>
+                                        <?php $_baseIncl = $this->helper('checkout')->getBasePriceInclTax($_item); ?>
+
+                                        <?php if (Mage::helper('weee')->typeOfDisplay($_item, array(0, 1, 4), 'sales', $orderItem->getStoreId())): ?>
+                                            <?php echo displayPrices($_baseIncl+$orderItem->getBaseWeeeTaxAppliedAmount(), $_incl+$orderItem->getWeeeTaxAppliedAmount(),2,'&nbsp;&nbsp;',$_item); ?>
+                                        <?php else: ?>
+                                            <?php echo displayPrices($_baseIncl-$orderItem->getBaseWeeeTaxDisposition(), $_incl-$orderItem->getWeeeTaxDisposition(),2,'&nbsp;&nbsp;',$_item) ?>
+                                        <?php endif; ?>
+
+                                        <?php if (Mage::helper('weee')->getApplied($orderItem)): ?>
+                                            <br />
+                                            <?php if (Mage::helper('weee')->typeOfDisplay($orderItem, 1, 'sales', $orderItem->getStoreId())): ?>
+                                                <small>
+                                                <?php foreach (Mage::helper('weee')->getApplied($orderItem) as $tax): ?>
+                                                    <span class="nobr"><?php echo $tax['title']; ?>: <?php echo displayPrices($tax['base_amount'], $tax['amount'],2,'&nbsp;&nbsp;',$_item); ?></span>
+                                                <?php endforeach; ?>
+                                                </small>
+                                            <?php elseif (Mage::helper('weee')->typeOfDisplay($orderItem, 2, 'sales', $orderItem->getStoreId())): ?>
+                                                <?php foreach (Mage::helper('weee')->getApplied($orderItem) as $tax): ?>
+                                                    <span class="nobr"><small><?php echo $tax['title']; ?>: <?php echo displayPrices($tax['base_amount_incl_tax'], $tax['amount_incl_tax'],2,'&nbsp;&nbsp;',$_item); ?></small></span>
+                                                <?php endforeach; ?>
+                                            <?php elseif (Mage::helper('weee')->typeOfDisplay($orderItem, 4, 'sales', $orderItem->getStoreId())): ?>
+                                                <small>
+                                                <?php foreach (Mage::helper('weee')->getApplied($orderItem) as $tax): ?>
+                                                    <span class="nobr"><?php echo $tax['title']; ?>: <?php echo displayPrices($tax['base_amount_incl_tax'], $tax['amount_incl_tax'],2,'&nbsp;&nbsp;',$_item); ?></span>
+                                                <?php endforeach; ?>
+                                                </small>
+                                            <?php endif; ?>
+
+                                            <?php if (Mage::helper('weee')->typeOfDisplay($orderItem, 2, 'sales', $orderItem->getStoreId())): ?>
+                                                <br />
+                                                <span class="nobr"><?php echo Mage::helper('weee')->__('Total'); ?>:<br /> <?php echo displayPrices($_baseIncl+$orderItem->getBaseWeeeTaxAppliedAmount(), $_incl+$orderItem->getWeeeTaxAppliedAmount(),2,'&nbsp;&nbsp;',$_item); ?></span>
+                                            <?php endif; ?>
+                                        <?php endif; ?>
+                                    </span>
+                                <?php endif; ?>
+                                    
+                                
+                        </div>
+                        <?php endif;?>
+                        
+                        
+                        
+                        <?php if($productsData['subtotal']) :?>
+                        <div class="subtotal">[Subtotal]: 
+                                <?php if ($this->helper('tax')->displaySalesBothPrices() || $this->helper('tax')->displaySalesPriceExclTax()): ?>
+                                    <span class="price-excl-tax">
+                                        <?php if ($this->helper('tax')->displaySalesBothPrices()): ?>
+                                            <span class="label"><?php echo $this->__('Excl. Tax'); ?>:</span>
+                                        <?php endif; ?>
+                                        
+                                        <?php if (Mage::helper('weee')->typeOfDisplay($_item, array(0, 1, 4), 'sales', $_item->getStoreId())): ?>
+                                            <?php
+                                            echo displayPrices(
+                                                $orderItem->getBaseRowTotal()+$orderItem->getBaseWeeeTaxAppliedRowAmount()+$orderItem->getBaseWeeeTaxRowDisposition(),
+                                                $orderItem->getRowTotal()+$orderItem->getWeeeTaxAppliedRowAmount()+$orderItem->getWeeeTaxRowDisposition(),2,'&nbsp;&nbsp;',$_item
+                                            );
+                                            ?>
+                                        <?php else: ?>
+                                            <?php echo displayPrices($orderItem->getBaseRowTotal(), $orderItem->getRowTotal(),2,'&nbsp;&nbsp;',$_item) ?>
+                                        <?php endif; ?>
+
+
+                                        <?php if (Mage::helper('weee')->getApplied($orderItem)): ?>
+                                            <?php if (Mage::helper('weee')->typeOfDisplay($orderItem, 1, 'sales', $orderItem->getStoreId())): ?>
+                                                <small>
+                                                <?php foreach (Mage::helper('weee')->getApplied($orderItem) as $tax): ?>
+                                                    <span class="nobr"><?php echo $tax['title']; ?>: <?php echo displayPrices($tax['base_row_amount'], $tax['row_amount'],2,'&nbsp;&nbsp;',$_item); ?></span>
+                                                <?php endforeach; ?>
+                                                </small>
+                                            <?php elseif (Mage::helper('weee')->typeOfDisplay($orderItem, 2, 'sales', $orderItem->getStoreId())): ?>
+                                                <?php foreach (Mage::helper('weee')->getApplied($orderItem) as $tax): ?>
+                                                    <span class="nobr"><small><?php echo $tax['title']; ?>: <?php echo displayPrices($tax['base_row_amount_incl_tax'], $tax['row_amount_incl_tax'],2,'&nbsp;&nbsp;',$_item); ?></small></span>
+                                                <?php endforeach; ?>
+                                            <?php elseif (Mage::helper('weee')->typeOfDisplay($orderItem, 4, 'sales', $orderItem->getStoreId())): ?>
+                                                <small>
+                                                <?php foreach (Mage::helper('weee')->getApplied($orderItem) as $tax): ?>
+                                                    <span class="nobr"><?php echo $tax['title']; ?>: <?php echo displayPrices($tax['base_row_amount_incl_tax'], $tax['row_amount_incl_tax'],2,'&nbsp;&nbsp;',$_item); ?></span>
+                                                <?php endforeach; ?>
+                                                </small>
+                                            <?php endif; ?>
+
+                                            <?php if (Mage::helper('weee')->typeOfDisplay($orderItem, 2, 'sales', $orderItem->getStoreId())): ?>
+                                                <br />
+                                                <span class="nobr"><?php echo Mage::helper('weee')->__('Total'); ?>:<br />
+                                                <?php
+                                                echo displayPrices(
+                                                    $orderItem->getBaseRowTotal()+$orderItem->getBaseWeeeTaxAppliedRowAmount()+$orderItem->getBaseWeeeTaxRowDisposition(),
+                                                    $orderItem->getRowTotal()+$orderItem->getWeeeTaxAppliedRowAmount()+$orderItem->getWeeeTaxRowDisposition(),2,'&nbsp;&nbsp;',$_item
+                                                );
+                                                ?>
+                                                </span>
+                                            <?php endif; ?>
+                                        <?php endif; ?>
+                                    </span>
+                                    <?php if ($this->helper('tax')->displaySalesBothPrices() || $this->helper('tax')->displaySalesPriceInclTax()): ?>
+                                    <br />
+                                    <?php endif; ?>
+                                <?php endif; ?>
+                                <?php if ($this->helper('tax')->displaySalesBothPrices() || $this->helper('tax')->displaySalesPriceInclTax()): ?>
+                                    <span class="price-incl-tax">
+                                        <?php if ($this->helper('tax')->displaySalesBothPrices()): ?>
+                                            <span class="label"><?php echo $this->__('Incl. Tax'); ?>:</span>
+                                        <?php endif; ?>
+                                        <?php $_incl = $this->helper('checkout')->getSubtotalInclTax($orderItem); ?>
+                                        <?php $_baseIncl = $this->helper('checkout')->getBaseSubtotalInclTax($orderItem); ?>
+                                        <?php if (Mage::helper('weee')->typeOfDisplay($orderItem, array(0, 1, 4), 'sales', $orderItem->getStoreId())): ?>
+                                            <?php echo displayPrices($_baseIncl+$orderItem->getBaseWeeeTaxAppliedRowAmount(), $_incl+$orderItem->getWeeeTaxAppliedRowAmount()); ?>
+                                        <?php else: ?>
+                                            <?php echo displayPrices($_baseIncl-$orderItem->getBaseWeeeTaxRowDisposition(), $_incl-$orderItem->getWeeeTaxRowDisposition()) ?>
+                                        <?php endif; ?>
+
+
+                                        <?php if (Mage::helper('weee')->getApplied($orderItem)): ?>
+
+                                            <br />
+                                            <?php if (Mage::helper('weee')->typeOfDisplay($orderItem, 1, 'sales', $orderItem->getStoreId())): ?>
+                                                <small>
+                                                <?php foreach (Mage::helper('weee')->getApplied($orderItem) as $tax): ?>
+                                                    <span class="nobr"><?php echo $tax['title']; ?>: <?php echo displayPrices($tax['base_row_amount'], $tax['row_amount'],2,'&nbsp;&nbsp;',$_item); ?></span>
+                                                <?php endforeach; ?>
+                                                </small>
+                                            <?php elseif (Mage::helper('weee')->typeOfDisplay($orderItem, 2, 'sales', $orderItem->getStoreId())): ?>
+                                                <?php foreach (Mage::helper('weee')->getApplied($orderItem) as $tax): ?>
+                                                    <span class="nobr"><small><?php echo $tax['title']; ?>: <?php echo displayPrices($tax['base_row_amount_incl_tax'], $tax['row_amount_incl_tax'],2,'&nbsp;&nbsp;',$_item); ?></small></span>
+                                                <?php endforeach; ?>
+                                            <?php elseif (Mage::helper('weee')->typeOfDisplay($orderItem, 4, 'sales', $orderItem->getStoreId())): ?>
+                                                <small>
+                                                <?php foreach (Mage::helper('weee')->getApplied($orderItem) as $tax): ?>
+                                                    <span class="nobr"><?php echo $tax['title']; ?>: <?php echo displayPrices($tax['base_row_amount_incl_tax'], $tax['row_amount_incl_tax'],2,'&nbsp;&nbsp;',$_item); ?></span>
+                                                <?php endforeach; ?>
+                                                </small>
+                                            <?php endif; ?>
+
+                                            <?php if (Mage::helper('weee')->typeOfDisplay($orderItem, 2, 'sales', $orderItem->getStoreId())): ?>
+                                                <br /><span class="nobr"><?php echo Mage::helper('weee')->__('Total'); ?>:<br /> <?php echo displayPrices($_baseIncl+$orderItem->getBaseWeeeTaxAppliedRowAmount(), $_incl+$orderItem->getWeeeTaxAppliedRowAmount(),2,'&nbsp;&nbsp;',$_item); ?></span>
+                                            <?php endif; ?>
+                                        <?php endif; ?>
+                                    </span>
+                                <?php endif; ?>
+                                    
+                        </div>
+                        <?php endif; ?>
+                                    
+                        
+                        <?php if($productsData['tax_amount']) :?>
+                        <div class="tax_amount"> 
+                            [Tax Amount]: <?php echo Mage::getModel('directory/currency')->format($orderItem->getTaxAmount(), array('display'=>$_item->getBaseCurrencyCode()), false); ?>
+                        </div>
+                        <?php endif; ?>
+                                    
+                        <?php if($productsData['tax_percent']) :?>
+                        <div class="tax_percent">
+                            [Tax Percent]: <?php echo $orderItem->getTaxPercent() ? sprintf('%s%%', $orderItem->getTaxPercent() + 0) : '0%'; ?>
+                        </div>
+                        <?php endif; ?>
+                                    
+                                    
+                        <?php if($productsData['discount_amount']) :?>
+                        <div class="discount_amount">
+                            [Discount Amount]: <?php  echo Mage::getModel('directory/currency')->format($orderItem->getDiscountAmount(), array('display'=>$_item->getBaseCurrencyCode()), false); ?>
+                        </div>
+                        <?php endif; ?>
+                                    
+                        <?php if($productsData['row_total']) :?>
+                        <div class="row_total">
+                            [Row Total]: <?php  echo displayRoundedPrices(
+                                $orderItem->getBaseRowTotal() + $orderItem->getBaseTaxAmount() + $orderItem->getBaseHiddenTaxAmount() + $orderItem->getBaseWeeeTaxAppliedRowAmount() - $orderItem->getBaseDiscountAmount(),
+                                $orderItem->getRowTotal() + $orderItem->getTaxAmount() + $orderItem->getHiddenTaxAmount() + $orderItem->getWeeeTaxAppliedRowAmount() - $orderItem->getDiscountAmount(),
+                                2,
+                                false,
+                                '&nbsp;&nbsp;',
+                                $_item
+                            );  
+                            ?>
+                        </div>
+                        <?php endif; ?>
+                        
+                        <?php if($productsData['be_link']) :?>
+                        <div class="be_link">
+                            <a href="<?php echo Mage::helper('adminhtml')->getUrl('adminhtml/catalog_product/edit', array('id' => $orderItem->getProductId()));?>" target="_blank">Edit Product</a><br/>
+                        </div>
+                        <?php endif; ?>
+                        
+                        <?php if($productsData['fe_link']) :?>
+                        <div class="fe_link">
+                            <?php  $product = Mage::getModel('catalog/product')->load($orderItem->getProductId());?>
+                            <a href="<?php echo $product->getProductUrl();?>" target="_blank">View Product</a><br/>
+                        </div>
+                        <?php endif; ?>
+                        
+                        
+                    </div>
+                    <?php endforeach;?>
+                    
+                </td>
+            </tr>
+            
+            <?php endif; ?>
+            
+            <?php endif; ?>
+            
+            <?php // injection of products row - end ?>
+            
+            
+            
+            
+            
+            <?php if ($_multipleRows = $this->getMultipleRows($_item)):?>
+                <?php foreach ($_multipleRows as $_i):?>
+                <tr>
+                    <?php $i=0;foreach ($this->getMultipleRowColumns($_i) as $_column): ?>
+                        <td class="<?php echo $_column->getCssProperty() ?> <?php echo ++$i==$numColumns-1?'last':'' ?>">
+                            <?php echo (($_html = $_column->getRowField($_i)) != '' ? $_html : '&nbsp;') ?>
+                        </td>
+                    <?php endforeach; ?>
+                </tr>
+                <?php endforeach;?>
+            <?php endif;?>
+
+            <?php if ($this->shouldRenderSubTotal($_item)): ?>
+                <tr class="subtotals">
+                    <?php $i = 0; foreach ($this->getSubTotalColumns() as $_column): ?>
+                        <td class="<?php echo $_column->getCssProperty() ?> <?php echo ++$i == $numColumns ? 'last' : '' ?>">
+                            <?php echo ($_column->hasSubtotalsLabel() ? $_column->getSubtotalsLabel() :
+                                $_column->getRowField($this->getSubTotalItem($_item))
+                            );
+                            ?>
+                        </td>
+                    <?php endforeach; ?>
+                </tr>
+            <?php endif; ?>
+        <?php endforeach; ?>
+        <?php elseif ($this->getEmptyText()): ?>
+            <tr>
+                <td class="empty-text <?php echo $this->getEmptyTextClass() ?>" colspan="<?php echo $numColumns ?>"><?php echo $this->getEmptyText() ?></td>
+            </tr>
+        <?php endif; ?>
+        </tbody>
+
+    </table>
+        
+    
+    <script type="text/javascript">
+        
+        $j('.trigger').click(function()
+        {
+            
+            if($j('#'+$j(this).parent().parent().parent().attr('id')+'Products').css('display') == 'none')
+            {
+                $j(this).parent().parent().parent().addClass('orderExpanded');
+                
+                $j(this).find('i').removeClass('icon-plus-sign');
+                $j(this).find('i').addClass('icon-minus-sign');
+                $j('#'+$j(this).parent().parent().parent().attr('id')+'Products').show();
+                console.debug($j(this).parent().parent().parent().attr('id')+' show');
+            }else
+            {
+                $j(this).parent().parent().parent().removeClass('orderExpanded');
+                
+                $j(this).find('i').removeClass('icon-minus-sign');
+                $j(this).find('i').addClass('icon-plus-sign');
+                $j('#'+$j(this).parent().parent().parent().attr('id')+'Products').hide();
+                console.debug($j(this).parent().parent().parent().attr('id')+' hide');
+            }
+            return false;
+        });
+
+        $j('.triggerAll').click(function()
+        {
+            if($j(this).find('i').hasClass('icon-plus-sign'))
+            {
+                $j('.trigger').parent().parent().parent().addClass('orderExpanded');
+                
+                $j('.trigger').find('i').removeClass('icon-plus-sign');
+                $j('.trigger').find('i').addClass('icon-minus-sign');
+                $j('.orderProducts').show();
+            }
+            if($j(this).find('i').hasClass('icon-minus-sign'))
+            {
+                $j('.trigger').parent().parent().parent().removeClass('orderExpanded');
+                
+                $j('.trigger').find('i').removeClass('icon-minus-sign');
+                $j('.trigger').find('i').addClass('icon-plus-sign');
+                $j('.orderProducts').hide();
+            }
+            return false;
+        });
+    </script>
+        
+        
+    </div>
+</div>
+<?php if($this->canDisplayContainer()): ?>
+</div>
+<script type="text/javascript">
+//<![CDATA[
+    <?php echo $this->getJsObjectName() ?> = new varienGridIksanikaOrdermanage('<?php echo $this->getId() ?>', '<?php echo $this->getGridUrl() ?>', '<?php echo $this->getVarNamePage() ?>', '<?php echo $this->getVarNameSort() ?>', '<?php echo $this->getVarNameDir() ?>', '<?php echo $this->getVarNameFilter() ?>');
+    <?php echo $this->getJsObjectName() ?>.useAjax = '<?php echo $this->getUseAjax() ?>';
+    <?php if($this->getRowClickCallback()): ?>
+        <?php echo $this->getJsObjectName() ?>.rowClickCallback = <?php echo $this->getRowClickCallback() ?>;
+    <?php endif; ?>
+    <?php if($this->getCheckboxCheckCallback()): ?>
+        <?php echo $this->getJsObjectName() ?>.checkboxCheckCallback = <?php echo $this->getCheckboxCheckCallback() ?>;
+    <?php endif; ?>
+    <?php if($this->getRowInitCallback()): ?>
+        <?php echo $this->getJsObjectName() ?>.initRowCallback = <?php echo $this->getRowInitCallback() ?>;
+        <?php echo $this->getJsObjectName() ?>.initGridRows();
+    <?php endif; ?>
+    <?php if($this->getMassactionBlock()->isAvailable()): ?>
+    <?php echo $this->getMassactionBlock()->getJavaScript() ?>
+    <?php endif ?>
+    <?php echo $this->getAdditionalJavaScript(); ?>
+//]]>
+</script>
+<?php endif; ?>
+<?php endif ?>

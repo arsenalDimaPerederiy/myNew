@@ -1,0 +1,18 @@
+<?php
+    $store = $this->getStore();
+    if(!$store)
+        $store = Mage::app()->getStore()->getId();
+    $directionConfig = Mage::getStoreConfig('megamenu/general/menu_type',$store);
+    
+    $direction = '';
+    if($directionConfig == 2)
+        $direction = '_left';
+    $effect = Mage::getStoreConfig('megamenu/general/menu_effect',$store);
+    if($effect == 2)
+        $this->setTemplate('megamenu/effects/animation'.$direction.'.phtml');
+    elseif($effect == 3)
+        $this->setTemplate('megamenu/effects/toggle'.$direction.'.phtml');
+    else
+        $this->setTemplate('megamenu/effects/normal'.$direction.'.phtml');
+    echo $this->toHtml();
+?>

@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <extended_authorize_index>
+        <remove name="top.menu" />
+        <remove name="top.search" />
+        <remove name="cart_sidebar_header" />
+        <remove name="fasticons" />
+
+        <reference name="root">
+            <action method="setTemplate"><template>page/1column.phtml</template></action>
+        </reference>
+        <reference name="content">
+            <block type="core/template" name="extended_authorize" template="extended/authorize.phtml"/>
+ 
+            <block type="checkout/cart_sidebar" name="extended_minicart" template="extended/minicart.phtml"/>
+        </reference>
+    </extended_authorize_index>
+    <onestepcheckout_index_index>
+        <remove name="top.menu" />
+        <remove name="top.search" />
+        <remove name="cart_sidebar_header" />
+        <remove name="fasticons" />
+        <reference name="head">
+            <action method="addCss"><css>css/select2/select2.css</css></action>
+            <action method="addJs"><script>select2/select2.js</script></action>
+            <action method="addJs"><script>select2/select2_locale_ru.js</script></action>
+            <action method="addJs"><script>extended/maskedinput.js</script></action>
+            <action method="addJs"><script>extended/jquery.watermark.min.js</script></action>
+            <action method="addJs"><script>extended/checkout.js</script></action>
+        </reference>
+        <reference name="content">
+            <block type="checkout/cart_sidebar" name="extended_minicart" template="extended/minicart.phtml">
+                <action method="setData"><name>show_all</name><value>1</value></action>
+            </block>
+        </reference>
+    </onestepcheckout_index_index>
+    <checkout_onepage_success>
+        <remove name="top.menu" />
+        <remove name="top.search" />
+        <remove name="cart_sidebar_header" />
+        <remove name="fasticons" />
+    </checkout_onepage_success>
+    <onestepcheckout_index_reload>
+        <remove name="root" />
+    </onestepcheckout_index_reload>
+    <onestepcheckout_index_replay>
+        <remove name="root" />
+    </onestepcheckout_index_replay>
+
+</layout>

@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright (c) <2013>, <Rugento.ru>
+ * License URL http://www.rugento.ru/oferta.html
+ * Support URL http://support.rugento.ru
+ * Support EMAIL support@rugento.ru
+ */
+-->
+<layout version="0.1.0">
+    <customer_account>
+        <reference name="customer_account_navigation">
+            <action method="addLink" translate="label" module="smsnotice">
+                <name>smsnotice</name>
+                <path>smsnotice/smsnotice</path>
+                <label>&#x421;&#x41C;&#x421; &#x443;&#x432;&#x435;&#x434;&#x43E;&#x43C;&#x43B;&#x435;&#x43D;&#x438;&#x44F;</label>
+            </action>
+        </reference>
+    </customer_account>
+    <smsnotice_smsnotice_index translate="label">
+        <label>&#x421;&#x41C;&#x421; &#x443;&#x432;&#x435;&#x434;&#x43E;&#x43C;&#x43B;&#x435;&#x43D;&#x438;&#x44F;</label>
+        <update handle="customer_account"/>
+        <reference name="my.account.wrapper">
+            <block type="smsnotice/smsnotice" name="smsnotice" template="smsnotice/smsnotice.phtml"/>
+        </reference>
+    </smsnotice_smsnotice_index>
+</layout>

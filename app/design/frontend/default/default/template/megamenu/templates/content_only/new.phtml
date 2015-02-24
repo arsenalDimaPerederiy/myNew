@@ -1,0 +1,79 @@
+
+    <?php echo $this->getTemplateBlock($this->getHeaderContent()) ?>
+     <?php echo $this->getTemplateBlock($this->getFooterContent()) ?>
+
+<?php
+$_template_map = '<div class="megamenu-template-map-content-only news-content">';
+$_template_map .= '<div class="layout-nav">';
+$_template_map .= '</div>';
+$_template_map .= '<div class="megamenu-template-map-header-content-only">';
+$_template_map .= '<a onmouseover="hoveronLayout(this)" onmouseout="hoveroutLayout(this)" href="#buttonsheader"><span>Header</span></a>';
+$_template_map .= '<div>&nbsp;</div></div>';
+$_template_map .= '<div class="megamenu-template-map-footer-content-only">';
+$_template_map .= '<a onmouseover="hoveronLayout(this)" onmouseout="hoveroutLayout(this)" href="#buttonsfooter"><span>Footer</span></a>';
+$_template_map .= '<div>&nbsp;</div></div>';
+$_template_map .= '</div>';
+?>
+<?php
+$header = '<ul class="whatnew">
+            <li>
+            <h1>Womens Lastest</h1>
+            <ol>
+                <li><a href="#"><span>New Arrival</span></a></li>
+                <li><a href="#"><span>Online Exclusives<br /></span></a></li>
+                <li><a href="#"><span>Pacsun vip card<br /></span></a></li>
+                <li><a href="#"><span>Great deal</span></a></li>
+                <li><a href="#"><span>Buyer ashley picks</span></a></li>
+                <li><a href="#"><span>top 20 under $20</span></a></li>
+                <li><a href="#"><span>360 look book<br /></span></a></li>
+            </ol></li>
+            <li>
+            <h1>Womens new offer</h1>
+            <ol>
+                <li><a href="#"><span>Apparel</span></a></li>
+                <li><a href="#"><span>Buy 1 get 1 50%</span></a></li>
+                <li><a href="#"><span>Accessorier and foot wear<br /></span></a></li>
+                <li><a href="#"><span>Buy 1 get 1 50%</span></a></li>
+                <li><a href="#"><span>Shop all</span></a></li>
+                <li><a href="#"><span>Buy 1 get 1 50%</span></a></li>
+            </ol></li>
+            <li>
+                <h1>Mens Lastest</h1>
+                <ol>
+                    <li><a href="#"><span>New&nbsp; Arrival</span></a></li>
+                    <li><a href="#"><span>Online Exclusives<br /></span></a></li>
+                    <li><a href="#"><span>Pacsun vip card</span></a></li>
+                    <li><a href="#"><span>Great deal</span></a></li>
+                    <li><a href="#"><span>Swim shop</span></a></li>
+                    <li><a href="#"><span>Sandal</span></a></li>
+                    <li><a href="#"><span>Snap back</span></a></li>
+                </ol>
+            </li>
+            <li>
+            <h1>Mens New offer</h1>
+            <ol>
+                <li><a href="#"><span>Apparel</span></a></li>
+                <li><a href="#"><span>Buy 1 get 1 50%</span></a></li>
+                <li><a href="#"><span>Accessorier and foot wear<br /></span></a></li>
+                <li><a href="#"><span>Buy 1 get 1 50%</span></a></li>
+                <li><a href="#"><span>Shop all</span></a></li>
+                <li><a href="#"><span>Buy 1 get 1 50%</span></a></li>
+            </ol></li>
+            <li>
+            <h1>Check it out</h1>
+            <a href="#"><img src="{{media url=\"Check-it-out.gif\"}}" alt="" /></a></li>
+        </ul>';
+$footer = '';
+$this->setDefaultHeaderFooter($header,$footer);
+$this->setDefaultGeneralStyle('#ffffff', '#D5D5D5', 1); // (background_color, border_color, title_font, title_font_size)
+$this->setDefaultTitleStyle('#ffffff', '#000000','Arial,Helmet,Freesans,sans-serif',11); // (title_color, title_background_color, title_font, title_font_size)
+$this->setDefaultSubtitleStyle('#000000', 'Arial,Helmet,Freesans,sans-serif', 11); // (subtitle_color, subtitle_font, subtitle_font_size)
+$this->setDefaultLinkStyle('#000000', '#3f58a3', 'Arial,Helmet,Freesans,sans-serif', 11); // (link_color, hover_color, link_font, link_font_size)
+$this->setDefaultTextStyle('#000000', 'Arial,Helmet,Freesans,sans-serif', 12); // (text_color, text_font, text_font_size)
+$this->setDefaultContentGeneral(750,0,0);// megamenu_size,column_number,column_size
+/* add title */
+$this->addTitle('Categories');
+/* add map */
+$this->setTemplateMap($_template_map)
+?>
+

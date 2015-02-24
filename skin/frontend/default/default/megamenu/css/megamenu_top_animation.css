@@ -1,0 +1,377 @@
+﻿.megamenu #oe_menu{
+    position : relative !important;
+	font-size: 13px;
+    margin: 0 auto;
+    padding: 0 16px;
+    width: 918px;
+	display:block;
+	height:55px;
+}
+.megamenu #oe_menu li{float:left;text-align:left;}
+.megamenu #oe_menu li ul li{float:none;}
+.megamenu #oe_menu ul,.megamenu #oe_menu div{background:none !important;}
+.megamenu #oe_menu div ul li {background:none !important;}
+.megamenu #oe_menu  a.megamenu-lable{
+	font-weight:bold !important;
+	padding:3px 15px 2px 28px !important;
+	float:left;
+	text-decoration:none;
+	text-transform:uppercase !important;
+	line-height:50px !important;
+	}
+.megamenu #oe_menu li.selected a.megamenu-lable{background-color:#222 !important;color:#ffa800 !important;}
+.megamenu #oe_menu  a.megamenu-lable:hover{color:#ffa800 !important;}
+.megamenu #oe_menu .magestore-megamenu li a{
+    background: none repeat scroll 0 0 transparent !important;
+    color: #666666 !important;
+    font-size: 11px !important;
+	height:auto !important;
+	text-align:left !important;
+	text-decoration:none !important;
+}
+ul.oe_menu .magestore-megamenu{
+	display:none;
+	left: 0 !important;    
+    width:100% !important;
+    border: none !important;  
+	margin:0 !important;
+	padding:0 !important;	
+	background:none !important;
+	position:absolute !important;
+	top:55px;
+}
+.megamenu #oe_menu .magestore-megamenu .sub-menu{
+    left: 0 !important;   
+	width:100% !important;
+    height: auto !important;
+    float: left !important; 
+    position: static  !important;
+	padding:0 0 10px  !important;
+}
+.megamenu #oe_menu button.button{
+    border: 1px solid #F79343;
+    color: #fff;
+    float: none;
+    font-size: 21px;
+    height: 25px;
+    width: 94px;
+	padding:0 15px;
+	border-radius: 10px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    display: inline-block;
+	letter-spacing: -1px;
+    outline: medium none;
+	position: relative;
+    text-decoration: none;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+	background: #fe8900; /* non-CSS3 default background */
+	background: -webkit-gradient(linear, left top, left bottom, from(#feb900), to(#fe8900));
+	background: -moz-linear-gradient(#feb900, #fe8900);
+	background: -ms-linear-gradient(#feb900, #fe8900);
+	background: linear-gradient(#feb900, #fe8900);
+	font-size:12px;
+	-pie-background: linear-gradient(#feb900, #fe8900);
+	}
+..megamenu #oe_menu button.button:hover {
+	background: #CE662B;
+	background: -webkit-gradient(linear, left top, left bottom, from(#F3C812), to(#CE662B));
+	background: -moz-linear-gradient(#F3C812, #CE662B);
+	background: -ms-linear-gradient(#F3C812, #CE662B);
+	background: linear-gradient(#F3C812, #CE662B);
+	-pie-background: linear-gradient(#F3C812, #CE662B);
+}
+.megamenu #oe_menu button.button:active {
+	color: #ccc;
+	border: solid 1px #1D74B9; /* border */
+	background: -webkit-gradient(linear, left top, left bottom, from(#003061), to(#0059b2));
+	background: -moz-linear-gradient(#003061, #0059b2);
+	background: -ms-linear-gradient(#003061, #0059b2);
+	background: linear-gradient(#003061, #0059b2);
+	-pie-background: linear-gradient(#003061, #0059b2);	
+}
+
+/* --------------------- Block home-----------------*/
+.megamenu #oe_menu  .block-megamenu  ul.block-home{	
+	float: left;
+    margin: 0 !important;
+    padding: 10px 2% !important;
+    width: 96% !important;
+	}
+.megamenu #oe_menu  ul.block-home li{float:left !important;margin-bottom:15px !important; background:none !important;}	
+.megamenu #oe_menu  ul.block-home li label{
+	float:left;
+	width:100%;
+	text-align:left;
+	padding:0 0 10px;
+	font-weight:bold;
+	text-transform:uppercase;
+	border-bottom-width:1px;
+	border-bottom-style:dashed;
+	margin-bottom:10px;
+	}
+.megamenu #oe_menu  ul.block-home li.first{
+	width:330px !important;
+	padding-left:10px !important;
+	padding-right:10px !important;
+	border-right-width:1px !important;
+	border-right-style:solid !important;
+	text-align:left !important;
+	}	
+.megamenu #oe_menu  ul.block-home li.first img{border:1px solid #d5d5d5;}	
+.megamenu #oe_menu  ul.block-home li.last{
+	width:545px !important;
+	padding-left: 15px !important;
+	}
+.megamenu #oe_menu  ul.block-home li.last span{
+	line-height:20px;
+	padding:0 0 10px 0;
+	float:left;
+	width:100%;
+	}
+
+ /* -----------------------------Grid Category-----------------------------------*/
+.megamenu #oe_menu  .grid-categories-megamenu{}
+.megamenu #oe_menu  .grid-categories-megamenu h1{
+	float:left;
+	width:100%;
+	margin:0;
+	padding:10px 0;
+	border-bottom:1px dashed #D5D5D5;
+	}
+.megamenu #oe_menu  .grid-categories-megamenu ul.level0-megamenu{
+	float:left;
+	width:96%;
+	padding:10px 2%  ;
+	margin:0;
+	}
+.megamenu #oe_menu  .grid-categories-megamenu ul.level0-megamenu li.level1-megamenu{
+	float:left !important;
+	width:21% !important;
+	padding:0 10px !important;
+	margin:10px  0 0 0 !important;
+	border-right:1px solid #d5d5d5 !important;
+	}
+.megamenu #oe_menu  .grid-categories-megamenu ul.level0-megamenu li.featured{
+	width:29% !important;
+	float:right !important;
+	border:none !important;
+	padding:0 0 0 10px !important;
+	}	
+ .megamenu #oe_menu .grid-categories-megamenu li .level1-title{
+	float:left;
+	width:100%;
+	padding:10px 0;
+	border-bottom:1px dashed #d5d5d5;
+	overflow-x:hidden;
+	}	
+.megamenu #oe_menu  .grid-categories-megamenu li .level1-title h2{
+	padding:0 0 5px;
+	margin:0;
+	float:left;
+	width:100%;
+	text-transform:uppercase;
+	font-weight:bold;
+	}	
+.megamenu #oe_menu  .grid-categories-megamenu li ol.level2-megamenu{
+	float:left;
+	width:100%;
+	padding:10px 0;
+	}	
+.megamenu #oe_menu  .grid-categories-megamenu li ol li{}
+.megamenu #oe_menu .grid-categories-megamenu li.featured .level1-content{
+	float:left;
+	width:100%;
+	padding:15px 0 !important;
+	} 
+.megamenu #oe_menu  li.featured .level1-content a.product-image{float:left;width:110px;margin:0;}
+.megamenu #oe_menu  li.featured .level1-content .product-shop{float:left;width:100px;padding-left:10px;}
+.megamenu #oe_menu  li.featured .level1-content .product-shop h1.product-name{font-weight:bold;border:none;}
+.megamenu #oe_menu  li.featured .level1-content .product-shop span{float:left;width:100%;padding:5px 0 0;height:35px;overflow:hidden;}
+.megamenu #oe_menu  li.featured .level1-content .product-shop .price-box{float:left;width:100%;padding: 5px 0;}
+.megamenu #oe_menu  li.featured .level1-content .product-shop .price{font-size:18px;color:#000;}
+
+ 
+     /* -------------------------------------------------------------------*/
+	 
+ /* ----------------------------- list Category----------------------------------*/
+.megamenu #oe_menu .list-categories-megamenu ul.level0-megamenu{
+	float: left !important;
+    margin: 0 !important;
+    padding: 10px 2%  !important;
+    width: 96% !important;
+}
+.megamenu #oe_menu .list-categories-megamenu h1.block-title{
+	float:left !important;
+	width:100% !important;
+	margin:0 !important;
+	padding:10px 0 !important;
+	border-bottom:1px dashed #D5D5D5 !important;text-transform:uppercase;
+	}
+.megamenu #oe_menu .list-categories-megamenu ul.level0-megamenu li.level1-megamenu{
+	border-right: 1px solid #D5D5D5 !important;
+    float: left !important;
+    margin: 10px 0 0 !important;
+    padding: 0 10px !important;
+    width: 150px !important;
+	}
+.megamenu #oe_menu .list-categories-megamenu ul.level0-megamenu li.featured{
+	width:220px !important;
+	float:left !important;
+	border:none !important;
+	padding:0 0 0 5px !important;
+	}	
+.megamenu #oe_menu .list-categories-megamenu ul.level0-megamenu li ul.level2-megamenu,
+.megamenu #oe_menu .list-categories-megamenu ul.level0-megamenu li ul.level2-megamenu ol,
+.megamenu #oe_menu .list-categories-megamenu ul.level0-megamenu li ul.level2-megamenu li .level1-title{float:left;width:100%;}
+.megamenu #oe_menu .list-categories-megamenu ul.level0-megamenu li ul.level2-megamenu li .level1-title{border-top:1px dashed #d5d5d5;padding-top:5px;}
+.megamenu #oe_menu .list-categories-megamenu ul.level0-megamenu li ul.level2-megamenu li.first .level1-title{border-top:none;padding-top:0;}
+.megamenu #oe_menu .list-categories-megamenu li .level1-title h2{
+	padding: 5px 0 !important;
+	margin:0 0 5px !important;
+	float:left !important;
+	width:100% !important;
+	text-transform:uppercase !important;
+	font-weight:bold !important;
+	border-bottom:1px dashed #d5d5d5 !important;
+	}	
+.megamenu #oe_menu li.featured .product-item{float:left;width:100%;padding:15px 0 !important;}
+.megamenu #oe_menu li.featured .product-item a{float:left;width:110px;margin:0;}
+.megamenu #oe_menu li.featured .product-item .product-shop{float:right;width:105px !important;padding: 0 0 0 5px !important;}
+.megamenu #oe_menu li.featured .product-item .product-shop h1.product-name{font-weight:bold;border:none !important;}
+.megamenu #oe_menu li.featured .product-item .product-shop span{float:left;width:100%;padding: 0;height:30px;overflow:hidden;}
+.megamenu #oe_menu li.featured .product-item .product-shop .price-box{float:left;width:100%;padding:0;}
+.megamenu #oe_menu li.featured .product-item .product-shop .price{font-size:18px;color:#000;}
+/* -------------------------------------------------------------------*/
+
+/* -----------------------------Grid Product----------------------------------*/
+
+.megamenu #oe_menu .products-megamenu-grid  ul.level0-megamenu{
+	float: left;
+    margin: 0;
+    padding: 10px 2%;
+    width: 96%;
+	}
+.megamenu #oe_menu .products-megamenu-grid li.item{
+	float:left;
+	width:190px;
+	border-right:1px solid #d5d5d5;
+	padding-left:5px;
+	}
+.megamenu #oe_menu .products-megamenu-grid li.item.last{border:none;}
+.megamenu #oe_menu .products-megamenu-grid li.item h1.product-name{
+	border-bottom: 1px dashed #D5D5D5;
+    float: left;
+    font-weight: bold;
+    margin: 0 5% 10px;
+    padding: 5px 0;
+    text-transform: uppercase;
+    width: 90%;
+	}	
+.megamenu #oe_menu .products-megamenu-grid li.item a.product-image{float:left;width:100%;text-align: center !important;}
+.megamenu #oe_menu .products-megamenu-grid li.item .product-shop{float:left;width:80%;padding:10px 10%;text-align:center;}
+.megamenu #oe_menu .products-megamenu-grid li.item .product-shop label{float:left;padding-right:10px;}	
+.megamenu #oe_menu .products-megamenu-grid li.item .product-shop .price{font-size:18px;color:#000;padding:0;width:auto;}
+.megamenu #oe_menu .products-megamenu-grid li.item .product-shop span{width:100%;padding:5px 0 0;text-align: center ;}
+.megamenu #oe_menu .products-megamenu-grid li.item .product-shop .price-box{float:left;width:100%;padding:0 ;}
+.megamenu #oe_menu .products-megamenu-grid li.item .product-shop button{}
+
+
+/* -------------------------------------------------------------------*/
+
+/* ----------------------------- List Product-----------------------------------*/
+.megamenu #oe_menu .products-megamenu-list  ul.level0-megamenu{
+	float: left !important;
+    margin: 0 !important;
+    padding: 10px 10px !important;
+    width: 96% !important;
+	}
+.megamenu #oe_menu .products-megamenu-list  ul.level0-megamenu li.level1-megamenu{float:left !important;width:69%;border-right:1px solid #d5d5d5;}	
+.megamenu #oe_menu .products-megamenu-list  ul.level0-megamenu li.level1-megamenu h4{
+	border-bottom: 1px dashed #D5D5D5 !important;
+    float: left !important;
+    font-weight: bold !important;
+    margin: 0 0 5px !important;
+    padding: 5px 0 15px !important;
+    text-transform: uppercase !important;
+    width: 98% !important;
+	}
+.megamenu #oe_menu .products-megamenu-list  ul.level0-megamenu li.level1-megamenu ul.level2-megamenu{float:left;}
+.megamenu #oe_menu .products-megamenu-list  ul.level0-megamenu li.level1-megamenu ul.level2-megamenu li{float:left;width:100%;padding:0;margin:0;}
+.megamenu #oe_menu .products-megamenu-list  ul.level0-megamenu li.level1-megamenu ul.level2-megamenu li a{float:left;line-height:25px;}
+.megamenu #oe_menu .products-megamenu-list ul.level0-megamenu li.featured{
+	width:29% !important;
+	float:right !important;
+	border:none !important;
+	padding:0 0 0 1% !important;
+	}
+.megamenu #oe_menu .products-megamenu-list ul.level0-megamenu li.featured  .level1-title h2{
+	border-bottom: 1px dashed #D5D5D5 !important;
+    float: left !important;
+    font-weight: bold !important;
+	padding:15px 0 5px;
+	margin:0 0 10px;
+    text-transform: uppercase !important;
+    width: 100% !important;
+	}
+/* ----------------------------- Contact-----------------------------------*/	
+.megamenu #oe_menu   ul.block-contact{
+	float: left !important;
+    margin: 0 !important;
+    padding: 10px 2% !important;
+    width: 96% !important;
+	}	
+.megamenu #oe_menu   ul.block-contact li.first{
+	float:left !important;
+	width:310px !important;
+	border-right:1px solid #d5d5d5 !important; 
+	padding:15px 15px 0  0 !important;
+	margin:0  0 15px ;
+	}
+.megamenu #oe_menu   ul.block-contact li.last{float:left;width:610px;padding:0 10px;}	
+.megamenu #oe_menu   ul.block-contact li  h1.block-title{
+	float:left !important;
+	width:100% !important;
+	border-bottom:1px dashed #d5d5d5 !important;
+	padding:0 0 5px !important;
+	margin:0 0 15px !important; 
+	border-bottom: 1px dashed #D5D5D5 !important;
+    font-weight: bold !important;
+    text-transform: uppercase !important;
+	}
+.megamenu #oe_menu   ul.block-contact li.first .address{
+	float:left !important;
+	width:70% !important;
+	margin:0 0 15px !important; 
+	}
+.megamenu #oe_menu   ul.block-contact li.first .map{
+	float:left !important;
+	width:100% !important;
+	}
+.megamenu #oe_menu   ul.block-contact  li.last  .contact-form{float:left !important;width:100% !important;}
+.megamenu #oe_menu   ul.block-contact li.last  span{
+	float:left !important;
+	width:100% !important;
+	padding:0 !important;
+	}	
+.megamenu #oe_menu   ul.block-contact li.last  .input-box {float:left !important;width:100% !important;padding:15px 0 !important;}	
+.megamenu #oe_menu   ul.block-contact li.last  .input-box .input{float:left !important;width:160px !important;margin-right:10px !important;}	
+.megamenu #oe_menu   ul.block-contact li.last  .input-box .input input{
+	width:160px !important;
+	border-radius:5px;
+	height:25px !important;
+	border:1px solid #d5d5d5 !important;
+	background:#efefef !important;
+	}	
+.megamenu #oe_menu   ul.block-contact li.last .comment{float:left !important;width:100% !important;padding:10px 0 !important; }	
+.megamenu #oe_menu   ul.block-contact li.last .comment label{float:left !important;width:100% !important;}	
+.megamenu #oe_menu   ul.block-contact li.last .comment textarea{
+	width:100% !important;
+	float:left !important;
+	height:150px !important;
+	background:#efefef !important;
+	}	
+.megamenu #oe_menu   ul.block-contact li.last .comment .button-set{float:left !important;width:100% !important;padding:10px 0 0 !important;text-align:right;}	
+.megamenu div .footer-megamenu{float:left;width:100%;}		
+	
+	

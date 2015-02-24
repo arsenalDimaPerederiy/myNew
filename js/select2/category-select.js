@@ -1,0 +1,1 @@
+jQuery(document).ready(function() { jQuery(".toolbar .pager .sort-by select").select2({minimumResultsForSearch: -1, width: '154px', height: '15px'}); });

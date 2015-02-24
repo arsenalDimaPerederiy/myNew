@@ -1,0 +1,65 @@
+<?php $productCollection = $this->getProductCollection()?>
+<?php $collectionSize = count($productCollection); ?>
+<?php $sliderType = $this->getSliderStyle() ?>
+<?php $sliderWidth = $this->getWidthSlider() ?>
+<?php $sliderHeight = $this->getHeightSlider() ?>
+<?php $isShowDescription = $this->showDescription(); ?>
+<?php if($collectionSize > 0):?>
+<div id="product-slider">
+	<div class="head">
+		<span><?php echo $this->__('Recommended') ?></span>
+	</div>
+	
+
+		<script type="text/javascript">
+		   var $simpleSlider = jQuery.noConflict();	
+			  $simpleSlider(document).ready(function(){
+				$simpleSlider('#list-items').bxSlider();
+			  });
+		</script>
+		<div class="list-products">
+			<ul id="list-items">
+				<?php foreach ($productCollection->getItems() as $_product): ?>
+					<li>
+						<div class="product-image">
+							<a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="product-image"><img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(160,205); ?>" width="160" height="205" alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" /></a>
+						</div>
+						<div class="product-info">
+							<h3 class="product-name"><a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->htmlEscape($_product->getName()) ?>"><?php echo $this->htmlEscape($_product->getName()) ?></a></h3>
+							<?php if($isShowDescription == 1):?>
+								<div class="desc std">
+									<?php $_description = nl2br($_product->getShortDescription())?>
+									<?php $short_desc = substr($_description, 0, 200);  ?>
+									<?php if(substr($short_desc, 0, strrpos($short_desc, ' '))!='') 
+										$short_desc = substr($short_desc, 0, strrpos($short_desc, ' '));
+										$short_desc = $short_desc.'...';	
+									?>
+									<?php echo $short_desc;?>
+								</div>
+							<?php endif; ?>
+							<?php echo $this->getPriceHtml($_product, true) ?>	
+						</div>
+						
+						<?php $_price = $_product->getPrice() ?>
+						<?php $_finalPrice = $_product->getFinalPrice() ?>
+						<?php if($_finalPrice < $_price): ?>
+							<?php $_savePercent = 100 - round(($_finalPrice / $_price)*100); ?>
+							<div class="yousave">
+								<span class="percent">
+									<?php echo $_savePercent; ?>%
+								</span>
+							</div>
+							<div class="sale-icon"></div>
+						<?php endif; ?>
+						
+					</li>	
+				<?php endforeach?>
+			</ul>
+		</div>
+</div>
+<?php else: ?>
+<div class="note-msg">
+	<?php echo $this->__('There are no products matching the selection.') ?>
+</div>
+<?php endif; ?>
+

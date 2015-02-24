@@ -1,0 +1,42 @@
+.vertnav-container{border:1px solid #8C8F8F;float:left;margin:0 0 20px;width:190px}
+.vertnav-container .menu-title{background:url(../images/filters-icon.png) no-repeat scroll 10px 50% #E7E6E5;color:#343535;font-family:galsc pro;font-size:15px;font-weight:700;letter-spacing:1.5px;margin:0;padding:5px 0 5px 32px;text-transform:uppercase}
+#vertnav li .vertnav-cat{border-bottom:1px dotted gray;display:block;padding:3px;width:189px}
+#vertnav{float:left;width:100%;margin:8px 0}
+#vertnav li{float:left;width:100%;margin:2px 0}
+#vertnav li a{float:left;padding:4px 10px;width:170px;line-height:14px}
+#vertnav .level0 a span{letter-spacing:2px;text-transform:uppercase}
+#vertnav .level1 a span{letter-spacing:1.5px;text-transform:none;font-size:11px}
+#vertnav .level1 a{float:left;padding:3px 10px 3px 29px;width:151px;background:url(../images/line.png) no-repeat scroll 16px 50% transparent}
+#vertnav .level2 a span{letter-spacing:1.5px;text-transform:none;font-size:11px}
+#vertnav .level2 a{padding:3px 10px 3px 40px;width:140px;background:none}
+#vertnav ul li.first{margin-top:4px}
+#vertnav ul li.last{margin-bottom:4px}
+#vertnav .level0 .has-children a.dcjq-parent{background-position:16px 50%}
+#vertnav .level0 li.has-children a.vertnav-active.dcjq-parent{background-position:16px 50%}
+#vertnav .level0 li.has-children a.vertnav-active.dcjq-parent:hover{background-position:16px 50%}
+#vertnav .level0 li.has-children a.dcjq-parent:hover{background-position:16px 50%}
+#vertnav li ul{display:none}
+#vertnav .inactive .vertnav-cat{background-color:silver}
+#vertnav .next .vertnav-cat{background-color:#DEDEDE}
+#vertnav .prev .vertnav-cat{background-color:#DEDEDE}
+#vertnav li.parent .vertnav-cat{background-color:#E0E0E0;font-weight:700}
+#vertnav li.active .vertnav-cat{background-color:#FFF;font-weight:700}
+#vertnav a.active{background-color:#E6E6E6!important}
+#vertnav a.active span{font-weight:700}
+#vertnav li.inactive .vertnav-cat{font-weight:400}
+#vertnav .level1 .vertnav-cat{padding-left:10px;width:182px}
+#vertnav .level2 .vertnav-cat{padding-left:20px;width:172px}
+#vertnav .level3 .vertnav-cat{padding-left:30px;width:162px}
+#vertnav .active a{background-color:#000!important; color:#fff}
+#vertnav .active a:hover{background-color:#333!important; color:#fff}
+#vertnav .active ul li a{background-color:transparent !important; color:#505050}
+#vertnav .active ul li a:hover{background-color:#e6e6e6!important; color:#505050}
+#vertnav .active a span{font-weight:700}
+#vertnav .active ul li a span{font-weight:400}
+#vertnav .active ul li ul li a span{font-weight:400}
+#vertnav .active li a{background-color:#fff!important}
+#vertnav li a:hover{float:left;background-color:#e6e6e6!important;text-decoration:none}
+
+
+
+

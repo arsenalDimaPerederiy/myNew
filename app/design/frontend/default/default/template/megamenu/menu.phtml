@@ -1,0 +1,10 @@
+<?php    
+    $store = Mage::app()->getStore()->getId();
+    $block = $this->getLayout()->createBlock('cms/block')->setBlockId('megamenu_'.$store);
+    if(!$block->getId()){
+        Mage::helper('megamenu')->saveCacheHtml($store);
+        $block = $this->getLayout()->createBlock('cms/block')->setBlockId('megamenu_'.$store);
+    }
+    echo $this->getLayout()->createBlock('cms/block')->setBlockId('megamenu_'.$store)->toHtml();
+    echo $this->getLayout()->createBlock('cms/block')->setBlockId('under_menu_block')->toHtml();
+?>

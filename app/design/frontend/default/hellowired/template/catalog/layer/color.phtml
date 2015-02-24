@@ -1,0 +1,51 @@
+
+
+
+
+
+<?php $page=Mage::getModel('splash/page')->load(Mage::registry('splash_page')->getId()); ?>
+<?php $_filters = Mage::getModel('splash/layer')->getCountTest(); ?>
+
+<?php $attribute = Mage::getModel('eav/config')->getAttribute('catalog_product', 'color'); ?>
+		<?php foreach ($attribute->getSource()->getAllOptions(false) as $instance): ?>
+            <?php $myArray[$instance['value']] = $instance['label']; ?>
+		<?php endforeach; ?>
+<?php $attribute = Mage::getModel('eav/config')->getAttribute('catalog_product', 'color'); ?>
+		<?php foreach ($attribute->getSource()->getAllOptions(true,true) as $instance): ?>
+            <?php $translit[$instance['value']] = str_replace("_", "-", $instance['label']); ?>
+		<?php endforeach; ?>
+		
+<?php $categoryIds = $page->getCategoryIds() ?>
+<?php $_catUrl = Mage::getModel('catalog/category')->load($categoryIds[0])->getUrl(); ?>
+<?php $categoryUrl = explode('.html',$_catUrl); ?>
+
+<?php $data = $page->getOptionFilters(); ?>
+<?php $currentColorOption = $data['color']['value'][0]; ?>
+<?php $filterUrlPart = $categoryUrl[0]."/where/color/".$translit[$currentColorOption]."_"; ?>
+<dd class="last even"><ol class="m-filter-checkboxes m-scrollable-filter" style="height: 152px;">
+<?php foreach($_filters as $key=>$color): ?>
+    <?php if($translit[$currentColorOption]==$translit[$key]): ?>
+	<li>
+        		<input type="checkbox" checked="checked" onclick="setLocation('<?php echo $_catUrl ?>');" value="<?php echo $key ?>" id="filter_color_<?php echo $key ?>">
+				<a for="filter_color_<?php echo $key ?>" href="<?php echo $_catUrl ?>"><span title="<?php echo $myArray[$key] ?>"><?php echo $myArray[$key] ?></span></a>
+                (<?php echo $color ?>)
+    </li>
+	<?php else: ?>
+	<?php $filterUrl = $filterUrlPart.$translit[$key].".html"; ?>
+    <li>
+        		<input type="checkbox" onclick="setLocation('<?php echo $filterUrl ?>');" value="<?php echo $key ?>" id="filter_color_<?php echo $key ?>">
+				<a for="filter_color_<?php echo $key ?>" href="<?php echo $filterUrl ?>"><span title="<?php echo $myArray[$key] ?>"><?php echo $myArray[$key] ?></span></a>
+                (<?php echo $color ?>)
+    </li>
+	<?php endif; ?>
+<?php endforeach; ?>
+</ol>
+<div id="m-more-less-color" class="m-more-less">
+		            <script type="text/javascript">(function ($) {
+            $(document).trigger('m-filter-scroll-reset', [
+                'color',
+                8            ]);
+        })(jQuery);</script>
+        	</div>
+
+</dd>

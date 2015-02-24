@@ -1,0 +1,26 @@
+.list-products{padding:0}
+.list-products #list-items{margin-left:91px}
+#list-items li{padding:0 16px;width:160px}
+#list-items .product-info{float:left;width:160px}
+#list-items .product-name{text-align:center}
+#list-items .product-name a{color:#6C6D6D;font-size:12px;font-weight:700;text-decoration:none;text-transform:uppercase}
+#list-items .product-image{background:url(images/product-image-bg.png) no-repeat scroll left top transparent;display:block;float:left;height:205px;padding:0 0 4px;text-align:left;width:160px}
+.list-products .bx-next,.list-products .bx-prev{background:url(../../../images/topslider-arrows.png) no-repeat scroll 0 0 transparent;height:41px;position:absolute;width:41px;z-index:101}
+.list-products .bx-prev{background-position:0 -41px;left:0;position:absolute;right:auto;text-align:left;text-indent:-999em;top:81px;z-index:101}
+.list-products .bx-next{background-position:-41px 0;float:left;right:0;text-align:left;text-indent:-999em;top:81px;z-index:101}
+.list-products .bx-prev:hover{background-position:0 0;position:absolute;z-index:101}
+.list-products .bx-next:hover{background-position:-41px -41px;position:absolute;z-index:101}
+#list-items .product-info .price-box{float:left;margin:0;width:100%}
+#list-items .product-info .price-box .old-price{float:left;line-height:14px;padding:2px 0 4px;text-align:center;width:100%}
+#list-items .product-info .price-box .old-price .price{color:#565C5C;font-size:14px;font-weight:400}
+#list-items .product-info .price-box .special-price{float:left;line-height:14px;text-align:center;width:100%}
+#list-items .product-info .price-box .regular-price{float:left;line-height:14px;text-align:center;width:100%}
+#list-items .product-info .price-box .regular-price .price-label{font-size:12px}
+#list-items .product-info .price-box .regular-price .price{font-size:14px}
+#list-items .product-info .price-box .special-price .price-label{font-size:12px}
+#list-items .product-info .price-box .special-price .price{color:#EE4170;font-size:14px}
+#list-items li .yousave{background:url(images/product-discount-icons.png) no-repeat scroll 0 -41px transparent;height:21px;margin:20px 0 0 -2px;position:absolute;width:40px;z-index:1000}
+#list-items li .yousave .percent{color:#FFF;font-size:11px;margin:0 0 0 5px}
+#list-items li .sale-icon{background:url(images/product-discount-icons.png) no-repeat scroll 0 0 transparent;height:40px;margin:10px 0 0 124px;position:absolute;width:41px}
+#product-slider .head{margin:10px 0}
+#product-slider .head span{color:#343535;font-family:GalsC Pro;font-size:22px;letter-spacing:1.5px}

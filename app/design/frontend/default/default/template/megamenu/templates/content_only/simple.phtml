@@ -1,0 +1,69 @@
+<?php
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+?>
+<div class="block-megamenu sub-menu" style="border:<?php echo $this->getCustomStyle('border_size')?>px solid #<?php echo $this->getCustomStyle('border_color')?> !important;background:#<?php if($this->getCustomStyle('background_color')){ echo $this->getCustomStyle('background_color'); }else{echo 'ffffff';}?> !important;width:<?php if ($this->getMegamenuSize()){echo $this->getMegamenuSize();}else{ echo '500';}?>px !important"  id="menu1"  >
+    <?php echo $this->getTemplateBlock($this->getHeaderContent()) ?>
+    <?php echo $this->getTemplateBlock($this->getFooterContent()) ?>
+</div>
+<?php
+$_template_map = '<div class="megamenu-template-map-content-only simple">';
+$_template_map .= '<div class="layout-nav">';
+$_template_map .= '</div>';
+$_template_map .= '<div class="megamenu-template-map-header-content-only">';
+$_template_map .= '<a onmouseover="hoveronLayout(this)" onmouseout="hoveroutLayout(this)" href="#buttonsheader"><span>Content</span></a>';
+$_template_map .= '<div>&nbsp;</div></div>';
+$_template_map .= '</div>';
+?>
+<?php
+$header = '<ul class="simple">
+<li>
+<h1>Item List</h1>
+</li>
+<li><a href="#">Item 1</a></li>
+<li><a href="#">Item 2</a></li>
+<li><a href="#">Item 3</a></li>
+<li><a href="#">Item 1</a></li>
+<li><a href="#">Item 2</a></li>
+<li><a href="#">Item 3</a></li>
+</ul>';
+$footer = '';
+$this->setDefaultHeaderFooter($header,$footer);
+$this->setDefaultGeneralStyle('#ffffff', '#D5D5D5', 1); // (background_color, border_color, title_font, title_font_size)
+$this->setDefaultTitleStyle('#ffffff', '#000000','Arial,Helmet,Freesans,sans-serif',11); // (title_color, title_background_color, title_font, title_font_size)
+$this->setDefaultSubtitleStyle('#000000', 'Arial,Helmet,Freesans,sans-serif', 11); // (subtitle_color, subtitle_font, subtitle_font_size)
+$this->setDefaultLinkStyle('#000000', '#3f58a3', 'Arial,Helmet,Freesans,sans-serif', 11); // (link_color, hover_color, link_font, link_font_size)
+$this->setDefaultTextStyle('#000000', 'Arial,Helmet,Freesans,sans-serif', 12); // (text_color, text_font, text_font_size)
+$this->setDefaultContentGeneral(500,0,0);// megamenu_size,column_number,column_size
+/* add title */
+$this->addTitle('Categories');
+/* add map */
+$this->setTemplateMap($_template_map)
+?>
+<style type="text/css">
+    .megamenu #nav  ul.simple{
+	min-width:165px !important;
+	float:left !important;
+	position:static !important;
+	}
+ .megamenu #nav  ul.simple  li h1{
+	font-size:11px !important;
+	font-weight:bold !important;
+	border-bottom:1px dashed #ded7d3 !important;
+	text-transform:uppercase !important;
+	padding:0 0 5px 2px !important; 
+	float:left !important;
+	width:100% !important;
+	min-width:165px !important;
+	}	
+.megamenu #nav  ul.simple  li{
+	width:100% !important;
+	float:left !important;
+	padding:5px 0 0 !important;
+	min-width:165px !important;
+	}
+.megamenu #nav  ul.simple  li a{font-size:11px !important;}
+</style>
+

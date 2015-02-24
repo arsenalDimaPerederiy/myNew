@@ -1,0 +1,92 @@
+<div class="block-megamenu sub-menu" style="border:<?php echo $this->getCustomStyle('border_size')?>px solid #<?php echo $this->getCustomStyle('border_color')?> !important;background:#<?php if($this->getCustomStyle('background_color')){ echo $this->getCustomStyle('background_color'); }else{echo 'ffffff';}?> !important;width:<?php if ($this->getMegamenuSize()){echo $this->getMegamenuSize();}else{ echo '695';}?>px !important"  id="menu1"  >
+
+    <?php echo $this->getTemplateBlock($this->getHeaderContent()) ?>
+     <?php echo $this->getTemplateBlock($this->getFooterContent()) ?>
+</div>
+<?php
+$_template_map = '<div class="megamenu-template-map-content-only content-brand">';
+$_template_map .= '<div class="layout-nav">';
+$_template_map .= '</div>';
+$_template_map .= '<div class="megamenu-template-map-header-content-only">';
+$_template_map .= '<a onmouseover="hoveronLayout(this)" onmouseout="hoveroutLayout(this)" href="#buttonsheader"><span>'.$this->__('Header').'</span></a>';
+$_template_map .= '<div>&nbsp;</div></div>';
+$_template_map .= '<div class="megamenu-template-map-footer-content-only">';
+$_template_map .= '<a onmouseover="hoveronLayout(this)" onmouseout="hoveroutLayout(this)" href="#buttonsfooter"><span>'.$this->__('Footer').'</span></a>';
+$_template_map .= '<div>&nbsp;</div></div>';
+$_template_map .= '</div>';
+?>
+<?php
+$header = '<ul class="brand">
+<li>
+<h1>Brands</h1>
+</li>
+<li><a href="#"><img src="{{media url="brands1.gif"}}" alt="" /></a> 
+<a href="#"><img src="{{media url="brands1.gif"}}" alt="" /></a> 
+<a href="#"><img src="{{media url="brands2.gif"}}" alt="" /></a> 
+<a href="#"><img src="{{media url="brands3.gif"}}" alt="" /></a> 
+<a href="#"><img src="{{media url="brands1.gif"}}" alt="" /></a>
+<a href="#"><img src="{{media url="brands1.gif"}}" alt="" /></a> 
+<a href="#"><img src="{{media url="brands2.gif"}}" alt="" /></a> 
+<a href="#"><img src="{{media url="brands3.gif"}}" alt="" /></a> 
+<a href="#"><img src="{{media url="brands1.gif"}}" alt="" /></a> 
+<a href="#"><img src="{{media url="brands1.gif"}}" alt="" /></a> 
+<a href="#"><img src="{{media url="brands1.gif"}}" alt="" /></a> 
+<a href="#"><img src="{{media url="brands2.gif"}}" alt="" /></a> 
+<a href="#"><img src="{{media url="brands3.gif"}}" alt="" /></a> 
+<a href="#"><img src="{{media url="brands1.gif"}}" alt="" /></a> 
+<a href="#"><img src="{{media url="brands1.gif"}}" alt="" /></a> 
+<a href="#"><img src="{{media url="brands2.gif"}}" alt="" /></a> 
+<a href="#"><img src="{{media url="brands3.gif"}}" alt="" /></a> 
+<a href="#"><img src="{{media url="brands1.gif"}}" alt="" /></a></li>
+<li><a class="last" href="#">View more brands</a></li>
+</ul>
+			';
+$footer = '';
+$this->setDefaultHeaderFooter($header, $footer);
+$this->setDefaultGeneralStyle('#ffffff', '#D5D5D5', 1); // (background_color, border_color, title_font, title_font_size)
+$this->setDefaultTitleStyle('#ffffff', '#000000','Arial,Helmet,Freesans,sans-serif',11); // (title_color, title_background_color, title_font, title_font_size)
+$this->setDefaultSubtitleStyle('#000000', 'Arial,Helmet,Freesans,sans-serif', 11); // (subtitle_color, subtitle_font, subtitle_font_size)
+$this->setDefaultLinkStyle('#000000', '#3f58a3', 'Arial,Helmet,Freesans,sans-serif', 11); // (link_color, hover_color, link_font, link_font_size)
+$this->setDefaultTextStyle('#000000', 'Arial,Helmet,Freesans,sans-serif', 12); // (text_color, text_font, text_font_size)
+$this->setDefaultContentGeneral(695,0,0);// megamenu_size,column_number,column_size
+/* add title */
+$this->addTitle('Categories');
+/* add map */
+$this->setTemplateMap($_template_map)
+?>
+<style type="text/css">
+    .megamenu #nav  ul.brand {
+	float:left !important;
+	width:100% !important;
+	position:static !important;
+	}
+.megamenu #nav  ul.brand  li h1{
+	font-size:11px !important;
+	font-weight:bold !important;
+	border-bottom:1px dashed #ded7d3 !important;
+	text-transform:uppercase !important;
+	padding:0 0 5px 2px !important;
+	float:left !important;
+	width:100% !important;
+	}
+.megamenu #nav  ul.brand  li{
+	width:100% !important;
+	float:left !important;
+	padding:0 !important;
+	margin:0 !important;
+	}
+.megamenu #nav  ul.brand  li a{float:left !important;}
+.megamenu #nav  ul.brand  li a.last{
+	font-size:11px !important;
+	text-decoration:underline !important;
+	float:right !important;
+	padding-right:15px !important;
+	}
+.megamenu #nav  ul.brand  li a:hover{text-decoration:none;}
+.megamenu #nav  ul.brand  li a img{
+	padding:9px !important;
+	width:96px !important;
+	height:96px !important;
+	float:left !important;
+	}
+</style>

@@ -1,0 +1,80 @@
+<?php
+$products = $this->getProducts();
+$columnNumber = $this->getColumnNumber();
+$colunnSize = $this->getColumnSize();
+if (count($products) < $columnNumber) {
+    $columnNumber = count($products);
+}
+$size = '0';
+if ($columnNumber && $colunnSize)
+    $size = floatval($columnNumber * ($colunnSize + 5) + 20 + 5 + $this->getCustomStyle('border_size') * ($columnNumber + 2));
+$i = 0;
+?>
+<?php if (count($products)): ?>
+    <div class="products-megamenu-grid sub-menu"
+         style="border:<?php echo $this->getCustomStyle('border_size') ?>px solid  #<?php echo $this->getCustomStyle('border_color') ?> !important;background:#<?php echo $this->getCustomStyle('background_color') ?> !important;width: <?php echo $size; ?>px! important;">
+        <ul class="level0-megamenu" id="grid-product-<?php echo $this->getItem()->getId() ?>"
+            style="width:<?php echo $size - 20; ?>px !important">
+            <h1 style="color:#<?php echo $this->getCustomStyle('text_color'); ?>;font-size:<?php echo $this->getCustomStyle('text_font_size'); ?>px;border-bottom:1px dashed #<?php echo $this->getCustomStyle('border_color') ?>;">
+                <?php echo $this->getTemplateBlock($this->getHeaderContent()) ?>
+            </h1>
+            <?php foreach ($products as $product): ?>
+                <?php $i++; ?>
+                <li class="item <?php if ($i == $columnNumber): ?>last<?php endif; ?>"
+                    style="<?php if ($colunnSize) echo 'width:' . $colunnSize . 'px !important'; ?>;">
+                    <h1 class="product-name"
+                        style="color:#<?php echo $this->getCustomStyle('subtitle_color'); ?>;font-size:<?php echo $this->getCustomStyle('subtitle_font_size'); ?>px;"><?php echo $product->getName() ?></h1>
+                    <a class="product-image" href="<?php echo $product->getProductUrl() ?>">
+                        <img title="<?php echo Mage::helper('megamenu')->htmlEscape($product->getName()); ?>"
+                             src="<?php echo $this->getImagePath($product, $colunnSize); ?>"
+                             width="<?php echo $colunnSize - 20; ?>"/>
+                    </a>
+
+                    <div class="product-shop">
+                        <?php echo Mage::getBlockSingleton('catalog/product')->setArea('frontend')->getPriceHtml($product, true) ?>
+                        <!--span style="font-size:<?php echo $this->getCustomStyle('text_font_size'); ?>px;color:#<?php echo $this->getCustomStyle('text_color'); ?>;"><?php echo $product->getShortDescription() ?></span-->
+                        <button class="button"
+                                onclick="window.location.href = '<?php echo $product->getProductUrl(); ?>'"><?php echo $this->__('View Detail'); ?></button>
+                    </div>
+                </li>
+                <?php if ($i == $columnNumber) break; ?>
+            <?php endforeach; ?>
+            <div class="footer-megamenu"
+                 style="color:#<?php echo $this->getCustomStyle('text_color'); ?>;font-size:<?php echo $this->getCustomStyle('text_font_size'); ?>px;">
+                <?php echo $this->getTemplateBlock($this->getFooterContent()) ?>
+            </div>
+        </ul>
+    </div>
+<?php endif; ?>
+<?php
+$_template_map = '<div class="product-detail">';
+$_template_map .= '<div class="layout-nav">';
+$_template_map .= '</div>';
+$_template_map .= '<div id ="layout_header">';
+$_template_map .= '<a onmouseover="hoveronLayout(this)" onmouseout="hoveroutLayout(this)" href="#toggleheader">';
+$_template_map .= '<span>Header Content</span>';
+$_template_map .= '</a><div>&nbsp;</div></div>';
+$_template_map .= '<div id="layout_main_content">';
+$_template_map .= '<a onmouseover="hoveronLayout(this)" onmouseout="hoveroutLayout(this)" href="#megamenu_maincontent">';
+$_template_map .= '<span>Main Content</span>';
+$_template_map .= '</a><div>&nbsp;</div></div>';
+$_template_map .= '<div id="layout_footer">';
+$_template_map .= '<a onmouseover="hoveronLayout(this)" onmouseout="hoveroutLayout(this)" href="#togglefooter">';
+$_template_map .= '<span>Footer Content</span>';
+$_template_map .= '</a><div>&nbsp;</div></div></div>';
+?>
+<?php
+$header = '';
+$footer = '';
+$this->setDefaultHeaderFooter($header, $footer);
+$this->setDefaultGeneralStyle('#ffffff', '#D5D5D5', 1); // (background_color, border_color,border_size)
+$this->setDefaultTitleStyle('#ffffff', '#000000', 'Arial,Helmet,Freesans,sans-serif', 11); // (title_color, title_background_color, title_font, title_font_size)
+$this->setDefaultSubtitleStyle('#000000', 'Arial,Helmet,Freesans,sans-serif', 11); // (subtitle_color, subtitle_font, subtitle_font_size)
+$this->setDefaultLinkStyle('#666666', '#3f58a3', 'Arial,Helmet,Freesans,sans-serif', 11); // (link_color, hover_color, link_font, link_font_size)
+$this->setDefaultTextStyle('#666666', 'Arial,Helmet,Freesans,sans-serif', 11); // (text_color, text_font, text_font_size)
+$this->setDefaultContentGeneral(600, 4, 180); // megamenu_size,column_number,column_size
+$this->addTitle('Categories');
+/*add map*/
+$this->setTemplateMap($_template_map);
+$this->setTemplateFileName('product_listing_01');
+?>

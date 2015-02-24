@@ -1,0 +1,53 @@
+<div class="page-title">
+    <h1>СМС уведомления</h1>
+</div>
+<?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+<form action="<?php echo $this->getSaveUrl() ?>" method="post" id="form-validate">
+    <div class="fieldset">
+    <?php echo $this->getBlockHtml('formkey')?>
+     <h2 class="legend"><?php echo $this->__('Номер телефона и время уведомлений') ?></h2>
+        <ul class="form-list">
+            <li class="fields">
+                <label for="customer_phone"><?php echo $this->__('Номер телефона') ?></label>
+                <div class="input-box">
+                    <input type="text" name="customer_phone" id="customer_phone" title="<?php echo $this->__('Номер телефона') ?>" value="<?php echo $this->getCustomerPhone() ?>" class="input-text" />
+                </div>
+            </li>
+            <li class="fields">
+                <div class="field">
+                    <label for="send_from_hour"><?php echo $this->__('Отправлять смс с (часов):') ?></label>
+                    <div class="input-box">
+                      <?php echo $this->getSendFromHour()->getHtml();?>
+                    </div>
+                </div>
+                <div class="field">
+                    <label for="customer_to_hour"><?php echo $this->__('До (часов)') ?></label>
+                    <div class="input-box">
+                       <?php echo $this->getSendToHour()->getHtml();?>
+                    </div>
+                </div>
+            </li>
+        </ul>
+        <div class="note">
+            <br />
+            <p class="current-time"><strong>Время магазина:</strong> <?php echo Mage::helper('core')->formatDate($this->getCurrentTime(), 'long' ,true);?></p>
+            <p><?php echo $this->getCustomerNote();?></p>
+        </div>
+    </div>
+     <div class="fieldset">
+     <h2 class="legend"><?php echo $this->__('Уведомления по СМС') ?></h2>
+        <ul class="form-list">
+            <?php foreach ($this->getEvents() as $event => $checked):?>
+                <li class="control">
+                    <input type="hidden" name="<?php echo $event?>" value="0" />
+                    <input type="checkbox" name="<?php echo $event?>" id="<?php echo $event?>" value="1" <?php if($checked):?>checked="checked"<?php endif;?> title="<?php echo $this->getEventName($event) ?>" class="checkbox" />
+                    <label for="<?php echo $event?>"><?php echo $this->getEventName($event) ?></label>
+                </li>
+            <?php endforeach;?>
+        </ul>
+    </div>
+    <div class="buttons-set">
+        <p class="back-link"><a href="<?php echo $this->escapeUrl($this->getBackUrl()) ?>"><small>&laquo; </small><?php echo $this->__('Back') ?></a></p>
+        <button type="submit" title="<?php echo $this->__('Сохранить настройки') ?>" class="button"><span><span><?php echo $this->__('Сохранить настройки') ?></span></span></button>
+    </div>
+</form>

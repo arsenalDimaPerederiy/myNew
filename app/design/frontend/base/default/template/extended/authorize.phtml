@@ -1,0 +1,84 @@
+<div class="extended-checkout">
+<?php
+if (!Mage::getSingleton('customer/session')->isLoggedIn() || Mage::getSingleton('core/session')->getAuthorizeLogin())
+    $steps[count($steps)+1] = array('title' => '<span class="step'.(count($steps)+1).'">'.$this->helper('extended')->__("Authorization").'</span>','link' => Mage::getSingleton('core/session')->getAuthorizeLogin() ? 'javascript: void(0);' :  $this->getUrl("ext/authorize"), 'class' => 'step-authorize active');
+
+$steps[count($steps)+1] = array('title' => '<span class="step'.(count($steps)+1).'">'.$this->helper('extended')->__("Payment").'</span>','link' => 'javascript: void(0);', 'class' => 'step-payment');
+$steps[count($steps)+1] = array('title' => '<span class="step'.(count($steps)+1).'">'.$this->helper('extended')->__("Delivery").'</span>','link' => 'javascript: void(0);', 'class' => 'step-delivery');
+$steps[count($steps)+1] = array('title' => '<span class="step'.(count($steps)+1).'">'.$this->helper('extended')->__("Success").'</span>','link' => 'javascript: void(0);', 'class' => 'step-success');
+?>
+<?php echo $this->getChildHtml('extended_minicart') ?>
+<ul class="checkout-steps">
+    <?php foreach($steps as $step) :?>
+        <li><a href="<?php echo $step['link']?>" class="<?php echo $step['class']?>"><?php echo $step['title']?></a></li>
+    <?php endforeach;?>
+</ul>
+<h2><?php echo $this->helper('extended')->__("Authorization") ?></h2>
+<div class="authorize-form">
+    <form id="authorize_form" action="<?php echo $this->getUrl("ext/authorize") ?>" method="post">
+        <input id="password_shown" type="hidden" name="login[password_shown]" value="0"/>
+        <div class="field email">
+            <label for="email"><?php echo $this->helper('extended')->__("Please, enter your email:"); ?></label>
+            <input id="email" name="login[username]" type="text" value="<?php echo $this->htmlEscape(Mage::getSingleton('core/session')->getAuthorizeEmail()) ?>" class="input-text email validate-email required-entry"/>
+        </div>
+        <div class="field password" style="display: none">
+            <label for="password"><?php echo $this->helper('extended')->__("Please, enter your password:"); ?></label>
+            <input id="password" name="login[password]" type="password" class="input-text password"/>
+            <a href="<?php echo $this->getUrl('customer/account/forgotpassword') ?>"><?php echo $this->__('Forgot Your Password?') ?></a>
+        </div>
+
+
+		
+        <div class="field buttons">
+            <button class="button btn-login" title="<?php echo $this->helper('extended')->__("I already registered")?>" type="button"><span><span><?php echo $this->helper('extended')->__("I already registered")?></span></span></button>
+            <button type="submit" class="button btn-continue" title="<?php echo $this->helper('checkout')->__("Continue")?>" type="button"><span><span><?php echo $this->helper('checkout')->__("Continue")?></span></span></button>
+
+        </div>
+
+        <p><?php echo $this->helper('extended')->__("<strong>Why do we need your email address?</strong><br />On the e-mail will be sent information about your order. If you are already a customer, it will make the buying process faster.") ?></p>
+    </form>
+</div>
+</div>
+<script type="text/javascript">
+
+jQuery( document ).ready(function() {
+// Handler for .ready() called.
+jQuery(".access").fadeTo( "slow", 0.33 );
+jQuery(".footer").fadeTo( "slow", 0.33 );
+jQuery(".copyright-line").fadeTo( "slow", 0.33 );
+});
+
+ //<![CDATA[
+ var authorize_form = new VarienForm('authorize_form');
+// Expand password field in case of errors
+if (jQuery('.error-msg').length > 0) {
+    jQuery('.field.password').show();
+    jQuery('#password_shown').val(1);
+    jQuery('#password').addClass('required-entry');
+    jQuery('.btn-login').find('span span').text('<?php echo $this->helper('checkout')->__("Back")?>');
+}
+
+ jQuery('.btn-continue').click(function(){
+     if (authorize_form.validator && authorize_form.validator.validate()) {
+         authorize_form.submit();
+     }
+ });
+
+ jQuery('.btn-login').click(function(){
+     if(jQuery('#password_shown').val() == 0) {
+         jQuery('.field.password').slideDown();
+         jQuery('#password_shown').val(1);
+         jQuery('#password').addClass('required-entry');
+         jQuery(this).find('span span').text('<?php echo $this->helper('checkout')->__("Back")?>');
+		 jQuery(this).parent().addClass('enter-login');
+     }
+     else {
+         jQuery('.field.password').slideUp();
+         jQuery('#password_shown').val(0);
+         jQuery('#password').removeClass('required-entry');
+         jQuery(this).find('span span').text('<?php echo $this->helper('extended')->__("I already registered")?>');
+		 jQuery(this).parent().removeClass('enter-login');
+     }
+ });
+ //]]>
+</script>

@@ -1,0 +1,113 @@
+<?xml version="1.0"?>
+<config>
+    <tabs>
+        <magestore translate="label">
+            <label>Magestore Extension</label>
+            <sort_order>400</sort_order>
+        </magestore>
+    </tabs>
+    <sections>
+        <megamenu translate="label" module="megamenu">
+            <class>separator-top</class>
+            <label>Mega Menu</label>
+            <tab>magestore</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>299</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <general translate="label">
+                    <label>General Configuration</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>1</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <enable translate="label">
+                            <label>Enable Mega Menu</label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>1</sort_order>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment></comment>
+                        </enable>
+                        <menu_effect translate="label">
+                            <label>Menu Effect</label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>2</sort_order>
+                            <source_model>megamenu/system_config_source_effecttype</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>How Content of Menu show up.</comment>
+                        </menu_effect>
+                        <menu_type translate="label">
+                            <label>Menu Direction</label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>3</sort_order>
+                            <source_model>megamenu/system_config_source_menutype</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment></comment>
+                        </menu_type>
+                        <menu_position_type>
+                            <label>Content Position</label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>4</sort_order>
+                            <source_model>megamenu/system_config_source_positiontype</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment></comment>
+                        </menu_position_type>
+                        <menu_width>
+                            <label>Menu Width</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>pixel. If it's 0 or empty, the system will set vertical menu: 200px; horizontal
+                                menu: default Magento menu width
+                            </comment>
+                        </menu_width>
+                        <menu_height>
+                            <label>Menu Item Height</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>pixel. This is height of a menu item. If it's 0 or empty, the system will set
+                                automatically
+                                default height is 55px.
+                            </comment>
+                        </menu_height>
+                        <reindex translate="label">
+                            <!-- <label>Reindex</label>-->
+                            <frontend_type>hidden</frontend_type>
+                            <sort_order>6</sort_order>
+                        </reindex>
+                        <template>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>7</sort_order>
+                        </template>
+                    </fields>
+                </general>
+                <implement translate="label">
+                    <label>Implement Code</label>
+                    <frontend_model>megamenu/adminhtml_system_configuration_implementcode</frontend_model>
+                    <sort_order>20</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                </implement>
+            </groups>
+        </megamenu>
+    </sections>
+</config>

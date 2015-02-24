@@ -1,0 +1,25 @@
+<?php 
+/**
+ * author HoangHai
+ * Use function rendstaticblock(....){} in Block Navigation to create Block and set Template StaticBlock
+ */
+
+/**
+ *@param size is size menu template 
+ */
+$size = $this->getData('size');
+
+/**
+ * get code template
+ */
+$template = $this->getData('template');
+?>
+<?php 
+if($size == null):  
+    $size = 'auto';?>
+<div id="" class="block-megamenu" style="width:<?php echo $size ?> !important;">
+<?php else:?>
+    <div id="" class="block-megamenu" style="width:<?php echo $size ?>px !important;">
+<?php endif; ?>    
+     <?php echo $this->getTemplateBlock($template);?>
+</div>

@@ -1,0 +1,258 @@
+<?xml version="1.0"?>
+<config>
+    <tabs>
+        <iksanika translate="label">
+            <label>Iksanika</label>
+            <sort_order>9</sort_order>
+        </iksanika>
+    </tabs>
+    <sections>
+        <ordermanage translate="label" module="ordermanage">
+            <label>Order Manager (Advanced)</label>
+            <tab>iksanika</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>0</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>0</show_in_store>
+            <groups>
+                <columns translate="label">
+                    <label>Order Grid Settings</label>
+                    <sort_order>10</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <fields>
+                        <showcolumns translate="label">
+                            <label>Show Columns</label>
+                            <frontend_type>multiselect</frontend_type>
+                            <source_model>Iksanika_Ordermanage_Model_System_Config_Source_Columns_Show</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                        </showcolumns>
+                        
+                        <sort translate="label">
+                            <label>Sort Column</label>
+                            <comment>The selected column must be also selected above if it's not already there</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>Iksanika_Ordermanage_Model_System_Config_Source_Columns_Show</source_model>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                        </sort>
+                        
+                        <page translate="label">
+                            <label>Initial Page Number</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>4</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                        </page>
+                        <limit translate="label">
+                            <label>Page Size</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                        </limit>
+                        
+                        <dir translate="label">
+                            <label>Sort Column Direction</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>Iksanika_Ordermanage_Model_System_Config_Source_Sort_Direction</source_model>
+                            <sort_order>6</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                        </dir>
+                        
+                        <hide_status translate="label">
+                            <label>Hide orders with statuses</label>
+                            <comment>Use CTRL+click to select statuses which will be not shown in orders grid.</comment>
+                            <frontend_type>multiselect</frontend_type>
+                            <source_model>Iksanika_Ordermanage_Model_System_Config_Source_Columns_StatusesOrder</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                        </hide_status>
+                    </fields>
+                </columns>
+                <products translate="label">
+                    <label>Order Products Data Settings</label>
+                    <sort_order>100</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <fields>
+                        <showattr translate="label">
+                            <label>Show Products Data</label>
+                            <frontend_type>multiselect</frontend_type>
+                            <source_model>Iksanika_Ordermanage_Model_System_Config_Source_Columns_Products</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                        </showattr>
+                        
+                        <includeproducts translate="label">
+                            <label>Enable Products Info in Order Grid</label>
+                            <comment>In case of Enable you will able to show/hide order products details right in the Order Grid</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                        </includeproducts>
+                        <showproducts translate="label">
+                            <label>Expand Order Grid with Products</label>
+                            <comment>If enable the Order Grid will be expanded by default with Products, otherwise will collabsed - only generate order information inline</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                        </showproducts>
+                    </fields>
+                </products>
+                <images translate="label">
+                    <label>Image Settings in Order Grid</label>
+                    <sort_order>200</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <fields>
+                        <width translate="label">
+                            <label>Image Width</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                        </width>
+                        <height translate="label">
+                            <label>Image Height</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                        </height>
+                        <scale translate="label">
+                            <label>Image Scale</label>
+                            <comment>(If Yes - images will be resized into Width+Height space, if No - proportionaly to defined value of Width or Height)</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                        </scale>
+                    </fields>
+                </images>
+                <invoice translate="label">
+                    <label>Bulk Invoice Settings</label>
+                    <sort_order>300</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <fields>
+                        <notify translate="label">
+                            <label>Notify Customer</label>
+                            <comment>Yes - will send email</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                        </notify>
+                        
+                        <status translate="label">
+                            <label>Assign Status</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>Iksanika_Ordermanage_Model_System_Config_Source_Columns_StatusInvoice</source_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                        </status>
+                                                
+                    </fields>
+                </invoice>
+                <capture translate="label">
+                    <label>Bulk Capture Settings</label>
+                    <sort_order>300</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <fields>
+                        
+                        <case translate="label">
+                            <label>Capture Type</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>Iksanika_Ordermanage_Model_System_Config_Source_Columns_CaptureType</source_model>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                        </case>
+
+                        <notify translate="label">
+                            <label>Notify Customer</label>
+                            <comment>Yes - will send email</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                        </notify>
+                        
+                        <status translate="label">
+                            <label>Assign Status</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>Iksanika_Ordermanage_Model_System_Config_Source_Columns_StatusCapture</source_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                        </status>
+                                                
+                    </fields>
+                </capture>
+                <ship translate="label">
+                    <label>Bulk Shippment Settings</label>
+                    <sort_order>500</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <fields>
+                        <notify translate="label">
+                            <label>Notify Customer</label>
+                            <comment>Yes - will send email</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                        </notify>
+                        
+                        <status translate="label">
+                            <label>Assign Status</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>Iksanika_Ordermanage_Model_System_Config_Source_Columns_StatusShip</source_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                        </status>
+                        
+                        <carrier_code translate="label">
+                            <label>Default Carrier</label>
+                            <comment>Will be used in bulk shippment for auto generation carrier info</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>Iksanika_Ordermanage_Model_System_Config_Source_Columns_CarrierCode</source_model>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                        </carrier_code>
+                        
+                        <carrier_title translate="label">
+                            <label>Custom Carrier Title</label>
+                            <comment>Will be shown in the carrier dropdown for the 'custom' option</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                        </carrier_title>
+                        
+                    </fields>
+                </ship>
+            </groups>
+        </ordermanage>
+    </sections>
+</config>

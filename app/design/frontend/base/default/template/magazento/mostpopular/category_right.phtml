@@ -1,0 +1,56 @@
+<?php if ((Mage::getStoreConfig('mostpopular/options/enable')) && (Mage::getStoreConfig('mostpopular/catpageoptions/catsidebarright'))):?>
+
+<div class="block block-mostpopular">
+    <div class="block-title title-topseller">
+      <strong>
+        <span><?php echo $this->getModel()->getTitle() ?></span>
+      </strong>
+    </div>
+    <div class="block-content">
+        <?php $_products = $this->getProductCollection(); ?>
+        <?php if (sizeof($_products)): ?>
+            <ol class="mini-products-list" id="bestseller-sidebar">
+            <?php $i=0; foreach ($_products->getItems() as $_product): ?>
+                <?php $i++; ?>
+                <?php if ($_product->getData('is_salable')): ?>
+                    <li class="item<?php if($i==sizeof($_products) ): ?> last<?php endif; ?>">
+                        <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->htmlEscape($_product->getName()) ?>" class="product-image"><img src="<?php echo $this->helper('catalog/image')->init($_product, 'thumbnail')->resize(100,128); ?>" width="50" height="64" alt="<?php echo $this->__('Photo - %s. Product code: %s', trim(str_replace(',', '', $_product->getName())),$_product->getSku()); ?>" /></a>
+                        <div class="product-details">
+                            <p class="product-name"><a href="<?php echo $this->getProductUrl($_product) ?>"><?php echo $this->htmlEscape($_product->getName()) ?></a></p>
+                            <?php if (Mage::getStoreConfig('mostpopular/catpageoptions/catprice')):?>
+                                <?php echo $this->getPriceHtml($_product, true) ?>
+                            <?php endif; ?>
+
+                        </div>
+                    </li>
+                <?php else: ?>
+                    <?php if($this->getModel()->isOutOfStock()): ?>
+                        <li class="item">
+                            <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->htmlEscape($_product->getName()) ?>" class="product-image"><img src="<?php echo $this->helper('catalog/image')->init($_product, 'thumbnail')->resize(100,128); ?>" width="50" height="64" alt="<?php echo $this->__('Photo - %s. Product code: %s', trim(str_replace(',', '', $_product->getName())),$_product->getSku()); ?>" /></a>
+                            <div class="product-details">
+                                <p class="product-name"><a href="<?php echo $this->getProductUrl($_product) ?>"><?php echo $this->htmlEscape($_product->getName()) ?></a></p>
+                                <?php if (Mage::getStoreConfig('mostpopular/catpageoptions/catprice')):?>
+                                    <?php echo $this->getPriceHtml($_product, true) ?>
+                                <?php endif; ?>
+                                <p class="availability out-of-stock"><span>Out of stock</span></p>
+                            </div>
+                        </li>
+                    <?php endif; ?>
+
+                <?php endif; ?>
+            <?php endforeach; ?>
+            </ol>
+
+        <?php else: ?>
+            <ol id="bestseller-sidebar" class="mini-products-list">
+                <li class="item odd">
+                    <?php echo $this->getModel()->getNoProductsText(); ?>
+                </li>
+            </ol>
+        <?php endif; ?>
+    </div>
+</div>
+
+
+
+<?php endif; ?>

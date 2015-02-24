@@ -1,0 +1,152 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Iksanika_Ordermanage>
+            <version>1.0.0</version>
+        </Iksanika_Ordermanage>
+    </modules>
+    <admin>
+        <routers>
+            <ordermanage>
+                <!-- should be set to "admin" when overloading admin stuff (?) -->
+                <use>admin</use>
+                <args>
+                    <module>Iksanika_Ordermanage</module>
+                    <!-- This is used when "catching" the rewrite above -->
+                    <frontName>ordermanage</frontName>
+                </args>
+            </ordermanage>
+        </routers>
+    </admin>
+    <global>
+
+        <blocks>
+            <ordermanage>
+                <class>Iksanika_Ordermanage_Block</class>
+            </ordermanage>
+        </blocks>
+        
+        <helpers>
+            <ordermanage>
+                <class>Iksanika_Ordermanage_Helper</class>
+            </ordermanage>
+        </helpers>
+
+        <models>
+            <ordermanage>
+                <class>Iksanika_Ordermanage_Model</class>
+            </ordermanage>
+            <sales_resource>
+                <rewrite>
+                    <order_collection>Iksanika_Ordermanage_Model_Resource_Sales_Order_Collection</order_collection>
+                </rewrite>
+            </sales_resource>
+        </models>
+
+        <blocks>
+            <adminhtml>
+                <rewrite>
+                    <!--<sales_order_grid>Iksanika_Ordermanage_Block_Sales_Order_Grid</sales_order_grid>-->
+                    <widget_grid_column>Iksanika_Ordermanage_Block_Widget_Grid_Column</widget_grid_column>
+                </rewrite>
+            </adminhtml>
+        </blocks>
+        
+    <!-- Relate Stuff -->
+    </global>
+    <adminhtml>
+        <layout>
+            <updates>
+                <ordermanage>
+                    <file>iksanika_ordermanage.xml</file>
+                </ordermanage>
+            </updates>
+        </layout>
+        <menu>
+            <sales module="ordermanage">
+                <children>
+                    <ordermanage module="ordermanage">
+                        <title>Orders Manager (Advanced)</title>
+                        <sort_order>10</sort_order>
+                        <action>ordermanage/sales_order</action>
+                    </ordermanage>
+                </children>
+            </sales>
+        </menu>
+    </adminhtml>
+    <default>
+        <ordermanage>
+            <general>
+                <isenabled>1</isenabled>
+                <truncatelongtextafter>60</truncatelongtextafter>
+            </general>
+            <columns>
+                <showcolumns>increment_id,store_id,created_at,billing_name,shipping_name,base_grand_total,grand_total,status</showcolumns>
+                <limit>50</limit>
+                <page>1</page>
+                <sort>id</sort>
+                <dir>desc</dir>
+            </columns>
+            <products>
+                <showattr>small_image,title,sku,qty_ordered,product_id</showattr>
+                <includeproducts>1</includeproducts>
+                <showproducts>1</showproducts>
+            </products>
+            <images>
+                <showurl>0</showurl>
+                <width>75</width>
+                <height>75</height>
+            </images>
+            <invoice>
+                <notify>1</notify>
+                <status>default</status>
+            </invoice>
+            <capture>
+                <case>online</case>
+                <notify>1</notify>
+                <status>default</status>
+            </capture>
+            <ship>
+                <notify>1</notify>
+                <status>default</status>
+                <carrier_code>custom</carrier_code>
+                <!-- carrier_title - is title for custom -->
+                <carrier_title>My Flat Rate</carrier_title>
+            </ship>
+        </ordermanage>
+    </default>
+    
+    
+    <adminhtml>
+        <acl>
+            <resources>
+                <all>
+                    <title>Allow Everything</title>
+                </all>
+                <admin>
+                    <children>
+                        <sales>
+                            <children>
+                                <ordermanage>
+                                    <title>Orders Manager (Advanced)</title>
+                                </ordermanage>
+                            </children>
+                        </sales>
+                        <system>
+                            <children>
+                                <config>
+                                    <children>
+                                        <ordermanage>
+                                            <title>Orders Manager (Advanced) Config</title>
+                                            <sort_order>100</sort_order>
+                                        </ordermanage>
+                                    </children>
+                                </config>
+                            </children>
+                        </system>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
+    </adminhtml>
+</config>

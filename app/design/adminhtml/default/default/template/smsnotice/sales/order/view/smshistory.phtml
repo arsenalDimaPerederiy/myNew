@@ -1,0 +1,33 @@
+<div id="order_sms_history_block">
+    <?php if ($this->canAddSms()):?>
+    <div id="sms_form" class="order-history-form">
+        <div><?php echo Mage::helper('smsnotice')->__('Отправить СМС для заказа') ?></div>
+        <span class="field-row">
+            <label class="normal" for="sms_comment"><?php echo Mage::helper('smsnotice')->__('Текст смс:') ?></label>
+            <textarea name="sms[text]" rows="3" cols="5" style="height:6em; width:99%;" id="sms_comment"></textarea>
+        </span>
+        <div class="f-left">
+            <input name="sms[send_now]" type="checkbox" id="sms_now" value="1" />
+            <label class="normal" for="sms_now"> <?php echo Mage::helper('smsnotice')->__('Отправить сейчас') ?></label>
+        </div>
+        <div class="f-right">
+            <?php echo $this->getChildHtml('submit_button') ?>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <div class="divider"></div>
+    <?php endif;?>
+    <ul class="note-list">
+    <?php foreach ($this->getOrderSmsCollection() as $_item): ?>
+        <li>
+            <strong><?php echo $this->helper('core')->formatDate($_item->getData('created_datetime'), 'medium') ?></strong>
+            <?php echo $this->helper('core')->formatTime($_item->getData('created_datetime'), 'medium') ?>
+            <span class="separator">|</span>
+            <strong><?php echo Mage::helper('smsnotice')->__($_item->getData('current_status')); ?></strong>
+            <?php if ($_item->getData('text_sms')): ?>
+                <br/><?php echo $this->escapeHtml($_item->getData('text_sms')) ?>
+            <?php endif; ?>
+        </li>
+    <?php endforeach; ?>
+    </ul>
+</div>

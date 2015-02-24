@@ -1,0 +1,109 @@
+<?php
+/**
+ * magento
+ *
+ * notice of license
+ *
+ * this source file is subject to the academic free license (afl 3.0)
+ * that is bundled with this package in the file license_afl.txt.
+ * it is also available through the world-wide-web at this url:
+ * http://opensource.org/licenses/afl-3.0.php
+ * if you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * disclaimer
+ *
+ * do not edit or add to this file if you wish to upgrade magento to newer
+ * versions in the future. if you wish to customize magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   copyright (c) 2011 magento inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  academic free license (afl 3.0)
+ */
+?>
+<?php
+/**
+ * product list toolbar
+ *
+ * @see mage_catalog_block_product_list_toolbar
+ */
+?>
+<?php if($this->getcollection()->getsize()): ?>
+<div class="toolbar">
+    <div class="pager">
+        <p class="amount">
+            <?php if($this->getlastpagenum()>1): ?>
+                <?php echo $this->__('items %s to %s of %s total', $this->getfirstnum(), $this->getlastnum(), $this->gettotalnum()) ?>
+            <?php else: ?>
+                <strong><?php echo $this->__('Catalog %s item(s)', $this->gettotalnum()) ?></strong>
+            <?php endif; ?>
+        </p>
+		
+        <div class="sort-by">
+            <label><?php echo $this->__('sort by') ?></label>
+            <select onchange="setLocation(this.value)">
+            <?php foreach($this->getAvailableOrders() as $_key=>$_order): ?>
+               <?php if($_order!='Position'): ?>
+                <?php if($_key!='price'): ?>
+                  <option value="<?php echo $this->getorderurl($_key, 'desc') ?>"<?php if($this->isordercurrent($_key)): ?> selected="selected"<?php endif; ?>>
+                    <?php echo $this->__($_order) ?>
+                  </option>
+                <?php else: ?>
+                  <option value="<?php echo $this->getorderurl($_key, 'asc') ?>"<?php if($this->isordercurrent($_key) && $this->getcurrentdirection() == 'asc'): ?> selected="selected"<?php endif; ?>>
+                    <?php echo $this->__('Price asc') ?>
+                  </option>
+                  <option value="<?php echo $this->getorderurl($_key, 'desc') ?>"<?php if($this->isordercurrent($_key) && $this->getCurrentDirection() == 'desc'): ?> selected="selected"<?php endif; ?>>
+                    <?php echo $this->__('Price desc') ?>
+                  </option>
+                <?php endif; ?> 
+               <?php endif; ?>        
+            <?php endforeach; ?>
+            </select>
+        </div>
+
+		
+		<?php if( $this->isexpanded() ): ?>
+		<div class="sorter">        
+			<?php if( $this->isEnabledViewSwitcher() ): ?>
+			<p class="view-mode">
+				<?php $_modes = $this->getModes(); ?>
+				<?php if($_modes && count($_modes)>1): ?>
+				<?php foreach ($this->getModes() as $_code=>$_label): ?>
+					<?php if($this->isModeActive($_code)): ?>
+						<span title="<?php echo $_label ?>" class="<?php echo strtolower($_code); ?>"><?php echo $_label ?></span>&nbsp;
+					<?php else: ?>
+						<a href="<?php echo $this->getModeUrl($_code) ?>" title="<?php echo $_label ?>" class="<?php echo strtolower($_code); ?>"><?php echo $_label ?></a>&nbsp;
+					<?php endif; ?>
+				<?php endforeach; ?>
+				<?php endif; ?>
+			</p>
+			<?php endif; ?>
+		
+		</div>
+		<?php endif; ?>
+
+        <div class="limiter">
+            <label><?php //echo $this->__('show products') ?></label>
+            <?php foreach ($this->getavailablelimit() as  $_key=>$_limit): ?>
+                <a href="<?php echo $this->getlimiturl($_key) ?>"<?php if($this->islimitcurrent($_key)): ?> class="selected"<?php endif ?>>
+                     <?php echo $this->__('view %s per page', $_limit) ?>
+                </a>
+            <?php endforeach; ?>
+        </div>
+
+        <div class="moveup">| <a href="#"><?php echo $this->__('Up') ?></a></div>
+
+
+
+
+        <?php echo $this->getpagerhtml() ?>
+
+    </div>
+
+
+</div>
+
+<?php endif ?>

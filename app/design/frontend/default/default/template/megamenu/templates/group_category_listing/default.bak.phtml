@@ -1,0 +1,102 @@
+<?php
+$categories = $this->getCategories();
+$columnNumber = $this->getColumnNumber();
+$colunnSize = $this->getColumnSize();
+if ($line > 2)
+    $line = 2;
+$size = 0;
+if (count($categories) < $columnNumber) {
+    $columnNumber = count($categories);
+}
+if (count($categories) % $columnNumber == 0)
+    $line = count($categories) / $columnNumber;
+else
+    $line = ceil(count($categories) / $columnNumber);
+if ($columnNumber && $colunnSize) {
+    $size = floatval($columnNumber * ($colunnSize + 20) + 30 + $featuredWidth + 5 + $this->getCustomStyle('border_size') * ($columnNumber + 2));
+}
+$i = 0;
+$j = 0;
+$col = 1;
+$colAdd = count($categories) % $columnNumber; /* number col add more 1 item */
+$itemAdd = floor(count($categories) / $columnNumber); /* min item per col */
+?>
+<div class="list-categories-megamenu sub-menu" style="border:<?php echo $this->getCustomStyle('border_size') ?>px solid #<?php echo $this->getCustomStyle('border_color') ?> !important;background:#<?php echo $this->getCustomStyle('background_color') ?> !important;width: <?php echo $size; ?>px !important;" >
+<?php if (count($this->getCategories())): ?>
+        <ul class="level0-megamenu group-category" id="group-category-<?php echo $this->getItem()->getId();?>">
+            <h1 style="color:#<?php echo $this->getCustomStyle('subtitle_color'); ?>;font-size:<?php echo $this->getCustomStyle('subtitle_font_size'); ?>px;font-weight:bold">
+    <?php echo $this->getParentName(); ?>
+            </h1>
+            <?php echo $this->getTemplateBlock($this->getHeaderContent()) ?>
+            <li class="level1-megamenu" style="width:<?php echo $colunnSize; ?>px !important;border">
+                <ul class="level2-megamenu">
+                    <?php foreach ($this->getCategories() as $category): ?>
+                        <?php $children = $this->getAllChildrenOfGroup($category); ?>
+                        <?php $i++; ?>
+        <?php $j++; ?>
+                        <li <?php if ($j == 1): ?> class="first" <?php endif; ?>>
+                            <div class="level1-title">
+                                <a href="<?php echo $category->getUrl(); ?>">
+                                    <h2 style="color:#<?php echo $this->getCustomStyle('subtitle_color'); ?>;font-size:<?php echo $this->getCustomStyle('subtitle_font_size'); ?>px;">
+        <?php echo $category->getName() ?>
+                                    </h2>
+                                </a>
+                            </div>
+                            <ol  class="level3-megamenu">
+                                <?php if (count($children)): ?>
+            <?php foreach ($children as $child): ?>
+                                        <li id="subcat-<?php echo $child->getId();?>">
+                                            <?php echo $child->getName(); ?>
+                                        </li>
+                                    <?php endforeach; ?>
+        <?php endif; ?>
+                            </ol>
+                        </li>
+                        <?php if (($col <= $colAdd && $j == $itemAdd + 1) || ($col > $colAdd && $j == $itemAdd)): ?>
+                            <?php $j = 0 ?>
+                            <?php $col++ ?>
+            <?php if ($i == count($this->getCategories())) break; ?>
+                        </ul>
+                    </li>
+                    <li class="level1-megamenu" style="width:<?php echo $colunnSize; ?>px !important;<?php if ($col == $columnNumber): ?>border-right:none !important<?php endif; ?>">
+                        <ul class="level2-megamenu">
+                        <?php endif ?>
+    <?php endforeach; ?>
+                </ul>
+            </li>
+            <div class="footer-megamenu"><?php echo $this->getTemplateBlock($this->getFooterContent()) ?></div>
+        </ul>
+<?php endif; ?>
+</div>
+
+
+<?php
+$_template_map = '<div class="group-category">';
+$_template_map .= '<div class="layout-nav">';
+$_template_map .= '</div>';
+$_template_map .= '<div class="megamenu-template-map-header">';
+$_template_map .= '<a onmouseover="hoveronLayout(this)" onmouseout="hoveroutLayout(this)" href="#megamenu_content_headerfooter">Header</a>';
+$_template_map .= '<div>&nbsp;</div></div>';
+$_template_map .= '<div class="megamenu-template-map-main">';
+$_template_map .= '<a onmouseover="hoveronLayout(this)" onmouseout="hoveroutLayout(this)" href="#megamenu_maincontentcategories">Main Content</a>';
+$_template_map .= '<div>&nbsp;</div></div>';
+$_template_map .= '<div class="megamenu-template-map-footer">';
+$_template_map .= '<a onmouseover="hoveronLayout(this)" onmouseout="hoveroutLayout(this)" href="#megamenu_content_headerfooter">Footer</a>';
+$_template_map .= '<div>&nbsp;</div></div>';
+$_template_map .= '</div>';
+?>
+<?php
+$header = 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s.';
+$footer = '';
+$this->setDefaultHeaderFooter($header, $footer);
+$this->setDefaultGeneralStyle('#ffffff', '#D5D5D5', 1); // (background_color, border_color,border_size)
+$this->setDefaultTitleStyle('#ffffff', '#000000', 'Arial,Helmet,Freesans,sans-serif', '11'); // (title_color, title_background_color, title_font, title_font_size)
+$this->setDefaultSubtitleStyle('#000000', 'Arial,Helmet,Freesans,sans-serif', 11); // (subtitle_color, subtitle_font, subtitle_font_size)
+$this->setDefaultLinkStyle('#666666', '#3f58a3', 'Arial,Helmet,Freesans,sans-serif', 11); // (link_color, hover_color, link_font, link_font_size)
+$this->setDefaultTextStyle('#666666', 'Arial,Helmet,Freesans,sans-serif', 11); // (text_color, text_font, text_font_size)
+$this->setDefaultContentGeneral(600, 4, 180); // megamenu_size,column_number,column_size
+/* add title */
+$this->addTitle('Categories');
+/* add map */
+$this->setTemplateMap($_template_map)
+?>

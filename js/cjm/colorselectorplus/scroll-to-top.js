@@ -1,0 +1,29 @@
+jQuery(document).ready(function(){
+
+	// hide #back-top first
+	jQuery("#back-top").hide();
+
+	
+	// fade in #back-top
+	jQuery(function () {
+		jQuery(window).scroll(function () {
+
+			var pos = jQuery( "#back-to-top-pos" );
+			var offset = pos.offset();
+			if (jQuery(this).scrollTop() > offset.top + 300) {
+				jQuery('#back-top').fadeIn();
+			} else {
+				jQuery('#back-top').fadeOut();
+			}
+		});
+
+		// scroll body to 0px on click
+		jQuery('#back-top a').click(function () {
+			jQuery('body,html').animate({
+				scrollTop: 0
+			}, 800);
+			return false;
+		});
+	});
+
+});

@@ -1,0 +1,245 @@
+<div class="block-megamenu sub-menu" style="border:<?php echo $this->getCustomStyle('border_size')?>px solid #<?php echo $this->getCustomStyle('border_color')?> !important;background:#<?php if($this->getCustomStyle('background_color')){ echo $this->getCustomStyle('background_color'); }else{echo 'ffffff';}?> !important;width:<?php if ($this->getMegamenuSize()){echo $this->getMegamenuSize();}else{ echo '309';}?>px !important"  id="menu1"  >
+    <?php echo $this->getTemplateBlock($this->getHeaderContent()) ?>
+    <?php echo $this->getTemplateBlock($this->getFooterContent()) ?>
+</div>
+<?php
+$_template_map = '<div class="megamenu-template-map-content-only sale-content">';
+$_template_map .= '<div class="layout-nav">';
+$_template_map .= '</div>';
+$_template_map .= '<div class="megamenu-template-map-header-content-only">';
+$_template_map .= '<a onmouseover="hoveronLayout(this)" onmouseout="hoveroutLayout(this)" href="#buttonsheader"><span>Header</span></a>';
+$_template_map .= '<div>&nbsp;</div></div>';
+$_template_map .= '<div class="megamenu-template-map-footer-content-only">';
+$_template_map .= '<a onmouseover="hoveronLayout(this)" onmouseout="hoveroutLayout(this)" href="#buttonsfooter"><span>Footer</span></a>';
+$_template_map .= '<div>&nbsp;</div></div>';
+$_template_map .= '</div>';
+?>
+<?php
+$header = '<ul class="sale">
+<li>
+<h1>Womens Sale</h1>
+<table id="nav-sale" class="data-table">
+<thead> 
+<tr>
+<th>&nbsp;</th><th class="right">Starting At</th>
+</tr>
+</thead> 
+<tbody>
+<tr class="odd">
+<td class="odd"><a href="#">Teer</a></td>
+<td class="odd right"><a href="#">9100vnd</a></td>
+</tr>
+<tr>
+<td><a href="#">Long Sleeve tees</a></td>
+<td class="right"><a href="#">9.99$</a></td>
+</tr>
+<tr class="odd">
+<td class="odd"><a href="#">Teer</a></td>
+<td class="right odd"><a href="#">9.99$</a></td>
+</tr>
+<tr>
+<td><a href="#">Teer</a></td>
+<td class="right"><a href="#">9.99$</a></td>
+</tr>
+<tr class="odd">
+<td class="odd"><a href="#">Teer</a></td>
+<td class="right odd"><a href="#">9.99$</a></td>
+</tr>
+<tr>
+<td><a href="#">Teer</a></td>
+<td class="right"><a href="#">9.99$</a></td>
+</tr>
+</tbody>
+</table>
+<table id="nav-sale" class="data-table">
+<thead> 
+<tr>
+<th>&nbsp;</th><th class="right">Starting At</th>
+</tr>
+</thead> 
+<tbody>
+<tr class="odd">
+<td class="odd"><a href="#">Teer</a></td>
+<td class="right odd"><a href="#">9.99$</a></td>
+</tr>
+<tr>
+<td><a href="#">Long Sleeve tees</a></td>
+<td class="right"><a href="#">9.99$</a></td>
+</tr>
+<tr class="odd">
+<td class="odd"><a href="#">Teer</a></td>
+<td class="right odd"><a href="#">9.99$</a></td>
+</tr>
+<tr>
+<td><a href="#">Teer</a></td>
+<td class="right"><a href="#">9.99$</a></td>
+</tr>
+<tr class="odd">
+<td class="odd"><a href="#">Teer</a></td>
+<td class="right odd"><a href="#">9.99$</a></td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td class="right"><a href="#">Shop All </a></td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<h1>Mens Sale</h1>
+<table id="nav-sale" class="data-table">
+<thead> 
+<tr>
+<th>&nbsp;</th><th class="right">Starting At</th>
+</tr>
+</thead> 
+<tbody>
+<tr class="odd">
+<td class="odd"><a href="#">Teer</a></td>
+<td class="right odd"><a href="#">9.99$</a></td>
+</tr>
+<tr>
+<td><a href="#">Long Sleeve tees</a></td>
+<td class="right"><a href="#">9.99$</a></td>
+</tr>
+<tr class="odd">
+<td class="odd"><a href="#">Teer</a></td>
+<td class="right odd"><a href="#">9.99$</a></td>
+</tr>
+<tr>
+<td><a href="#">Teer</a></td>
+<td class="right"><a href="#">9.99$</a></td>
+</tr>
+<tr class="odd">
+<td class="odd"><a href="#">Teer</a></td>
+<td class="right odd"><a href="#">9.99$</a></td>
+</tr>
+<tr>
+<td><a href="#">Teer</a></td>
+<td class="right"><a href="#">9.99$</a></td>
+</tr>
+</tbody>
+</table>
+<table id="nav-sale" class="data-table">
+<thead> 
+<tr>
+<th>&nbsp;</th><th class="right">Starting At</th>
+</tr>
+</thead> 
+<tbody>
+<tr class="odd">
+<td class="odd"><a href="#">Teer</a></td>
+<td class="right odd"><a href="#">9.99$</a></td>
+</tr>
+<tr>
+<td><a href="#">Long Sleeve tees</a></td>
+<td class="right"><a href="#">9.99$</a></td>
+</tr>
+<tr class="odd">
+<td class="odd"><a href="#">Teer</a></td>
+<td class="right odd"><a href="#">9.99$</a></td>
+</tr>
+<tr>
+<td><a href="#">Teer</a></td>
+<td class="right"><a href="#">9.99$</a></td>
+</tr>
+<tr class="odd">
+<td class="odd"><a href="#">Teer</a></td>
+<td class="right odd"><a href="#">9.99$</a></td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td class="right"><a href="#">Shop All </a></td>
+</tr>
+</tbody>
+</table>
+</li>
+<li class="last">
+<div class="first">
+<h1>Womens new offers</h1>
+<ol>
+</ul>';
+$footer = '';
+$this->setDefaultHeaderFooter($header, $footer);
+$this->setDefaultGeneralStyle('#ffffff', '#D5D5D5', 1); // (background_color, border_color, title_font, title_font_size)
+$this->setDefaultTitleStyle('#ffffff', '#000000','Arial,Helmet,Freesans,sans-serif',11); // (title_color, title_background_color, title_font, title_font_size)
+$this->setDefaultSubtitleStyle('#000000', 'Arial,Helmet,Freesans,sans-serif', 11); // (subtitle_color, subtitle_font, subtitle_font_size)
+$this->setDefaultLinkStyle('#000000', '#3f58a3', 'Arial,Helmet,Freesans,sans-serif', 11); // (link_color, hover_color, link_font, link_font_size)
+$this->setDefaultTextStyle('#000000', 'Arial,Helmet,Freesans,sans-serif', 12); // (text_color, text_font, text_font_size)
+$this->setDefaultContentGeneral(309,0,0);// megamenu_size,column_number,column_size
+/* add title */
+$this->addTitle('Categories');
+/* add map */
+$this->setTemplateMap($_template_map)
+?>
+<style type="text/css">
+    .megamenu #nav  ul.sale{
+	width:100% !important;
+	float:left !important;
+	position:static !important;
+	background:#fff !important;
+	}
+.megamenu #nav  ul.sale li{
+	float:left !important;
+	width:300px !important;
+	padding:5px !important;	
+	border-right:1px solid #d6d6d6 !important;
+	}
+.megamenu #nav  ul.sale li.last{
+	background:none !important;
+	border-right:none !important;
+	}
+.megamenu #nav ul.sale li h1{
+	float:left !important;
+	width:100% !important;
+	border-bottom:1px dashed #ded7d3 !important;
+	}
+.megamenu #nav  ul.sale li .data-table{
+	float:left !important;
+	width:49% !important;
+	border:none !important;
+	margin-left:1% !important;
+	}
+.megamenu #nav .sale  .data-table  td.odd{background:#f5f5f5 !important;}
+.megamenu #nav .sale  .data-table  tr.odd{background:#f5f5f5 !important;}
+.megamenu #nav .sale .data-table thead th{
+	width:auto !important;
+	background:none !important;
+	border:none !important;
+	font-weight:normal !important;
+	color:#666 !important;
+	font-size:12px !important;
+	}
+.megamenu #nav  .sale .data-table thead th a{font-weight:bold ! important;}
+.megamenu #nav  .sale  .data-table tbody td{
+	background:none !important;
+	border:none !important;
+	font-weight:bold !important;
+	color:#666 !important;
+	font-size:11px !important; 
+	}
+.megamenu #nav  .sale  li .data-table  .right{
+	text-align:right !important;
+	font-weight:normal !important;
+	}
+.megamenu #nav  .sale  a{
+	text-transform:none !important; 
+	font-size:12px !important;
+	}
+.megamenu #nav  .sale  li.last   div {
+	position:static !important;
+	width:100% !important;
+	float:left !important;
+	border:none !important;
+	background:#fff !important;
+	}
+.megamenu #nav  .sale  li.last   div  ol {
+	width:50% !important;
+	float:left !important;
+	}
+.megamenu #nav  .sale  li.last   div  ol li{
+	border:none !important;
+	width:100% !important;
+}
+.megamenu #nav .sale li.last ol li a{font-weight:bold !important;}
+</style>

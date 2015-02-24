@@ -1,0 +1,133 @@
+<?php      
+/**
+* author Blanka
+* */ 
+$menuWidth = $this->getMenuWidth();
+$menuHeight = $this->getMenuHeight();
+$sumenu = $this->getCollection();   
+$count = 0;
+$i = 1;
+$size_mega = sizeof($sumenu);
+?>
+<link rel="stylesheet" type="text/css" href="<?php echo Mage::getDesign()->getSkinUrl('megamenu/css/megamenu_left_hover.css',array('_area'=>'frontend')); ?>" media="all" />
+<div class="nav-container megamenu">
+    <ul id="nav"  style="background:#000;width:<?php echo $this->getMenuWidth()?>px !important;height:<?php echo $menuHeight;?>px !important">
+        <?php foreach ($sumenu as $su):?>
+        <?php
+            $template = $su->getTemplateFilename();
+            
+            $block = $this->getLayout()
+                    ->createBlock('megamenu/item')
+                    ->setData('menu_item',$su->getData())
+                    ->setItem($su)
+                    ->setArea('frontend')
+                    ->setTemplate('megamenu/templates/'.$template);
+           
+        ?>
+        <?php if($su->getMenuType() == 5):?>
+        <?php
+            $parentCategories = $block->getCategories();
+            foreach($parentCategories as $parentCategory):
+        ?>
+            <li id="nav-<?php echo $su->getId().'-'.$parentCategory->getId();?>" class="level0 nav-<?php echo $su->getId().'-'.$parentCategory->getId();?>" style="height:<?php echo $menuHeight;?>px !important;background:#<?php echo $block->getCustomStyle('title_background_color')?> ;<?php if(!$block->positionIsAuto()):?>position:static;<?php else:?>position:relative;<?php endif;?>">
+                <a class="megamenu-lable"  style="line-height:<?php echo $menuHeight-5?>px !important;color:#<?php echo $block->getCustomStyle('title_color')?>;font-size: <?php echo $block->getCustomStyle('title_font_size');?>px !important; font-family: <?php echo $block->getCustomStyle('title_font');?> !important;background:url('<?php echo Mage::getBaseUrl('media').'megamenu'.'/'.$su->getItemIcon() ?>') no-repeat 10px center;" href="<?php echo $parentCategory->getUrl();?>" ><?php echo $parentCategory->getName()?></a>			
+                <div class="magestore-megamenu" style="left:<?php echo $this->getMenuWidth();?>px !important;<?php if($block->positionIsAuto()):?>width:auto !important<?php endif;?>">
+                    <?php
+                        
+                        $subBlock = $this->getLayout()
+                            ->createBlock('megamenu/item')
+                            ->setData('menu_item',$su->getData())
+                            ->setItem($su)
+                            ->setArea('frontend')
+                            ->setStore($store)
+                            ->setTemplate('megamenu/templates/'.$template);
+                         if($parentCategory->getChildren()){
+                            $children = explode(',',$parentCategory->getChildren());
+                            $subBlock->setCategories($children);
+                            $subBlock->setParentName($parentCategory->getName());
+                            echo $subBlock->toHtml();
+                        }
+                    ?>
+                </div>	
+            </li>
+        <?php
+            endforeach;
+        ?>
+        <?php else: ?>
+		<li id="nav-<?php echo $su->getId();?>" class="level0 nav-1" style="height:<?php echo $menuHeight;?>px !important;background:#<?php echo $block->getCustomStyle('title_background_color')?> ;<?php if(!$block->positionIsAuto()):?>position:static;<?php else:?>position:relative;<?php endif;?>">
+			<?php
+				$icon=$su->getItemIcon();
+				if($icon){
+			?>
+			<a class="megamenu-lable"  style="line-height:<?php echo $menuHeight-5;?>px !important;color:#<?php echo $block->getCustomStyle('title_color')?>;font-size: <?php echo $block->getCustomStyle('title_font_size');?>px !important; font-family: <?php echo $block->getCustomStyle('title_font');?> !important;background:url('<?php echo Mage::getBaseUrl('media').'megamenu'.'/'.$su->getItemIcon() ?>') no-repeat 10px center;" href="<?php echo $su->getLink();?>" ><?php echo $su->getNameMenu();?></a>		
+			<?php
+				}else{
+			?>
+			<a class="megamenu-lable"  style="line-height:<?php echo $menuHeight-5;?>px !important;color:#<?php echo $block->getCustomStyle('title_color')?>;font-size: <?php echo $block->getCustomStyle('title_font_size');?>px !important; font-family: <?php echo $block->getCustomStyle('title_font');?> !important;" href="<?php echo $su->getLink();?>" ><?php echo $su->getNameMenu();?></a>
+			<?php
+				}
+			?>
+			<div class="magestore-megamenu" style="left:<?php echo $this->getMenuWidth();?>px !important;">
+				<?php echo $block->toHtml();?>
+			</div>	
+		</li>
+        <?php endif;?>
+        <?php endforeach;?>
+    </ul>
+</div>
+<script type="text/javascript">
+    jQuery.noConflict();
+    jQuery(document).ready(function($) {
+	
+        var nav		= $('#nav');	
+		$('.grid-categories-megamenu').parent().parent().mouseenter(function(){
+			height1=$(this).attr('id');
+			var max_height_title = 0;
+			$.each($('#'+height1+' .level1-title'),function(key,e){
+				if(max_height_title<$(this).height()) {
+					max_height_title=$(this).height();	
+				}
+			});
+			$('#'+height1+' .level1-title').height(max_height_title);
+			var max_height1=0;
+			$.each($('#'+height1+' .level1-megamenu'),function(key,e){
+				if(max_height1<$(this).height()) {
+					max_height1=$(this).height();	
+				}
+			});
+			$('#'+height1+' .level1-megamenu').height(max_height1);
+			
+		});
+		$('.list-categories-megamenu').parent().parent().mouseenter(function(){
+			height2=$(this).attr('id');
+			var max_height2=0;
+			$.each($('#'+height2+' .level1-megamenu'),function(key,e){
+				if(max_height2<$(this).height()) {
+					max_height2=$(this).height();	
+				}
+			});
+			$('#'+height2+' .level1-megamenu').height(max_height2);
+		});
+			
+		$('.group-category').parent().parent().parent().mouseenter(function(){
+			height3= $(this).attr('id');	
+			var max_height3=0;
+			$.each($('#'+height3+' .level1-megamenu'),function(){
+				if(max_height3<$(this).height()) {
+				max_height3=$(this).height();	
+				}					
+			});
+			$('#'+height3+' .level1-megamenu').height(max_height3);						
+		});
+		$('.products-megamenu-grid').parent().parent().mouseenter(function(){
+			height4 = $(this).attr('id');
+			var max_height_name=0;
+			$.each($('#'+height4+' .product-name'),function(key,e){
+				if(max_height_name<$(this).height()) {
+				max_height_name=$(this).height();	
+				}
+			});
+			$('#'+height4+' .product-name').height(max_height_name);
+		});
+	});
+</script>

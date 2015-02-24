@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Qaz_Qbanner>
+            <active>true</active>
+            <codePool>community</codePool>
+        </Qaz_Qbanner>
+    </modules>
+</config> 

@@ -1,0 +1,114 @@
+<?php
+/**
+ * author Hoang Hai
+ * Use function rend(....){} in Block Navigation to create Block and set Template Products
+ */
+
+/**
+ * Compute size menu
+ * @param size_megamenu is size menu
+ * @param size_product is compute size menu product 
+ */
+$size_megamenu = $this->getData('size_megamenu');// size of Menu
+$colum = $this->getData('colum'); //column of list product
+$size_colum = $this->getData('size_colum');
+$size_magrin = 26*($colum-1);// 26 is size margin default for columns 
+$size_product = ($size_colum)*$colum+$size_magrin;
+/**
+ *Get information megamenu 
+ */
+$list = $this->getData('list') ;
+$id = $this->getData('id');   
+$level = $this->getData('level');            
+$template = $this->getData('template');
+$chek = $this->getData('size_list');// count product   
+$contlist_end = $chek;
+$count = ceil($contlist_end/$colum);
+/**@param li
+ * @param c
+ * use for mousehover and devide column product
+ */
+$check_end_produtslist = 0;            
+$countprouct_colum = 0;
+$countli = 0;?>
+<?php 
+/**
+ * if param level = 14 , both template and list product will be shown
+ * else if level = 13, list product will be shown
+ */
+?>
+<?php if ($level == 14):?>
+<div id="" class="both-megamenu" style="width: <?php echo $size_megamenu ?>px"> <!-- start for both-megamenu -->
+    <div id="block-megamenu-<?php echo $id ?>" class="block-megamenu">
+		<?php // Get html template?>
+        <?php echo $this->getTemplateProduct($template);?>
+    </div>
+    <div id="" class="products-megamenu products-both" style="width:<?php echo $size_product?>px !important;">  <!-- start for product if show with template -->   
+<?php endif; ?>
+
+<?php if ($level == 13):?>
+    <div id="" class="products-megamenu" style="width:<?php echo $size_megamenu ?>px !important;"> <!-- only show products -->
+<?php endif; ?> 
+
+    <?php // Check list product is not empty ?>
+    <?php if ($contlist_end): ?>
+        <span class="font-megamenu"><?php echo $this->__('Products') ?></span> 
+        <div class="products-megamenu-in" style="width:<?php echo $size_product?>px !important;">
+			<ul class="level0 level0-megamenu frist" style="width:<?php echo $size_colum?>px !important;">
+			   <?php foreach ($list as $pro): ?>               
+				<li id="level1-<?php echo $pro->getId(); echo $id ?>" class="level1<?php $countli++ ; if($countli == 1){ echo " first";} elseif ($countli == $count){ echo " last"; $countli = 0;}?>"><a id="" class="" href="<?php  echo   $this->getProductUrl($pro);?>" title="<?php  echo $this->htmlEscape($pro->getName())?>"><span><?php echo $this->htmlEscape($pro->getName())?></span></a>                        
+					<div id="box<?php echo $pro->getId(); echo $id ?>" class="box-megamenu" style="display: none">
+						<div class="image-megamenu">
+							<a class="a-img-megamenu" href="<?php echo $pro->getProductUrl($pro)?>">
+								<img title="<?php echo Mage::helper('megamenu')->htmlEscape($pro->getName());?>"src="<?php echo $this->helper('catalog/image')->init($pro, 'small_image')->resize(194)?>" width="183" height="194"/>
+							</a>
+						</div>
+						<div class="box-button-megamenu">
+							<?php echo $this->getPriceHtml($pro, true)?>                                                           
+							<form class="form-cart-megamenu" action="<?php echo $this->getSubmitUrl($pro)?>"  method="post" id="product_addtocart_form_<?php echo $pro->getId()?>">                       
+								<button class="button btn-cart" onclick="$('product_addtocart_form_<?php echo $pro->getId()?>').submit(this)" title="<?php echo $this->__('Add to Cart') ?>" type="button">                                   
+									<span><span><?php echo $this->__('Add to Cart') ?></span></span>                                    
+								</button>
+							</form>
+						</div>
+					</div>                       
+				</li>			
+				<script>
+					$("level1-<?php echo $pro->getId(); echo $id ?>").observe('mouseover', function() {
+							$('level1-<?php echo $pro->getId(); echo $id ?>').setStyle({ position: 'relative' });
+							$('box<?php echo $pro->getId(); echo $id ?>').setStyle({ display: 'block' });
+							$('box<?php echo $pro->getId(); echo $id ?>').addClassName('shown-sub-megamenu');
+						});
+					$("level1-<?php echo $pro->getId(); echo $id ?>").observe('mouseout', function() {	
+							$('level1-<?php echo $pro->getId(); echo $id ?>').setStyle({ position: 'static' });
+							$('box<?php echo $pro->getId(); echo $id ?>').setStyle({ display: 'none' });
+							$('box<?php echo $pro->getId(); echo $id ?>').removeClassName('shown-sub-megamenu');
+						});
+				</script>			
+			<?php $check_end_produtslist++;
+			$countprouct_colum++;                        
+			if ($countprouct_colum >= $count && $check_end_produtslist != $contlist_end):                             
+				$chek -= $countprouct_colum;
+				$colum -= 1;                           
+				$count = ceil($chek/$colum);
+				?>
+			</ul>
+			
+				<?php if($colum == 1):?>
+			<ul class="level0 level0-megamenu last-level0 last" style="width:<?php echo $size_colum ?>px !important">                                                                                                   
+				<?php else: ?>
+				
+			<ul class="level0 level0-megamenu" style="width:<?php echo $size_colum ?>px !important"> 
+				<?php endif; ?>
+			 <?php $countprouct_colum = 0;endif; endforeach; ?>                  
+			</ul>
+		</div>
+	<?php endif;?> 	
+<?php if ($level == 13):?>
+	</div> <!-- end for only show products -->
+<?php endif; ?>
+
+<?php if($level == 14): ?>
+	</div> <!-- end for show products with template -->
+</div> <!-- end for show both -->
+<?php endif; ?> 

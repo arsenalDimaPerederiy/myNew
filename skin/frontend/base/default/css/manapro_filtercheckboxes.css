@@ -1,0 +1,30 @@
+/**
+ * @category    Mana
+ * @package     ManaPro_FilterCheckboxes
+ * @copyright   Copyright (c) http://www.manadev.com
+ * @license     http://www.manadev.com/license  Proprietary License
+ */
+ol.m-filter-css-checkboxes li a.m-checkbox-unchecked { 
+    background: url("../images/manapro_filtercheckboxes/checkbox_all.png") no-repeat scroll 0 3px transparent;
+    height: 11px;
+    width: 11px;
+	}
+ol.m-filter-css-checkboxes li a.m-checkbox-checked { background: url(../images/manapro_filtercheckboxes/checkbox_all.png) no-repeat scroll 0 -91px transparent; }
+ol.m-filter-css-checkboxes li a.m-checkbox-unchecked, ol.m-filter-css-checkboxes li a.m-checkbox-checked {
+    display: table;
+    padding-left: 24px;
+    text-decoration: none;
+    width: 148px;
+}
+
+.m-filter-checkboxes li input { margin-right: 5px; position: relative; bottom: 2px; }
+.m-filter-css-checkboxes {
+    float: left;
+    margin: 8px 0;
+    width: 100%;
+}
+.m-expandable-filter {
+    margin-bottom: 0;
+}
+
+

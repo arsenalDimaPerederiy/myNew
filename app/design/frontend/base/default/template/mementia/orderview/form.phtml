@@ -1,0 +1,38 @@
+<?php
+
+?>
+
+<div class="page-title top-bg" id="mf5">
+    <h1><?php print $this->__('Please fill in the form to view order.') ?></h1>
+</div>
+<br/>
+<div id="orderview" style="margin: 0 auto;">
+    <form id="orderview_form" method="get" action="<?php print $this->getActionUrl() ?>">
+        <ul class="form-list">
+            <li>
+                <label for="orderview_id" class="required"><?php print $this->__('Order Number') ?><em>*</em></label>
+
+                <div class="input-box">
+                    <input type="text" id="orderview_id" name="id" class="input-text required-entry"
+                           value="<?php print $this->getRequestOrderId() ?>"/>
+                </div>
+            </li>
+            <li>
+                <label for="orderview_email" class="required"><?php print $this->__('Email') ?><em>*</em></label>
+
+                <div class="input-box">
+                    <input type="text" id="orderview_email" name="email" class="input-text required-entry"
+                           value="<?php print $this->getRequestEmail() ?>"/>
+                </div>
+            </li>
+
+        </ul>
+        <div class="buttons-set">
+            <button type="button" onclick="editForm.submit()" class="button" title="View Order" name="send" id="send2">
+                <span><span><?php print $this->__('View Order') ?></span></span></button>
+        </div>
+    </form>
+</div>
+<script type="text/javascript">
+    var editForm = new VarienForm('orderview_form');
+</script>

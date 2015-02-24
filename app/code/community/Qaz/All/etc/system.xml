@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <tabs>
+        <qall translate="label" module="all">
+            <label>Qazware Extensions</label>
+            <sort_order>100</sort_order>
+        </qall>
+    </tabs>
+</config>

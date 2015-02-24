@@ -1,0 +1,72 @@
+.megamenu #nav{position:relative!important;z-index:1000}
+.megamenu #nav ul,.megamenu #nav div{background:#fff!important}
+.megamenu #nav .magestore-megamenu{left:0!important;width:100%!important;border:none!important;z-index:1001!important;visibility:hidden!important;margin:0!important;padding:0!important;background:#fff!important;position:absolute!important;display:block}
+.megamenu #nav a.megamenu-lable{font-weight:700!important}
+.megamenu #nav ul li a:hover,.megamenu #nav ul li a:hover span{background:none!important;color:#37A3E0!important}
+.megamenu #nav li ul.shown-sub,.megamenu #nav li div.shown-sub{padding:0!important;margin:0!important;background:#fff!important;border:none;visibility:visible}
+.megamenu #nav .magestore-megamenu .products-megamenu{left:0!important;background:none repeat scroll 0 0 #FFF!important;border:1px solid #D5D5D5!important;height:auto!important;float:left!important;position:static!important;padding:15px!important}
+.megamenu #nav li:hover .products-megamenu{visibility:visible!important}
+.megamenu #nav .magestore-megamenu .products-megamenu button.button{width:auto!important;background:none!important;border:none!important;width:85px!important}
+.megamenu #nav .magestore-megamenu .products-megamenu button.button span{padding:0 8px!important;background:#F18200!important;border:1px solid #DE5400!important;height:19px!important;font:bold 12px/19px Arial,Helvetica,sans-serif!important;text-align:center!important}
+.megamenu #nav .magestore-megamenu .products-megamenu button.button span span{border:none!important;padding:0!important;color:#fff!important}
+.megamenu #nav .magestore-megamenu .products-megamenu-in{left:0!important;position:static!important;float:right!important;border:0 none!important;z-index:10!important;background:#fff!important}
+.megamenu #nav .magestore-megamenu .products-megamenu-in ul.level0 li.level1{position:static}
+.megamenu #nav .magestore-megamenu .categories-megamenu{left:0!important;background:none repeat scroll 0 0 #FFF!important;border:1px solid #D5D5D5!important;height:auto!important;float:left!important;visibility:hidden!important;position:static!important;padding:15px!important}
+.megamenu #nav li:hover .categories-megamenu{visibility:visible!important}
+.megamenu #nav .magestore-megamenu .block-megamenu{left:0!important;background:none repeat scroll 0 0 #FFF!important;border:1px solid #D5D5D5!important;height:auto!important;float:left!important;visibility:hidden!important;position:static!important;padding:15px!important}
+.megamenu #nav li:hover .block-megamenu{visibility:visible!important}
+.megamenu #nav .magestore-megamenu .both-megamenu .block-megamenu,.megamenu #nav .magestore-megamenu .both-megamenu .products-megamenu{border:none!important;width:auto!important}
+.megamenu #nav .magestore-megamenu .both-megamenu{left:0!important;background:none repeat scroll 0 0 #FFF!important;border:1px solid #D5D5D5!important;height:auto!important;float:left!important;visibility:hidden!important;position:static!important}
+.megamenu #nav li:hover .both-megamenu{visibility:visible!important}
+.megamenu #nav .products-both{float:right!important;border:0 none!important}
+.megamenu #nav .magestore-megamenu .level0-megamenu{float:left!important;margin-right:26px!important;position:static!important;background:#fff!important}
+.megamenu #nav .magestore-megamenu .last-level0{float:right!important;margin-right:0!important}
+.megamenu .font-megamenu{color:#000!important;margin:0 0 10px!important;font-weight:700!important;border-bottom:1px dashed #DED7D3!important;font-size:11px!important;text-transform:uppercase!important;padding:0 0 5px!important;float:left!important;width:100%!important}
+.megamenu #nav .box-button-megamenu,#nav .image-megamenu{left:0!important;position:relative!important}
+.megamenu #nav .box-megamenu{border:1px solid #D6D6D6!important;width:210px!important;top:0!important;right:0!important;position:absolute!important;background:#fff!important;z-index:1000!important;overflow:hidden!important}
+.megamenu #nav .shown-sub-megamenu{left:150px!important;position:absolute;border:1px solid #D6D6D6!important;background:#fff!important}
+.megamenu #nav .price-box{left:0!important;border:0!important;top:0!important;float:left!important;color:#C76200!important;font-weight:700!important;width:100px!important;background:#fff!important;position:static!important}
+.megamenu #nav .price-box span{padding-left:6px!important;padding-top:0!important}
+.megamenu #nav .box-button-megamenu{float:left!important;width:187px!important;padding:10px!important;top:0!important;border:0 none!important;background:#fff!important}
+.megamenu #nav .image-megamenu{border:0 none!important;padding:5px!important;background:#fff!important}
+.megamenu #nav .image-megamenu .a-img-megamenu{padding:4px 5px 5px 6px !important;background:none!important}
+.megamenu #nav .image-megamenu img{border:2px solid #DCDCDC!important}
+.megamenu #nav .form-cart-megamenu{float:right!important}
+.megamenu #nav .magestore-megamenu li,#nav .magestore-megamenu .level1.last{background:none repeat scroll 0 0 #FFF!important}
+.megamenu #nav .magestore-megamenu li a{background:none repeat scroll 0 0 transparent!important;color:#666!important;font-size:11px!important;height:auto!important;text-align:left!important}
+.megamenu #nav ul li span{color:#666!important;font-weight:400!important;padding:3px 15px!important;font-size:12px!important;text-transform:none!important;line-height:normal!important}
+.megamenu #nav ul li{height:auto!important;border:none!important}
+.megamenu #nav ul li a{height:auto!important}
+.megamenu #nav ul.brand{float:left!important;width:100%!important;position:static!important}
+.megamenu #nav ul.brand li h1{font-size:11px!important;font-weight:700!important;border-bottom:1px dashed #ded7d3!important;text-transform:uppercase!important;padding:0 0 5px 2px !important;float:left!important;width:100%!important}
+.megamenu #nav ul.brand li{width:100%!important;float:left!important;padding:0!important;margin:0!important}
+.megamenu #nav ul.brand li a{float:left!important}
+.megamenu #nav ul.brand li a.last{font-size:11px!important;text-decoration:underline!important;float:right!important;padding-right:15px!important}
+.megamenu #nav ul.brand li a:hover{text-decoration:none}
+.megamenu #nav ul.brand li a img{padding:9px!important;width:96px!important;height:96px!important;float:left!important}
+.megamenu #nav ul.simple{min-width:165px!important;float:left!important;position:static!important}
+.megamenu #nav ul.simple li h1{font-size:11px!important;font-weight:700!important;border-bottom:1px dashed #ded7d3!important;text-transform:uppercase!important;padding:0 0 5px 2px !important;float:left!important;width:100%!important;min-width:165px!important}
+.megamenu #nav ul.simple li{width:100%!important;float:left!important;padding:5px 0 0!important;min-width:165px!important}
+.megamenu #nav ul.simple li a{font-size:11px!important}
+.megamenu #nav ul.whatnew{width:100%!important;float:left!important;position:static!important;background:#fff!important}
+.megamenu #nav ul.whatnew li{float:left!important;max-width:175px!important;padding:5px!important;width:25%!important}
+.megamenu #nav ul.whatnew ol{float:left!important;border-right:1px solid #d6d6d6!important;height:185px!important;overflow:hidden!important;width:100%!important}
+.megamenu #nav ul.whatnew ol li{float:left!important;width:100%!important;padding:5px 0 0!important}
+.megamenu #nav ul.whatnew li h1{font-size:11px!important;font-weight:700!important;border-bottom:1px dashed #ded7d3!important;text-transform:uppercase!important;padding:0 0 5px 2px !important;float:left!important;width:95%!important}
+.megamenu #nav ul.whatnew li a{float:left!important;line-height:normal!important;padding:0!important}
+.megamenu #nav ul.sale{width:100%!important;float:left!important;position:static!important;background:#fff!important}
+.megamenu #nav ul.sale li{float:left!important;width:300px!important;padding:5px!important;border-right:1px solid #d6d6d6!important}
+.megamenu #nav ul.sale li.last{background:none!important;border-right:none!important}
+.megamenu #nav ul.sale li h1{float:left!important;width:100%!important;border-bottom:1px dashed #ded7d3!important}
+.megamenu #nav ul.sale li .data-table{float:left!important;width:49%!important;border:none!important;margin-left:1%!important}
+.megamenu #nav .sale .data-table td.odd{background:#f5f5f5!important}
+.megamenu #nav .sale .data-table tr.odd{background:#f5f5f5!important}
+.megamenu #nav .sale .data-table thead th{width:auto!important;background:none!important;border:none!important;font-weight:400!important;color:#666!important;font-size:12px!important}
+.megamenu #nav .sale .data-table thead th a{font-weight:700!important}
+.megamenu #nav .sale .data-table tbody td{background:none!important;border:none!important;font-weight:700!important;color:#666!important;font-size:11px!important}
+.megamenu #nav .sale li .data-table .right{text-align:right!important;font-weight:400!important}
+.megamenu #nav .sale a{text-transform:none!important;font-size:12px!important}
+.megamenu #nav .sale li.last div{position:static!important;width:100%!important;float:left!important;border:none!important;background:#fff!important}
+.megamenu #nav .sale li.last div ol{width:50%!important;float:left!important}
+.megamenu #nav .sale li.last div ol li{border:none!important;width:100%!important}
+.megamenu #nav .sale li.last ol li a{font-weight:700!important}

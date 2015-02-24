@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!-- This file titles for pages with applied layered navigation filters. It also defines rules of how
+    to join titles of several simultaneously applied filter values.	-->
+<m_page_titles>
+    <values as="value">
+        <apply pattern="{$value->title}" glued_by=", " last_glued_by=" и " prefix=": " />
+    </values>
+    <keyword_values as="value">
+        <apply pattern="{$value->title}" glued_by="," last_glued_by="," prefix="," />
+    </keyword_values>
+    <description_values as="value">
+        <apply pattern="{$value->title}" glued_by=", " last_glued_by=" и " prefix=" " />
+    </description_values>
+    <page pattern="Страница {$page}" />
+    <finally>
+        <set title="{$page}{$title}{$values}" />
+        <set keywords="{$keywords}{$keyword_values} {$page}"/>
+        <set description="{$description}{$description_values} {$page}"/>
+    </finally>
+</m_page_titles>

@@ -1,0 +1,82 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Mementia_Expressdelivery>
+            <version>1.0</version>
+        </Mementia_Expressdelivery>
+    </modules>
+    <global>
+        <models>
+            <expressdelivery>
+                <class>Mementia_Expressdelivery_Model</class>
+                <resourceModel>expressdelivery_resource</resourceModel>
+            </expressdelivery>
+            <expressdelivery_resource>
+                <class>Mementia_Expressdelivery_Model_Resource</class>
+                <entities>
+                    <city>
+                        <table>expressdelivery_city</table>
+                    </city>
+                </entities>
+            </expressdelivery_resource>
+        </models>
+        <blocks>
+            <expressdelivery>
+                <class>Mementia_Expressdelivery_Block</class>
+            </expressdelivery>
+        </blocks>
+        <helpers>
+            <expressdelivery>
+                <class>Mementia_Expressdelivery_Helper</class>
+            </expressdelivery>
+        </helpers>
+        <resources>
+            <expressdelivery_setup>
+                <setup>
+                    <module>Mementia_Expressdelivery</module>
+                </setup>
+            </expressdelivery_setup>
+        </resources>
+    </global>
+    <admin>
+        <routers>
+            <expressdelivery>
+                <use>admin</use>
+                <args>
+                    <module>Mementia_Expressdelivery</module>
+                    <frontName>expressdelivery</frontName>
+                </args>
+            </expressdelivery>
+        </routers>
+    </admin>
+    <frontend>
+		<routers>
+			<expressdelivery>
+				<use>standard</use>
+				<args>
+					<module>Mementia_Expressdelivery</module>
+					<frontName>expressdelivery</frontName>
+				</args>
+			</expressdelivery>
+		</routers>
+	</frontend>
+    <default>
+        <carriers>
+            <expressdelivery>
+                <!-- disabled by default not to propose unconfigured shipping method to customer -->
+                <active>0</active>
+                <!-- allow only for specific countries flag -->
+                <sallowspecific>1</sallowspecific>
+                <!-- allow only for Ukraine -->
+                <specificcountry>UA</specificcountry>
+                <!-- carrier model -->
+                <model>expressdelivery/carrier_expressDelivery</model>
+                <!-- carrier title -->
+                <title>Курьерская доставка</title>
+                <!-- error message -->
+                <specificerrmsg>Этот способ доставки на текущий момент не доступен. Если вы желаете, чтобы мы доставили заказ Курьерская доставка, обратитесь к менеджеру интернет-магазина.</specificerrmsg>
+                <free_shipping_subtotal>500</free_shipping_subtotal>
+            </expressdelivery>
+        </carriers>
+    </default>
+</config>

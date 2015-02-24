@@ -1,0 +1,53 @@
+<?xml version="1.0" ?>
+<config>
+    <modules>
+        <Mementia_OrderView>
+            <version>0.1.0</version>
+        </Mementia_OrderView>
+    </modules>
+
+    <frontend>
+        <routers>
+            <orderview>
+                <use>standard</use>
+                <args>
+                    <module>Mementia_OrderView</module>
+                    <frontName>orderview</frontName>
+                </args>
+            </orderview>
+        </routers>
+        <layout>
+            <updates>
+                <mementia_orderview>
+                    <file>mementia_orderview.xml</file>
+                </mementia_orderview>
+            </updates>
+        </layout>
+    </frontend>
+
+    <global>
+        <blocks>
+            <orderview>
+                <class>Mementia_OrderView_Block</class>
+            </orderview>
+        </blocks>
+        <helpers>
+            <orderview>
+                <class>Mementia_OrderView_Helper</class>
+            </orderview>
+        </helpers>
+        <models>
+            <orderview>
+                <class>Mementia_OrderView_Model</class>
+            </orderview>
+            <sales>
+                <rewrite>
+                    <order>Mementia_OrderView_Model_Rewrite_Sales_Order</order>
+                </rewrite>
+            </sales>
+        </models>
+
+        <events>
+        </events>
+    </global>
+</config>

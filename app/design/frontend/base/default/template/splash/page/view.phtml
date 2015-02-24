@@ -1,0 +1,46 @@
+<?php
+/**
+ * @category    Fishpig
+ * @package    Fishpig_AttributeSplashPro
+ * @license      http://fishpig.co.uk/license.txt
+ * @author       Ben Tideswell <ben@fishpig.co.uk>
+ */
+?>
+<?php $_page = $this->getPage() ?>
+<?php $pageNum = Mage::app()->getRequest()->getParam('p'); ?>
+<?php if ($_page): ?>
+	<div class="page-title category-title"></div>
+	<?php if (!$_page->getShortDescription()): ?>
+		<?php if($pageNum > 1): ?>
+			<div class="category-description std"><div class="category_bannner4"><div class="middle black-text category_bannner_inner" style="background: #ddd; height: 130px;">
+				<h1 class="seo-title"><?php echo $this->escapeHtml($_page->getName())." - страница ".$pageNum ?></h1>
+			</div></div></div>		
+		<?php else: ?>	
+			<div class="category-description std"><div class="category_bannner4"><div class="middle black-text category_bannner_inner" style="background: #ddd; padding: 0px;">
+				<h1 class="seo-title"><?php echo $this->escapeHtml($_page->getName()) ?></h1>
+			</div></div></div>
+		<?php endif; ?>
+	<?php else: ?>
+		<div class="category-description std">
+			<?php echo $_page->getShortDescription() ?>
+		</div>
+	<?php endif; ?>
+	<div id="messages_splash_page_view"><?php echo $this->getMessagesBlock()->getGroupedHtml() ?></div>
+
+	<? $currUrl = explode('?',$this->helper('core/url')->getCurrentUrl()); ?>
+
+			<?php if($this->getLayout()->createBlock('catalog/product_list_toolbar')->setChild('product_list_toolbar_pager', $pager)->getCurrentMode()!='grid'): ?>
+				<?php $rowHeight = 420; $cols = 3; ?>
+			<?php else: ?> 
+				<?php $rowHeight = 340; $cols = 4; ?>
+			<?php endif; ?>
+			<?php $margin = ceil(count($_page->getLoadedProductCollection())/$cols)* $rowHeight + 80; ?>
+			<div class = "category-block-description" style="margin-top:<?php echo $margin; ?>px;">
+			<?php if(strstr(preg_replace('/[^A-Za-z0-9-]/', '',$_page->getUrl()),preg_replace('/[^A-Za-z0-9-]/', '', $currUrl[0]))): ?>	
+				<?php if ($_page->getDescription() && Mage::getBlockSingleton('page/html_pager')->getCurrentPage() == 1): ?>
+					<?php echo $_page->getDescription() ?>
+				<?php endif; ?>
+			<?php endif; ?>
+			</div>
+	<?php echo $this->getProductListHtml() ?>
+<?php endif; ?>

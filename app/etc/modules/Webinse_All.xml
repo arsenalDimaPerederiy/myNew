@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Webinse_All>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Webinse_All>
+    </modules>
+</config>

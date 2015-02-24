@@ -1,0 +1,73 @@
+<?php
+$_product = $this->getProduct();
+$_attributes = Mage::helper('core')->decorateArray($this->getAllowAttributes());
+$swatch_attributes = Mage::helper('colorselectorplus')->getSwatchAttributes();
+$title = Mage::getStoreConfig('color_selector_plus/colorselectorplusgeneral/title', Mage::app()->getStore());
+$hide = Mage::getStoreConfig('color_selector_plus/colorselectorplusgeneral/hidedropdown', Mage::app()->getStore());
+$ds = (Mage::getConfig()->getModuleConfig('CJM_CustomStockStatus')->is('active', 'true') ? Mage::getStoreConfig('custom_stock/configurableproducts/dynamics', Mage::app()->getStore()) : 0);
+?>
+<?php $attrFind = array(); ?>
+<?php if ($_product->isSaleable() && count($_attributes)): ?>
+    <dl>
+    	<?php foreach($_attributes as $_attribute): ?>
+			<?php $_productAttribute = $_attribute->getProductAttribute(); ?>
+			<?php $attrUrl = $this->getRequest()->getParam($_productAttribute->getAttributeCode()); ?>
+			
+			<?php if(in_array($_productAttribute->getAttributeCode(), $swatch_attributes)): ?>
+				<?php $attributeId = $_attribute->getAttributeId(); ?>
+				<?php if (isset($attrUrl)): ?>
+					<?php $attrFind[$attributeId] =  $attrUrl; ?>
+				<?php endif; ?>
+				<dt class="<?php echo $_productAttribute->getAttributeCode() ?>" <?php if (isset($attrUrl)): ?><?php endif; ?>>
+       				<label class="required"><?php echo $this->__('Select Your '.$_productAttribute->getAttributeCode()) ?></label>
+       				<?php if ($hide == 1){?>  <label <?php if($_productAttribute->getAttributeCode() != 'color'): ?>style="display:none;"<?php endif; ?> id="divattribute<?php echo $attributeId ?>" class="swatchLabel"><?php echo $title ?></label><?php }?>
+       			</dt>
+       			<dd <?php if ($_attribute->decoratedIsLast): ?>  class="last <?php echo $_productAttribute->getAttributeCode() ?>"<?php else: ?> class="<?php echo $_productAttribute->getAttributeCode() ?>"<?php endif;  ?> <?php if (isset($attrUrl)): ?><?php endif; ?> >
+                	<div class="input-box">
+                	<select name="super_attribute[<?php echo $attributeId ?>]" id="attribute<?php echo $attributeId ?>" class="required-entry super-attribute-select<?php if($hide == 1) echo ' swatchSelect' ?>">
+                   		<option><?php echo $this->__('Choose an Option') ?></option>
+               		</select>
+               		</div>
+					<?php  echo Mage::helper('colorselectorplus')->getSwatchHtml($_productAttribute->getAttributeCode(), $attributeId, $_product); ?>
+              	</dd>
+     		<?php else: ?>
+        		<dt><label class="required"><?php echo $this->__($_attribute->getLabel()) ?></label></dt>
+        		<dd<?php if ($_attribute->decoratedIsLast){?> class="last"<?php }?>>
+            		<div class="input-box">
+                		<select name="super_attribute[<?php echo $_attribute->getAttributeId() ?>]" id="attribute<?php echo $_attribute->getAttributeId() ?>" class="required-entry super-attribute-select">
+                    		<option><?php echo $this->__('Choose an Option') ?></option>
+                  		</select>
+              		</div></dd>
+   			<?php endif; ?>
+    	
+    	<?php endforeach; ?>
+    	
+    </dl>
+
+	<script type="text/javascript">
+		
+		var spConfig = new Product.Config(<?php echo $this->getJsonConfig() ?>);
+		
+		var dynamicStatus = '<?php echo $ds ?>',
+			selecttitle = '<?php echo $title ?>';
+		
+    </script>
+	
+
+	<?php if (count($attrFind) > 0): ?>
+			<script type="text/javascript">
+			
+				jQuery(document).ready(function() {
+					<?php foreach($attrFind as $id => $color): ?>
+						jQuery('#ul-attribute<?php echo $id ?> #swatch<?php echo $color ?>').click();
+					<?php endforeach; ?>
+					
+					<?php if(isset($attrFind[85])): ?>
+						jQuery(".icart-product-view .product-img-box img").attr("src",jQuery('#ul-attribute85 #swatch<?php echo $attrFind[85] ?>').attr("src"));
+					<?php endif; ?>
+				});
+				
+			</script>
+	<?php endif; ?>		
+	
+<?php endif;

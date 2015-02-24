@@ -1,0 +1,16 @@
+#MB_overlay{position:absolute;margin:auto;top:0;left:0;width:100%;height:100%;z-index:9999;background-color:#000!important}
+#MB_overlay[id]{position:fixed}
+#MB_window{position:absolute;top:0;border:0 solid;text-align:left;z-index:10000}
+#MB_window[id]{position:fixed!important}
+#MB_frame{position:relative;background-color:#FFF;height:100%;border:1px solid #666}
+#MB_header{margin:0;padding:0}
+#MB_content{padding:21px 1em;overflow:auto}
+#MB_caption{font:bold 100% "Lucida Grande",Arial,sans-serif;text-shadow:#FFF 0 1px 0;padding:.5em 2em .5em .75em;margin:0;text-align:left;display:none}
+#MB_close{display:block;position:absolute;right:2px;top:2px;font-weight:700;text-decoration:none;font-size:13px;width:28px;height:30px;background:transparent url(images/close-btn-big.png) 0 0 no-repeat}
+#MB_close span{display:none}
+#MB_loading{padding:1.5em;text-indent:-10000px;background:transparent url(spinner.gif) 50% 0 no-repeat}
+#MB_window{color:#000;top:100px}
+#MB_caption{color:#000}
+#MB_close{color:#777}
+#MB_close:hover{color:#000}
+.MB_alert{margin:10px 0;text-align:center}

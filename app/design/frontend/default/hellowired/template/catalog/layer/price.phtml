@@ -1,0 +1,56 @@
+
+
+
+
+
+<?php /* @var $_helper Mana_Filters_Helper_Data */ $_helper = Mage::helper(strtolower('Mana_Filters')); ?>
+<?php /* @var $_superHelper ManaPro_FilterSuperSlider_Helper_Data */ $_superHelper = Mage::helper(strtolower('ManaPro_FilterSuperSlider')); ?>
+<?php /* @var $_slider ManaPro_FilterSlider_Helper_Data */ $_slider = Mage::helper(strtolower('ManaPro_FilterSlider'));?>
+
+
+<?php $page=Mage::getModel('splash/page')->load(Mage::registry('splash_page')->getId()); ?>
+<?php $product=Mage::getResourceModel('splash/page')->getProductCollection($page)->setOrder('price', 'DESC')->getFirstItem(); ?>
+<?php $maxPrice = ceil($product->getPrice()); ?>
+
+<?php if(Mage::app()->getRequest()->getParam('price')): ?>
+<?php $filterprices = explode(',', Mage::app()->getRequest()->getParam('price')); ?>
+<?php else: ?>
+<?php $filterprices = array(1,$maxPrice); ?>
+<?php endif; ?>
+<?php list($currentAppliedPriceMin, $currentAppliedPriceMax) = $filterprices; ?>
+
+<dd class="odd">
+<?php $_id = 'price'; ?>
+<div id="<?php echo $_id ?>-track" class="m-filter-slider">
+	<div id="<?php echo $_id ?>-span" class="m-slider-span"></div>
+	<div id="<?php echo $_id ?>-from" class="m-slider-from"></div>
+	<div id="<?php echo $_id ?>-to" class="m-slider-to"></div>
+</div>
+	<div class="m-slider-values">
+		<span id="<?php echo $_id ?>-range-from" class="m-slider-min-value"><?php echo strip_tags(Mage::helper('core')->currency(1)) ?></span>
+		<span id="<?php echo $_id ?>-range-to" class="m-slider-max-value"><?php echo strip_tags(Mage::helper('core')->currency($maxPrice)) ?></span>
+		<span id="<?php echo $_id ?>-applied" class="m-slider-selected-value"><?php echo $_helper->__('%s to %s', strip_tags(Mage::helper('core')->currency($currentAppliedPriceMin)), strip_tags(Mage::helper('core')->currency($currentAppliedPriceMax)))?></span>
+	</div>
+
+<script type="text/javascript">
+//&lt;![CDATA[
+ManaPro.filterSuperSlider('<?php echo $_id ?>', {
+	rangeFrom: 1,
+	rangeTo: <?php echo $maxPrice ?>,
+	appliedFrom: <?php echo $currentAppliedPriceMin ?>,
+	appliedTo: <?php echo $currentAppliedPriceMax ?>,
+	numberFormat: "<?php echo strip_tags(Mage::helper('core')->currency(0)) ?>",
+	appliedFormat: '__0__ <?php echo $_helper->__('to') ?> __1__',
+	url: '<?php echo $page->getUrl() ?>?price=__0__%2C__1__',
+	clearUrl: '<?php echo $page->getUrl() ?>',
+	manualEntry: 0,
+	formatThreshold: 0,
+    numberFormat2: "0",
+    existingValues: {},
+    decimalDigits: 0,
+    decimalDigits2: 0});
+//]]&gt;
+</script>
+
+
+</dd>

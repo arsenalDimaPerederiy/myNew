@@ -1,0 +1,88 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2011 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+/* @var $this Mage_Reports_Block_Product_Viewed */
+?>
+<?php 
+$_columnCount=5; 
+$i=0;
+
+?>
+    <?php     
+    $_coreHelper = $this->helper('core');
+    $_weeeHelper = $this->helper('weee');
+    $_taxHelper  = $this->helper('tax'); 
+	$_products = $this->getProductCollection();
+    ?>
+
+
+<div class="recently-block">
+	<div id="recently-section" class="recently-header<?php if(!Mage::registry('current_product')): ?> collapsible-block<?php endif; ?>">
+		<?php echo $this->__('Recommended') ?><span></span>
+	</div>
+	<div class="recently-container">
+		<ul class="products-grid" id="recommend-carousel">
+			<?php foreach ($_products as $_item): ?>
+				<?php $_price = $_taxHelper->getPrice($_item, $_item->getPrice()) ?>
+				<?php $_regularPrice = $_taxHelper->getPrice($_item, $_item->getPrice()) ?>
+				<?php $_finalPrice = $_taxHelper->getPrice($_item, $_item->getFinalPrice()) ?>
+				<?php $_finalPriceInclTax = $_taxHelper->getPrice($_item, $_item->getFinalPrice(), true) ?>
+				<li class="item" >              
+					<div class="product-content">
+						<a href="<?php echo Mage::getBaseUrl().$_item->getUrlPath() ?>" class="product-image"><img src="<?php echo $this->helper('catalog/image')->init($_item, 'thumbnail')->resize(182,234) ?>"  alt="<?php echo $this->__('Photo - %s. Product code: %s', trim(str_replace(',', '', $_item->getName())),$_item->getSku()); ?>" width="182" height="234" /></a>
+						<h2 class="product-name"><a onclick="setProductColor('<?php echo $_item->getId() ?>')" href="<?php echo $_item->getProductUrl() ?>" title="<?php echo $this->htmlEscape($_item->getName()) ?>"><?php echo $this->htmlEscape($_item->getName()) ?></a></h2>
+
+						<?php if($_price!=$_finalPrice): ?>
+						  <?php $discont=($_regularPrice-$_finalPrice)/$_regularPrice; ?>
+						  <span class="salePercentFlag"><?php echo round($discont*100)."%" ?></span>
+						  <span class="saleFlag"></span>
+						  <?php $priceHtml='<div class="listprice"><div class="listpricelabel">'.$this->__('Price:').'</div><span class="price oldPrice">'.$_coreHelper->currency($_regularPrice,true,false).'</span> <span class="price specialPrice">'.$_coreHelper->currency($_finalPrice,true,false).'</span></div>'; ?>
+						<?php else: ?>
+						 <?php $priceHtml='<div class="listprice"><div class="listpricelabel">'.$this->__('Price:').'</div><span class="regular-price">'.$_coreHelper->currency($_regularPrice,true,false).'</span></div>'; ?>
+						<?php endif; ?>
+						<?php echo $priceHtml ?>
+					</div>
+				   
+				</li>
+			<?php endforeach; ?>
+
+		</ul>	
+	</div>
+</div>
+
+<?php if(count($_products)>5): ?>
+	<script type="text/javascript">
+		jQuery(document).ready(function() {
+			jQuery('#recommend-carousel').jcarousel({
+				vertical: false,
+				scroll: 5,
+				wrap: 'circular' 
+			});
+
+		});
+	</script>
+<?php endif; ?>
+
+

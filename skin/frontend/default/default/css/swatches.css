@@ -1,0 +1,31 @@
+.swatchesContainerPadded:after,.swatchesContainer:after{display:block;content:".";clear:both;font-size:0;line-height:0;height:0;overflow:hidden}
+#ul-moreviews li img{cursor:pointer;width:80px;height:103px}
+#loadingImage{background-color:#FFF;background-image:url(../images/loading.gif);background-position:center 9px;background-repeat:no-repeat;border:1px solid #CCC;color:#333;font-family:Tahoma;font-size:12px;height:30px;left:290px;margin-left:auto;margin-right:auto;opacity:.8;position:absolute;text-align:center;top:270px;vertical-align:middle;width:40px;z-index:99}
+.icart-product-view #loadingImage{background-color:#FFF;background-image:url(../images/loading.gif);background-position:center 9px;background-repeat:no-repeat;border:1px solid #CCC;color:#333;font-family:Tahoma;font-size:12px;height:30px;left:240px;margin-left:auto;margin-right:auto;opacity:.8;position:absolute;text-align:center;top:200px;vertical-align:middle;width:40px;z-index:99}
+.swatchesContainer{padding-top:0}
+.swatchesContainerPadded{padding-top:15px}
+.swatchLabel{font-weight:400!important}
+.swatch:hover{border-color:#d8d8d8}
+.swatch{padding:0;display:inline;cursor:pointer;margin:1px 2px 4px;float:left;border:2px solid #fff;opacity:1;filter:alpha(opacity=100);transition:opacity .5s linear;-moz-transition:opacity .5s linear;-webkit-transition:opacity .5s linear;-o-transition-transition:opacity .5s linear}
+.swatchSelected{border:2px solid #acacac}
+.swatchClicked{border:2px solid #acacac;padding:0!important}
+.swatchClicked:hover{border:2px solid #acacac}
+.swatchSelected:hover{border:2px solid #acacac}
+.disabledSwatch{cursor:default!important;filter:alpha(opacity=30);-moz-opacity:.3;-khtml-opacity:.3;opacity:.3;display:none;background:url(../images/slider-active.png) no-repeat scroll 0 0 transparent}
+.swatchSelect{display:none}
+.swatchContainer{display:inline}
+.option-size-view{color:#FFF;font-size:14px;margin:0 0 0 8px;opacity:1;position:absolute;z-index:0}
+.product_size .swatch{width:20px;height:20px;text-align:center;font-size:13px;margin:0;color:#444;padding:1px;border:1px solid #444}
+.product_size .disabledSwatch{cursor:default!important;display:none;opacity:.6;z-index:1000;border:1px solid #888;color:#444}
+.product_size .swatchSelected{background:none repeat scroll 0 0 #000;border:1px solid #acacac;color:#FFF;z-index:1000;color:#fff}
+.product_size .swatchContainer{display:inline;float:left;margin:0 16px 0 0}
+.float-clearer{clear:both}
+.swatchesContainer-category{padding-top:8px;padding-bottom:20px;display:block}
+.swatchLabel-category{font-weight:400!important;font-size:9px;float:left;display:block;padding-top:2px;vertical-align:bottom;line-height:9px}
+.swatchContainer-category{display:block!important;height:auto}
+.firstswatch-category{padding:2px;float:left;display:inline;cursor:pointer;margin-bottom:8px;margin-top:4px;margin-left:0;border:1px solid #e1e1e1}
+.swatch-shopby{padding:2px;display:inline;cursor:pointer;float:left;margin-top:5px;margin-bottom:4px;margin-left:5px;border:1px solid #e1e1e1}
+.swatch-shopby-text{padding:2px;display:inline;cursor:pointer;float:left;margin-top:5px;margin-bottom:4px;margin-left:5px}
+.swatch-category-container{clear:right;cursor:pointer;display:none;float:left;height:264px;overflow:hidden;position:absolute;top:11px;width:49px}
+.swatch-category{border:1px solid #FFF;cursor:pointer;display:inline;float:left;height:51px;padding:3px;width:40px}
+.swatch-category:hover{border:1px solid #AAA;cursor:pointer;display:inline;float:left;height:51px;width:40px}

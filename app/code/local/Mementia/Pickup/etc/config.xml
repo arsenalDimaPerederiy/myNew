@@ -1,0 +1,84 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Mementia_Pickup>
+            <version>1.0</version>
+        </Mementia_Pickup>
+    </modules>
+    <global>
+        <models>
+            <store_pickup>
+                <class>Mementia_Pickup_Model</class>
+                <resourceModel>store_pickup_resource</resourceModel>
+            </store_pickup>
+            <store_pickup_resource>
+                <class>Mementia_Pickup_Model_Resource</class>
+                <entities>
+                    <city>
+                        <table>store_pickup_city</table>
+                    </city>
+                    <warehouse>
+                        <table>store_pickup_warehouse</table>
+                    </warehouse>
+                </entities>
+            </store_pickup_resource>
+        </models>
+        <blocks>
+            <store_pickup>
+                <class>Mementia_Pickup_Block</class>
+            </store_pickup>
+        </blocks>
+        <helpers>
+            <store_pickup>
+                <class>Mementia_Pickup_Helper</class>
+            </store_pickup>
+        </helpers>
+        <resources>
+            <store_pickup_setup>
+                <setup>
+                    <module>Mementia_Pickup</module>
+                </setup>
+            </store_pickup_setup>
+        </resources>
+    </global>
+    <admin>
+        <routers>
+            <store_pickup>
+                <use>admin</use>
+                <args>
+                    <module>Mementia_Pickup</module>
+                    <frontName>store_pickup</frontName>
+                </args>
+            </store_pickup>
+        </routers>
+    </admin>
+    <frontend>
+		<routers>
+			<store_pickup>
+				<use>standard</use>
+				<args>
+					<module>Mementia_Pickup</module>
+					<frontName>store_pickup</frontName>
+				</args>
+			</store_pickup>
+		</routers>
+	</frontend>
+    <default>
+        <carriers>
+            <store_pickup>
+                <!-- disabled by default not to propose unconfigured shipping method to customer -->
+                <active>0</active>
+                <!-- allow only for specific countries flag -->
+                <sallowspecific>1</sallowspecific>
+                <!-- allow only for Ukraine -->
+                <specificcountry>UA</specificcountry>
+                <!-- carrier model -->
+                <model>store_pickup/carrier_pickup</model>
+                <!-- carrier title -->
+                <title>Самовывоз</title>
+                <!-- error message -->
+                <specificerrmsg>Этот способ доставки на текущий момент не доступен. Если вы желаете, чтобы мы доставили заказ Самовывоз, обратитесь к менеджеру интернет-магазина.</specificerrmsg>
+            </store_pickup>
+        </carriers>
+    </default>
+</config>

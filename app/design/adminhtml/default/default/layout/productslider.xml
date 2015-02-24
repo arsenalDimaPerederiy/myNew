@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <productslider_adminhtml_productslider_edit>
+		<update handle="editor"/>
+    </productslider_adminhtml_productslider_edit>
+    <productslider_adminhtml_productslider_index>
+		<update handle="editor"/>
+        <reference name="content">
+            <block type="productslider/adminhtml_productslider" name="productslider" />
+        </reference>
+    </productslider_adminhtml_productslider_index>
+</layout>
