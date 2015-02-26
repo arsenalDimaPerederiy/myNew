@@ -34,6 +34,7 @@
 <?php if($this->getCollection()->getSize()): ?>
 
     <?php if($this->getUseContainer()): ?>
+
     <div class="pager">
     <?php endif ?>
 
@@ -79,7 +80,9 @@
 		<?php else: ?>
 			<?php $pagerPrevUrl = $this->getPreviousPageUrl(); ?>
 		<?php endif; ?>
-                <a rel="prev" class="<?php if ($this->isFirstPage()): ?>previous-disabled<?php endif;?> previous<?php if(!$this->getAnchorTextForPrevious()): ?> i-previous<?php endif;?>" <?php if ($this->isFirstPage()): ?>onclick="return false;"<?php endif;?> href="<?php echo $pagerPrevUrl ?>" title="<?php echo $this->__('Previous') ?>">
+                <a rel="prev" class="<?php if ($this->isFirstPage()): ?>previous-disabled<?php endif;?> previous<?php if(!$this->getAnchorTextForPrevious()): ?> i-previous<?php endif;?>" <?php if ($this->isFirstPage()): ?>onclick="return false;"<?php endif;?> href="<?php echo $pagerPrevUrl ?>" >
+                    <i class="fa fa-arrow-left"></i>
+                    <?php echo $this->__('Previous') ?>
                 </a>
             </li>
         <?php endif;?><!--esli tek str pervaya-->
@@ -145,7 +148,9 @@
 
         <?php if (!$this->isLastPage()): ?>
 			<li class="pager-arrows">
-				<a rel="next" class="<?php if ($this->isLastPage()): ?>next-disabled<?php endif;?> next<?php if(!$this->getAnchorTextForNext()): ?> i-next<?php endif; ?>" <?php if ($this->isLastPage()): ?>onclick="return false;"<?php endif;?> href="<?php echo $this->getNextPageUrl() ?>" title="<?php echo $this->__('Next') ?>">
+				<a rel="next" class="<?php if ($this->isLastPage()): ?>next-disabled<?php endif;?> next<?php if(!$this->getAnchorTextForNext()): ?> i-next<?php endif; ?>" <?php if ($this->isLastPage()): ?>onclick="return false;"<?php endif;?> href="<?php echo $this->getNextPageUrl() ?>" >
+                    <?php echo $this->__('Next') ?>
+                    <i class="fa fa-arrow-right"></i>
 				</a>
 			</li>
 		<?php endif; ?>

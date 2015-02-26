@@ -202,7 +202,6 @@ p.required{font-size:11px;text-align:right;color:#f09}
 .pager .pages ol{display:inline}
 .pager .pages li{border:1px solid #BABEBE;display:inline;float:left;line-height:20px;margin:0 2px;width:20px}
 .pager .pages li:hover{border:1px solid #000;text-decoration:none}
-.pager .pages li.point{display:inline;float:left;line-height:20px;margin:0 2px;width:20px; border: none;}
 .pager .pages li a:hover{color:#000}
 .pager .pages li a{color:#444545;float:left;font-size:12px;width:100%}
 .pager .pages .current{background:none repeat scroll 0 0 #000;border-color:#444545;color:#FFF;float:left;font-size:12px;height:12px;line-height:12px;padding:4px;text-align:center;width:12px}
@@ -1500,4 +1499,79 @@ img.lazy{display:none;width:182px;height:234px}
 .cms-dostavka .vertnav-container{float:left;margin:0 0 20px;width:290px; border: none; }
 .cms-dostavka .vertnav-container .menu-title{background-image: none;border:1px solid #8C8F8F; border-bottom: none; color:#343535;font-family:galsc pro;font-size:15px;font-weight:500;letter-spacing:1.5px;margin:0;padding:5px 0 5px 32px;text-transform:uppercase;background-color: #E7E6E5}
 .cms-dostavka #vertnav li a{float:left;padding:4px 10px;width:270px;line-height:14px;}
+
+
+.pager .pages {
+    margin-top: 20px;
+}
+.pager .pages .pager-arrows{
+    width: 80px;
+    height: 25px;
+
+    margin-right: 10px;
+    color: #444545;
+    background-image: none;
+
+}
+
+.pager .pages li {
+    width: 25px;
+    height: 25px;
+    line-height: inherit;
+    padding: inherit;
+}
+.pager .pages .current {
+    width: 25px;
+    height: 25px;
+    line-height: inherit;
+    padding: inherit;
+}
+
+.pager .pages .pager-arrows >a{
+    width: 80px;
+    height: 25px;
+    border: 1px solid #babebe;
+    color: #444545;
+    background-image: none;
+}
+.pager .pages .pager-arrows >a:hover{
+
+    border: 1px solid #000000;
+
+}
+.pager .pages .previous{
+    width:80px;
+    height:25px;
+    background-image: none;
+    margin-right: 10px;
+}
+.pager .pages .next{
+    background-image: none;
+    width:80px;
+    height:25px;
+    margin-left: 10px;
+}
+
+.pager .pages .next-disabled{width:80px;height:25px;}
+.pager .pages .previous-disabled{width:80px;height:25px;}
+
+.pager .pages li.point{
+    display:inline;
+    float:left;
+    line-height:30px;
+    margin:0 2px;
+    width:25px;
+    border: none;
+}
+.pager .amount{
+    display: block;
+    width: 53%;
+    float: left;
+    text-align: left;
+}
+.pager .limiter{
+   float: left;
+   text-align: right;
+}
+
 /*my 24.02.2015*/
