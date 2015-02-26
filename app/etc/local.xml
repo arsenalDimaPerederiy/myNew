@@ -41,9 +41,9 @@
             <default_setup>
                 <connection>
                     <host><![CDATA[localhost]]></host>
-                    <username><![CDATA[root]]></username>
-                    <password><![CDATA[admin123]]></password>
-                    <dbname><![CDATA[ashop_db]]></dbname>
+                    <username><![CDATA[dev_ashop]]></username>
+                    <password><![CDATA[zKDcYMV2KPepL7LT]]></password>
+                    <dbname><![CDATA[dev_ashop]]></dbname>
                                                                                 
                     <initStatements><![CDATA[SET NAMES utf8]]></initStatements>
                     <model><![CDATA[mysql4]]></model>
