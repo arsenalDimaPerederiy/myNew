@@ -1487,6 +1487,9 @@ img.lazy{display:none;width:182px;height:234px}
 .cms-dostavka .col2-left-layout{
     width: 960px;
 }
+.cms-dostavka .menu-title{
+    border: none;
+}
 .cms-dostavka .vertnav-container{
     width: 290px;
 }
