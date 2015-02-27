@@ -1573,9 +1573,8 @@ img.lazy{display:none;width:182px;height:234px}
    float: left;
    text-align: right;
 }
-
-.pager .pages{
-    margin-bottom: 60px;
+.page .page-seo{
+   margin-top: 60px;
 }
 
 /*my 24.02.2015*/
