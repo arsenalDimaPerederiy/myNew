@@ -1,0 +1,125 @@
+<?xml version="1.0"?>
+<config>
+    <tabs>
+        <OAuth>
+            <label>OAuth module setup</label>
+            <sort_order>10000</sort_order>
+        </OAuth>
+    </tabs>
+    <sections>
+        <OAuth translate="label">
+            <label>OAuth module setup</label>
+            <tab>OAuth</tab>
+            <frontend_type></frontend_type>
+            <sort_order>910</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <OAuth_group_vk translate="label">
+                    <label>OAuth Vkontakte setting</label>
+                    <sort_order>1</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <vk translate="label">
+                            <label>Add Vk OAuth</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </vk>
+                        <vk_secret translate="label">
+                            <label>Protected key</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </vk_secret>
+                        <vk_id_key translate="label">
+                            <label>Id Application</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </vk_id_key>
+                    </fields>
+                </OAuth_group_vk>
+                <OAuth_group_fb translate="label">
+                    <label>OAuth Facebook setting</label>
+                    <sort_order>2</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <fb translate="label">
+                            <label>Add Facebook OAuth</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </fb>
+                        <fb_secret translate="label">
+                            <label>Protected key</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </fb_secret>
+                        <fb_id_key translate="label">
+                            <label>Id Application</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </fb_id_key>
+                    </fields>
+                </OAuth_group_fb>
+                <OAuth_group_g translate="label">
+                    <label>OAuth Google+ setting</label>
+                    <sort_order>3</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <g translate="label">
+                            <label>Add g+ OAuth</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </g>
+                        <g_secret translate="label">
+                            <label>Protected key</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </g_secret>
+                        <g_id_key translate="label">
+                            <label>Id Application</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </g_id_key>
+                    </fields>
+                </OAuth_group_g>
+            </groups>
+        </OAuth>
+    </sections>
+</config>
+

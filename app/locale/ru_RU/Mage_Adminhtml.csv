@@ -1216,3 +1216,13 @@
 "website(%s) scope","область действия сайта(%s)"
 "{{base_url}} is not recommended to use in a production environment to declare the Base Unsecure URL / Base Secure URL. It is highly recommended to change this value in your Magento <a href=""%s"">configuration</a>.","{{base_url}} не рекомендуется использовать на рабочей копии сайта для объявления Базового небезопасного URL / Базового безопасного URL. Настоятельно рекомендуем изменить это значение в <a href=""%s"">настройках</a> Magento."
 "Last updated: %s. To refresh last day's <a href=""%s"">statistics</a>, click <a href=""%s"">here</a>.","Последнее обновление: %s.<br/><a href=""%s"">Пересчитать всё</a><br/><a href=""%s"">Пересчитать данные последних суток</a>"
+"OAuth module setup","Настройка модуля авторизации"
+"OAuth Vkontakte setting","Настройка авторизации через Vk"
+"Protected key","Защищенный ключ"
+"Id Application","ID приложения"
+"Add Vk OAuth","Добавить авторизацию Vk"
+"OAuth Facebook setting","Настройка авторизации через Facebook"
+"Add Facebook OAuth","Добавить авторизацию Fb"
+"OAuth Google+ setting","Настройка авторизации через Google+"
+"Add g+ OAuth","Добавить авторизацию g+"
+

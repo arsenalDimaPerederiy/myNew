@@ -54,6 +54,13 @@ Default layout, loads most of the pages
                 <action method="addJs"><script>mage/cookies.js</script></action>
 				<action method="addJs"><script>magebuzz/jquery/jquery-latest.js</script></action>
 
+
+                <action method="addJs"><script>prototype/window.js</script></action>
+                <action method="addJs"><script>Webinse/Oauth.js</script></action>
+                <action method="addItem"><type>js_css</type><name>prototype/windows/themes/default.css</name></action>
+                <action method="addCss"><name>lib/prototype/windows/themes/magento.css</name></action>
+                <action method="addCss"><stylesheet>css/webinseStyle/style.css</stylesheet></action>
+
 				<!--action method="addItem"><type>skin_js</type><name>js/hello.jquery.js</name></action>
 				<action method="addItem"><type>skin_js</type><name>js/jquery.cycle.all.js</name></action>
 				<action method="addItem"><type>skin_js</type><name>js/custom.js</name></action-->
