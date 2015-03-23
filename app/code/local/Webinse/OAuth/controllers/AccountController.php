@@ -14,11 +14,13 @@ class Webinse_OAuth_AccountController extends Mage_Core_Controller_Front_Action 
         $vk_code=Mage::app()->getRequest()->getParam('code');
         if(isset($vk_code)){
             $data = $this->getLayout()->getBlockSingleton('webinse_oauth/OauthData')->getVkData();
+            print_r($data);
             $client = new Varien_Http_Client('https://api.vk.com/oauth/access_token/');
             $client ->setMethod(Varien_Http_Client::GET);
                     $client ->setParameterGet('client_id',$data['client_id']);
                     $client->setParameterGet('client_secret',$data['client_secret']);
                     $client ->setParameterGet('code',$vk_code);
+                    $client->setParameterGet('redirect_uri','http://ashop.dev.webinse.com/customer/account/VkLogin/');
 
             $response = Mage::helper('core')->jsonDecode($client->request()->getBody());
 
