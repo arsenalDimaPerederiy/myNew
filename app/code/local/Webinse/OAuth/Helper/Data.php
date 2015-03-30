@@ -6,4 +6,9 @@
  */ 
 class Webinse_OAuth_Helper_Data extends Mage_Core_Helper_Abstract {
 
+    /*const ROUTE_TEST_INDEX = 'customer/logged/in';
+    public function getIndexUrl()
+    {
+        return $this->_getUrl(self::ROUTE_TEST_INDEX);
+    }*/
 }

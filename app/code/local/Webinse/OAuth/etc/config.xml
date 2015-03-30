@@ -2,7 +2,7 @@
 <config>
     <modules>
         <Webinse_OAuth>
-            <version>0.1.0</version>
+            <version>1.1.0</version>
         </Webinse_OAuth>
     </modules>
     <global>
@@ -20,6 +20,7 @@
                 </entities>
             </webinse_oauth_resource>
         </models>
+
         <blocks>
             <webinse_oauth>
                 <class>Webinse_OAuth_Block</class>
@@ -34,6 +35,11 @@
             <webinse_oauth>
                 <class>Webinse_OAuth_Helper</class>
             </webinse_oauth>
+            <customer>
+                <rewrite>
+                    <data>Webinse_OAuth_Helper_Customer_Data</data>
+                </rewrite>
+            </customer>
         </helpers>
         <resources>
             <webinse_oauth_setup>
@@ -50,17 +56,10 @@
     </global>
     <frontend>
         <routers>
-            <oauth>
-                <use>standard</use>
-                <args>
-                    <module>Webinse_OAuth</module>
-                    <frontName>custom</frontName>
-                </args>
-            </oauth>
             <customer>
                 <args>
                     <modules>
-                        <webinse_oauth before="Mage_Customer">Webinse_OAuth</webinse_oauth>
+                        <webinse_oauth before="Mage_Customer_AccountController">Webinse_OAuth</webinse_oauth>
                     </modules>
                 </args>
             </customer>

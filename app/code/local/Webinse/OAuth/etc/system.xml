@@ -50,14 +50,14 @@
                         </vk_id_key>
                     </fields>
                 </OAuth_group_vk>
-                <OAuth_group_fb translate="label">
+                <OAuth_group_f translate="label">
                     <label>OAuth Facebook setting</label>
                     <sort_order>2</sort_order>
                     <show_in_default>1</show_in_default>
                     <show_in_website>1</show_in_website>
                     <show_in_store>1</show_in_store>
                     <fields>
-                        <fb translate="label">
+                        <f translate="label">
                             <label>Add Facebook OAuth</label>
                             <frontend_type>select</frontend_type>
                             <source_model>adminhtml/system_config_source_yesno</source_model>
@@ -65,25 +65,25 @@
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
-                        </fb>
-                        <fb_secret translate="label">
+                        </f>
+                        <f_secret translate="label">
                             <label>Protected key</label>
                             <frontend_type>text</frontend_type>
                             <sort_order>2</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
-                        </fb_secret>
-                        <fb_id_key translate="label">
+                        </f_secret>
+                        <f_id_key translate="label">
                             <label>Id Application</label>
                             <frontend_type>text</frontend_type>
                             <sort_order>3</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
-                        </fb_id_key>
+                        </f_id_key>
                     </fields>
-                </OAuth_group_fb>
+                </OAuth_group_f>
                 <OAuth_group_g translate="label">
                     <label>OAuth Google+ setting</label>
                     <sort_order>3</sort_order>

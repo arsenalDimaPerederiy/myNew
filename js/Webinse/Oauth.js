@@ -1,13 +1,17 @@
 function PopOauthWindow(e){
 
-    new Ajax.Request(e.title, {
+    new Ajax.Request(e.href, {
         method: 'post',
         onSuccess: function(transport) {
             var response = transport.responseText;
             showPopup(response);
+            return false;
+        },
+        onLoading: function(){
+            $('modal_window_content').insert('Onload');
         }
     });
-
+    return false;
 };
 
 
@@ -21,17 +25,29 @@ function showPopup(data) {
         }
     });
     oPopup.getContent().update(data);
-    oPopup.setZIndex(100);
+    oPopup.setZIndex(200);
     oPopup.showCenter(true);
+
 }
+
 
 /*
-function OauthFunc(e){
-    switch (e.class){
-        case 'vk': VkOauth(e); break;
-    }
-}
+function CheckOauthCookie(e){
 
-function VkOauth(e){
+    new Ajax.Request(e.title, {
+        method: 'post',
+        parameters:{socialId: e.id},
+        onSuccess: function(transport) {
+            var response = transport.responseText;
+            if(response=='0'){
+                window.location= e.href;
+            }
+            else
+            {
+                window.location=response;
+            }
+        }
+    });
 
-}*/
+
+};*/

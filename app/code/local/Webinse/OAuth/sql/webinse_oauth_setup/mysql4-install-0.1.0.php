@@ -14,27 +14,8 @@ $attributeSetId   = $installer->getDefaultAttributeSetId($entityTypeId);
 $attributeGroupId = $installer->getDefaultAttributeGroupId($entityTypeId, $attributeSetId);
 
 
-/*Add to customer client unique id attribute*/
-$installer->addAttribute('customer', 'OAuth_id_client',  array(
-    'type'     => 'varchar',
-    'label'    => 'OAuth client id',
-    'input'    => 'text',
-    'global'   => Mage_Catalog_Model_Resource_Eav_Attribute::SCOPE_STORE, //можно использовать другие константы видимости
-    'visible'           => true,
-    'required'          => false,
-    'user_defined'      => false,
-    'default'           => ''
-));
-
-$installer->addAttributeToGroup(
-    $entityTypeId,
-    $attributeSetId,
-    $attributeGroupId,
-    'OAuth_id_client'
-);
-
 /*Add to customer unique id social network attribute*/
-$installer->addAttribute('customer', 'OAuth_id_social',  array(
+$installer->addAttribute('customer', 'OAuthSocialVk',  array(
     'type'     => 'varchar',
     'label'    => 'OAuth client id',
     'input'    => 'text',
@@ -49,7 +30,44 @@ $installer->addAttributeToGroup(
     $entityTypeId,
     $attributeSetId,
     $attributeGroupId,
-    'OAuth_id_social'
+    'OAuthSocialVk'
 );
+
+$installer->addAttribute('customer', 'OAuthSocialF',  array(
+    'type'     => 'varchar',
+    'label'    => 'OAuth client id',
+    'input'    => 'text',
+    'global'   => Mage_Catalog_Model_Resource_Eav_Attribute::SCOPE_STORE, //можно использовать другие константы видимости
+    'visible'           => true,
+    'required'          => false,
+    'user_defined'      => false,
+    'default'           => ''
+));
+
+$installer->addAttributeToGroup(
+    $entityTypeId,
+    $attributeSetId,
+    $attributeGroupId,
+    'OAuthSocialF'
+);
+
+$installer->addAttribute('customer', 'OAuthSocialG',  array(
+    'type'     => 'varchar',
+    'label'    => 'OAuth client id',
+    'input'    => 'text',
+    'global'   => Mage_Catalog_Model_Resource_Eav_Attribute::SCOPE_STORE, //можно использовать другие константы видимости
+    'visible'           => true,
+    'required'          => false,
+    'user_defined'      => false,
+    'default'           => ''
+));
+
+$installer->addAttributeToGroup(
+    $entityTypeId,
+    $attributeSetId,
+    $attributeGroupId,
+    'OAuthSocialG'
+);
+
 
 $installer->endSetup();
