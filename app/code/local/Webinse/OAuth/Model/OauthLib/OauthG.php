@@ -17,7 +17,7 @@ class Webinse_OAuth_Model_OauthLib_OauthG extends Webinse_OAuth_Model_OauthLib_O
     protected $redirect_uri_code;
 
     public  $SocialNetworkModel;
-    public $class_id='vk';
+    public $class_id='g';
 
     public function __construct($redirectUrl){
 
@@ -54,7 +54,6 @@ class Webinse_OAuth_Model_OauthLib_OauthG extends Webinse_OAuth_Model_OauthLib_O
         $client->setParameterPost('grant_type','authorization_code');
 
         $userTokenArray=Mage::helper('core')->jsonDecode($client->request()->getBody());
-        print_r($userTokenArray);
         if(isset($userTokenArray['access_token'])){
             $this->token=$userTokenArray['access_token'];
         }
@@ -69,19 +68,16 @@ class Webinse_OAuth_Model_OauthLib_OauthG extends Webinse_OAuth_Model_OauthLib_O
         $client_1 = new Varien_Http_Client(self::OAUTH_G_URI_GET_USER_INFO);
         $client_1->setMethod(Varien_Http_Client::GET);
         $client_1->setParameterGet('access_token',$this->token);
-        $this->userInfoArray=Mage::helper('core')->jsonDecode($client_1->request()->getBody());
-        print_r($this->userInfoArray);
-        die();
+        $userInfo=Mage::helper('core')->jsonDecode($client_1->request()->getBody());
 
         if($client_1->request()->isSuccessful()){
 
-            if(isset($this->userInfoArray['response'])){
-                $this->userInfoArray=$this->userInfoArray['response']['0'];
-                return true;
-            }
-            else{
-                return false;
-            }
+            $this->userId=$userInfo['id'];
+            $this->email=$userInfo['email'];
+            $this->userInfoArray=array(
+                'first_name'=>$userInfo['name'],
+                'last_name'=>$userInfo['family_name']
+            );
         }
         else{
             return false;
