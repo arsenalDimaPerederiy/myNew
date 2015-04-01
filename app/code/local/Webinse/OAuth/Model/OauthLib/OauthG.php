@@ -38,11 +38,13 @@ class Webinse_OAuth_Model_OauthLib_OauthG extends Webinse_OAuth_Model_OauthLib_O
     public function getToken(){
 
         $client = new Varien_Http_Client(self::OAUTH_G_URI_GET_TOKEN);
+        $client->setHeaders('Content-type', 'application/x-www-form-urlencoded');
         $client->setMethod(Varien_Http_Client::POST);
         $client->setParameterPost('client_id',$this->clientId);
         $client->setParameterPost('client_secret',$this->client_secret);
         $client->setParameterPost('code',$this->code);
         $client->setParameterPost('redirect_uri',$this->redirect_uri);
+        $client->setParameterPost('grant_type','authorization_code');
 
         $userTokenArray=Mage::helper('core')->jsonDecode($client->request()->getBody());
         print_r($userTokenArray);
