@@ -14,16 +14,22 @@ class Webinse_OAuth_Model_OauthLib_OauthG extends Webinse_OAuth_Model_OauthLib_O
     protected $clientId;
     protected $client_secret;
     protected $redirect_uri;
+    protected $redirect_uri_code;
 
     public  $SocialNetworkModel;
     public $class_id='vk';
 
     public function __construct($redirectUrl){
+
         $redirectUrl=substr($redirectUrl, 0, strlen($redirectUrl)-1);
+
+        $this->redirect_uri=$redirectUrl;
+
         $ar1= array("/",":");
         $ar2= array("%2F","%3A");
-        $redirectUrl=str_replace($ar1,$ar2,$redirectUrl);
-        $this->redirect_uri=$redirectUrl;
+
+        $this->redirect_uri_code=str_replace($ar1,$ar2,$redirectUrl);
+
 
         $this->clientId=Mage::getStoreConfig('OAuth/OAuth_group_g/g_id_key');
         $this->client_secret=Mage::getStoreConfig('OAuth/OAuth_group_g/g_secret');
@@ -33,7 +39,7 @@ class Webinse_OAuth_Model_OauthLib_OauthG extends Webinse_OAuth_Model_OauthLib_O
 
     public function getCode(){
 
-        return self::OAUTH_G_URI_AUTHORIZATION.'?'.'client_id='.$this->clientId.'&'.'redirect_uri='.$this->redirect_uri.'&response_type=code'.'&'.'scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile"';
+        return self::OAUTH_G_URI_AUTHORIZATION.'?'.'client_id='.$this->clientId.'&'.'redirect_uri='.$this->redirect_uri_code.'&response_type=code'.'&'.'scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile"';
     }
 
     public function getToken(){
