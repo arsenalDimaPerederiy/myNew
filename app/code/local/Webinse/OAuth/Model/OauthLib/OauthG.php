@@ -6,7 +6,7 @@
  */
 class Webinse_OAuth_Model_OauthLib_OauthG extends Webinse_OAuth_Model_OauthLib_Oauth_Oauth{
 
-    const OAUTH_G_URI_AUTHORIZATION = 'http://oauth.vk.com/authorize/';
+    const OAUTH_G_URI_AUTHORIZATION = 'https://accounts.google.com/o/oauth2/auth';
     const OAUTH_G_URI_GET_TOKEN ='https://api.vk.com/oauth/access_token/';
     const OAUTH_G_URI_GET_USER_INFO ='https://api.vk.com/method/users.get';
 
