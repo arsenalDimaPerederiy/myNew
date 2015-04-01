@@ -7,7 +7,7 @@
 class Webinse_OAuth_Model_OauthLib_OauthG extends Webinse_OAuth_Model_OauthLib_Oauth_Oauth{
 
     const OAUTH_G_URI_AUTHORIZATION = 'https://accounts.google.com/o/oauth2/auth';
-    const OAUTH_G_URI_GET_TOKEN ='https://api.vk.com/oauth/access_token/';
+    const OAUTH_G_URI_GET_TOKEN ='https://accounts.google.com/o/oauth2/token';
     const OAUTH_G_URI_GET_USER_INFO ='https://api.vk.com/method/users.get';
 
 
@@ -45,7 +45,8 @@ class Webinse_OAuth_Model_OauthLib_OauthG extends Webinse_OAuth_Model_OauthLib_O
         $client->setParameterGet('redirect_uri',$this->redirect_uri);
 
         $userTokenArray=Mage::helper('core')->jsonDecode($client->request()->getBody());
-
+        print_r($userTokenArray);
+        die();
         if(isset($userTokenArray['access_token'])){
 
             $this->token=$userTokenArray['access_token'];
