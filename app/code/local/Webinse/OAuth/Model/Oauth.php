@@ -24,4 +24,10 @@ class Webinse_OAuth_Model_oauth extends Mage_Core_Model_Abstract{
                     ->addFieldToFilter('user_soc_id',array('eq'=>$id))
                     ->addFieldToFilter('social',array('eq'=>$soc));
     }
+    public function setNewCustomerId($id,$customerId){
+       $model=$this->load($id);
+        $model->setCustomerId($customerId);
+        $model->save();
+
+    }
 }

@@ -1,4 +1,3 @@
-
 <?php
 /**
  * Magento
@@ -34,45 +33,130 @@
 /** @var $this Mage_Customer_Block_Form_Login */
 ?>
 
-<div class="mainWindow">
 
-    <div class="mainWindowHead">
-        <h1>ВХОД В A-SHOP</h1>
-    </div>
 
-    <div class="mainWindowForm">
-        <form action="<?php echo $this->getPostActionUrl() ?>" method="post" id="login-form">
+<div class="aling-central-modal mainWindow">
+    <div id="modal-login-form-main">
+        <div class="aling-central-modal modal-login-head">
+            <h1>ВХОД В A-SHOP</h1>
+            <hr/>
+        </div>
+        <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+        <form title="<?php echo Mage::getUrl('ajax/AjaxLogin/index/') ?>"
+              action="<?php echo $this->getPostActionUrl() ?>"
+              method="post" id="modal-login-form"
+              onsubmit="formModalValidation(this); return false;"
+              class="aling-central-modal">
             <div>
-                <div class="input-email-window">
-                    <input type="email" autocapitalize="off" autocorrect="off" spellcheck="false" name="login[username]" value="<?php echo $this->escapeHtml($this->getUsername()) ?>" id="email"  title="<?php echo $this->__('Email Address') ?>" placeholder="Введите E-mail" class="input-text required-entry validate-email"/>
+                <?php echo $this->getBlockHtml('formkey'); ?>
+                <div class="modal-login-input">
+                    <span class="modal-icon">
+                        Email
+                    </span>
+                    <input type="email" name="login[username]"
+                           value="<?php echo $this->escapeHtml($this->getUsername()) ?>"
+                           id="email"
+                           title="<?php echo $this->__('Email Address') ?>"
+                           placeholder="Введите E-mail"
+                           class="input-text required-entry validate-formLoginModal"/>
                 </div>
-                <div class="input-email-window">
-                    <input type="text"  spellcheck="false" name="login[password]" value="<?php echo $this->escapeHtml($this->getUsername()) ?>" id="pass"    title="<?php echo $this->__('Email Address') ?>" placeholder="Пароль" class="input-text required-entry validate-password"/>
+                <div class="modal-login-input">
+                    <span class="modal-icon">
+                        Password
+                    </span>
+                    <input type="password" name="login[password]"
+                           value="<?php echo $this->escapeHtml($this->getUsername()) ?>"
+                           id="pass"
+                           title="<?php echo $this->__('Email Address') ?>"
+                           placeholder="Пароль"
+                           class="input-text required-entry validate-password validate-formLoginModal"/>
                 </div>
             </div>
-            <a href="<?php echo $this->getForgotPasswordUrl() ?>"><?php echo $this->__('Forgot Your Password?') ?></a>
-            <button type="submit" title="<?php echo $this->__('Login') ?>" name="send" id="send2"><span><span><?php echo $this->__('Login') ?></span></span></button>
+            <a class="aling-central-modal"
+               href="<?php echo $this->getForgotPasswordUrl() ?>"><?php echo $this->__('Forgot Your Password?') ?></a>
+
+            <button type="submit" title="<?php echo $this->__('Login') ?>" name="submit" id="send2"
+                    class="aling-central-modal">
+                <span><span><?php echo $this->__('Login') ?></span></span></button>
+
         </form>
-    </div>
-    <br>
-    <h2>Войти через</h2>
-    <div class="SocBlock">
-        <a  class="vk"  href="http://oauth.vk.com/authorize?client_id=4834637&scope=email,offline&redirect_uri=http://localhost.a-shop.loc/customer/account/loginOauthVk/&response_type=code&state=vk" id="vk">
-            <i class="fa fa-vk fa-3x"></i>
-        </a>
-        <a class="f" href="https://www.facebook.com/dialog/oauth?client_id=1588794391360957&scope=email&redirect_uri=http://localhost.a-shop.loc/customer/account/loginOauthF/&response_type=code">
-            <i class="fa fa-facebook fa-3x"> </i>
-        </a>
-        <a class="g" href="https://accounts.google.com/o/oauth2/auth?redirect_uri=http://ashop.dev.webinse.com/customer/account/loginOauthG/&response_type=code&client_id=525881687759-lr8baq8ga251gmf015b0p7omes71l2kp.apps.googleusercontent.com&scope=email%20profile">
-            <i class="fa fa-google-plus fa-3x"> </i>
-        </a>
-    </div>
-    <div class="modalFooter">
-        <a title="<?php echo $this->__('Create an Account') ?>" onclick="window.location='<?php echo $this->getCreateAccountUrl() ?>';"><h3><?php echo $this->__('Create an Account') ?></h3></a>
+        <div class="SocialNetworckBlock">
+            <h2>Войти через</h2>
+            <hr/>
+            <div class="SocBlock">
+                <?php
+                $socialBlock = $this->getChild('social.icons');
+                echo $socialBlock->getArrayCollection();
+                ?>
+            </div>
+        </div>
+        <div class="modal-login-footer">
+            <a title="<?php echo $this->__('Create an Account') ?>" onclick="CreateAccountShow();">
+                <h3><?php echo $this->__('Create an Account') ?></h3></a>
+        </div>
     </div>
 
+    <div id="modal-create-form-main" style="display: none">
+        <h2>Регистрация</h2>
+        <?php
+        $blockCreate = Mage::getBlockSingleton('customer/form_register');
+        ?>
+        <form  title="<?php echo Mage::getUrl('ajax/AjaxLogin/create')?>"  method="post" id="form-validate-create" onsubmit="ModalFormCreate(this); return false;">
+            <input
+                type="text"
+                name="name"
+                id="name"
+                placeholder="<?php echo $blockCreate->__('Name') ?>"
+                class="input-text required-entry validate-data"
+                >
+            <input type="text"
+                   name="family"
+                   id="family"
+                   placeholder="<?php echo $blockCreate->__('Family') ?>"
+                   class="input-text required-entry validate-data"
+                >
+            <input type="email"
+                   name="email"
+                   id="emailReg"
+                   placeholder="<?php echo $blockCreate->__('Email') ?>"
+                   class="input-text required-entry validate-email validate-formCreateModal"
+                >
+
+            <?php if ($blockCreate->isNewsletterEnabled()): ?>
+                <div>
+                    <input type="checkbox" name="is_subscribed"
+                           title="<?php echo $blockCreate->__('Sign Up for Newsletter') ?>" value="1"
+                           id="is_subscribed"<?php if ($blockCreate->getFormData()->getIsSubscribed()): ?> checked="checked"<?php endif; ?> />
+                    <label><?php echo $blockCreate->__('Sign Up for Newsletter') ?></label>
+                </div>
+
+            <?php endif ?>
+
+            <input type="password"
+                   name="passwordReg"
+                   id="password"
+                   placeholder="<?php echo $blockCreate->__('Password') ?>"
+                   class="input-text required-entry validate-both-passwords validate-password"
+                >
+            <input type="password"
+                   name="passwordCheck"
+                   id="confirmation"
+                   placeholder="<?php echo $blockCreate->__('Confirm Password') ?>"
+                   class="input-text required-entry validate-both-passwords validate-cpassword"
+                >
+
+            <button type="submit" title="<?php echo $blockCreate->__('Submit') ?>">
+                <?php echo $blockCreate->__('Submit') ?>
+            </button>
+
+        </form>
+        <div class="modalFooter">
+            <a title="<?php echo $this->__('Login an Account') ?>" onclick="CreateAccountHide();">
+                <br>
+                <h3><?php echo $this->__('Create an Account') ?></h3></a>
+        </div>
+    </div>
 </div>
-
 
 
 

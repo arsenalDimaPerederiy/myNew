@@ -6,7 +6,7 @@
  */
 class Webinse_OAuth_Model_OauthLib_OauthVk extends Webinse_OAuth_Model_OauthLib_Oauth_Oauth{
 
-    const OAUTH_VK_URI_AUTHORIZATION = 'http://oauth.vk.com/authorize/';
+    const OAUTH_VK_URI_AUTHORIZATION = 'http://oauth.vk.com/authorize';
     const OAUTH_VK_URI_GET_TOKEN ='https://api.vk.com/oauth/access_token/';
     const OAUTH_VK_URI_GET_USER_INFO ='https://api.vk.com/method/users.get';
 
@@ -109,6 +109,8 @@ class Webinse_OAuth_Model_OauthLib_OauthVk extends Webinse_OAuth_Model_OauthLib_
     public function GetUserBySocialIdSocId(){
         return $this->SocialNetworkModel->GetUserBySocialIdSocId($this->userId,$this->class_id);
     }
-
+    public function setNewCustomerId($id){
+        return $this->SocialNetworkModel->setNewCustomerId($id,$this->customer_id);
+    }
 
 }

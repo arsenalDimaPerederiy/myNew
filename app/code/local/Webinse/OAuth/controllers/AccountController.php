@@ -175,94 +175,18 @@ class Webinse_OAuth_AccountController extends Mage_Customer_AccountController
 
             $userByThisSocial = $this->network->GetUserBySocialIdSocId();
 
-            if ($userByThisSocial->getData()) {
+            if ($userByThisSocial->count()>0) {
                 $customerIdSoc = $userByThisSocial->getFirstItem()->getCustomerId();
                 if ($customerIdSoc != $customerId) {
-                    $this->_getSession()->loginById($customerId);
+                    $this->network->setNewCustomerId($userByThisSocial->getFirstItem()->getId());
+
                 }
-            } else {
-                $this->_getSession()->loginById($customerId);
             }
+            $this->_getSession()->loginById($customerId);
         }
 
     }
 
-    /*public  function _loginPostRedirect()
-    {
-        $session = $this->_getSession();
-        if ($referer = $this->getRequest()->getParam(Mage_Customer_Helper_Data::REFERER_QUERY_PARAM_NAME)) {
-            $referer = Mage::helper('core')->urlDecode($referer);
-            if ((strpos($referer, Mage::app()->getStore()->getBaseUrl()) === 0)
-                || (strpos($referer, Mage::app()->getStore()->getBaseUrl(Mage_Core_Model_Store::URL_TYPE_LINK, TRUE)) === 0)) {
-                $session->setBeforeAuthUrl($referer);
-            } else {
-                $session->setBeforeAuthUrl(Mage::helper('customer')->getDashboardUrl());
-            }
-        } else {
-            $session->setBeforeAuthUrl(Mage::helper('customer')->getDashboardUrl());
-        }
-
-        $this->_redirectUrl($session->getBeforeAuthUrl(TRUE));
-    }*/
-
-
-    /*    public function checkAction(){
-
-            if ($this->_getSession()->isLoggedIn()) {
-                $this->_redirect('');
-                return;
-            }
-            $cookie=$this->getUserCookie();
-            if($cookie!=null){
-                $social_id=$this->getRequest()->getParam('socialId');
-                if(isset($cookie[$social_id])){
-                    $social= Mage::getModel('webinse_oauth/Oauth')->load($cookie[$social_id]);
-                    $customerId=$social->getCustomerId();
-                    $this->_getSession()->loginById($customerId);
-                    $this->getResponse()->setBody($successUrl);
-                }
-
-            }
-            else{
-                $this->getResponse()->setBody('0');
-            }
-        }*/
-
-
-    /*public function getUserCookie(){
-        return $this->getSerialize(Mage::getModel('core/cookie')->get('WebinseOauth'));
-    }
-
-    public function setUserCookie($data){
-        $name = 'WebinseOauth';
-        $value = $this->setSerialize($data);
-        $period = 3600; //Mage::getModel('core/cookie')->getLifetime()
-        $path = '/';
-        $domain = Mage::getModel('core/cookie')->getDomain();
-        $secure = Mage::getModel('core/cookie')->isSecure();
-        $httponly = false;
-        Mage::getModel('core/cookie')->set($name, $value, $period, $path, $domain, $secure, $httponly);
-    }
-
-    public function deleteUserCookie(){
-
-        $name = 'WebinseOauth';
-        $path = Mage::getModel('core/cookie')->getPath();
-        $domain = Mage::getModel('core/cookie')->getDomain();
-        $secure = Mage::getModel('core/cookie')->isSecure();
-        $httponly = false;
-        Mage::getModel('core/cookie')->delete($name, $path, $domain, $secure, $httponly);
-    }*/
-
-
-    /*
-        public function getSerialize($data){
-            return unserialize($data);
-        }
-
-        public function setSerialize($data){
-            return serialize($data);
-        }*/
 
 
 }

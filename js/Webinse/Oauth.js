@@ -1,22 +1,18 @@
 function PopOauthWindow(e){
-
     new Ajax.Request(e.href, {
         method: 'post',
         onSuccess: function(transport) {
             var response = transport.responseText;
             showPopup(response);
             return false;
-        },
-        onLoading: function(){
-            $('modal_window_content').insert('Onload');
         }
     });
-    return false;
+
 };
 
 
 function showPopup(data) {
-    oPopup = new Window({id: 'modal_window',className: 'magento', width:300, height:450, destroyOnClose: true,
+    oPopup = new Window({id: 'modal_window',className: 'magento', width:400, height:700, destroyOnClose: true,
         showEffectOptions: {
         duration: 0
     },
@@ -25,29 +21,81 @@ function showPopup(data) {
         }
     });
     oPopup.getContent().update(data);
-    oPopup.setZIndex(200);
+    oPopup.setZIndex(2000);
     oPopup.showCenter(true);
 
 }
 
 
-/*
-function CheckOauthCookie(e){
+function formModalValidation(e){
 
-    new Ajax.Request(e.title, {
-        method: 'post',
-        parameters:{socialId: e.id},
-        onSuccess: function(transport) {
-            var response = transport.responseText;
-            if(response=='0'){
-                window.location= e.href;
-            }
-            else
-            {
-                window.location=response;
-            }
-        }
+    var validator = new Validation(e.id);
+
+    Validation.add('validate-formLoginModal','',function(v){
+        return true;
     });
 
+    if(validator.validate()) {
 
-};*/
+        new Ajax.Request(e.title, {
+            method: 'post',
+            parameters:{email: $('email').value, password: $('pass').value},
+            onSuccess: function(transport) {
+                var response = transport.responseJSON;
+                if(response['error']){
+                    Validation.add('validate-formLoginModal',response['error'],function(v){
+                        return false;
+                    });
+                    validator.validate();
+                }
+                if(response['href']){
+
+                    window.location.href = response['href'];
+                }
+            }
+        });
+
+    }
+
+}
+
+function ModalFormCreate(element){
+    var validator = new Validation(element.id);
+
+    Validation.add('validate-formCreateModal','',function(v){
+        return true;
+    });
+
+    if(validator.validate()) {
+
+        new Ajax.Request(element.title, {
+            method: 'post',
+            parameters:{email: $('emailReg').value, password: $('password').value, name: $('name').value, family: $('family').value},
+            onSuccess: function(transport) {
+                var response = transport.responseJSON;
+                if(response['error']){
+                    Validation.add('validate-formCreateModal',response['error'],function(v){
+                        return false;
+                    });
+                    validator.validate();
+                }
+                if(response['href']){
+
+                    window.location.href = response['href'];
+                }
+            }
+        });
+
+    }
+}
+
+function CreateAccountShow(){
+    $('modal-login-form-main').hide();
+    $('modal-create-form-main').show();
+}
+function CreateAccountHide(){
+    $('modal-login-form-main').show();
+    $('modal-create-form-main').hide();
+}
+
+

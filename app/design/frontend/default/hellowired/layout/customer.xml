@@ -136,7 +136,9 @@ Layout for customer login page
         </reference>
 
         <reference name="content">
-            <block type="customer/form_login" name="customer_form_login" template="customer/form/login.phtml"/>
+            <block type="customer/form_login" name="customer_form_login" template="customer/form/login.phtml">
+                <block type="webinse_oauth/oauthData" name="social.icons"></block>
+            </block>
         </reference>
 
     </customer_account_login>
