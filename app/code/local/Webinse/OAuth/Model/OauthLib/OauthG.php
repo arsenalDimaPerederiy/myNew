@@ -28,7 +28,10 @@ class Webinse_OAuth_Model_OauthLib_OauthG extends Webinse_OAuth_Model_OauthLib_O
     }
 
     public function getCode(){
-        return self::OAUTH_G_URI_AUTHORIZATION.'?'.'client_id='.$this->clientId.'&'.'redirect_uri=http%3A%2F%2ashop.dev.webinse.com%customer%account%loginOauthG&'.'response_type=code'.'&'.'&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile"';
+        $ar1= array("/",":");
+        $ar2= array("%2F","%3A");
+        $this->redirect_uri=str_replace($ar1,$ar2,$this->redirect_uri);
+        return self::OAUTH_G_URI_AUTHORIZATION.'?'.'client_id='.$this->clientId.'&'.'redirect_uri='.$this->redirect_uri.'&response_type=code'.'&'.'&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile"';
     }
 
     public function getToken(){
