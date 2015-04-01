@@ -28,6 +28,7 @@ class Webinse_OAuth_Model_OauthLib_OauthG extends Webinse_OAuth_Model_OauthLib_O
     }
 
     public function getCode(){
+        $this->redirect_uri=substr($this->redirect_uri, 0, strlen($this->redirect_uri)-1);
         $ar1= array("/",":");
         $ar2= array("%2F","%3A");
         $this->redirect_uri=str_replace($ar1,$ar2,$this->redirect_uri);
