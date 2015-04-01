@@ -172,16 +172,18 @@ class Webinse_OAuth_AccountController extends Mage_Customer_AccountController
             $this->_getSession()->loginById($this->network->customer_id);
         } else {
 
-            $userByThisSocial = $this->network->GetUserBySocialIdSocId();
+            $userByThisSocial = $this->network->GetUserBySocialIdSocId();/*get record by user_id in social network and code social network (vk,f)*/
 
-            if ($userByThisSocial->count()>0) {
-                $customerIdSoc = $userByThisSocial->getFirstItem()->getCustomerId();
-                if ($customerIdSoc != $customerId) {
+            if ($userByThisSocial->count()>0) {/*if is this user*/
+                $customerIdSoc = $userByThisSocial->getFirstItem()->getCustomerId();/*check customer id by this email with customer id in table*/
+                if ($customerIdSoc != $customerId) {/*if id is changed// change id in social table*/
                     $this->network->setNewCustomerId($userByThisSocial->getFirstItem()->getId());
-
                 }
             }
-            $this->_getSession()->loginById($customerId);
+            else{
+                $this->network->setSocialNewRecord();//create new record in table social
+            }
+            $this->_getSession()->loginById($customerId);//load user
         }
 
     }
