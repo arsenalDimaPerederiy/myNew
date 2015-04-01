@@ -122,7 +122,7 @@ class Webinse_OAuth_AccountController extends Mage_Customer_AccountController
         $code = $this->getRequest()->getParam('code');
 
         if (isset($code)) {
-            $this->network = new Webinse_OAuth_Model_OauthLib_OauthG(Mage::getUrl('customer/account/loginOauthG/'));
+            $this->network = new Webinse_OAuth_Model_OauthLib_OauthG(Mage::getUrl('customer/account/loginOauthG'));
             $this->network->setCode($code);
             echo $code;
             /*$this->loginOauth();
