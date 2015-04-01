@@ -158,33 +158,25 @@ class Webinse_OAuth_AccountController extends Mage_Customer_AccountController
 
         $customerId = $this->network->CheckCustomer();
         if (!$customerId) {
-
             //register user
             $this->network->setNewCustomer();
-
-            $userByThisSocial = $this->network->GetUserBySocialIdSocId();
-
-            if (!$userByThisSocial->getData()) {
-                $this->network->setSocialNewRecord();
-            } else {
-                $this->network->changeEmailCustomer();
-            }
-            $this->_getSession()->loginById($this->network->customer_id);
-        } else {
-
-            $userByThisSocial = $this->network->GetUserBySocialIdSocId();/*get record by user_id in social network and code social network (vk,f)*/
-
-            if ($userByThisSocial->count()>0) {/*if is this user*/
-                $customerIdSoc = $userByThisSocial->getFirstItem()->getCustomerId();/*check customer id by this email with customer id in table*/
-                if ($customerIdSoc != $customerId) {/*if id is changed// change id in social table*/
-                    $this->network->setNewCustomerId($userByThisSocial->getFirstItem()->getId());
-                }
-            }
-            else{
-                $this->network->setSocialNewRecord();//create new record in table social
-            }
-            $this->_getSession()->loginById($customerId);//load user
+            $customerId=$this->network->customer_id;
         }
+
+        $userByThisSocial = $this->network->GetUserBySocialIdSocId();/*get record by user_id in social network and code social network (vk,f)*/
+
+        if ($userByThisSocial->count()>0) {/*if is this user*/
+            $customerIdSoc = $userByThisSocial->getFirstItem()->getCustomerId();/*check customer id by this email with customer id in table*/
+            if ($customerIdSoc != $customerId) {/*if id is changed// change id in social table*/
+                $this->network->setNewCustomerId($userByThisSocial->getFirstItem()->getId());
+            }
+        }
+        else{
+            $this->network->setSocialNewRecord();//create new record in table social
+        }
+
+        $this->_getSession()->loginById($customerId);//load user
+
 
     }
 
