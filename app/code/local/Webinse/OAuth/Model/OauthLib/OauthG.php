@@ -8,7 +8,7 @@ class Webinse_OAuth_Model_OauthLib_OauthG extends Webinse_OAuth_Model_OauthLib_O
 
     const OAUTH_G_URI_AUTHORIZATION = 'https://accounts.google.com/o/oauth2/auth';
     const OAUTH_G_URI_GET_TOKEN ='https://accounts.google.com/o/oauth2/token';
-    const OAUTH_G_URI_GET_USER_INFO ='https://api.vk.com/method/users.get';
+    const OAUTH_G_URI_GET_USER_INFO ='https://www.googleapis.com/oauth2/v1/userinfo';
 
 
     protected $clientId;
@@ -55,25 +55,12 @@ class Webinse_OAuth_Model_OauthLib_OauthG extends Webinse_OAuth_Model_OauthLib_O
 
         $userTokenArray=Mage::helper('core')->jsonDecode($client->request()->getBody());
         print_r($userTokenArray);
-        die();
         if(isset($userTokenArray['access_token'])){
-
             $this->token=$userTokenArray['access_token'];
-            $this->userId=$userTokenArray['user_id'];
-
-            if(isset($userTokenArray['email'])){
-                $this->email=$userTokenArray['email'];
-            }
-            else{
-                $this->email=null;
-            }
-            return true;
         }
         else{
             return false;
         }
-
-
     }
 
 
@@ -81,12 +68,13 @@ class Webinse_OAuth_Model_OauthLib_OauthG extends Webinse_OAuth_Model_OauthLib_O
 
         $client_1 = new Varien_Http_Client(self::OAUTH_G_URI_GET_USER_INFO);
         $client_1->setMethod(Varien_Http_Client::GET);
-        $client_1->setParameterGet('uids',$this->userId);
         $client_1->setParameterGet('access_token',$this->token);
-        $client_1->setParameterGet('fields','first_name');
+        $this->userInfoArray=Mage::helper('core')->jsonDecode($client_1->request()->getBody());
+        print_r($this->userInfoArray);
+        die();
 
         if($client_1->request()->isSuccessful()){
-            $this->userInfoArray=Mage::helper('core')->jsonDecode($client_1->request()->getBody());
+
             if(isset($this->userInfoArray['response'])){
                 $this->userInfoArray=$this->userInfoArray['response']['0'];
                 return true;
