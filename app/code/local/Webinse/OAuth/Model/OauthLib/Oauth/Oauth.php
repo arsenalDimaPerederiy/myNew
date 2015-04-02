@@ -7,6 +7,10 @@
 
 class Webinse_OAuth_Model_OauthLib_Oauth_Oauth{
 
+    const GET_TOKEN_ERROR = 'Error taking token';
+    const GET_USER_DATA_ERROR='Error taking user data';
+
+
     public $websiteId;
     public $store;
     public $customer_id;
@@ -17,7 +21,11 @@ class Webinse_OAuth_Model_OauthLib_Oauth_Oauth{
     public  $email;
     public  $userInfoArray;
 
+    public $SocialNetworkModel;
+    public $class_id;
+
     public function __construct(){
+        $this->SocialNetworkModel=Mage::getModel('webinse_oauth/Oauth');
         $this->websiteId = Mage::app()->getWebsite()->getId();
         $this->store = Mage::app()->getStore();
     }
@@ -33,28 +41,71 @@ class Webinse_OAuth_Model_OauthLib_Oauth_Oauth{
         return $this->customer_id;
     }
     public function setNewCustomer(){
-        $customer = Mage::getModel("customer/customer");
-        $customer   ->setWebsiteId($this->websiteId)
-            ->setStore($this->store)
-            ->setFirstname($this->userInfoArray['first_name'])
-            ->setLastname($this->userInfoArray['last_name'])
-            ->setEmail($this->email)
-            ->setPassword($this->GeneratePassword());
+        try{
+            $customer = Mage::getModel("customer/customer");
+            $customer   ->setWebsiteId($this->websiteId)
+                ->setStore($this->store)
+                ->setFirstname($this->userInfoArray['first_name'])
+                ->setLastname($this->userInfoArray['last_name'])
+                ->setEmail($this->email)
+                ->setPassword($this->GeneratePassword());
 
-        $customer->save();
+            if($customer->save()){
+                $this->customer_id=$customer->getId();
+            }
+            else{
+                throw new Exception('new customer not create');
+            }
+        }
+        catch(Exception $e){
+            Mage::logException($e);
+            Mage::getSingleton('adminhtml/session')->addError($e->getMessage());
 
-        $this->customer_id=$customer->getId();
-
+            return false;
+        }
+        return true;
     }
     public function createUserEmail(){
         $this->email=$this->userInfoArray['first_name'].$this->userInfoArray['last_name'].'@test.loc';
     }
 
     public function changeEmailCustomer(){
-        $socialRecord = $this->GetUserBySocialIdSocId();
-        $CustomerId=$socialRecord->getCustomerId();
-        $customer = Mage::getModel("customer/customer")->load($CustomerId);
-        $customer->setEmail($this->email);
-        $customer->save();
+        try{
+            $socialRecord = $this->GetUserBySocialIdSocId();
+            $CustomerId=$socialRecord->getCustomerId();
+            $customer = Mage::getModel("customer/customer")->load($CustomerId);
+            $customer->setEmail($this->email);
+            if(!$customer->save()){
+                throw new Exception('new customer not create');
+            }
+        }
+        catch(Exception $e){
+            Mage::logException($e);
+            Mage::getSingleton('adminhtml/session')->addError($e->getMessage());
+
+            return false;
+        }
+        return true;
+    }
+    public function setCode($code){
+        $this->code=$code;
+    }
+
+    public function setSocialNewRecord(){
+        $socialData = array(
+            'social'=>$this->class_id,
+            'user_soc_id'=>$this->userId,
+            'customer_id'=>$this->customer_id,
+            'store_id'=>$this->store,
+            'website_id'=>$this->websiteId
+        );
+        $this->SocialNetworkModel->setSocialNetworkNewRecord($socialData);
+    }
+    public function GetUserBySocialId(){
+        return $this->SocialNetworkModel->getRecordsByUserId($this->userId);
+    }
+
+    public function GetUserBySocialIdSocId(){
+        return $this->SocialNetworkModel->GetUserBySocialIdSocId($this->userId,$this->class_id);
     }
 }

@@ -150,52 +150,6 @@ other class
     width: 70%;
     display: inline-block;
 }
-#modal_window .SocialNetworckBlock{
-    width: 100%;
-}
-#modal_window .SocialNetworckBlock h2{
-    width: 100%;
-    margin-top: 40px;
-    font-size: 18px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-}
-#modal_window .SocialNetworckBlock .SocBlock{
-    text-align: center;
-    display: inline-block;
-    margin-top: 30px;
-    margin-left: auto;
-    margin-right: auto;
-    width: 80%;
-    height: 100px;
-}
-#modal_window .SocialNetworckBlock .SocBlock a{
-    margin-top: 5px;
-    min-width: 50px;
-    max-width: 50px;
-    height: 50px;
-    margin-left: 10px;
-    margin-right: 10px;
-    float: left;
-    line-height: 2.5;
-    text-align: center;
-    background-color: rgba(192,192,192,0.8);
-    border-radius: 10%;
-}
-#modal_window .SocialNetworckBlock .SocBlock .first{
-    margin-left: 20%;
-}
-#modal_window .SocialNetworckBlock .SocBlock .last{
-    margin-right: 20%;
-}
-#modal_window .SocialNetworckBlock .SocBlock a:hover{
-    background-color: #505050;
-}
-
-#modal_window .SocialNetworckBlock .SocBlock i{
-    color: white;
-    margin-top: 5px;
-}
 
 #modal_window .modal-login-footer{
     width: 100%;
@@ -290,4 +244,55 @@ other class
 #modal_window #modal-create-form-main .modalFooter>a>h3{
     font-size: 20px;
     cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.SocialBlock{
+    width: 100%;
+    height: 250px;
+    text-align: center;
+}
+
+.SocialBlockBlock {
+    display: inline-block;
+    height: 100px;
+}
+
+.blockSocialIcon{
+    display: block;
+    height: 50px;
+    width: 50px;
+    float: left;
+    margin-left: 10px;
+    margin-right: 10px;
+    color: white;
+    background-color: rgba(192,192,192,0.8);
+}
+.blockSocialIcon>i{
+    margin-top: 5px;
+}
+.blockSocialIcon:hover{
+    background-color: #505050;
 }

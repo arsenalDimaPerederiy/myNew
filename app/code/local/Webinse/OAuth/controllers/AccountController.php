@@ -126,58 +126,76 @@ class Webinse_OAuth_AccountController extends Mage_Customer_AccountController
             $this->network->setCode($code);
             $this->loginOauth();
             $this->_loginPostRedirect();
-
         }
     }
 
     public function loginOauth()
     {
 
-        $this->network->getToken('GET');
-
-        $this->network->getUserInfo('GET');
-
-        if (!isset($this->network->email)) {
-            $model = $this->network->GetUserBySocialIdSocId();
-            if ($model->count() == 0) {
-                $this->network->createUserEmail();
-            } //esli net mila to mi ego sozdayom
-            else {
-                $customer = $model->getFirstItem()->getCustomerId();
-                $StoreId = $model->getFirstItem()->getStoreId();
-                $websiteId = $model->getFirstItem()->getWebsiteId();
-
-                $customerModel = Mage::getModel('customer/customer')
-                    ->setWebsiteId($websiteId)
-                    ->setStoreId($StoreId);
-                $customerModel->load($customer);
-                $this->network->email = $customer->getEmail();
+        try{
+            if(!$this->network->getToken('GET')){
+                throw new Exception($this->network->class_id.' '.'Token not received');
             }
-            //ili ishem polizovatela s takim user id
+
+            if($this->network->getUserInfo('GET')){
+                throw new Exception($this->network->class_id.' '.'user data not received');
+            }
+
+            if (!isset($this->network->email)) {
+                $model = $this->network->GetUserBySocialIdSocId();
+                if ($model->count() == 0) {
+                    $this->network->createUserEmail();
+                } //esli net mila to mi ego sozdayom
+                else {
+                    $customer = $model->getFirstItem()->getCustomerId();
+                    $StoreId = $model->getFirstItem()->getStoreId();
+                    $websiteId = $model->getFirstItem()->getWebsiteId();
+
+                    $customerModel = Mage::getModel('customer/customer')
+                        ->setWebsiteId($websiteId)
+                        ->setStoreId($StoreId);
+                    $customerModel->load($customer);
+                    $this->network->email = $customer->getEmail();
+                }
+                //ili ishem polizovatela s takim user id
+            }
+
+            $customerId = $this->network->CheckCustomer();
+            if (!$customerId) {
+                //register user
+                if(!$this->network->setNewCustomer()){
+                    throw new Exception($this->network->class_id.' '.'new customer not create');
+                }
+                $customerId=$this->network->customer_id;
+            }
+
+            $userByThisSocial = $this->network->GetUserBySocialIdSocId();/*get record by user_id in social network and code social network (vk,f)*/
+
+            if ($userByThisSocial->count()>0) {/*if is this user*/
+                $customerIdSoc = $userByThisSocial->getFirstItem()->getCustomerId();/*check customer id by this email with customer id in table*/
+                if ($customerIdSoc != $customerId) {/*if id is changed// change id in social table*/
+                    $this->network->setNewCustomerId($userByThisSocial->getFirstItem()->getId());
+                }
+            }
+            else{
+                if(!$this->network->setSocialNewRecord()){//create new record in table social
+                    throw new Exception($this->network->class_id.' '.'new social data not create');
+                }
+            }
+
         }
+        catch(Exception $e){
+            Mage::logException($e);
+            Mage::getSingleton('adminhtml/session')->addError($e->getMessage());
 
-        $customerId = $this->network->CheckCustomer();
-        if (!$customerId) {
-            //register user
-            $this->network->setNewCustomer();
-            $customerId=$this->network->customer_id;
-        }
-
-        $userByThisSocial = $this->network->GetUserBySocialIdSocId();/*get record by user_id in social network and code social network (vk,f)*/
-
-        if ($userByThisSocial->count()>0) {/*if is this user*/
-            $customerIdSoc = $userByThisSocial->getFirstItem()->getCustomerId();/*check customer id by this email with customer id in table*/
-            if ($customerIdSoc != $customerId) {/*if id is changed// change id in social table*/
-                $this->network->setNewCustomerId($userByThisSocial->getFirstItem()->getId());
+            $this->getResponse()->setHeader('HTTP/1.1','400 Bad request');
+            $this->getResponse()->setHeader('Status','400 Bad request');
+            $pageId = Mage::getStoreConfig('web/default/cms_no_route');
+            if (!Mage::helper('cms/page')->renderPage($this, $pageId)) {
+                $this->_forward('defaultNoRoute');
             }
         }
-        else{
-            $this->network->setSocialNewRecord();//create new record in table social
-        }
-
         $this->_getSession()->loginById($customerId);//load user
-
-
     }
 
 

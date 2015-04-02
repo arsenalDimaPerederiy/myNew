@@ -16,8 +16,6 @@ class Webinse_OAuth_Model_OauthLib_OauthG extends Webinse_OAuth_Model_OauthLib_O
     protected $redirect_uri;
     protected $redirect_uri_code;
 
-    public  $SocialNetworkModel;
-    public $class_id='g';
 
     public function __construct($redirectUrl){
 
@@ -30,10 +28,9 @@ class Webinse_OAuth_Model_OauthLib_OauthG extends Webinse_OAuth_Model_OauthLib_O
 
         $this->redirect_uri_code=str_replace($ar1,$ar2,$redirectUrl);
 
-
+        $this->class_id='g';
         $this->clientId=Mage::getStoreConfig('OAuth/OAuth_group_g/g_id_key');
         $this->client_secret=Mage::getStoreConfig('OAuth/OAuth_group_g/g_secret');
-        $this->SocialNetworkModel=Mage::getModel('webinse_oauth/Oauth');
         parent::__construct();
     }
 
@@ -44,69 +41,74 @@ class Webinse_OAuth_Model_OauthLib_OauthG extends Webinse_OAuth_Model_OauthLib_O
 
     public function getToken(){
 
-        $client = new Varien_Http_Client(self::OAUTH_G_URI_GET_TOKEN);
-        $client->setHeaders('Content-type', 'application/x-www-form-urlencoded');
-        $client->setMethod(Varien_Http_Client::POST);
-        $client->setParameterPost('client_id',$this->clientId);
-        $client->setParameterPost('client_secret',$this->client_secret);
-        $client->setParameterPost('code',$this->code);
-        $client->setParameterPost('redirect_uri',$this->redirect_uri);
-        $client->setParameterPost('grant_type','authorization_code');
+        try{
+            $client = new Varien_Http_Client(self::OAUTH_G_URI_GET_TOKEN);
+            $client->setHeaders('Content-type', 'application/x-www-form-urlencoded');
+            $client->setMethod(Varien_Http_Client::POST);
+            $client->setParameterPost('client_id',$this->clientId);
+            $client->setParameterPost('client_secret',$this->client_secret);
+            $client->setParameterPost('code',$this->code);
+            $client->setParameterPost('redirect_uri',$this->redirect_uri);
+            $client->setParameterPost('grant_type','authorization_code');
 
-        $userTokenArray=Mage::helper('core')->jsonDecode($client->request()->getBody());
-        if(isset($userTokenArray['access_token'])){
-            $this->token=$userTokenArray['access_token'];
+            if($client->request()->isSuccessful()){
+                $userTokenArray=Mage::helper('core')->jsonDecode($client->request()->getBody());
+
+                if(isset($userTokenArray['access_token'])){
+                    $this->token=$userTokenArray['access_token'];
+                }
+                else{
+                    throw new Exception(Webinse_OAuth_Model_OauthLib_Oauth_Oauth::GET_TOKEN_ERROR.'= '.$this->class_id.' access_token is empty');
+                }
+            }
+            else{
+                throw new Exception(Webinse_OAuth_Model_OauthLib_Oauth_Oauth::GET_TOKEN_ERROR.'= '.$this->class_id.' '.$client->request()->getMessage());
+            }
+
         }
-        else{
+        catch(Exception $e){
+            Mage::logException($e);
+            Mage::getSingleton('adminhtml/session')->addError($e->getMessage());
+
             return false;
         }
+    return true;
     }
 
 
     public function getUserInfo(){
 
-        $client_1 = new Varien_Http_Client(self::OAUTH_G_URI_GET_USER_INFO);
-        $client_1->setMethod(Varien_Http_Client::GET);
-        $client_1->setParameterGet('access_token',$this->token);
-        $userInfo=Mage::helper('core')->jsonDecode($client_1->request()->getBody());
+        try{
+            $client_1 = new Varien_Http_Client(self::OAUTH_G_URI_GET_USER_INFO);
+            $client_1->setMethod(Varien_Http_Client::GET);
+            $client_1->setParameterGet('access_token',$this->token);
+            $userInfo=Mage::helper('core')->jsonDecode($client_1->request()->getBody());
 
-        if($client_1->request()->isSuccessful()){
+            if($client_1->request()->isSuccessful()){
 
-            $this->userId=$userInfo['id'];
-            $this->email=$userInfo['email'];
-            $this->userInfoArray=array(
-                'first_name'=>$userInfo['name'],
-                'last_name'=>$userInfo['family_name']
-            );
+                $this->userId=$userInfo['id'];
+                $this->email=$userInfo['email'];
+
+                if(isset($userInfo['email'])&&isset($userInfo['id'])){
+                    $this->userInfoArray=array(
+                        'first_name'=>$userInfo['name'],
+                        'last_name'=>$userInfo['family_name']
+                    );
+                }
+                else{
+                    throw new Exception(Webinse_OAuth_Model_OauthLib_Oauth_Oauth::GET_USER_DATA_ERROR.'='.$this->class_id.' '.$client_1->request()->getMessage());
+                }
+            }
+            else{
+                throw new Exception(Webinse_OAuth_Model_OauthLib_Oauth_Oauth::GET_USER_DATA_ERROR.'= '.$this->class_id." response is empty");
+            }
         }
-        else{
+        catch(Exception $e){
+            Mage::logException($e);
+            Mage::getSingleton('adminhtml/session')->addError($e->getMessage());
+
             return false;
         }
-
+        return true;
     }
-
-    public function setCode($code){
-        $this->code=$code;
-    }
-
-
-    public function setSocialNewRecord(){
-        $socialData = array(
-            'social'=>$this->class_id,
-            'user_soc_id'=>$this->userId,
-            'customer_id'=>$this->customer_id,
-            'store_id'=>$this->store,
-            'website_id'=>$this->websiteId
-        );
-        $this->SocialNetworkModel->setSocialNetworkNewRecord($socialData);
-    }
-    public function GetUserBySocialId(){
-        return $this->SocialNetworkModel->getRecordsByUserId($this->userId);
-    }
-
-    public function GetUserBySocialIdSocId(){
-        return $this->SocialNetworkModel->GetUserBySocialIdSocId($this->userId,$this->class_id);
-    }
-
-
 }

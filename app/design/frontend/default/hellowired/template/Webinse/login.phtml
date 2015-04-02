@@ -80,16 +80,11 @@
                 <span><span><?php echo $this->__('Login') ?></span></span></button>
 
         </form>
-        <div class="SocialNetworckBlock">
-            <h2>Войти через</h2>
-            <hr/>
-            <div class="SocBlock">
-                <?php
-                $socialBlock = $this->getChild('social.icons');
-                echo $socialBlock->getArrayCollection();
-                ?>
-            </div>
-        </div>
+
+        <?php
+            $socialBlock = $this->getChild('social.icons');
+            echo $socialBlock->_toHtml();
+        ?>
         <div class="modal-login-footer">
             <a title="<?php echo $this->__('Create an Account') ?>" onclick="CreateAccountShow();">
                 <h3><?php echo $this->__('Create an Account') ?></h3></a>
