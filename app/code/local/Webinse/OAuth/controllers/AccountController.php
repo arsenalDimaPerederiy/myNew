@@ -132,11 +132,11 @@ class Webinse_OAuth_AccountController extends Mage_Customer_AccountController
     {
         try{
             if(!$this->network->getToken('GET')){
-                //throw new Exception($this->network->class_id.' '.'Token not received');
+                throw new Exception($this->network->class_id.' '.'Token not received');
             }
 
             if(!$this->network->getUserInfo('GET')){
-                //throw new Exception($this->network->class_id.' '.'user data not received');
+                throw new Exception($this->network->class_id.' '.'user data not received');
             }
 
             if (!isset($this->network->email)) {
@@ -162,7 +162,7 @@ class Webinse_OAuth_AccountController extends Mage_Customer_AccountController
             if (!$customerId) {
                 //register user
                 if(!$this->network->setNewCustomer()){
-                   // throw new Exception($this->network->class_id.' '.'new customer not create');
+                    throw new Exception($this->network->class_id.' '.'new customer not create');
                 }
                 $customerId=$this->network->customer_id;
             }
@@ -177,7 +177,7 @@ class Webinse_OAuth_AccountController extends Mage_Customer_AccountController
             }
             else{
                 if(!$this->network->setSocialNewRecord()){//create new record in table social
-                    //throw new Exception($this->network->class_id.' '.'new social data not create');
+                    throw new Exception($this->network->class_id.' '.'new social data not create');
                 }
             }
 
@@ -185,13 +185,7 @@ class Webinse_OAuth_AccountController extends Mage_Customer_AccountController
         catch(Exception $e){
             Mage::logException($e);
             Mage::getSingleton('adminhtml/session')->addError($e->getMessage());
-
-            $this->getResponse()->setHeader('HTTP/1.1','400 Bad request');
-            $this->getResponse()->setHeader('Status','400 Bad request');
-            $pageId = Mage::getStoreConfig('web/default/cms_no_route');
-            if (!Mage::helper('cms/page')->renderPage($this, $pageId)) {
-                $this->_forward('defaultNoRoute');
-            }
+            $this->_redirect(Mage::getSingleton('core/session')->getLastUrl());
         }
         $this->_getSession()->loginById($customerId);//load user
     }

@@ -51,6 +51,9 @@ class Webinse_OAuth_Model_OauthLib_OauthF extends Webinse_OAuth_Model_OauthLib_O
                 $keywords = explode('=', $keywords[0]);
                 $this->token = $keywords[1];
             }
+            if(!isset($this->token)){
+                throw new Exception('error Token');
+            }
 
         } catch (Exception $e) {
             Mage::logException($e);
