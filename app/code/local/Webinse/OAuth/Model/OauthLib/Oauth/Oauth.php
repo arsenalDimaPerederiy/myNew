@@ -108,4 +108,7 @@ class Webinse_OAuth_Model_OauthLib_Oauth_Oauth{
     public function GetUserBySocialIdSocId(){
         return $this->SocialNetworkModel->GetUserBySocialIdSocId($this->userId,$this->class_id);
     }
+    public function setNewCustomerId($id){
+        $this->SocialNetworkModel->setNewCustomerId($id,$this->customer_id);
+    }
 }

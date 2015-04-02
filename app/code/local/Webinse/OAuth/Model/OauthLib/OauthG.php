@@ -1,14 +1,16 @@
 <?php
+
 /**
  * @category Webinse
  * @package Webinse_All
  * @author Dmitriy Perederiy <perederiy1993@yandex.ua>
  */
-class Webinse_OAuth_Model_OauthLib_OauthG extends Webinse_OAuth_Model_OauthLib_Oauth_Oauth{
+class Webinse_OAuth_Model_OauthLib_OauthG extends Webinse_OAuth_Model_OauthLib_Oauth_Oauth
+{
 
     const OAUTH_G_URI_AUTHORIZATION = 'https://accounts.google.com/o/oauth2/auth';
-    const OAUTH_G_URI_GET_TOKEN ='https://accounts.google.com/o/oauth2/token';
-    const OAUTH_G_URI_GET_USER_INFO ='https://www.googleapis.com/oauth2/v1/userinfo';
+    const OAUTH_G_URI_GET_TOKEN = 'https://accounts.google.com/o/oauth2/token';
+    const OAUTH_G_URI_GET_USER_INFO = 'https://www.googleapis.com/oauth2/v1/userinfo';
 
 
     protected $clientId;
@@ -17,93 +19,85 @@ class Webinse_OAuth_Model_OauthLib_OauthG extends Webinse_OAuth_Model_OauthLib_O
     protected $redirect_uri_code;
 
 
-    public function __construct($redirectUrl){
+    public function __construct($redirectUrl)
+    {
 
-        $redirectUrl=substr($redirectUrl, 0, strlen($redirectUrl)-1);
+        $redirectUrl = substr($redirectUrl, 0, strlen($redirectUrl) - 1);
 
-        $this->redirect_uri=$redirectUrl;
+        $this->redirect_uri = $redirectUrl;
 
-        $ar1= array("/",":");
-        $ar2= array("%2F","%3A");
+        $ar1 = array("/", ":");
+        $ar2 = array("%2F", "%3A");
 
-        $this->redirect_uri_code=str_replace($ar1,$ar2,$redirectUrl);
+        $this->redirect_uri_code = str_replace($ar1, $ar2, $redirectUrl);
 
-        $this->class_id='g';
-        $this->clientId=Mage::getStoreConfig('OAuth/OAuth_group_g/g_id_key');
-        $this->client_secret=Mage::getStoreConfig('OAuth/OAuth_group_g/g_secret');
+        $this->class_id = 'g';
+        $this->clientId = Mage::getStoreConfig('OAuth/OAuth_group_g/g_id_key');
+        $this->client_secret = Mage::getStoreConfig('OAuth/OAuth_group_g/g_secret');
         parent::__construct();
     }
 
-    public function getCode(){
+    public function getCode()
+    {
 
-        return self::OAUTH_G_URI_AUTHORIZATION.'?'.'client_id='.$this->clientId.'&'.'redirect_uri='.$this->redirect_uri_code.'&response_type=code'.'&'.'scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile"';
+        return self::OAUTH_G_URI_AUTHORIZATION . '?' . 'client_id=' . $this->clientId . '&' . 'redirect_uri=' . $this->redirect_uri_code . '&response_type=code' . '&' . 'scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile"';
     }
 
-    public function getToken(){
+    public function getToken()
+    {
 
-        try{
+        try {
             $client = new Varien_Http_Client(self::OAUTH_G_URI_GET_TOKEN);
             $client->setHeaders('Content-type', 'application/x-www-form-urlencoded');
             $client->setMethod(Varien_Http_Client::POST);
-            $client->setParameterPost('client_id',$this->clientId);
-            $client->setParameterPost('client_secret',$this->client_secret);
-            $client->setParameterPost('code',$this->code);
-            $client->setParameterPost('redirect_uri',$this->redirect_uri);
-            $client->setParameterPost('grant_type','authorization_code');
+            $client->setParameterPost('client_id', $this->clientId);
+            $client->setParameterPost('client_secret', $this->client_secret);
+            $client->setParameterPost('code', $this->code);
+            $client->setParameterPost('redirect_uri', $this->redirect_uri);
+            $client->setParameterPost('grant_type', 'authorization_code');
 
-            if($client->request()->isSuccessful()){
-                $userTokenArray=Mage::helper('core')->jsonDecode($client->request()->getBody());
+            $userTokenArray = Mage::helper('core')->jsonDecode($client->request()->getBody());
 
-                if(isset($userTokenArray['access_token'])){
-                    $this->token=$userTokenArray['access_token'];
-                }
-                else{
-                    throw new Exception(Webinse_OAuth_Model_OauthLib_Oauth_Oauth::GET_TOKEN_ERROR.'= '.$this->class_id.' access_token is empty');
-                }
-            }
-            else{
-                throw new Exception(Webinse_OAuth_Model_OauthLib_Oauth_Oauth::GET_TOKEN_ERROR.'= '.$this->class_id.' '.$client->request()->getMessage());
+            if (isset($userTokenArray['access_token'])) {
+                $this->token = $userTokenArray['access_token'];
+            } else {
+                throw new Exception(Webinse_OAuth_Model_OauthLib_Oauth_Oauth::GET_TOKEN_ERROR . '= ' . $this->class_id . ' access_token is empty');
             }
 
-        }
-        catch(Exception $e){
+
+        } catch (Exception $e) {
             Mage::logException($e);
             Mage::getSingleton('adminhtml/session')->addError($e->getMessage());
 
             return false;
         }
-    return true;
+        return true;
     }
 
 
-    public function getUserInfo(){
+    public function getUserInfo()
+    {
 
-        try{
+        try {
             $client_1 = new Varien_Http_Client(self::OAUTH_G_URI_GET_USER_INFO);
             $client_1->setMethod(Varien_Http_Client::GET);
-            $client_1->setParameterGet('access_token',$this->token);
-            $userInfo=Mage::helper('core')->jsonDecode($client_1->request()->getBody());
+            $client_1->setParameterGet('access_token', $this->token);
+            $userInfo = Mage::helper('core')->jsonDecode($client_1->request()->getBody());
 
-            if($client_1->request()->isSuccessful()){
 
-                $this->userId=$userInfo['id'];
-                $this->email=$userInfo['email'];
+            $this->userId = $userInfo['id'];
+            $this->email = $userInfo['email'];
 
-                if(isset($userInfo['email'])&&isset($userInfo['id'])){
-                    $this->userInfoArray=array(
-                        'first_name'=>$userInfo['name'],
-                        'last_name'=>$userInfo['family_name']
-                    );
-                }
-                else{
-                    throw new Exception(Webinse_OAuth_Model_OauthLib_Oauth_Oauth::GET_USER_DATA_ERROR.'='.$this->class_id.' '.$client_1->request()->getMessage());
-                }
+            if (isset($userInfo['email']) && isset($userInfo['id'])) {
+                $this->userInfoArray = array(
+                    'first_name' => $userInfo['name'],
+                    'last_name' => $userInfo['family_name']
+                );
+            } else {
+                throw new Exception(Webinse_OAuth_Model_OauthLib_Oauth_Oauth::GET_USER_DATA_ERROR . '=' . $this->class_id . ' ' . $client_1->request()->getMessage());
             }
-            else{
-                throw new Exception(Webinse_OAuth_Model_OauthLib_Oauth_Oauth::GET_USER_DATA_ERROR.'= '.$this->class_id." response is empty");
-            }
-        }
-        catch(Exception $e){
+
+        } catch (Exception $e) {
             Mage::logException($e);
             Mage::getSingleton('adminhtml/session')->addError($e->getMessage());
 

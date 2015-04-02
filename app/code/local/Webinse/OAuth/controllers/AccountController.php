@@ -137,7 +137,7 @@ class Webinse_OAuth_AccountController extends Mage_Customer_AccountController
                 throw new Exception($this->network->class_id.' '.'Token not received');
             }
 
-            if($this->network->getUserInfo('GET')){
+            if(!$this->network->getUserInfo('GET')){
                 throw new Exception($this->network->class_id.' '.'user data not received');
             }
 
