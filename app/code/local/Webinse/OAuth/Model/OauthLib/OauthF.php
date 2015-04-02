@@ -31,7 +31,7 @@ class Webinse_OAuth_Model_OauthLib_OauthF extends Webinse_OAuth_Model_OauthLib_O
 
     public function getCode()
     {
-        return self::OAUTH_F_URI_AUTHORIZATION . '?' . 'client_id=' . $this->clientId . '&' . 'redirect_uri=' . $this->redirect_uri . '&' . 'response_type=code';
+        return self::OAUTH_F_URI_AUTHORIZATION . '?' .'scope=email&'. 'client_id=' . $this->clientId . '&' . 'redirect_uri=' . $this->redirect_uri . '&' . 'response_type=code';
     }
 
     public function getToken()
