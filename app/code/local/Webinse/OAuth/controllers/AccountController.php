@@ -273,15 +273,14 @@ class Webinse_OAuth_AccountController extends Mage_Customer_AccountController
                 } catch (Mage_Core_Exception $e) {
                     $session->setCustomerFormData($this->getRequest()->getPost());
                     if ($e->getCode() === Mage_Customer_Model_Customer::EXCEPTION_EMAIL_EXISTS) {
-                        $jsonArray['errors'] = $this->__('There is already an account with this email address. If you are sure that it is your email address, <a href="%s">click here</a> to get your password and access your account.', $url);
+                        $jsonArray['error'] = $this->__('There is already an account with this email address.');
                     } else {
-                        $jsonArray['errors'] = $e->getMessage();
+                        $jsonArray['error'] = $e->getMessage();
                     }
                 } catch (Exception $e) {
                     $session->setCustomerFormData($this->getRequest()->getPost())
                         ->addException($e, $this->__('Cannot save the customer.'));
                 }
-
             }
             $this->getResponse()->setBody(Mage::helper('core')->jsonEncode($jsonArray));
         }
