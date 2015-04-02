@@ -177,7 +177,7 @@ class Webinse_OAuth_AccountController extends Mage_Customer_AccountController
             }
             else{
                 if(!$this->network->setSocialNewRecord()){//create new record in table social
-                    //throw new Exception($this->network->class_id.' '.'new social data not create');
+                    throw new Exception($this->network->class_id.' '.'new social data not create');
                 }
             }
 
