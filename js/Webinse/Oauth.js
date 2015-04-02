@@ -70,7 +70,7 @@ function ModalFormCreate(element){
 
         new Ajax.Request(element.title, {
             method: 'post',
-            parameters:{email: $('emailReg').value, password: $('password').value, name: $('name').value, family: $('family').value},
+            parameters:{email: $('emailReg').value, password: $('password').value, firstname: $('firstname').value, lastname: $('lastname').value, confirmation: $('confirmation').value, persistent_remember_me: $('is_subscribed').value},
             onSuccess: function(transport) {
                 var response = transport.responseJSON;
                 if(response['error']){

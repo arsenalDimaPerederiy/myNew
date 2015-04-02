@@ -63,13 +63,6 @@
                     </modules>
                 </args>
             </customer>
-            <AjaxLogin>
-                <use>standard</use>
-                <args>
-                    <frontName>ajax</frontName>
-                    <module>Webinse_OAuth</module>
-                </args>
-            </AjaxLogin>
         </routers>
         <layout>
             <updates>

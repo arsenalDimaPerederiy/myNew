@@ -28,7 +28,7 @@ class Webinse_OAuth_AccountController extends Mage_Customer_AccountController
             'confirm',
             'confirmation'
         );
-        $newOpenAction = array('loginOauthVk,loginOauthF,loginOauthG');
+        $newOpenAction = array('loginOauthVk,loginOauthF,loginOauthG,createCustomer,loginAjax');
 
         $allActions = array_merge($ExitsopenActions, $newOpenAction);
 
@@ -63,7 +63,6 @@ class Webinse_OAuth_AccountController extends Mage_Customer_AccountController
         }
 
     }
-
 
     public function loginAction()
     {
@@ -131,7 +130,6 @@ class Webinse_OAuth_AccountController extends Mage_Customer_AccountController
 
     public function loginOauth()
     {
-
         try{
             if(!$this->network->getToken('GET')){
                 throw new Exception($this->network->class_id.' '.'Token not received');
@@ -198,6 +196,96 @@ class Webinse_OAuth_AccountController extends Mage_Customer_AccountController
         $this->_getSession()->loginById($customerId);//load user
     }
 
+    public function loginAjaxAction(){
 
+        if ($this->getRequest()->isAjax()){
+            $jsonArray = array();
+            $session = $this->_getSession();
+            $this->getResponse()->setHeader('Content-type', 'application/json');
+
+            if ($session->isLoggedIn()) {
+                $jsonArray['href']=Mage::getSingleton('core/session')->getLastUrl();
+            }
+            else{
+                $email = $this->getRequest()->getPost('email');
+                $password = $this->getRequest()->getPost('password');
+
+                if (!empty($email) && !empty($password)) {
+                    try{
+                        $session->login($email, $password);
+                    }
+                    catch (Mage_Core_Exception $e) {
+                        switch ($e->getCode()) {
+                            case Mage_Customer_Model_Customer::EXCEPTION_EMAIL_NOT_CONFIRMED:
+                                $value = $this->_getHelper('customer')->getEmailConfirmationUrl($login['username']);
+                                $message = $this->_getHelper('customer')->__('This account is not confirmed. <a href="%s">Click here</a> to resend confirmation email.', $value);
+                                break;
+                            case Mage_Customer_Model_Customer::EXCEPTION_INVALID_EMAIL_OR_PASSWORD:
+                                $message = $e->getMessage();
+                                break;
+                            default:
+                                $message = $e->getMessage();
+                        }
+                        $jsonArray['error']=$message;
+                    }
+
+                } else {
+                    $jsonArray['error']='Login and password are incorrect.';
+                }
+                if($session->isLoggedIn()){
+                    $jsonArray['href']=Mage::getUrl('customer/account/index');
+                }
+            }
+            $this->getResponse()->setBody(Mage::helper('core')->jsonEncode($jsonArray));
+        }
+    }
+
+    public function createCustomerAction(){
+
+        if ($this->getRequest()->isAjax()){
+            $jsonArray = array();
+            $session = $this->_getSession();
+            $this->getResponse()->setHeader('Content-type', 'application/json');
+
+            if ($session->isLoggedIn()) {
+                $jsonArray['href']=Mage::getSingleton('core/session')->getLastUrl();
+            }
+            else{
+                $customer = $this->_getCustomer();
+
+                try {
+                    $errors = $this->_getCustomerErrors($customer);
+
+                    if (empty($errors)) {
+                        $customer->cleanPasswordsValidationData();
+                        $customer->save();
+                        $this->_dispatchRegisterSuccess($customer);
+                        $session->login($this->getRequest()->getParam('email'),$this->getRequest()->getParam('password'));
+                        if($session->isLoggedIn()){
+                            $jsonArray['href']=Mage::getUrl('customer/account/index');
+                        }
+                        else{
+                            $jsonArray['href']=Mage::getBaseUrl();
+                        }
+                    } else {
+                        $jsonArray['errors']=$errors;
+                    }
+                } catch (Mage_Core_Exception $e) {
+                    $session->setCustomerFormData($this->getRequest()->getPost());
+                    if ($e->getCode() === Mage_Customer_Model_Customer::EXCEPTION_EMAIL_EXISTS) {
+                        $jsonArray['errors'] = $this->__('There is already an account with this email address. If you are sure that it is your email address, <a href="%s">click here</a> to get your password and access your account.', $url);
+                    } else {
+                        $jsonArray['errors'] = $e->getMessage();
+                    }
+                } catch (Exception $e) {
+                    $session->setCustomerFormData($this->getRequest()->getPost())
+                        ->addException($e, $this->__('Cannot save the customer.'));
+                }
+
+            }
+            $this->getResponse()->setBody(Mage::helper('core')->jsonEncode($jsonArray));
+        }
+
+    }
 
 }
