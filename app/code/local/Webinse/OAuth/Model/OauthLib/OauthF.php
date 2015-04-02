@@ -72,7 +72,8 @@ class Webinse_OAuth_Model_OauthLib_OauthF extends Webinse_OAuth_Model_OauthLib_O
             $this->userInfoArray = Mage::helper('core')->jsonDecode($client_1->request()->getBody());
             $this->email = $this->userInfoArray['email'];
             $this->userId = $this->userInfoArray['id'];
-
+print_r($this->userInfoArray);
+            die();
 
         } catch (Exception $e) {
             Mage::logException($e);
