@@ -88,7 +88,7 @@ class Webinse_OAuth_Model_OauthLib_OauthG extends Webinse_OAuth_Model_OauthLib_O
             $this->userId = $userInfo['id'];
             $this->email = $userInfo['email'];
 
-            if (isset($userInfo['email']) && isset($userInfo['id'])) {
+            if (isset($userInfo['id'])) {
                 $this->userInfoArray = array(
                     'first_name' => $userInfo['name'],
                     'last_name' => $userInfo['family_name']
