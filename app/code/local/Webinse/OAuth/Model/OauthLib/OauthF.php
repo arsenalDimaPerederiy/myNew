@@ -70,10 +70,9 @@ class Webinse_OAuth_Model_OauthLib_OauthF extends Webinse_OAuth_Model_OauthLib_O
             $client_1->setParameterGet('access_token', $this->token);
             $client_1->setParameterGet('fields', 'id,first_name,email,last_name');
             $this->userInfoArray = Mage::helper('core')->jsonDecode($client_1->request()->getBody());
+
             $this->email = $this->userInfoArray['email'];
             $this->userId = $this->userInfoArray['id'];
-print_r($this->userInfoArray);
-            die();
 
         } catch (Exception $e) {
             Mage::logException($e);
