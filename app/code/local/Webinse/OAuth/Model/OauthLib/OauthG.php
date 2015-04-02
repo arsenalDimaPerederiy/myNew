@@ -84,7 +84,8 @@ class Webinse_OAuth_Model_OauthLib_OauthG extends Webinse_OAuth_Model_OauthLib_O
             $client_1->setParameterGet('access_token', $this->token);
             $userInfo = Mage::helper('core')->jsonDecode($client_1->request()->getBody());
 
-
+print_r($userInfo);
+            die();
             $this->userId = $userInfo['id'];
             $this->email = $userInfo['email'];
 
