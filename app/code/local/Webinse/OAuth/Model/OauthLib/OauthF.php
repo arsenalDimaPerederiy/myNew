@@ -51,7 +51,7 @@ class Webinse_OAuth_Model_OauthLib_OauthF extends Webinse_OAuth_Model_OauthLib_O
                 $keywords = explode('=', $keywords[0]);
                 $this->token = $keywords[1];
             } else {
-                throw new Exception(Webinse_OAuth_Model_OauthLib_Oauth_Oauth::GET_TOKEN_ERROR . '=' . $this->class_id . ' ' . 'Token is empty');
+                //throw new Exception(Webinse_OAuth_Model_OauthLib_Oauth_Oauth::GET_TOKEN_ERROR . '=' . $this->class_id . ' ' . 'Token is empty');
             }
 
         } catch (Exception $e) {
@@ -78,7 +78,7 @@ class Webinse_OAuth_Model_OauthLib_OauthF extends Webinse_OAuth_Model_OauthLib_O
                 $this->email = $this->userInfoArray['email'];
                 $this->userId = $this->userInfoArray['id'];
             } else {
-                throw new Exception(Webinse_OAuth_Model_OauthLib_Oauth_Oauth::GET_USER_DATA_ERROR . '=' . $this->class_id . ' ' . $client_1->request()->getMessage());
+                //throw new Exception(Webinse_OAuth_Model_OauthLib_Oauth_Oauth::GET_USER_DATA_ERROR . '=' . $this->class_id . ' ' . $client_1->request()->getMessage());
             }
 
 
