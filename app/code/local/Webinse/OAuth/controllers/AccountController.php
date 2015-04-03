@@ -223,7 +223,7 @@ class Webinse_OAuth_AccountController extends Mage_Customer_AccountController
             $this->getResponse()->setHeader('Content-type', 'application/json');
 
             if ($session->isLoggedIn()) {
-                $jsonArray['href']=Mage::getSingleton('core/session')->getLastUrl();
+                $jsonArray['href']=Mage::getBaseUrl();
             }
             else{
                 $email = $this->getRequest()->getPost('email');
@@ -267,7 +267,8 @@ class Webinse_OAuth_AccountController extends Mage_Customer_AccountController
             $this->getResponse()->setHeader('Content-type', 'application/json');
 
             if ($session->isLoggedIn()) {
-                $jsonArray['href']=Mage::getSingleton('core/session')->getLastUrl();
+                $jsonArray['href']=Mage::getBaseUrl();
+
             }
             else{
                 $customer = $this->_getCustomer();
