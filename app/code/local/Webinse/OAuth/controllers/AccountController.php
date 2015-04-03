@@ -304,7 +304,6 @@ class Webinse_OAuth_AccountController extends Mage_Customer_AccountController
             }
             $this->getResponse()->setBody(Mage::helper('core')->jsonEncode($jsonArray));
         }
-
     }
 
     public function _Error(){
