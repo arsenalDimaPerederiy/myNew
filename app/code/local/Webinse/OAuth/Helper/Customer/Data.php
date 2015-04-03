@@ -8,9 +8,8 @@ class Webinse_OAuth_Helper_Customer_Data extends Mage_Customer_Helper_Data {
 
     const ROUTE_ACCOUNT_LOGIN_AJAX = 'customer/account/loginOauth';
 
-    public function getLoginUrl()
-    {
-       return $this->_getUrl(self::ROUTE_ACCOUNT_LOGIN, $this->getLoginUrlParams());
-    }
+public function getLoginType(){
+    return "dfghdfg";
+}
 
 }

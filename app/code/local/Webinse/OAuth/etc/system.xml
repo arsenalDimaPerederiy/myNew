@@ -7,7 +7,7 @@
         </OAuth>
     </tabs>
     <sections>
-        <OAuth translate="label">
+         <OAuth translate="label">
             <label>OAuth module setup</label>
             <tab>OAuth</tab>
             <frontend_type></frontend_type>
@@ -16,9 +16,27 @@
             <show_in_website>1</show_in_website>
             <show_in_store>1</show_in_store>
             <groups>
+                <Ajax_login_setup translate="label">
+                    <label>Ajax login setting</label>
+                    <sort_order>1</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <loginAjax translate="label">
+                            <label>Apply Ajax login Oauth</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </loginAjax>
+                    </fields>
+                </Ajax_login_setup>
                 <OAuth_group_vk translate="label">
                     <label>OAuth Vkontakte setting</label>
-                    <sort_order>1</sort_order>
+                    <sort_order>2</sort_order>
                     <show_in_default>1</show_in_default>
                     <show_in_website>1</show_in_website>
                     <show_in_store>1</show_in_store>
@@ -52,7 +70,7 @@
                 </OAuth_group_vk>
                 <OAuth_group_f translate="label">
                     <label>OAuth Facebook setting</label>
-                    <sort_order>2</sort_order>
+                    <sort_order>3</sort_order>
                     <show_in_default>1</show_in_default>
                     <show_in_website>1</show_in_website>
                     <show_in_store>1</show_in_store>
@@ -86,7 +104,7 @@
                 </OAuth_group_f>
                 <OAuth_group_g translate="label">
                     <label>OAuth Google+ setting</label>
-                    <sort_order>3</sort_order>
+                    <sort_order>4</sort_order>
                     <show_in_default>1</show_in_default>
                     <show_in_website>1</show_in_website>
                     <show_in_store>1</show_in_store>
@@ -120,35 +138,8 @@
                 </OAuth_group_g>
             </groups>
         </OAuth>
-        <AjaxOauth translate="label">
-            <label>Ajax login module setup</label>
-            <tab>OAuth</tab>
-            <frontend_type></frontend_type>
-            <sort_order>920</sort_order>
-            <show_in_default>1</show_in_default>
-            <show_in_website>1</show_in_website>
-            <show_in_store>1</show_in_store>
-            <groups>
-                <Ajax_login_setup translate="label">
-                    <label>Ajax login setting</label>
-                    <sort_order>1</sort_order>
-                    <show_in_default>1</show_in_default>
-                    <show_in_website>1</show_in_website>
-                    <show_in_store>1</show_in_store>
-                    <fields>
-                        <loginAjax translate="label">
-                            <label>Apply Ajax login Oauth</label>
-                            <frontend_type>select</frontend_type>
-                            <source_model>adminhtml/system_config_source_yesno</source_model>
-                            <sort_order>1</sort_order>
-                            <show_in_default>1</show_in_default>
-                            <show_in_website>1</show_in_website>
-                            <show_in_store>1</show_in_store>
-                        </loginAjax>
-                    </fields>
-                </Ajax_login_setup>
-            </groups>
-        </AjaxOauth>
+
+
     </sections>
 </config>
 

@@ -66,15 +66,18 @@ class Webinse_OAuth_AccountController extends Mage_Customer_AccountController
 
     public function loginAction()
     {
-
         if ($this->_getSession()->isLoggedIn()) {
             $this->_redirect('*/*/');
             return;
         }
 
-        $block = $this->loadLayout()->getLayout()->getBlock('customer_form_login')->setTemplate('Webinse/login.phtml');
-        $this->getResponse()->setBody($block->toHtml());
-
+        if(Mage::getStoreConfig('OAuth/Ajax_login_setup/loginAjax')){
+            $block = $this->loadLayout()->getLayout()->getBlock('customer_form_login')->setTemplate('Webinse/login.phtml');
+            $this->getResponse()->setBody($block->toHtml());
+        }
+        else{
+            parent::loginAction();
+        }
     }
 
     public function loginOauthVkAction()
@@ -91,13 +94,14 @@ class Webinse_OAuth_AccountController extends Mage_Customer_AccountController
             $this->loginOauth();
             $this->_loginPostRedirect();
 
+        }else{
+            $this->_redirectUrl(Mage::getSingleton('core/session')->getLastUrl());
         }
 
     }
 
     public function loginOauthFAction()
     {
-
         if ($this->_getSession()->isLoggedIn()) {
             $this->_redirect('*/*/');
             return;

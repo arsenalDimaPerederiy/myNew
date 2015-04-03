@@ -104,7 +104,7 @@ Load this update on every page when customer is logged out
             <action method="addLink" translate="label title" module="customer">
                 <label>Log In</label>
                 <url helper="customer/getLoginUrl"/>
-                <title>Log In</title>
+                <title >Log In</title>
                 <prepare/>
                 <urlParams/>
                 <position>10</position>
