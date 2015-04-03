@@ -1488,7 +1488,8 @@ img.lazy{display:none;width:182px;height:234px}
 .cms-page-view .col2-left-layout .col-main{width: 640px;}
 .cms-page-view .col2-left-layout .col-left .vertnav-container{float:left;margin:0 0 20px;width:290px; border: none; }
 .cms-page-view .col2-left-layout .col-left .vertnav-container .menu-title{background-image: none; color:#343535;font-family:galsc pro;font-size:15px;font-weight:500;letter-spacing:1.5px;margin:0;padding:5px 0 5px 32px;text-transform:uppercase;background-color: #E7E6E5}
-.cms-page-view .col2-left-layout .col-left .vertnav-container #vertnav li a{float:left;padding:4px 10px;width:240px;line-height:14px;}
+.cms-page-view .col2-left-layout .col-left .vertnav-container #vertnav li a{float:left;padding:4px 10px;width:250px;line-height:14px;}
+.cms-page-view .col2-left-layout .col-left .vertnav-container #vertnav li a:hover{width: 100%}
 
 .mb-search-result .page-title{float:left; margin-top:20px;}
 .mb-search-result .page-title{text-align:center;}
