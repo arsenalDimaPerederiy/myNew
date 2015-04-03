@@ -66,7 +66,7 @@ class Webinse_OAuth_Model_OauthLib_Oauth_Oauth{
         return true;
     }
     public function createUserEmail(){
-        $this->email=$this->userInfoArray['first_name'].$this->userInfoArray['last_name'].'@test.loc';
+        $this->email=$this->userInfoArray['first_name'].$this->userInfoArray['last_name'].md5('gsdfg'.$this->userId).'@test.loc';
     }
 
     public function changeEmailCustomer(){

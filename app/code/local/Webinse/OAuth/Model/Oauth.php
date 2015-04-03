@@ -14,9 +14,7 @@ class Webinse_OAuth_Model_oauth extends Mage_Core_Model_Abstract{
     public function setSocialNetworkNewRecord($data){
         try{
             $this->setData($data);
-            if(!$this->save()){
-                throw new Exception('new social record not create');
-            }
+            $this->save();
         }
         catch(Exception $e){
             Mage::logException($e);
