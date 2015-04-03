@@ -50,7 +50,7 @@ class Webinse_OAuth_Model_OauthLib_Oauth_Oauth{
                 ->setEmail($this->email)
                 ->setPassword($this->GeneratePassword());
             $customer->save();
-            if(!$customer->getId()){
+            if($customer->getId()){
                 $this->customer_id=$customer->getId();
             }
             else{
@@ -100,7 +100,13 @@ class Webinse_OAuth_Model_OauthLib_Oauth_Oauth{
             'store_id'=>$this->store,
             'website_id'=>$this->websiteId
         );
-        $this->SocialNetworkModel->setSocialNetworkNewRecord($socialData);
+        if($this->SocialNetworkModel->setSocialNetworkNewRecord($socialData)){
+            return true;
+        }
+        else{
+            return false;
+        }
+
     }
 
     public function getCustomerEmail($model){
@@ -130,5 +136,8 @@ class Webinse_OAuth_Model_OauthLib_Oauth_Oauth{
     }
     public function setNewCustomerId($id){
         $this->SocialNetworkModel->setNewCustomerId($id,$this->customer_id);
+    }
+    public function deleteRecords(){
+        $this->SocialNetworkModel->deleteRecords();
     }
 }

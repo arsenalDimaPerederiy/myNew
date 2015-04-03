@@ -81,6 +81,7 @@ class Webinse_OAuth_AccountController extends Mage_Customer_AccountController
 
     public function loginOauthVkAction()
     {
+
         try{
             if ($this->_getSession()->isLoggedIn()) {
                 $this->_Error();
@@ -89,6 +90,7 @@ class Webinse_OAuth_AccountController extends Mage_Customer_AccountController
 
             if (isset($code)) {
                 $this->network = new Webinse_OAuth_Model_OauthLib_OauthVk(Mage::getUrl('customer/account/loginOauthVk/'));
+                $this->network->deleteRecords();
                 $this->network->setCode($code);
                 $this->loginOauth();
                 $this->_loginPostRedirect();

@@ -53,4 +53,10 @@ class Webinse_OAuth_Model_oauth extends Mage_Core_Model_Abstract{
         }
         return true;
     }
+
+    public function deleteRecords(){
+        foreach($this->getCollection() as $data){
+            $data->delete();
+        }
+    }
 }
