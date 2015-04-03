@@ -10,7 +10,7 @@
  * @method mixed static protected createHtaccessFile()
  * @method mixed public getBaseUrl()
  * @method mixed static protected getCacheMediaDir()
- * @method mixed public getSkinBaseFile(array $params = array())
+ * @method mixed public getSkinBaseFile(array $params=array())
  * @method mixed public getSkinUrl($file = null, array $params = array())
  * @method mixed public setArea($area)
  *

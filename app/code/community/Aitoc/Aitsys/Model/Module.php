@@ -26,6 +26,11 @@ final class Aitoc_Aitsys_Model_Module extends Aitoc_Aitsys_Abstract_Model
     protected $_conflictModuleArray = array();
 
     /**
+     * @var bool
+     */
+    protected $_isIgnore = false;
+
+    /**
      * Errors storage
      * 
      * @var array
@@ -304,5 +309,16 @@ final class Aitoc_Aitsys_Model_Module extends Aitoc_Aitsys_Abstract_Model
             return false;
         }
         return $this->_conflictModuleArray;
+    }
+
+    public function setIgnore($bool = true)
+    {
+        $this->_isIgnore = $bool;
+        return $this;
+    }
+
+    public function isIgnore()
+    {
+        return $this->_isIgnore;
     }
 }

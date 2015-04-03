@@ -1,22 +1,19 @@
 <?php
-/**
+/** 
  * @category    Mana
  * @package     ManaPro_FilterSuperSlider
  * @copyright   Copyright (c) http://www.manadev.com
  * @license     http://www.manadev.com/license  Proprietary License
  */
-
 /**
  * @author Mana Team
  *
  */
-class ManaPro_FilterSuperSlider_Model_MinMax_Decimal extends ManaPro_FilterSuperSlider_Model_Decimal
-{
+class ManaPro_FilterSuperSlider_Model_MinMax_Decimal extends ManaPro_FilterSuperSlider_Model_Decimal {
     protected $_maxFilter;
     protected $_maxFilterInitialized;
 
-    public function getMaxFilter()
-    {
+    public function getMaxFilter() {
         if (!$this->_maxFilterInitialized) {
             $maxFilter = null;
 
@@ -36,8 +33,8 @@ class ManaPro_FilterSuperSlider_Model_MinMax_Decimal extends ManaPro_FilterSuper
 
                     if ($filterOptions->getData('display') == $minOptions->getData('display') &&
                         $filterOptions->getData('min_slider_code') == $minOptions->getData('code') &&
-                        $filterOptions->getData('min_max_slider_role') == 'max'
-                    ) {
+                        $filterOptions->getData('min_max_slider_role') == 'max')
+                    {
                         $maxFilter = $filter;
                         break;
                     }
@@ -49,8 +46,7 @@ class ManaPro_FilterSuperSlider_Model_MinMax_Decimal extends ManaPro_FilterSuper
         return $this->_maxFilter;
     }
 
-    protected function _calculateMinMax()
-    {
+    protected function _calculateMinMax() {
         if (!$this->_isMinMaxCalculated) {
             if ($maxFilter = $this->getMaxFilter()) {
                 $this->_minMax = $this->getDecimalMinMax();
@@ -60,8 +56,8 @@ class ManaPro_FilterSuperSlider_Model_MinMax_Decimal extends ManaPro_FilterSuper
                 }
                 $minMax = $maxFilter->getDecimalMinMax();
                 if (!($this->_minMax['min'] == 0 && $this->_minMax['max'] == 0) &&
-                    !($minMax['min'] == 0 && $minMax['max'] == 0)
-                ) {
+                    !($minMax['min'] == 0 && $minMax['max'] == 0))
+                {
                     if ($this->_minMax['min'] > $minMax['min']) {
                         $this->_minMax['min'] = $minMax['min'];
                     }
@@ -69,7 +65,8 @@ class ManaPro_FilterSuperSlider_Model_MinMax_Decimal extends ManaPro_FilterSuper
                         $this->_minMax['max'] = $minMax['max'];
                     }
                 }
-            } else {
+            }
+            else {
                 $this->_minMax = array('min' => 0, 'max' => 0);
             }
             $this->_isMinMaxCalculated = true;
@@ -78,11 +75,11 @@ class ManaPro_FilterSuperSlider_Model_MinMax_Decimal extends ManaPro_FilterSuper
         return $this->_minMax;
     }
 
-    protected function _getItemsData()
-    {
+    protected function _getItemsData() {
         if ($this->getMaxFilter()) {
             return parent::_getItemsData();
-        } else {
+        }
+        else {
             return array();
         }
     }
@@ -92,16 +89,14 @@ class ManaPro_FilterSuperSlider_Model_MinMax_Decimal extends ManaPro_FilterSuper
     /**
      * @return Mana_Core_Helper_Data
      */
-    public function coreHelper()
-    {
+    public function coreHelper() {
         return Mage::helper('mana_core');
     }
 
     /**
      * @return Mana_Filters_Helper_Data
      */
-    public function filterHelper()
-    {
+    public function filterHelper() {
         return Mage::helper('mana_filters');
     }
     #endregion

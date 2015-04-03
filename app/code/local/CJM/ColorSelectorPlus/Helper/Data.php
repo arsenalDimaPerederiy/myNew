@@ -548,7 +548,7 @@ class CJM_ColorSelectorPlus_Helper_Data extends Mage_Core_Helper_Abstract
 			}
 
 			$currentColor=NULL;
-			if (($page = Mage::registry('splash_page')) !== null) {
+			/*if (($page = Mage::registry('splash_page')) !== null) {
 				if (is_array($optionFilters = $page->getOptionFilters())) {
 					foreach($optionFilters as $attribute => $data) {
 						if (is_array($_filters)){
@@ -561,7 +561,7 @@ class CJM_ColorSelectorPlus_Helper_Data extends Mage_Core_Helper_Abstract
 
 					}
 				}
-			}
+			}*/
 			
 			if (is_array($_filters)):
 				foreach ($_filters as $_filter): 

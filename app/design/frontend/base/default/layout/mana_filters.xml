@@ -19,100 +19,71 @@ Review standard Magento layout XML's for full list of available layout handles, 
 examples on what kind of actions can be applied to referenced blocks. 
  -->
 <layout version="0.1.0">
-    <catalog_category_layered> <!-- find all category pages with layered navigation -->
-        <reference name="left"> <!-- find left column block -->
-            <remove name="catalog.leftnav"/>
-            <!-- remove standard layered navigation -->
-            <remove name="enterprisecatalog.leftnav"/>
-            <!-- remove enterprise layered navigation -->
-            <block type="mana_filters/view" name="mana.catalog.leftnav" after="vertnav"
-                   template="catalog/layer/view.phtml"/>
-        </reference>
-        <reference name="head">
-            <action method="addCss">
-                <stylesheet>css/mana_filters.css</stylesheet>
-            </action>
-        </reference>
+	<catalog_category_layered> <!-- find all category pages with layered navigation -->
+		<reference name="left"> <!-- find left column block -->
+			<remove name="catalog.leftnav"/> <!-- remove standard layered navigation -->
+            <remove name="enterprisecatalog.leftnav"/> <!-- remove enterprise layered navigation -->
+            <block type="mana_filters/view" name="mana.catalog.leftnav" after="vertnav" template="catalog/layer/view.phtml"/>
+		</reference>
+		<reference name="head">
+			<action method="addCss"><stylesheet>css/mana_filters.css</stylesheet></action>
+		</reference>
         <reference name="mana.catalog.leftnav">
-            <action method="setTemplate" ifconfig="mana_filters/advanced/enabled">
-                <template>manapro/filteradvanced/view.phtml</template>
-            </action>
+            <action method="setTemplate" ifconfig="mana_filters/advanced/enabled"><template>manapro/filteradvanced/view.phtml</template></action>
         </reference>
-    </catalog_category_layered>
-    <catalogsearch_result_index> <!-- find all catalog search result page -->
-        <reference name="left"> <!-- find left column block -->
-            <remove name="catalogsearch.leftnav"/>
-            <!-- remove standard layered navigation -->
-            <remove name="enterprisesearch.leftnav"/>
-            <!-- remove enterprise layered navigation -->
-            <block type="mana_filters/search" name="mana.catalogsearch.leftnav" before="-"
-                   template="catalog/layer/view.phtml"/>
-        </reference>
-        <reference name="head">
-            <action method="addCss">
-                <stylesheet>css/mana_filters.css</stylesheet>
-            </action>
-        </reference>
+	</catalog_category_layered>
+	<catalogsearch_result_index> <!-- find all catalog search result page -->
+		<reference name="left"> <!-- find left column block -->
+			<remove name="catalogsearch.leftnav"/> <!-- remove standard layered navigation -->
+            <remove name="enterprisesearch.leftnav"/> <!-- remove enterprise layered navigation -->
+            <block type="mana_filters/search" name="mana.catalogsearch.leftnav" after="vertnav" template="catalog/layer/view.phtml"/>
+		</reference>
+		<reference name="head">
+			<action method="addCss"><stylesheet>css/mana_filters.css</stylesheet></action>
+		</reference>
         <reference name="mana.catalogsearch.leftnav">
-            <action method="setTemplate" ifconfig="mana_filters/advanced/enabled">
-                <template>manapro/filteradvanced/view.phtml</template>
-            </action>
+            <action method="setTemplate" ifconfig="mana_filters/advanced/enabled"><template>manapro/filteradvanced/view.phtml</template></action>
         </reference>
-    </catalogsearch_result_index>
-    <splash_page_view>
-        <reference name="left"> <!-- find left column block -->
-            <block type="mana_filters/view" name="mana.catalog.leftnav" after="vertnav"
-                   template="catalog/layer/view.phtml"/>
-        </reference>
-        <reference name="head">
-            <action method="addCss">
-                <stylesheet>css/mana_filters.css</stylesheet>
-            </action>
-        </reference>
+	</catalogsearch_result_index>
+	<splash_page_view>
+		<reference name="left"> <!-- find left column block -->
+            <block type="mana_filters/view" name="mana.catalog.leftnav" after="vertnav" template="catalog/layer/view.phtml"/>
+		</reference>
+		<reference name="head">
+			<action method="addCss"><stylesheet>css/mana_filters.css</stylesheet></action>
+		</reference>
         <reference name="mana.catalog.leftnav">
-            <action method="setTemplate" ifconfig="mana_filters/advanced/enabled">
-                <template>manapro/filteradvanced/view.phtml</template>
-            </action>
+            <action method="setTemplate" ifconfig="mana_filters/advanced/enabled"><template>manapro/filteradvanced/view.phtml</template></action>
         </reference>
         <!--reference name="content">
             <block type="core/template" name="cms.products" template="mana/filters/cms.phtml" />
         </reference-->
-    </splash_page_view>
-    <cms_page_layered>
-        <reference name="left"> <!-- find left column block -->
+	</splash_page_view>
+	<cms_page_layered>
+		<reference name="left"> <!-- find left column block -->
             <block type="mana_filters/view" name="mana.catalog.leftnav" before="-" template="catalog/layer/view.phtml"/>
-        </reference>
-        <reference name="head">
-            <action method="addCss">
-                <stylesheet>css/mana_filters.css</stylesheet>
-            </action>
-        </reference>
+		</reference>
+		<reference name="head">
+			<action method="addCss"><stylesheet>css/mana_filters.css</stylesheet></action>
+		</reference>
         <reference name="mana.catalog.leftnav">
-            <action method="setTemplate" ifconfig="mana_filters/advanced/enabled">
-                <template>manapro/filteradvanced/view.phtml</template>
-            </action>
+            <action method="setTemplate" ifconfig="mana_filters/advanced/enabled"><template>manapro/filteradvanced/view.phtml</template></action>
         </reference>
         <reference name="content">
-            <block type="core/template" name="cms.products" template="mana/filters/cms.phtml"/>
+            <block type="core/template" name="cms.products" template="mana/filters/cms.phtml" />
         </reference>
-    </cms_page_layered>
-    <mana_optionpage_view> <!-- find all category pages with layered navigation -->
-        <reference name="left"> <!-- find left column block -->
-            <remove name="catalog.leftnav"/>
-            <!-- remove standard layered navigation -->
-            <remove name="enterprisecatalog.leftnav"/>
-            <!-- remove enterprise layered navigation -->
+	</cms_page_layered>
+	<mana_optionpage_view> <!-- find all category pages with layered navigation -->
+		<reference name="left"> <!-- find left column block -->
+			<remove name="catalog.leftnav"/> <!-- remove standard layered navigation -->
+            <remove name="enterprisecatalog.leftnav"/> <!-- remove enterprise layered navigation -->
             <block type="mana_filters/view" name="mana.catalog.leftnav" before="-" template="catalog/layer/view.phtml"/>
-        </reference>
-        <reference name="head">
-            <action method="addCss">
-                <stylesheet>css/mana_filters.css</stylesheet>
-            </action>
-        </reference>
+		</reference>
+		<reference name="head">
+			<action method="addCss"><stylesheet>css/mana_filters.css</stylesheet></action>
+		</reference>
         <reference name="mana.catalog.leftnav">
-            <action method="setTemplate" ifconfig="mana_filters/advanced/enabled">
-                <template>manapro/filteradvanced/view.phtml</template>
-            </action>
+            <action method="setTemplate" ifconfig="mana_filters/advanced/enabled"><template>manapro/filteradvanced/view.phtml</template></action>
         </reference>
-    </mana_optionpage_view>
+	</mana_optionpage_view>
 </layout>

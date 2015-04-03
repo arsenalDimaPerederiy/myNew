@@ -1,4 +1,5 @@
 <?php
+
 /**
  * NOTICE OF LICENSE
  *
@@ -16,7 +17,6 @@
  * @contacts   support@etwebsolutions.com
  * @license    http://shop.etwebsolutions.com/etws-license-free-v1/   ETWS Free License (EFL1)
  */
-
 class ET_CurrencyManager_Helper_Tax1810 extends Mage_Tax_Helper_Data
 {
 
@@ -34,8 +34,8 @@ class ET_CurrencyManager_Helper_Tax1810 extends Mage_Tax_Helper_Data
      * @return  float
      */
     public function getPrice($product, $price, $includingTax = null, $shippingAddress = null, $billingAddress = null,
-                             $ctc = null, $store = null, $priceIncludesTax = null, $roundPrice = true)
-    {
+        $ctc = null, $store = null, $priceIncludesTax = null, $roundPrice = true
+    ) {
         if (!$price) {
             return $price;
         }

@@ -1,13 +1,5 @@
-<div class="block-megamenu sub-menu"
-     style="border:<?php echo $this->getCustomStyle('border_size') ?>px solid #<?php echo $this->getCustomStyle('border_color') ?> !important;background:#<?php if ($this->getCustomStyle('background_color')) {
-         echo $this->getCustomStyle('background_color');
-     } else {
-         echo 'ffffff';
-     } ?> !important;width:<?php if ($this->getMegamenuSize()) {
-         echo $this->getMegamenuSize();
-     } else {
-         echo '930';
-     } ?>px !important" id="menu1">
+
+<div class="block-megamenu sub-menu" style="border:<?php echo $this->getCustomStyle('border_size')?>px solid #<?php echo $this->getCustomStyle('border_color')?> !important;background:#<?php if($this->getCustomStyle('background_color')){ echo $this->getCustomStyle('background_color'); }else{echo 'ffffff';}?> !important;width:<?php if ($this->getMegamenuSize()){echo $this->getMegamenuSize();}else{ echo '930';}?>px !important"  id="menu1"  >
     <?php echo $this->getTemplateBlock($this->getHeaderContent()) ?>
     <?php echo $this->getTemplateBlock($this->getFooterContent()) ?>
 </div>
@@ -40,11 +32,11 @@ $header = '<ul class="block-home">
 $footer = '';
 $this->setDefaultHeaderFooter($header, $footer);
 $this->setDefaultGeneralStyle('#ffffff', '#D5D5D5', 1); // (background_color, border_color, title_font, title_font_size)
-$this->setDefaultTitleStyle('#ffffff', '#000000', 'Arial,Helmet,Freesans,sans-serif', 11); // (title_color, title_background_color, title_font, title_font_size)
+$this->setDefaultTitleStyle('#ffffff', '#000000','Arial,Helmet,Freesans,sans-serif',11); // (title_color, title_background_color, title_font, title_font_size)
 $this->setDefaultSubtitleStyle('#000000', 'Arial,Helmet,Freesans,sans-serif', 11); // (subtitle_color, subtitle_font, subtitle_font_size)
 $this->setDefaultLinkStyle('#000000', '#3f58a3', 'Arial,Helmet,Freesans,sans-serif', 11); // (link_color, hover_color, link_font, link_font_size)
 $this->setDefaultTextStyle('#000000', 'Arial,Helmet,Freesans,sans-serif', 12); // (text_color, text_font, text_font_size)
-$this->setDefaultContentGeneral(940, 0, 0); // megamenu_size,column_number,column_size
+$this->setDefaultContentGeneral(940,0,0);// megamenu_size,column_number,column_size
 /* add title */
 $this->addTitle('Categories');
 /* add map */

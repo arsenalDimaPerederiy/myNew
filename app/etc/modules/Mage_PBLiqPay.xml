@@ -29,13 +29,13 @@
  */
 -->
 <config>
-    <modules>
-        <Mage_PBLiqPay>
-            <active>true</active>
-            <codePool>local</codePool>
-            <depends>
-                <Mage_Paygate/>
-            </depends>
-        </Mage_PBLiqPay>
-    </modules>
+		<modules>
+				<Mage_PBLiqPay>
+						<active>true</active>
+						<codePool>local</codePool>
+						<depends>
+								<Mage_Paygate />
+						</depends>
+				</Mage_PBLiqPay>
+		</modules>
 </config>

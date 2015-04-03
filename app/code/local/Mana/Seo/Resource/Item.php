@@ -37,7 +37,7 @@ class Mana_Seo_Resource_Item extends Mana_Filters_Resource_ItemAdditionalInfo {
         );
         $select
             ->joinLeft(array('url' => $this->getTable('mana_seo/url')),
-                $db->quoteInto("`url`.`option_id` = `eav`.`value` AND `url`.`status` = 'active' AND `url`.`schema_id` = ?", $schema->getId()),
+                $db->quoteInto("`url`.`option_id` = `eav`.`value` AND `url`.`status` = 'active' AND `url`.`type` != 'splash' AND `url`.`schema_id` = ?", $schema->getId()),
                 null)
             ->columns($fields)
             ->group($fields);

@@ -31,35 +31,34 @@
  * @see Mage_Catalog_Block_Layer_View
  */
 ?>
-<?php if ($this->canShowBlock()): ?>
+<?php if($this->canShowBlock()): ?>
 
-    <div class="block block-layered-nav">
-        <div class="block-content">
+<div class="block block-layered-nav">
+    <div class="block-content">
+        
+        <?php if($this->canShowOptions()): ?>
+            <div class="topfilters">
+            <?php echo $this->getStateHtml() ?>
+            <p class="block-subtitle"><?php echo $this->__('Shopping Options') ?></p>
+            </div>
+            <dl id="narrow-by-list">
+                <?php $_filters = $this->getFilters() ?>
+                <?php foreach ($_filters as $_filter): ?>
+                <?php if($_filter->getItemsCount() || $_filter->getName() == 'Price'): ?>
+                    <dt><?php echo $this->__($_filter->getName()) ?></dt>
+					<?php if($_filter->getAttributeModel()->getAttributeCode() == 'price'): ?>
+						<?php echo Mage::app()->getLayout()->createBlock('core/template')->setTemplate('catalog/layer/price.phtml')->toHtml(); ?>
+					<?php elseif($_filter->getAttributeModel()->getAttributeCode() == 'color'): ?>
+						<?php echo Mage::app()->getLayout()->createBlock('core/template')->setTemplate('catalog/layer/color.phtml')->toHtml(); ?>
+					<?php else: ?>
+						<dd><?php echo $_filter->getHtml() ?></dd>
+					<?php endif; ?>
+                <?php endif; ?>
+                <?php endforeach; ?>
 
-            <?php if ($this->canShowOptions()): ?>
-                <div class="topfilters">
-                    <?php echo $this->getStateHtml() ?>
-                    <p class="block-subtitle"><?php echo $this->__('Shopping Options') ?></p>
-                </div>
-                <dl id="narrow-by-list">
-                    <?php $_filters = $this->getFilters() ?>
-                    <?php foreach ($_filters as $_filter): ?>
-                        <?php if ($_filter->getItemsCount() || $_filter->getName() == 'Price'): ?>
-                            <dt><?php echo $this->__($_filter->getName()) ?></dt>
-                            <?php if ($_filter->getAttributeModel()->getAttributeCode() == 'price'): ?>
-                                <?php echo Mage::app()->getLayout()->createBlock('core/template')->setTemplate('catalog/layer/price.phtml')->toHtml(); ?>
-                            <?php elseif ($_filter->getAttributeModel()->getAttributeCode() == 'color'): ?>
-                                <?php echo Mage::app()->getLayout()->createBlock('core/template')->setTemplate('catalog/layer/color.phtml')->toHtml(); ?>
-                            <?php
-                            else: ?>
-                                <dd><?php echo $_filter->getHtml() ?></dd>
-                            <?php endif; ?>
-                        <?php endif; ?>
-                    <?php endforeach; ?>
-
-                </dl>
-                <script type="text/javascript">decorateDataList('narrow-by-list')</script>
-            <?php endif; ?>
-        </div>
+            </dl>
+            <script type="text/javascript">decorateDataList('narrow-by-list')</script>
+        <?php endif; ?>
     </div>
+</div>
 <?php endif; ?>

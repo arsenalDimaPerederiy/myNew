@@ -4,9 +4,9 @@
  *
  * @category:    Aitoc
  * @package:     Aitoc_Aitexporter
- * @version      1.2.8
+ * @version      1.2.9
  * @license:     ou1zlIlUK4jGhUJZLohhJ5b8jdvumX7FXHqMPgZHkF
- * @copyright:   Copyright (c) 2014 AITOC, Inc. (http://www.aitoc.com)
+ * @copyright:   Copyright (c) 2015 AITOC, Inc. (http://www.aitoc.com)
  */
 class Aitoc_Aitexporter_Model_Import_Type_Order_Address implements Aitoc_Aitexporter_Model_Import_Type_Interface
 {
@@ -94,6 +94,7 @@ class Aitoc_Aitexporter_Model_Import_Type_Order_Address implements Aitoc_Aitexpo
                         ->setFirstname(isset($addressXml->firstname) ? (string)$addressXml->firstname : '')
                         ->setLastname(isset($addressXml->lastname) ? (string)$addressXml->lastname : '')
                         ->save();
+                    $address->setData('save_in_address_book', true);
                 }
 
                 $parentItem->setCustomerId($customer->getId()); 
@@ -124,6 +125,7 @@ class Aitoc_Aitexporter_Model_Import_Type_Order_Address implements Aitoc_Aitexpo
         }
 
         $parentItem->addAddress($address);
+
     }
 
     public function getXpath()
@@ -148,5 +150,42 @@ class Aitoc_Aitexporter_Model_Import_Type_Order_Address implements Aitoc_Aitexpo
         }
 
         return $this;
+    }
+
+    public function postProcessAfterSave(Mage_Sales_Model_Order $order)
+    {
+        $websiteId = $order->getStore()->getWebsiteId();
+        $customer  = Mage::getModel('customer/customer')->setWebsiteId($websiteId)->load($order->getCustomerId());
+        if(!$customer->getId())
+        {
+            return $this;
+        }
+
+        $billing          = $order->getBillingAddress();
+        $customerBilling  = $this->exportCustomerAddress($billing);
+
+        if($billing->getSaveInAddressBook())
+        {
+            $customer->addAddress($customerBilling);
+            $customerBilling->setParentId($customer->getId());
+            $customerBilling->save();
+            $customer->save();
+            // preliminary save to find addresses id
+            // setting default addresses id
+            $customer
+                ->setDefaultBilling($customerBilling->getId())
+                ->setDefaultShipping($customerBilling->getId())
+                ->save();
+        }
+        return $this;
+    }
+
+    public function exportCustomerAddress($address)
+    {
+        $quoteAddress = Mage::getModel('sales/quote_address');
+        Mage::helper('core')->copyFieldset('sales_convert_order_address', 'to_quote_address', $address, $quoteAddress);
+        $address = Mage::getModel('customer/address');
+        Mage::helper('core')->copyFieldset('sales_convert_quote_address', 'to_customer_address', $quoteAddress, $address);
+        return $address;
     }
 }

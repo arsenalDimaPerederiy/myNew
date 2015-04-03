@@ -4,9 +4,9 @@
  *
  * @category:    Aitoc
  * @package:     Aitoc_Aitexporter
- * @version      1.2.8
+ * @version      1.2.9
  * @license:     ou1zlIlUK4jGhUJZLohhJ5b8jdvumX7FXHqMPgZHkF
- * @copyright:   Copyright (c) 2014 AITOC, Inc. (http://www.aitoc.com)
+ * @copyright:   Copyright (c) 2015 AITOC, Inc. (http://www.aitoc.com)
  */
 class Aitoc_Aitexporter_Model_Observer
 {
@@ -21,6 +21,7 @@ class Aitoc_Aitexporter_Model_Observer
 
     public function cronExport()
     {
+		Mage::log('cron run', null, 'aitoclogfile.log');
         $processor = Mage::getSingleton('aitexporter/processor');
         if($processor->getProcess())
         {   //another process is running

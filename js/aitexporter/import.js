@@ -4,9 +4,9 @@
  *
  * @category:    Aitoc
  * @package:     Aitoc_Aitexporter
- * @version      1.2.8
+ * @version      1.2.9
  * @license:     n/a
- * @copyright:   Copyright (c) 2014 AITOC, Inc. (http://www.aitoc.com)
+ * @copyright:   Copyright (c) 2015 AITOC, Inc. (http://www.aitoc.com)
  */
 Event.observe(document, 'dom:loaded', function()
 {

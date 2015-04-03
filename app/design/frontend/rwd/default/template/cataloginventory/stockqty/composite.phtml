@@ -28,19 +28,18 @@
  * @see Mage_CatalogInventory_Block_Stockqty_Composite
  */
 ?>
-<?php if ($this->isMsgVisible()): ?>
+<?php if($this->isMsgVisible()): ?>
     <p class="availability-only">
-        <a href="#" id="<?php echo $this->getPlaceholderId() ?>"
-           title="<?php echo $this->__('Only %s left', ($this->getStockQty())) ?>"><?php echo $this->__('Only %s left', "<strong>{$this->getStockQty()}</strong>") ?></a>
+        <a href="#" id="<?php echo $this->getPlaceholderId() ?>" title="<?php echo $this->__('Only %s left', ($this->getStockQty())) ?>"><?php echo $this->__('Only %s left', "<strong>{$this->getStockQty()}</strong>") ?></a>
     </p>
     <table id="<?php echo $this->getDetailsPlaceholderId() ?>" class="availability-only-details no-display data-table">
-        <col/>
-        <col width="1"/>
+        <col />
+        <col width="1" />
         <thead>
-        <tr>
-            <th><?php echo $this->__('Product Name') ?></th>
-            <th class="a-center"><?php echo $this->__('Qty') ?></th>
-        </tr>
+            <tr>
+                <th><?php echo $this->__('Product Name') ?></th>
+                <th class="a-center"><?php echo $this->__('Qty') ?></th>
+            </tr>
         </thead>
         <tbody>
         <?php foreach ($this->getChildProducts() as $childProduct) : ?>
@@ -55,13 +54,13 @@
         </tbody>
     </table>
     <script type="text/javascript">
-        //<![CDATA[
-        $('<?php echo $this->getPlaceholderId() ?>').observe('click', function (event) {
-            this.toggleClassName('expanded');
-            $('<?php echo $this->getDetailsPlaceholderId() ?>').toggleClassName('no-display');
-            event.stop();
-            decorateTable('<?php echo $this->getDetailsPlaceholderId() ?>');
-        });
-        //]]>
+    //<![CDATA[
+    $('<?php echo $this->getPlaceholderId() ?>').observe('click', function(event){
+        this.toggleClassName('expanded');
+        $('<?php echo $this->getDetailsPlaceholderId() ?>').toggleClassName('no-display');
+        event.stop();
+        decorateTable('<?php echo $this->getDetailsPlaceholderId() ?>');
+    });
+    //]]>
     </script>
 <?php endif ?>

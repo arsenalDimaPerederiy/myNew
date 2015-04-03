@@ -11,25 +11,20 @@
         <ul class="form-list">
             <li>
                 <label for="orderview_id" class="required"><?php print $this->__('Order Number') ?><em>*</em></label>
-
                 <div class="input-box">
-                    <input type="text" id="orderview_id" name="id" class="input-text required-entry"
-                           value="<?php print $this->getRequestOrderId() ?>"/>
+                    <input type="text" id="orderview_id" name="id" class="input-text required-entry" value="<?php print $this->getRequestOrderId() ?>" />
                 </div>
             </li>
             <li>
                 <label for="orderview_email" class="required"><?php print $this->__('Email') ?><em>*</em></label>
-
                 <div class="input-box">
-                    <input type="text" id="orderview_email" name="email" class="input-text required-entry"
-                           value="<?php print $this->getRequestEmail() ?>"/>
+                    <input type="text" id="orderview_email" name="email" class="input-text required-entry" value="<?php print $this->getRequestEmail() ?>" />
                 </div>
             </li>
 
         </ul>
         <div class="buttons-set">
-            <button type="button" onclick="editForm.submit()" class="button" title="View Order" name="send" id="send2">
-                <span><span><?php print $this->__('View Order') ?></span></span></button>
+            <button type="button" onclick="editForm.submit()" class="button" title="View Order" name="send" id="send2"><span><span><?php print $this->__('View Order') ?></span></span></button>
         </div>
     </form>
 </div>

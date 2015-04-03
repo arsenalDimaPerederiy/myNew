@@ -29,16 +29,16 @@
 
     if (gallery) {
         var galleryLength = gallery.childElements().size(),
-            galleryWidth = gallery.up().getDimensions().width,
-            galleryMax = galleryLength * galleryWidth,
-            step = galleryWidth;
+            galleryWidth  = gallery.up().getDimensions().width,
+            galleryMax    = galleryLength * galleryWidth,
+            step          = galleryWidth;
 
         if (galleryLength > 1) {
-            gallery.childElements().each(function (img) {
-                img.wrap('div', { 'class': 'gallery-item' });
+            gallery.childElements().each(function(img) {
+                img.wrap('div', { 'class' : 'gallery-item' });
             });
 
-            gallery.setStyle({ 'width': galleryMax + 'px' });
+            gallery.setStyle({ 'width' : galleryMax + 'px' });
 
             setInterval(function () {
                 new Effect.Move(gallery, { x: -step, mode: 'absolute' });

@@ -29,7 +29,7 @@
 
 	<? $currUrl = explode('?',$this->helper('core/url')->getCurrentUrl()); ?>
 
-			<?php if($this->getLayout()->createBlock('catalog/product_list_toolbar')->setChild('product_list_toolbar_pager', $pager)->getCurrentMode()!='grid'): ?>
+			<?php if($this->getLayout()->createBlock('catalog/product_list_toolbar')->setChild('product_list_toolbar_pager', null)->getCurrentMode()!='grid'): ?>
 				<?php $rowHeight = 420; $cols = 3; ?>
 			<?php else: ?> 
 				<?php $rowHeight = 340; $cols = 4; ?>

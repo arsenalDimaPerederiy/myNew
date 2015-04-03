@@ -19,78 +19,48 @@ examples on what kind of actions can be applied to referenced blocks.
  -->
 <layout version="0.1.0">
     <catalog_category_layered>
-        <reference name="head">
-            <action method="addCss">
-                <stylesheet>css/manapro_filterhelp.css</stylesheet>
-            </action>
-            <action method="addItem">
-                <type>skin_js</type>
-                <name>js/manapro_filterhelp.js</name>
-                <params/>
-            </action>
-        </reference>
-        <reference name="root">
-            <block type="core/template" name="m_filter_help" template="manapro/filterhelp/help.phtml"/>
-        </reference>
+		<reference name="head">
+			<action method="addCss"><stylesheet>css/manapro_filterhelp.css</stylesheet></action>
+            <action method="addItem"><type>skin_js</type><name>js/manapro_filterhelp.js</name><params/></action>
+		</reference>
+		<reference name="root">
+            <block type="core/template" name="m_filter_help" template="manapro/filterhelp/help.phtml" />
+		</reference>
     </catalog_category_layered>
     <catalogsearch_result_index>
-        <reference name="head">
-            <action method="addCss">
-                <stylesheet>css/manapro_filterhelp.css</stylesheet>
-            </action>
-            <action method="addItem">
-                <type>skin_js</type>
-                <name>js/manapro_filterhelp.js</name>
-                <params/>
-            </action>
-        </reference>
-        <reference name="root">
-            <block type="core/template" name="m_filter_help" template="manapro/filterhelp/help.phtml"/>
-        </reference>
+		<reference name="head">
+			<action method="addCss"><stylesheet>css/manapro_filterhelp.css</stylesheet></action>
+            <action method="addItem"><type>skin_js</type><name>js/manapro_filterhelp.js</name><params/></action>
+		</reference>
+		<reference name="root">
+            <block type="core/template" name="m_filter_help" template="manapro/filterhelp/help.phtml" />
+		</reference>
     </catalogsearch_result_index>
     <cms_page_layered>
-        <reference name="head">
-            <action method="addCss">
-                <stylesheet>css/manapro_filterhelp.css</stylesheet>
-            </action>
-            <action method="addItem">
-                <type>skin_js</type>
-                <name>js/manapro_filterhelp.js</name>
-                <params/>
-            </action>
-        </reference>
-        <reference name="root">
-            <block type="core/template" name="m_filter_help" template="manapro/filterhelp/help.phtml"/>
-        </reference>
+		<reference name="head">
+			<action method="addCss"><stylesheet>css/manapro_filterhelp.css</stylesheet></action>
+            <action method="addItem"><type>skin_js</type><name>js/manapro_filterhelp.js</name><params/></action>
+		</reference>
+		<reference name="root">
+            <block type="core/template" name="m_filter_help" template="manapro/filterhelp/help.phtml" />
+		</reference>
     </cms_page_layered>
-    <splash_page_view>
-        <reference name="head">
-            <action method="addCss">
-                <stylesheet>css/manapro_filterhelp.css</stylesheet>
-            </action>
-            <action method="addItem">
-                <type>skin_js</type>
-                <name>js/manapro_filterhelp.js</name>
-                <params/>
-            </action>
-        </reference>
-        <reference name="root">
-            <block type="core/template" name="m_filter_help" template="manapro/filterhelp/help.phtml"/>
-        </reference>
-    </splash_page_view>
+	<splash_page_view>
+		<reference name="head">
+			<action method="addCss"><stylesheet>css/manapro_filterhelp.css</stylesheet></action>
+            <action method="addItem"><type>skin_js</type><name>js/manapro_filterhelp.js</name><params/></action>
+		</reference>
+		<reference name="root">
+            <block type="core/template" name="m_filter_help" template="manapro/filterhelp/help.phtml" />
+		</reference>
+	</splash_page_view>
     <mana_optionpage_view>
-        <reference name="head">
-            <action method="addCss">
-                <stylesheet>css/manapro_filterhelp.css</stylesheet>
-            </action>
-            <action method="addItem">
-                <type>skin_js</type>
-                <name>js/manapro_filterhelp.js</name>
-                <params/>
-            </action>
-        </reference>
-        <reference name="root">
-            <block type="core/template" name="m_filter_help" template="manapro/filterhelp/help.phtml"/>
-        </reference>
+		<reference name="head">
+			<action method="addCss"><stylesheet>css/manapro_filterhelp.css</stylesheet></action>
+            <action method="addItem"><type>skin_js</type><name>js/manapro_filterhelp.js</name><params/></action>
+		</reference>
+		<reference name="root">
+            <block type="core/template" name="m_filter_help" template="manapro/filterhelp/help.phtml" />
+		</reference>
     </mana_optionpage_view>
 </layout>

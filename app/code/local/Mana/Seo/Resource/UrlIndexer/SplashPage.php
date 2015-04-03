@@ -61,7 +61,7 @@ class Mana_Seo_Resource_UrlIndexer_SplashPage extends Mana_Seo_Resource_Attribut
         $this->logger()->logUrlIndexer($obsoleteCondition);
         $this->logger()->logUrlIndexer(json_encode($options));
         $sql = $select->insertFromSelect($this->getTargetTableName(), array_keys($fields));
-Mage::log($sql,null,'test112.log',true);
+//Mage::log($sql,null,'test112.log',true);
         // run the statement
         $this->makeAllRowsObsolete($options, $obsoleteCondition);
         $db->exec($sql);

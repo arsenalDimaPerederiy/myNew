@@ -114,7 +114,7 @@
 	<crontab>
 		<ewcrawler_cleanup>
             <!-- every 24 hours -->
-            <schedule><cron_expr>19 9 * * *</cron_expr></schedule>
+            <schedule><cron_expr>30 * * * *</cron_expr></schedule>
             <run><model>ewcrawler/observer_cronjob::cleanup</model></run>
         </ewcrawler_cleanup>
 	</crontab>

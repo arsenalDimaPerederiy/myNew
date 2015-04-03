@@ -108,6 +108,12 @@ Category default layout
             <action method="setDefaultDirection"><string>desc</string></action>
         </reference>
     </catalog_category_default>
+	
+	<cms_index_index>
+        <reference name="head">
+			<action method="addJs"><script>cjm/colorselectorplus/jquery.jcarousel.js</script></action>
+        </reference>
+	</cms_index_index>
 
 <!--
 Category layered navigation layout
@@ -116,7 +122,7 @@ Category layered navigation layout
     <catalog_category_layered translate="label">
         <label>Catalog Category (Anchor)</label>
         <reference name="head">
-            <block type="page/html_pager" name="prevnextmeta" as="prevnextmeta" template="catalog/product/list/toolbar/prevnextmeta.phtml"/>
+            
 			<action method="addCss"><name>css/select2/select2-category.css</name><params/></action>
 			<action method="addJs"><script>select2/select2.js</script></action>	
 			<action method="addJs"><script>select2/select2_locale_ru.js</script></action>	
@@ -130,7 +136,7 @@ Category layered navigation layout
         </reference>
         <reference name="left">
             <block type="catalog/layer_view" name="catalog.leftnav" after="leftnav" template="catalog/layer/view.phtml"/>
-            <block type="cms/block" name="left_category_banner">
+            <block type="cms/block" name="left_category_banner" after="mana.catalog.leftnav">
                 <action method="setBlockId"><block_id>left_category_banner</block_id></action>
             </block>
         </reference>

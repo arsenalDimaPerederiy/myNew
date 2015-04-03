@@ -29,13 +29,10 @@
                 <tr>
                     <td class="email-heading">
                         <h1>Thank you for your order from {{var store.getFrontendName()}}.</h1>
-
-                        <p>You can check the status of your order by <a href="{{store url=" customer/account/"}}">logging
-                            into your account</a>.</p>
+                        <p>You can check the status of your order by <a href="{{store url="customer/account/"}}">logging into your account</a>.</p>
                     </td>
                     <td class="store-info">
                         <h4>Order Questions?</h4>
-
                         <p>
                             {{depend store_phone}}
                             <b>Call Us:</b>
@@ -56,7 +53,6 @@
     <tr>
         <td class="order-details">
             <h3>Your Invoice <span class="no-link">#{{var invoice.increment_id}}</span></h3>
-
             <p>Order <span class="no-link">#{{var order.increment_id}}</span></p>
         </td>
     </tr>
@@ -74,13 +70,11 @@
                 <tr>
                     <td class="address-details">
                         <h6>Bill to:</h6>
-
                         <p><span class="no-link">{{var order.billing_address.format('html')}}</span></p>
                     </td>
                     {{depend order.getIsNotVirtual()}}
                     <td class="address-details">
                         <h6>Ship to:</h6>
-
                         <p><span class="no-link">{{var order.shipping_address.format('html')}}</span></p>
                     </td>
                     {{/depend}}
@@ -89,7 +83,6 @@
                     {{depend order.getIsNotVirtual()}}
                     <td class="method-info">
                         <h6>Shipping method:</h6>
-
                         <p>{{var order.shipping_description}}</p>
                     </td>
                     {{/depend}}

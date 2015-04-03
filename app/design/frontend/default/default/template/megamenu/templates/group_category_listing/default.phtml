@@ -21,52 +21,46 @@ $col = 1;
 $colAdd = count($categories) % $columnNumber; /* number col add more 1 item */
 $itemAdd = floor(count($categories) / $columnNumber); /* min item per col */
 ?>
-<div class="list-categories-megamenu sub-menu"
-     style="border:<?php echo $this->getCustomStyle('border_size') ?>px solid #<?php echo $this->getCustomStyle('border_color') ?> !important;background:#<?php echo $this->getCustomStyle('background_color') ?> !important;width: <?php echo $size; ?>px !important;">
+<div class="list-categories-megamenu sub-menu" style="border:<?php echo $this->getCustomStyle('border_size') ?>px solid #<?php echo $this->getCustomStyle('border_color') ?> !important;background:#<?php echo $this->getCustomStyle('background_color') ?> !important;width: <?php echo $size; ?>px !important;" >
     <?php if (count($this->getCategories())): ?>
         <ul class="level0-megamenu group-category" id="group-category-<?php echo $this->getItem()->getId(); ?>">
-            <h1 class="block-title"
-                style="color:#<?php echo $this->getCustomStyle('subtitle_color'); ?>;font-size:<?php echo $this->getCustomStyle('subtitle_font_size'); ?>px;font-weight:bold">
+            <h1 class="block-title" style="color:#<?php echo $this->getCustomStyle('subtitle_color'); ?>;font-size:<?php echo $this->getCustomStyle('subtitle_font_size'); ?>px;font-weight:bold">
                 <?php echo $this->getParentName(); ?>
             </h1>
-
-            <div class="header-megamenu"
-                 style="float:left;width:100%;"><?php echo $this->getTemplateBlock($this->getHeaderContent()); ?></div>
-            <li class="level1-megamenu"
-                style="width:<?php echo $colunnSize; ?>px !important;<?php if ($columnNumber == 1): ?>border-right:none !important<?php endif; ?>">
+            <div class="header-megamenu"style="float:left;width:100%;"><?php echo $this->getTemplateBlock($this->getHeaderContent()); ?></div>
+            <li class="level1-megamenu" style="width:<?php echo $colunnSize; ?>px !important;<?php if ($columnNumber == 1): ?>border-right:none !important<?php endif; ?>">
                 <ul class="level2-megamenu">
                     <?php foreach ($this->getCategories() as $category): ?>
-                    <?php $children = $this->getAllChildrenOfGroup($category); ?>
-                    <?php $i++; ?>
-                    <?php $j++; ?>
-                    <li <?php if ($j == 1): ?> class="first" <?php endif; ?>>
-                        <div class="level1-title">
-                            <a href="<?php echo $category->getUrl(); ?>">
-                                <h2 style="color:#<?php echo $this->getCustomStyle('subtitle_color'); ?>;font-size:<?php echo $this->getCustomStyle('subtitle_font_size'); ?>px;<?php if (!count($children)): ?>border-bottom:none !important<?php endif; ?>">
-                                    <?php echo $category->getName() ?>
-                                </h2>
-                            </a>
-                        </div>
-                        <ol class="level3-megamenu">
-                            <?php if (count($children)): ?>
-                                <?php foreach ($children as $child): ?>
-                                    <li id="subcat-<?php echo $child->getId(); ?>">
-                                        <?php echo $child->getName(); ?>
-                                    </li>
-                                <?php endforeach; ?>
-                            <?php endif; ?>
-                        </ol>
+                        <?php $children = $this->getAllChildrenOfGroup($category); ?>
+                        <?php $i++; ?>
+                        <?php $j++; ?>
+                        <li <?php if ($j == 1): ?> class="first" <?php endif; ?>>
+                            <div class="level1-title">
+                                <a href="<?php echo $category->getUrl(); ?>">
+                                    <h2 style="color:#<?php echo $this->getCustomStyle('subtitle_color'); ?>;font-size:<?php echo $this->getCustomStyle('subtitle_font_size'); ?>px;<?php if(!count($children)):?>border-bottom:none !important<?php endif;?>">
+                                        <?php echo $category->getName() ?>
+                                    </h2>
+                                </a>
+                            </div>
+                            <ol  class="level3-megamenu">
+                                <?php if (count($children)): ?>
+                                    <?php foreach ($children as $child): ?>
+                                        <li id="subcat-<?php echo $child->getId(); ?>">
+                                            <?php echo $child->getName(); ?>
+                                        </li>
+                                    <?php endforeach; ?>
+                                <?php endif; ?>
+                            </ol>
+                        </li>
+                        <?php if (($col <= $colAdd && $j == $itemAdd + 1) || ($col > $colAdd && $j == $itemAdd)): ?>
+                            <?php $j = 0 ?>
+                            <?php $col++ ?>
+                            <?php if ($i == count($this->getCategories())) break; ?>
+                        </ul>
                     </li>
-                    <?php if (($col <= $colAdd && $j == $itemAdd + 1) || ($col > $colAdd && $j == $itemAdd)): ?>
-                    <?php $j = 0 ?>
-                    <?php $col++ ?>
-                    <?php if ($i == count($this->getCategories())) break; ?>
-                </ul>
-            </li>
-            <li class="level1-megamenu"
-                style="width:<?php echo $colunnSize; ?>px !important;<?php if ($col == $columnNumber): ?>border-right:none !important<?php endif; ?>">
-                <ul class="level2-megamenu">
-                    <?php endif ?>
+                    <li class="level1-megamenu" style="width:<?php echo $colunnSize; ?>px !important;<?php if ($col == $columnNumber): ?>border-right:none !important<?php endif; ?>">
+                        <ul class="level2-megamenu">
+                        <?php endif ?>
                     <?php endforeach; ?>
                 </ul>
             </li>

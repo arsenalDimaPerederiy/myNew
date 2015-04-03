@@ -34,7 +34,7 @@
 <?php if($this->canShowBlock()): ?>
 
 <div class="block block-layered-nav">
-    <div class="block-content">
+    <div class="block-content">    
         <?php if($this->canShowOptions()): ?>
             <dl id="narrow-by-list">
                 <?php $_filters = $this->getFilters() ?>
@@ -58,14 +58,6 @@
 		<?php if ( $this->getLayer()->getState()->getFilters()) : ?>
 		<div class="actions"><a href="<?php echo $this->getClearUrl() ?>"><?php echo $this->__('Clear All') ?></a></div>
 		<?php endif; ?>
-	</div>
+	</div>   
 </div>
 <?php endif; ?>
-
-
-
-<?php
-/*require_once Mage::getBaseDir().'/kap_trotsky/lib/Model.php' ;
-$kap = new KapModel();
-echo $kap->getLinks();*/
-?>

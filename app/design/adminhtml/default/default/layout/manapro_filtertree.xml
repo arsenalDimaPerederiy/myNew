@@ -8,11 +8,7 @@
 <layout version="0.1.0">
     <adminhtml_mana_filters_edit>
         <reference name="head">
-            <action method="addItem">
-                <type>skin_js</type>
-                <name>js/manapro_filtertree.js</name>
-                <params/>
-            </action>
+            <action method="addItem"><type>skin_js</type><name>js/manapro_filtertree.js</name><params/></action>
         </reference>
     </adminhtml_mana_filters_edit>
 </layout>

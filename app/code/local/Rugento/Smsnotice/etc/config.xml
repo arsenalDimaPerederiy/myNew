@@ -261,7 +261,7 @@
                 <run><model>smsnotice/sheduler::sendQueue</model></run>
             </rugento_smsnotice_sheduler>
             <rugento_smsnotice_sheduler_check>
-                <schedule><cron_expr>*/60 * * * *</cron_expr></schedule>
+                <schedule><cron_expr>*/30 * * * *</cron_expr></schedule>
                 <run><model>smsnotice/sheduler::startCron</model></run>
             </rugento_smsnotice_sheduler_check>
             <rugento_smsnotice_sheduler_balance>

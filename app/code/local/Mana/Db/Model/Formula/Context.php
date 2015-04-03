@@ -1,11 +1,10 @@
 <?php
-/**
+/** 
  * @category    Mana
  * @package     Mana_Db
  * @copyright   Copyright (c) http://www.manadev.com
  * @license     http://www.manadev.com/license  Proprietary License
  */
-
 /**
  * @author Mana Team
  * @method string getMode()
@@ -40,8 +39,7 @@
  * @method Mana_Db_Helper_Formula_Entity getEntityHelper()
  * @method Mana_Db_Model_Formula_Context setEntityHelper(Mana_Db_Helper_Formula_Entity $value)
  */
-class Mana_Db_Model_Formula_Context extends Varien_Object
-{
+class Mana_Db_Model_Formula_Context extends Varien_Object {
     /**
      * @var Varien_Db_Select()
      */
@@ -62,8 +60,7 @@ class Mana_Db_Model_Formula_Context extends Varien_Object
      * @param Mana_Db_Helper_Formula_Processor | string $processor
      * @return Mana_Db_Model_Formula_Context
      */
-    public function setProcessor($processor)
-    {
+    public function setProcessor($processor) {
         if (is_string($processor)) {
             $processor = Mage::helper('mana_db/formula_processor_' . $processor);
         }
@@ -75,8 +72,7 @@ class Mana_Db_Model_Formula_Context extends Varien_Object
     /**
      * @return Mana_Db_Model_Formula_Context
      */
-    public function createChildContext()
-    {
+    public function createChildContext() {
         /* @var $result Mana_Db_Model_Formula_Context */
         $result = Mage::getModel('mana_db/formula_context');
         return $result
@@ -88,71 +84,62 @@ class Mana_Db_Model_Formula_Context extends Varien_Object
      * @param Mana_Db_Model_Formula_Context $context
      * @return Mana_Db_Model_Formula_Context
      */
-    public function copyAliases($context)
-    {
+    public function copyAliases($context) {
         $this->_aliases = $context->_aliases;
         return $this;
     }
 
-    public function registerAlias($alias)
-    {
+    public function registerAlias($alias) {
         if (!isset($this->_aliases[$alias])) {
             $relativeAlias = explode('.', $alias);
             $relativeAlias = array_pop($relativeAlias);
-            $letter = $this->getPrefix() . substr($relativeAlias, 0, 1);
+            $letter = $this->getPrefix().substr($relativeAlias, 0, 1);
             for ($i = 1, $result = $letter; in_array($result, $this->_aliases); $i++, $result = $letter . $i) ;
             $this->_aliases[$alias] = $result;
         }
         return $this->_aliases[$alias];
     }
 
-    public function resolveAliases($expr, $quoteFieldsAndEntities = true, $aliasIndex = null)
-    {
+    public function resolveAliases($expr, $quoteFieldsAndEntities = true, $aliasIndex = null) {
         self::$_quoteFieldsAndEntities = $quoteFieldsAndEntities;
         self::$_aliasIndex = $aliasIndex;
         return preg_replace_callback('/{{=([^}]*)}}/', array($this, '_resolveAlias'), $expr);
     }
 
-    public function hasAlias($alias)
-    {
+    public function hasAlias($alias) {
         return isset($this->_aliases[$alias]);
     }
 
 
-    public function resetLocalAliases()
-    {
+    public function resetLocalAliases() {
         $this->_localAliases = array();
 
         return $this;
     }
 
-    public function addLocalAlias($localAlias, $globalAlias)
-    {
+    public function addLocalAlias($localAlias, $globalAlias) {
         $this->_localAliases[$localAlias] = $globalAlias;
         return $this;
     }
 
-    protected function _resolveAlias($matches)
-    {
+    protected function _resolveAlias($matches) {
         return $this->_doResolveAlias($matches[1]);
     }
 
-    public function resolveAlias($fieldExpr, $quoteFieldsAndEntities = true, $aliasIndex = null)
-    {
+    public function resolveAlias($fieldExpr, $quoteFieldsAndEntities = true, $aliasIndex = null) {
         self::$_quoteFieldsAndEntities = $quoteFieldsAndEntities;
         self::$_aliasIndex = $aliasIndex;
         return $this->_doResolveAlias($fieldExpr);
     }
-
-    protected function _doResolveAlias($fieldExpr)
-    {
+    protected function _doResolveAlias($fieldExpr) {
         $fieldExpr = explode('.', $fieldExpr);
         foreach ($fieldExpr as $index => $field) {
             $fieldExpr[$index] = trim($field);
         }
         if ($fieldExpr[0] == 'parent') {
             return $this->getParentContext()->_doResolveAlias(implode('.', array_slice($fieldExpr, 1)));
-        } else {
+        }
+        else {
             $field = array_pop($fieldExpr);
             $alias = implode('.', $fieldExpr);
             if (!$alias) {
@@ -164,7 +151,8 @@ class Mana_Db_Model_Formula_Context extends Varien_Object
                 $formulaHelper = Mage::helper('mana_db/formula');
 
                 $alias = $this->getAlias()->child($formulaHelper->createAlias(implode('.', array_slice($fieldExpr, 1))));
-            } elseif (isset($this->_localAliases[$alias])) {
+            }
+            elseif (isset($this->_localAliases[$alias])) {
                 $alias = $this->_localAliases[$alias];
             }
 
@@ -174,7 +162,8 @@ class Mana_Db_Model_Formula_Context extends Varien_Object
 
             if (self::$_quoteFieldsAndEntities) {
                 return "`{$this->registerAlias($alias)}`.`$field`";
-            } else {
+            }
+            else {
                 return "{$this->registerAlias($alias)}.$field";
             }
         }
@@ -183,8 +172,7 @@ class Mana_Db_Model_Formula_Context extends Varien_Object
     /**
      * @return Varien_Db_Select
      */
-    public function getSelect()
-    {
+    public function getSelect() {
         if (!$this->_select) {
             /* @var $resource Mana_Db_Resource_Formula */
             $resource = Mage::getResourceSingleton('mana_db/formula');
@@ -194,16 +182,14 @@ class Mana_Db_Model_Formula_Context extends Varien_Object
         return $this->_select;
     }
 
-    public function incrementPrefix()
-    {
+    public function incrementPrefix() {
         $alias = $this->getAlias() ? $this->getAlias() : 'primary';
         $prefix = $this->getPrefix() . $this->registerAlias($alias);
         $this->setPrefix($prefix);
         return $prefix;
     }
 
-    public function decrementPrefix()
-    {
+    public function decrementPrefix() {
         $alias = $this->getAlias() ? $this->getAlias() : 'primary';
         $prefix = substr($this->getPrefix(), 0, strlen($this->getPrefix()) - strlen($this->registerAlias($alias)));
         $this->setPrefix($prefix);
@@ -211,25 +197,21 @@ class Mana_Db_Model_Formula_Context extends Varien_Object
         return $prefix;
     }
 
-    public function getFields()
-    {
+    public function getFields() {
         return $this->_fields;
     }
 
-    public function addField($field)
-    {
+    public function addField($field) {
         $this->_fields[] = $field;
         return $this;
     }
 
-    public function setOptions($options)
-    {
+    public function setOptions($options) {
         $this->_options = $options;
         return $this;
     }
 
-    public function getOption($option)
-    {
+    public function getOption($option) {
         return isset($this->_options[$option]) ? $this->_options[$option] : false;
     }
 }

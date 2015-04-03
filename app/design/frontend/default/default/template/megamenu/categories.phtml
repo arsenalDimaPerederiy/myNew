@@ -1,10 +1,10 @@
-<?php
+<?php 
 /**
- *
+ * 
  */
 $categoryIds = $this->getData('categoryIds');
 /**
- *
+ * 
  */
 $colum_category = $this->getData('colum_category');
 $size_category = $this->getData('size_category');
@@ -12,10 +12,10 @@ $size_mega = $this->getData('size_mega');
 /**
  * fixed by Hai
  */
-if (isset($categoryIds)) {
+if (isset($categoryIds)){
     $categories = Mage::getResourceModel('catalog/category_collection');
     $categories->addAttributeToSelect('*')->addAttributeToFilter('entity_id', array($categoryIds));
-    $count = 0; // conunt colum for categories
+    $count = 0;// conunt colum for categories
     $chek = count($categories);
 }
 /**
@@ -23,53 +23,48 @@ if (isset($categoryIds)) {
  */
 $countli = 0;
 
-if (count($categoryIds)) {
-    if ($colum_category == 1) {
+if(count($categoryIds)){
+    if($colum_category == 1){
         $size_magrin = 0;
-    } else {
-        $size_magrin = 26 * ($colum_category - 1); //26 is size margin default for columns
-    }
-    $size_product = ($size_category) * $colum_category + $size_magrin;
+        }
+    else{
+        $size_magrin = 26*($colum_category-1);//26 is size margin default for columns    
+        }                    
+        $size_product = ($size_category)*$colum_category+$size_magrin;                   
+}               
+if ($size_mega == 0){    
+   
+    $size =  $size_product;   
 }
-if ($size_mega == 0) {
-
-    $size = $size_product;
-} else {
-    $size = $size_mega;
+else {
+     $size = $size_mega;
 }
-$count_product = ceil($chek / $colum_category);
-$i = 0;
+$count_product = ceil($chek/$colum_category);
+$i = 0;    
 ?>
-<div class="categories-megamenu" style="width:<?php echo $size ?>px !important">
-    <span class="font-megamenu"><?php echo $this->__('Categories') ?></span>
-    <ul class="level0 level0-megamenu frist" style="width:<?php echo $size_category ?>px !important;">
+<div class="categories-megamenu" style="width:<?php echo $size?>px !important">
+    <span class="font-megamenu"><?php echo $this->__('Categories')?></span>
+     <ul class="level0 level0-megamenu frist" style="width:<?php echo $size_category?>px !important;">
         <?php foreach ($categories as $cate): ?>
-        <?php ++$count;
-        ++$i; ?>
-        <li class="level1 <?php ++$countli;
-        if ($countli == 1) {
-            echo "first";
-        } elseif ($countli == $count_product) {
-            echo "last";
-            $countli = 0;
-        } ?>">
-            <a id="" class="" href="<?php echo $cate->getUrl() ?>" title="<?php echo $cate->getName() ?>">
-                <span><?php echo $cate->getName() ?></span>
-            </a>
-        </li>
-        <?php if ($count >= $count_product && $i != count($categoryIds)):
-        $chek -= $count;
-        $colum_category -= 1;
-        $count_product = ceil($chek / $colum_category);
-        $count = 0;
-        ?>
+         <?php ++ $count; ++$i;?>
+         <li class="level1 <?php ++ $countli ; if($countli == 1){ echo "first";} elseif ($countli == $count_product){ echo "last"; $countli = 0;}?>">
+             <a id="" class="" href="<?php echo $cate->getUrl()?>" title="<?php echo $cate->getName()?>">
+                 <span><?php echo $cate->getName()?></span>
+             </a>
+         </li>                        
+         <?php if ($count >= $count_product && $i != count($categoryIds)): 
+                 $chek -= $count;
+                 $colum_category -= 1;                           
+                 $count_product = ceil($chek/$colum_category);
+                 $count = 0;
+         ?>
     </ul>
-    <?php if ($colum_category == 1): ?>
-    <ul class="level0 level0-megamenu last-level0 last" style="width:<?php echo $size_category ?>px !important">
+        <?php if ($colum_category == 1):?>
+    <ul class="level0 level0-megamenu last-level0 last" style="width:<?php echo $size_category?>px !important">
         <?php else : ?>
-        <ul class="level0 level0-megamenu" style="width:<?php echo $size_category ?>px !important">
-            <?php endif; ?>
-            <?php endif; ?>
-            <?php endforeach; ?>
-        </ul>
+    <ul class="level0 level0-megamenu" style="width:<?php echo $size_category?>px !important">
+        <?php endif; ?>
+        <?php endif;?>
+        <?php endforeach; ?>      
+    </ul>
 </div>

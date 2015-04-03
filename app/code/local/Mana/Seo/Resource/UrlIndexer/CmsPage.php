@@ -1,17 +1,15 @@
 <?php
-/**
+/** 
  * @category    Mana
  * @package     Mana_Seo
  * @copyright   Copyright (c) http://www.manadev.com
  * @license     http://www.manadev.com/license  Proprietary License
  */
-
 /**
  * @author Mana Team
  *
  */
-class Mana_Seo_Resource_UrlIndexer_CmsPage extends Mana_Seo_Resource_UrlIndexer
-{
+class Mana_Seo_Resource_UrlIndexer_CmsPage extends Mana_Seo_Resource_UrlIndexer {
     protected $_matchedEntities = array(
         'cms/page' => array(
             Mage_Index_Model_Event::TYPE_SAVE
@@ -22,9 +20,7 @@ class Mana_Seo_Resource_UrlIndexer_CmsPage extends Mana_Seo_Resource_UrlIndexer
      * @param Mana_Seo_Model_UrlIndexer $indexer
      * @param Mage_Index_Model_Event $event
      */
-    public function register(/** @noinspection PhpUnusedParameterInspection */
-        $indexer, $event)
-    {
+    public function register(/** @noinspection PhpUnusedParameterInspection */ $indexer, $event) {
         if ($event->getEntity() == 'cms/page') {
             $event->addNewData('cms_page_id', $event->getData('data_object')->getId());
         }
@@ -35,8 +31,7 @@ class Mana_Seo_Resource_UrlIndexer_CmsPage extends Mana_Seo_Resource_UrlIndexer
      * @param Mana_Seo_Model_Schema $schema
      * @param array $options
      */
-    public function process($indexer, $schema, $options)
-    {
+    public function process($indexer, $schema, $options) {
         if (!isset($options['cms_page_id']) && !isset($options['store_id']) &&
             !isset($options['schema_global_id']) && !isset($options['schema_store_id']) && !$options['reindex_all']
         ) {
@@ -55,11 +50,11 @@ class Mana_Seo_Resource_UrlIndexer_CmsPage extends Mana_Seo_Resource_UrlIndexer
             'cms_page_id' => new Zend_Db_Expr('`p`.`page_id`'),
             'unique_key' => new Zend_Db_Expr("CONCAT(`p`.`page_id`, '-', `p`.`identifier`)"),
             'status' => new Zend_Db_Expr("IF(`p`.`is_active`, '" .
-                    Mana_Seo_Model_Url::STATUS_ACTIVE . "', '" .
-                    Mana_Seo_Model_Url::STATUS_DISABLED . "')"),
+                Mana_Seo_Model_Url::STATUS_ACTIVE . "', '".
+                Mana_Seo_Model_Url::STATUS_DISABLED . "')"),
             'description' => new Zend_Db_Expr(
-                    "CONCAT('{$this->seoHelper()->__('CMS page')} \\'', " .
-                    "`p`.`title`, '\\' (ID ', `p`.`page_id`, ')')"),
+                "CONCAT('{$this->seoHelper()->__('CMS page')} \\'', " .
+                "`p`.`title`, '\\' (ID ', `p`.`page_id`, ')')"),
         );
 
         /* @var $select Varien_Db_Select */

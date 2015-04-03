@@ -6,9 +6,9 @@
  * @author      Ben Tideswell <help@fishpig.co.uk>
  */
 
-$this->startSetup();
+	$this->startSetup();
 
-$this->run("
+	$this->run("
 	
 		CREATE TABLE IF NOT EXISTS {$this->getTable('wordpress_product_post')} (
 		  `product_id` int(11) unsigned NOT NULL default 0,
@@ -24,4 +24,4 @@ $this->run("
 		
 	");
 
-$this->endSetup();
+	$this->endSetup();

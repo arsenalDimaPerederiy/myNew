@@ -53,7 +53,7 @@ ul,ol{list-style:none}
 .col-right{float:right;width:185px;padding:0 0 1px}
 .col1-layout .main{padding:0}
 .col1-layout .col-main{width:100%}
-.col2-left-layout .col-main{float:right;margin-top:7px}
+.col2-left-layout  .col-main{float:right;margin-top:7px}
 .col2-right-layout .col-main{width:770px!important}
 .col3-layout .col-main{width:520px;margin-left:20px}
 .col3-layout .col-wrapper{float:left;width:689px}
@@ -259,7 +259,6 @@ tr.tax-details-first td{border-top:1px solid #d2d8db}
 .cart-tax-total{display:block;padding-right:20px;background:url(../images/bkg_collapse.gif) 100% 4px no-repeat;cursor:pointer}
 .cart-tax-info .price,.cart-tax-total .price{display:inline!important;font-weight:400!important}
 .cart-tax-total-expanded{background-position:100% -53px}
-.std { margin-left: 20px}
 .std .subtitle{padding:0}
 .std ol.ol{list-style:decimal outside;padding-left:1.5em}
 .std ul.disc{margin:0 0 10px;list-style:disc outside;padding-left:18px}
@@ -670,7 +669,7 @@ f/********** Product Prices > */
 .col3-layout .product-view .product-shop{float:none;width:auto}
 .product-view .product-shop .product-name{margin:0;width:100%;float:left}
 .product-view .product-shop .product-sku{margin:0;width:125px;float:right;text-align:right}
-.product-view .product-shop .product-name h1{font-size:20px;letter-spacing:1.5px;line-height:27px;text-transform:uppercase; font-family: Tahoma}
+.product-view .product-shop .product-name h1{font-size:20px;letter-spacing:1.5px;line-height:27px;text-transform:uppercase;font-family: Tahoma;}
 .product-view .product-shop .availability{margin:10px 0}
 .product-view .product-shop .short-description{margin:5px 0 20px;width:100%}
 .product-view .product-shop .price-box{margin:10px 0;float:left;width:100%}
@@ -1166,7 +1165,7 @@ html[xmlns] .clearfix{display:block}
 #back-top a:hover{color:#000}
 #back-top span{width:91px;height:73px;display:block;margin-bottom:7px;background:transparent url(../images/totop.png) no-repeat scroll 0 0}
 #back-top a:hover span{background-color:transparent;background-position:0 -73px}
-.product-shop .not-available{background:none repeat scroll 0 0 #FFF;float:left;font-size:18px;line-height:20px;margin-left:-420px;margin-top:230px;opacity:.7;padding:12px 0;position:absolute;text-align:center;text-transform:uppercase;width:400px;z-index:100}
+.product-shop .not-available{color:#fb6564;background:none repeat scroll 0 0 #FFF;float:left;font-size:18px;line-height:20px;margin-left:-420px;margin-top:230px;opacity:.7;padding:12px 0;position:absolute;text-align:center;text-transform:uppercase;width:400px;z-index:100}
 .listprice{float:left;margin-top:6px}
 .listprice .listpricelabel{color:#6C6D6D;float:left;font-size:11px;font-weight:400;padding:0 5px 0 0}
 .access .header-text{float:left;font-size:10px;padding:5px 0 3px}
@@ -1483,7 +1482,6 @@ img.lazy{display:none;width:182px;height:234px}
 
 
 
-/*my 24.02.2015*/
 .cms-page-view .col2-left-layout {width: 960px;}
 .cms-page-view .vertnav-container{width: 290px;}
 .cms-page-view .col2-left-layout .col-left{width: 290px;}
@@ -1492,59 +1490,5 @@ img.lazy{display:none;width:182px;height:234px}
 .cms-page-view .col2-left-layout .col-left .vertnav-container .menu-title{background-image: none; color:#343535;font-family:galsc pro;font-size:15px;font-weight:500;letter-spacing:1.5px;margin:0;padding:5px 0 5px 32px;text-transform:uppercase;background-color: #E7E6E5}
 .cms-page-view .col2-left-layout .col-left .vertnav-container #vertnav li a{float:left;padding:4px 10px;width:270px;line-height:14px;}
 
-.cms-page-view .breadcrumbs{
-    margin-bottom: 20px;
-    margin-top: 10px;
-}
-.cms-page-view h1{
-    font-family: "Galsc pro";
-    margin-bottom: 5px;
-    margin-top: 5px;
-}
-.cms-page-view h2{
-    font-family: "Galsc pro";
-    text-transform: uppercase;
-    font-size: 18px;
-    margin-bottom: 7px;
-    margin-top: 7px;
-}
-.cms-page-view .std h3{
-    font-family: "Galsc pro";
-    margin-top: 10px;
-    margin-bottom: 10px;
-    font-size: 16px;
-}
-.cms-page-view .std ul li{
-    margin-left: 20px;
-    list-style: disc;
-    margin-top: 5px;
-}
-.cms-page-view .footer-container{
-    margin-top: 50px;
-}
-
-
-
-
-
-
-
-.pager .pages {margin-top: 20px;}
-.pager .pages .pager-arrows{width: 80px;height: 25px;margin-right: 10px;color: #444545;background-image: none;}
-.pager .pages li {width: 25px;height: 25px;line-height: inherit; padding: inherit;}
-.pager .pages .current {width: 25px;height: 25px;line-height: inherit; padding: inherit;}
-
-.pager .pages .pager-arrows >a{width: 80px; height: 25px; border: 1px solid #babebe; color: #444545; background-image: none;}
-.pager .pages .pager-arrows >a:hover{border: 1px solid #000000;}
-.pager .pages .previous{width:80px;height:25px;background-image: none;margin-right: 10px;}
-.pager .pages .next{background-image: none;width:80px;height:25px;margin-left: 10px;}
-.pager .pages .next-disabled{width:80px;height:25px;}
-.pager .pages .previous-disabled{width:80px;height:25px;}
-.pager .pages li.point{display:inline;float:left;line-height:30px;margin:0 2px;width:25px;border: none;}
-.pager .amount{display: block;width: 53%;float: left; text-align: left;}
-.pager .limiter{float: left;text-align: right;}
-.page .page-seo{margin-top: 60px;}
-
-/*my 24.02.2015*/
-
-#list-items li .yousave{}
+.mb-search-result .page-title{float:left; margin-top:20px;}
+.mb-search-result .page-title{text-align:center;}

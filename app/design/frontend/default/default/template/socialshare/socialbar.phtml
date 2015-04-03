@@ -1,7 +1,7 @@
 <?php if (Mage::getStoreConfig('socialshare/general/enabled')) : ?>
   <div class="social_buttons">
     
-	<!--
+	
 	<div id="fb-root"></div>
 <script>(function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
@@ -10,14 +10,27 @@
   js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1&appId=171023582948066";
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
--->
+
 	
-    <span class="facebook" style="vertical-align: text-bottom;">
+    <span class="facebook" style="vertical-align: text-bottom; width:125px;">
 		<div class="fb-like" data-href="<?php echo Mage::helper('core/url')->getCurrentUrl(); ?>" data-send="true" data-layout="button_count" data-width="150" data-show-faces="false"></div>
 	</span>
+<div class="vk-like facebook" style="width:140px;">	
+<!-- Put this script tag to the <head> of your page -->
+<script type="text/javascript" src="//vk.com/js/api/openapi.js?116"></script>
 
+<script type="text/javascript">
+  VK.init({apiId: 3748551, onlyWidgets: true});
+</script>
+
+<!-- Put this div tag to the place, where the Like block will be -->
+<div id="vk_like"></div>
+<script type="text/javascript">
+VK.Widgets.Like("vk_like", {type: "button", height: 20});
+</script>
+</div>
 	<!-- Twitter -->
-	<span class="twitter">
+	<span class="twitter" style="width:100px; float:left;">
 		<a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="<?php echo Mage::getStoreConfig('facebooklb/general/twitter_acc'); ?>">Tweet</a>
 	</span>
 	<script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>    
@@ -30,7 +43,7 @@
 	var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
       })();
     </script>
-    <span class="google">
+    <span class="google" style=" float:left; width:50px;">
 	    <g:plusone size="medium"></g:plusone>
     </span>
 	

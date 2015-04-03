@@ -5,13 +5,11 @@
  * @copyright   Copyright (c) http://www.manadev.com
  * @license     http://www.manadev.com/license  Proprietary License
  */
-
 /**
  * @author Mana Team
  * @method string getScopeName()
  */
-class Mana_Core_Resource_JsonCollection extends Varien_Data_Collection
-{
+class Mana_Core_Resource_JsonCollection extends Varien_Data_Collection {
     protected $_rawData = array();
     protected $_data = array();
     protected $_mFilters = array();
@@ -20,8 +18,7 @@ class Mana_Core_Resource_JsonCollection extends Varien_Data_Collection
      * @param $data
      * @return Mana_Core_Resource_JsonCollection
      */
-    public function setData($data)
-    {
+    public function setData($data) {
         foreach (array_keys($data) as $index) {
             if (!isset($data[$index]['id'])) {
                 $data[$index]['id'] = $index;
@@ -33,13 +30,10 @@ class Mana_Core_Resource_JsonCollection extends Varien_Data_Collection
         return $this;
     }
 
-    public function getData()
-    {
+    public function getData() {
         return $this->_data;
     }
-
-    public function load($printQuery = false, $logQuery = false)
-    {
+    public function load($printQuery = false, $logQuery = false) {
         if ($this->isLoaded()) {
             return $this;
         }
@@ -66,21 +60,18 @@ class Mana_Core_Resource_JsonCollection extends Varien_Data_Collection
         return $this;
     }
 
-    protected function _beforeLoad()
-    {
+    protected function _beforeLoad() {
         return $this;
     }
 
-    protected function _afterLoad()
-    {
+    protected function _afterLoad() {
         return $this;
     }
 
     /**
      * @return Mana_Db_Resource_Entity_JsonCollection
      */
-    protected function _renderFilters()
-    {
+    protected function _renderFilters() {
         $this->_data = array_filter($this->_data, array($this, '_filterItem'));
         return $this;
     }
@@ -90,8 +81,7 @@ class Mana_Core_Resource_JsonCollection extends Varien_Data_Collection
      *
      * @return  Mana_Db_Resource_Entity_JsonCollection
      */
-    protected function _renderOrders()
-    {
+    protected function _renderOrders() {
         if (count($this->_orders)) {
             uasort($this->_data, array($this, '_compareItems'));
         }
@@ -104,18 +94,19 @@ class Mana_Core_Resource_JsonCollection extends Varien_Data_Collection
      *
      * @return  Mana_Db_Resource_Entity_JsonCollection
      */
-    protected function _renderLimit()
-    {
+    protected function _renderLimit() {
         if ($this->_pageSize !== false) {
             $offset = ($this->_curPage - 1) * $this->_pageSize;
             $count = count($this->_data);
             if ($count > $offset) {
                 if ($count >= $offset + $this->_pageSize) {
                     $this->_data = array_slice($this->_data, $offset, $this->_pageSize);
-                } else {
+                }
+                else {
                     $this->_data = array_slice($this->_data, $offset);
                 }
-            } else {
+            }
+            else {
                 $this->_data = array();
             }
         }
@@ -123,8 +114,7 @@ class Mana_Core_Resource_JsonCollection extends Varien_Data_Collection
         return $this;
     }
 
-    public function getRawData()
-    {
+    public function getRawData() {
         return $this->_rawData;
     }
 
@@ -133,8 +123,7 @@ class Mana_Core_Resource_JsonCollection extends Varien_Data_Collection
      * @param array $b
      * @return int
      */
-    protected function _compareItems($a, $b)
-    {
+    protected function _compareItems($a, $b) {
         foreach ($this->_orders as $column => $direction) {
             if (isset($a[$column])) {
                 if (isset($b[$column])) {
@@ -144,10 +133,12 @@ class Mana_Core_Resource_JsonCollection extends Varien_Data_Collection
                     if ($a[$column] > $b[$column]) {
                         return strtolower($direction) == 'desc' ? -1 : 1;
                     }
-                } else {
+                }
+                else {
                     return strtolower($direction) == 'desc' ? -1 : 1;
                 }
-            } else {
+            }
+            else {
                 if (isset($b[$column])) {
                     return strtolower($direction) == 'desc' ? 1 : -1;
                 }
@@ -160,8 +151,7 @@ class Mana_Core_Resource_JsonCollection extends Varien_Data_Collection
      * @param array $a
      * @return bool
      */
-    protected function _filterItem($a)
-    {
+    protected function _filterItem($a) {
         foreach ($this->_mFilters as $filter) {
             $value = isset($a[$filter['attribute']]) ? $a[$filter['attribute']] : '';
             if (isset($filter['condition']['like'])) {
@@ -169,7 +159,8 @@ class Mana_Core_Resource_JsonCollection extends Varien_Data_Collection
                 if ($this->getMbstring()->stripos($value, $this->getMbstring()->substr($test, 1, mb_strlen($test) - 2)) === false) {
                     return false;
                 }
-            } elseif (isset($filter['condition']['eq'])) {
+            }
+            elseif (isset($filter['condition']['eq'])) {
                 $test = $filter['condition']['eq'];
                 if ($value != $test) {
                     return false;
@@ -179,9 +170,7 @@ class Mana_Core_Resource_JsonCollection extends Varien_Data_Collection
 
         return true;
     }
-
-    public function addFieldToFilter($attribute, $condition = null)
-    {
+    public function addFieldToFilter($attribute, $condition = null) {
         $this->_mFilters[] = array('attribute' => $attribute, 'condition' => $condition);
     }
 
@@ -190,8 +179,7 @@ class Mana_Core_Resource_JsonCollection extends Varien_Data_Collection
     /**
      * @return Mana_Core_Helper_Mbstring
      */
-    public function getMbstring()
-    {
+    public function getMbstring() {
         return Mage::helper('mana_core/mbstring');
     }
     #endregion

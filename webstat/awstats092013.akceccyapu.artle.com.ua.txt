@@ -1,0 +1,341 @@
+AWSTATS DATA FILE 7.0 (build 1.971)
+# If you remove this file, all statistics for date 201309 will be lost/reset.
+# Last config file used to build this data file was /etc/awstats/awstats.akceccyapu.artle.com.ua.conf.
+
+# Position (offset in bytes) in this file for beginning of each section for
+# direct I/O access. If you made changes somewhere in this file, you should
+# also remove completely the MAP section (AWStats will rewrite it at next
+# update).
+BEGIN_MAP 27
+POS_GENERAL 2003                
+POS_TIME 2662                
+POS_VISITOR 6732                
+POS_DAY 8225                
+POS_DOMAIN 3490                
+POS_LOGIN 3722                
+POS_ROBOT 4025                
+POS_WORMS 4275                
+POS_EMAILSENDER 4406                
+POS_EMAILRECEIVER 4549                
+POS_SESSION 9064                
+POS_SIDER 9220                
+POS_FILETYPES 4684                
+POS_DOWNLOADS 4875                
+POS_OS 4923                
+POS_BROWSER 5031                
+POS_SCREENSIZE 5359                
+POS_UNKNOWNREFERER 5433                
+POS_UNKNOWNREFERERBROWSER 5520                
+POS_ORIGIN 5602                
+POS_SEREFERRALS 5740                
+POS_PAGEREFS 5896                
+POS_SEARCHWORDS 6122                
+POS_KEYWORDS 6274                
+POS_MISC 2326                
+POS_ERRORS 6333                
+POS_CLUSTER 3578                
+POS_SIDER_404 6423                
+END_MAP
+
+# LastLine    = Date of last record processed - Last record line number in last log - Last record offset in last log - Last record signature value
+# FirstTime   = Date of first visit for history file
+# LastTime    = Date of last visit for history file
+# LastUpdate  = Date of last update - Nb of parsed records - Nb of parsed old records - Nb of parsed new records - Nb of parsed corrupted - Nb of parsed dropped
+# TotalVisits = Number of visits
+# TotalUnique = Number of unique visitors
+# MonthHostsKnown   = Number of hosts known
+# MonthHostsUnKnown = Number of hosts unknown
+BEGIN_GENERAL 8
+LastLine 20131001001901 1 0 14314260086252
+FirstTime 0
+LastTime 20130920153945
+LastUpdate 20131001010125 1 0 0 0 0
+TotalVisits 4                   
+TotalUnique 2                   
+MonthHostsKnown 0                   
+MonthHostsUnknown 52                  
+END_GENERAL
+
+# Misc ID - Pages - Hits - Bandwidth
+BEGIN_MISC 10
+QuickTimeSupport 0 0 0
+JavaEnabled 0 0 0
+JavascriptDisabled 0 0 0
+PDFSupport 0 0 0
+WindowsMediaPlayerSupport 0 0 0
+AddToFavourites 0 0 0
+RealPlayerSupport 0 0 0
+TotalMisc 0 0 0
+DirectorSupport 0 0 0
+FlashSupport 0 0 0
+END_MISC
+
+# Hour - Pages - Hits - Bandwidth - Not viewed Pages - Not viewed Hits - Not viewed Bandwidth
+BEGIN_TIME 24
+0 1 2160 21203516 0 103 929046
+1 0 924 11071318 0 86 598484
+2 0 168 707036 0 78 866832
+3 0 130 2467817 0 87 1390752
+4 0 0 0 0 245 3664953
+5 0 0 0 0 230 2593746
+6 0 0 0 0 238 3524228
+7 0 0 0 0 237 2723423
+8 0 0 0 0 214 3205156
+9 0 4 3102 0 258 2923584
+10 0 88 3125761 0 247 3908169
+11 0 436 3890424 0 240 3402574
+12 0 762 9634823 0 122 1018482
+13 0 4955 47053934 0 78 653410
+14 0 4372 33465906 0 86 1124980
+15 2 5307 43006900 0 257 4532571
+16 1 7059 54996952 0 303 5341531
+17 0 7505 47749844 0 339 5905208
+18 0 9658 95477099 0 427 8464958
+19 0 5957 34616231 0 345 5271604
+20 0 8791 37987715 0 295 3643468
+21 1 6702 14776999 0 310 4320648
+22 0 1846 27228203 0 285 3615382
+23 0 1903 15861272 0 73 454517
+END_TIME
+
+# Domain - Pages - Hits - Bandwidth
+# The 10 first Pages must be first (order not required for others)
+BEGIN_DOMAIN 1
+ip 5 68727 504324852
+END_DOMAIN
+
+# Cluster ID - Pages - Hits - Bandwidth
+BEGIN_CLUSTER 0
+END_CLUSTER
+
+# Login - Pages - Hits - Bandwidth - Last visit
+# The 10 first Pages must be first (order not required for others)
+BEGIN_LOGIN 4
+ashop-test 2 4262 43783041 20130906020421
+ashop 1 21746 262330423 20130930172515
+1111 0 20 997801 20130919143116
+DK@I7 0 170 3835953 20130921202805
+END_LOGIN
+
+# Robot ID - Hits - Bandwidth - Last visit - Hits on robots.txt
+# The 10 first Hits must be first (order not required for others)
+BEGIN_ROBOT 3
+yandex 4866 67334938 20130930235735 0
+no_user_agent 202 4740278 20130922235856 0
+googlebot 47 545169 20130929045334 0
+END_ROBOT
+
+# Worm ID - Hits - Bandwidth - Last visit
+# The 5 first Hits must be first (order not required for others)
+BEGIN_WORMS 0
+END_WORMS
+
+# EMail - Hits - Bandwidth - Last visit
+# The 20 first Hits must be first (order not required for others)
+BEGIN_EMAILSENDER 0
+END_EMAILSENDER
+
+# EMail - Hits - Bandwidth - Last visit
+# The 20 first hits must be first (order not required for others)
+BEGIN_EMAILRECEIVER 0
+END_EMAILRECEIVER
+
+# Files type - Hits - Bandwidth - Bandwidth without compression - Bandwidth after compression
+BEGIN_FILETYPES 6
+css 8882 33033366 0 0
+png 6181 9240797 0 0
+js 15401 96309215 0 0
+jpg 35089 363527784 0 0
+gif 3169 1490042 0 0
+swf 5 723648 0 0
+END_FILETYPES
+
+# Downloads - Hits - Bandwidth
+BEGIN_DOWNLOADS 0
+END_DOWNLOADS
+
+# OS ID - Hits
+BEGIN_OS 6
+linuxandroid 1132
+winlong 1
+winxp 68
+linux 788
+winvista 2
+win7 66736
+END_OS
+
+# Browser ID - Hits
+BEGIN_BROWSER 15
+chrome29.0.1547.57 3963
+firefox25.0 1
+chrome29.0.1547.76 4533
+firefox14.0.1 116
+android 1132
+chrome25.0.1364.172 4
+msie10.0 946
+firefox23.0 44339
+chrome29.0.1547.62 3772
+chrome29.0.1547.66 9450
+msie9.0 153
+firefox24.0 113
+chrome17.0.963.47 1
+opera9.80 203
+chrome24.0.1312.71 1
+END_BROWSER
+
+# Screen size - Hits
+BEGIN_SCREENSIZE 0
+END_SCREENSIZE
+
+# Unknown referer OS - Last visit date
+BEGIN_UNKNOWNREFERER 0
+END_UNKNOWNREFERER
+
+# Unknown referer Browser - Last visit date
+BEGIN_UNKNOWNREFERERBROWSER 0
+END_UNKNOWNREFERERBROWSER
+
+# Origin - Pages - Hits 
+BEGIN_ORIGIN 6
+From0 0 141
+From1 0 0
+From2 0 18
+From3 0 11
+From4 5 68557
+From5 0 0
+END_ORIGIN
+
+# Search engine referers ID - Pages - Hits
+BEGIN_SEREFERRALS 1
+yandex 0 18
+END_SEREFERRALS
+
+# External page referers - Pages - Hits
+# The 10 first Pages must be first (order not required for others)
+BEGIN_PAGEREFS 2
+http://images.yandex.ua/yandsearch 0 8
+http://images.yandex.by/yandsearch 0 3
+END_PAGEREFS
+
+# Search keyphrases - Number of search
+# The 10 first number of search must be first (order not required for others)
+BEGIN_SEARCHWORDS 0
+END_SEARCHWORDS
+
+# Search keywords - Number of search
+# The 10 first number of search must be first (order not required for others)
+BEGIN_KEYWORDS 0
+END_KEYWORDS
+
+# Errors - Hits - Bandwidth
+BEGIN_ERRORS 1
+206 68 1457321
+END_ERRORS
+
+# URL with 404 errors - Hits - Last URL referer
+BEGIN_SIDER_404 0
+END_SIDER_404
+
+# Host - Pages - Hits - Bandwidth - Last visit date - [Start date of last visit] - [Last page of last visit]
+# [Start date of last visit] and [Last page of last visit] are saved only if session is not finished
+# The 10 first Hits must be first (order not required for others)
+BEGIN_VISITOR 52
+46.118.229.104 4 45898 220130811 20130905163445
+5.248.16.171 1 11220 143590200 20130920153945
+93.183.245.12 0 58 1962914 
+31.8.179.73 0 1 11835 
+213.108.75.92 0 194 3823632 
+94.240.186.197 0 1973 22039181 
+94.240.175.215 0 1660 17544929 
+94.240.175.14 0 4847 43023626 
+217.118.79.18 0 1 20283 
+94.240.162.118 0 44 1083103 
+178.213.6.120 0 1 10408 
+94.240.172.147 0 110 995577 
+82.193.140.166 0 1 8377 
+94.240.177.149 0 90 563547 
+85.26.183.83 0 1 335387 
+89.151.188.82 0 554 9498520 
+213.108.75.95 0 59 1873243 
+95.52.214.198 0 1 8893 
+94.240.166.214 0 268 6487873 
+93.72.13.214 0 788 10191845 
+95.110.27.1 0 1 10408 
+92.112.178.113 0 1 11835 
+94.240.176.239 0 51 499256 
+188.134.46.161 0 1 23665 
+94.240.172.106 0 137 2987054 
+93.80.130.39 0 1 8142 
+77.239.178.18 0 57 1870504 
+5.166.116.63 0 2 46411 
+77.121.202.92 0 1 335387 
+134.17.11.204 0 1 27536 
+188.134.32.21 0 1 22185 
+195.3.158.230 0 1 0 
+109.226.106.213 0 1 335387 
+94.240.178.56 0 154 4179615 
+188.0.87.54 0 57 1868700 
+93.158.136.162 0 1 3905 
+94.240.189.239 0 56 1868671 
+178.123.153.33 0 1 10408 
+31.131.70.70 0 1 8377 
+89.151.188.191 0 184 3523306 
+93.72.81.137 0 1 9282 
+94.240.186.58 0 179 2125351 
+91.244.142.218 0 1 14522 
+37.25.125.126 0 1 17922 
+92.113.68.212 0 1 20283 
+217.118.83.137 0 1 10897 
+79.126.85.226 0 1 27536 
+178.204.22.197 0 2 35862 
+93.125.36.61 0 1 11797 
+217.76.201.90 0 58 1175423 
+82.200.79.13 0 1 22899 
+213.191.4.31 0 1 8142 
+END_VISITOR
+
+# Date - Pages - Hits - Bandwidth - Visits
+BEGIN_DAY 30
+20130901 0 1515 9078514 0
+20130902 0 3474 42355172 0
+20130903 1 2828 29140298 1
+20130904 1 10103 25335597 1
+20130905 2 6303 63281321 1
+20130906 0 1660 20751201 0
+20130907 0 1230 11475960 0
+20130908 0 628 5213809 0
+20130909 0 7418 63471758 0
+20130910 0 560 6934148 0
+20130911 0 69 2241170 0
+20130912 0 83 1629828 0
+20130913 0 398 1866628 0
+20130914 0 1315 17240821 0
+20130915 0 422 1449787 0
+20130916 0 456 2350063 0
+20130917 0 4330 17821382 0
+20130918 0 547 6726725 0
+20130919 0 1545 28818175 0
+20130920 1 9080 26717849 1
+20130921 0 4821 24260577 0
+20130922 0 2264 20104375 0
+20130923 0 2464 11256030 0
+20130924 0 1320 11290759 0
+20130925 0 1939 19210231 0
+20130926 0 533 9991195 0
+20130927 0 140 2146297 0
+20130928 0 387 7732939 0
+20130929 0 359 7542302 0
+20130930 0 536 6889941 0
+END_DAY
+
+# Session range - Number of visits
+BEGIN_SESSION 2
+0s-30s 3
+30mn-1h 1
+END_SESSION
+
+# URL - Pages - Bandwidth - Entry - Exit
+# The 10 first Pages must be first (order not required for others)
+BEGIN_SIDER 1
+/skin/adminhtml/default/default/media/uploader.swf 5 723648 4 4
+END_SIDER

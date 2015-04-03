@@ -1,22 +1,19 @@
 <?php
-/**
+/** 
  * @category    Mana
  * @package     Mana_Seo
  * @copyright   Copyright (c) http://www.manadev.com
  * @license     http://www.manadev.com/license  Proprietary License
  */
-
 /**
  * @author Mana Team
  *
  */
-class Mana_Seo_Block_Adminhtml_Schema_CanonicalForm extends Mana_Admin_Block_V2_Form
-{
+class Mana_Seo_Block_Adminhtml_Schema_CanonicalForm extends Mana_Admin_Block_V2_Form {
     /**
      * @return Mage_Adminhtml_Block_Widget_Form
      */
-    protected function _prepareForm()
-    {
+    protected function _prepareForm() {
         $form = new Varien_Data_Form(array(
             'id' => 'mf_canonical',
             'html_id_prefix' => 'mf_canonical_',
@@ -37,8 +34,8 @@ class Mana_Seo_Block_Adminhtml_Schema_CanonicalForm extends Mana_Admin_Block_V2_
             'options' => $this->getYesNoSourceModel()->getOptionArray(),
             'label' => $this->__('Canonical Link Meta Tag on Category Pages'),
             'note' => $this->__("If 'No', canonical URL would be rendered as specified in %s", implode('->',
-                    array($this->__('System'), $this->__('Configuration'), $this->__('Catalog'),
-                        $this->__('Search Engine Optimizations'), $this->__('Use Canonical Link Meta Tag For Categories')))),
+                array($this->__('System'), $this->__('Configuration'), $this->__('Catalog'),
+                $this->__('Search Engine Optimizations'), $this->__('Use Canonical Link Meta Tag For Categories')))),
             'name' => 'canonical_category',
             'required' => true,
         ));
@@ -107,24 +104,21 @@ class Mana_Seo_Block_Adminhtml_Schema_CanonicalForm extends Mana_Admin_Block_V2_
     /**
      * @return Mana_Seo_Model_Schema
      */
-    public function getFlatModel()
-    {
+    public function getFlatModel() {
         return Mage::registry('m_flat_model');
     }
 
     /**
      * @return Mana_Seo_Model_Schema
      */
-    public function getEditModel()
-    {
+    public function getEditModel() {
         return Mage::registry('m_edit_model');
     }
 
     /**
      * @return Mana_Seo_Model_Source_Canonical
      */
-    public function getCanonicalSourceModel()
-    {
+    public function getCanonicalSourceModel() {
         return Mage::getSingleton('mana_seo/source_canonical');
     }
 

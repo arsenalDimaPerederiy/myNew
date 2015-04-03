@@ -5,18 +5,15 @@
  * @copyright   Copyright (c) http://www.manadev.com
  * @license     http://www.manadev.com/license  Proprietary License
  */
-
 /**
  * @author Mana Team
  *
  */
-class Mana_Db_Model_Setup_V13012122 extends Mana_Db_Model_Setup_Abstract
-{
+class Mana_Db_Model_Setup_V13012122 extends Mana_Db_Model_Setup_Abstract {
     protected $_toBeCreated = array();
     protected $_toBeAltered = array();
 
-    public function prepare()
-    {
+    public function prepare() {
         /* @var $configHelper Mana_Db_Helper_Config */
         $configHelper = Mage::helper('mana_db/config');
 
@@ -29,8 +26,7 @@ class Mana_Db_Model_Setup_V13012122 extends Mana_Db_Model_Setup_Abstract
         return $this;
     }
 
-    public function run()
-    {
+    public function run() {
         /* @var $configHelper Mana_Db_Helper_Config */
         $configHelper = Mage::helper('mana_db/config');
 
@@ -52,8 +48,7 @@ class Mana_Db_Model_Setup_V13012122 extends Mana_Db_Model_Setup_Abstract
      * @param Varien_Simplexml_Element $entity
      * @param Varien_Simplexml_Element $scope
      */
-    public function _createPrimaryKey($context, $module, $entity, $scope)
-    {
+    public function _createPrimaryKey($context, $module, $entity, $scope) {
         if (((string)$scope['module']) != $this->getModuleName() || ((string)$scope['version']) != $this->getVersion()) {
             return;
         }
@@ -77,8 +72,7 @@ class Mana_Db_Model_Setup_V13012122 extends Mana_Db_Model_Setup_Abstract
      * @param Varien_Simplexml_Element $entity
      * @param Varien_Simplexml_Element $scope
      */
-    public function _createDefaultValueInfrastructure($context, $module, $entity, $scope)
-    {
+    public function _createDefaultValueInfrastructure($context, $module, $entity, $scope) {
         if (((string)$scope['module']) != $this->getModuleName() || ((string)$scope['version']) != $this->getVersion()) {
             return;
         }
@@ -122,8 +116,7 @@ class Mana_Db_Model_Setup_V13012122 extends Mana_Db_Model_Setup_Abstract
      * @param Varien_Simplexml_Element $entity
      * @param Varien_Simplexml_Element $scope
      */
-    public function _createStoreSpecificsInfrastructure($context, $module, $entity, $scope)
-    {
+    public function _createStoreSpecificsInfrastructure($context, $module, $entity, $scope) {
         if (((string)$scope['module']) != $this->getModuleName() || ((string)$scope['version']) != $this->getVersion()) {
             return;
         }
@@ -166,8 +159,7 @@ class Mana_Db_Model_Setup_V13012122 extends Mana_Db_Model_Setup_Abstract
      * @param Varien_Simplexml_Element $entity
      * @param Varien_Simplexml_Element $scope
      */
-    public function _createGridEditingInfrastructure($context, $module, $entity, $scope)
-    {
+    public function _createGridEditingInfrastructure($context, $module, $entity, $scope) {
         if (((string)$scope['module']) != $this->getModuleName() || ((string)$scope['version']) != $this->getVersion()) {
             return;
         }
@@ -216,8 +208,7 @@ class Mana_Db_Model_Setup_V13012122 extends Mana_Db_Model_Setup_Abstract
      * @param Varien_Simplexml_Element $entity
      * @param Varien_Simplexml_Element $scope
      */
-    public function _createFlatInfrastructure($context, $module, $entity, $scope)
-    {
+    public function _createFlatInfrastructure($context, $module, $entity, $scope) {
         if (((string)$scope['module']) != $this->getModuleName() || ((string)$scope['version']) != $this->getVersion()) {
             return;
         }
@@ -232,7 +223,7 @@ class Mana_Db_Model_Setup_V13012122 extends Mana_Db_Model_Setup_Abstract
                 $fieldName = 'global_id';
                 $scope->fields->$fieldName->type = 'bigint';
                 $field = $scope->fields->$fieldName;
-                $field->foreign->entity = substr($global, 0, strrpos($global, '/')) . '/flat';
+                $field->foreign->entity = substr($global, 0, strrpos($global, '/')).'/flat';
                 $field->foreign->field = 'id';
                 $field->foreign->on_update = 'cascade';
                 $field->foreign->on_delete = 'cascade';
@@ -279,7 +270,8 @@ class Mana_Db_Model_Setup_V13012122 extends Mana_Db_Model_Setup_Abstract
 
                 $scope->unique->primary->global_id = '';
                 $scope->unique->primary->store_id = '';
-            } else {
+            }
+            else {
                 $fieldName = 'primary_id';
                 $scope->fields->$fieldName->type = 'bigint';
                 $field = $scope->fields->$fieldName;
@@ -303,8 +295,7 @@ class Mana_Db_Model_Setup_V13012122 extends Mana_Db_Model_Setup_Abstract
      * @param Varien_Simplexml_Element $entity
      * @param Varien_Simplexml_Element $scope
      */
-    public function _beginTableScript($context, $module, $entity, $scope)
-    {
+    public function _beginTableScript($context, $module, $entity, $scope) {
         $context->setFields(array());
         $context->setIndexes(array());
         $context->setConstraints(array());
@@ -317,8 +308,7 @@ class Mana_Db_Model_Setup_V13012122 extends Mana_Db_Model_Setup_Abstract
      * @param Varien_Simplexml_Element $scope
      * @param Varien_Simplexml_Element $field
      */
-    public function _fieldScript($context, $module, $entity, $scope, $field)
-    {
+    public function _fieldScript($context, $module, $entity, $scope, $field) {
         if (((string)$field['module']) != $this->getModuleName() || ((string)$field['version']) != $this->getVersion()) {
             return;
         }
@@ -345,8 +335,7 @@ class Mana_Db_Model_Setup_V13012122 extends Mana_Db_Model_Setup_Abstract
      * @param Varien_Simplexml_Element $entity
      * @param Varien_Simplexml_Element $scope
      */
-    public function _endTableScript($context, $module, $entity, $scope)
-    {
+    public function _endTableScript($context, $module, $entity, $scope) {
         $scope = $scope;
         if (!empty($scope->unique)) {
             /* @var $resource Mage_Core_Model_Mysql4_Resource */
@@ -354,14 +343,15 @@ class Mana_Db_Model_Setup_V13012122 extends Mana_Db_Model_Setup_Abstract
 
             $indexes = $context->getIndexes();
             foreach ($scope->unique->children() as $unique) {
-                $index = (object)array('unique' => 1, 'name' => 'unique_' . $unique->getName(), 'indexed_fields' => array());
+                $index = (object)array('unique' => 1, 'name' => 'unique_'.$unique->getName(), 'indexed_fields' => array());
                 $includeUniqueIndex = false;
                 foreach ($unique->children() as $field => $def) {
                     if (((string)$def['module']) == $this->getModuleName() && ((string)$def['version']) == $this->getVersion()) {
                         $includeUniqueIndex = true;
                         $index->indexed_fields[] = $field;
-                    } else {
-                        $installedVersion = $resource->getDbVersion(((string)$def['module']) . '_setup');
+                    }
+                    else {
+                        $installedVersion = $resource->getDbVersion(((string)$def['module']).'_setup');
                         if ($installedVersion && version_compare($installedVersion, (string)$def['version']) >= 0) {
                             $index->indexed_fields[] = $field;
                         }
@@ -380,8 +370,8 @@ class Mana_Db_Model_Setup_V13012122 extends Mana_Db_Model_Setup_Abstract
         $sql = $context->getSql();
         $context->setTable(
             $this->getTable(((string)$module->name) . '/' .
-                ((string)$entity->name) . '/' .
-                ((string)$scope->name)));
+            ((string)$entity->name) . '/' .
+            ((string)$scope->name)));
         if (((string)$scope['module']) != $this->getModuleName() || ((string)$scope['version']) != $this->getVersion()) {
             foreach ($context->getFields() as $field) {
                 $sql .= "ALTER TABLE `{$context->getTable()}` ADD COLUMN ( ";
@@ -390,25 +380,26 @@ class Mana_Db_Model_Setup_V13012122 extends Mana_Db_Model_Setup_Abstract
             }
             foreach ($context->getIndexes() as $index) {
                 if (!empty($index->rebuild)) {
-                    $sql .= "ALTER TABLE `{$context->getTable()}` DROP KEY `" . (string)$index->name . "`";
+                    $sql .= "ALTER TABLE `{$context->getTable()}` DROP KEY `".(string)$index->name."`";
                     $sql .= ";\n";
                 }
                 $sql .= "ALTER TABLE `{$context->getTable()}` ADD ";
                 $sql .= $this->_renderIndex($index);
                 $sql .= ";\n";
             }
-        } else {
+        }
+        else {
             if (count($context->getFields()) || count($context->getIndexes())) {
                 $sql .= "DROP TABLE IF EXISTS `{$context->getTable()}`;\n";
                 $sql .= "CREATE TABLE `{$context->getTable()}` ( \n";
                 $sep = false;
                 foreach ($context->getFields() as $field) {
                     if ($sep) $sql .= ", \n"; else $sep = true;
-                    $sql .= "    " . $this->_renderField($field);
+                    $sql .= "    ".$this->_renderField($field);
                 }
                 foreach ($context->getIndexes() as $index) {
                     if ($sep) $sql .= ", \n"; else $sep = true;
-                    $sql .= "    " . $this->_renderIndex($index);
+                    $sql .= "    " .$this->_renderIndex($index);
                 }
                 $sql .= "\n";
                 $sql .= ") ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='';\n";
@@ -423,18 +414,19 @@ class Mana_Db_Model_Setup_V13012122 extends Mana_Db_Model_Setup_Abstract
         $context->setSql($sql);
     }
 
-    protected function _renderField($field)
-    {
+    protected function _renderField($field) {
         $sql = '';
-        $sql .= "`" . ((string)$field->name) . "` ";
-        $sql .= ((string)$field->type) . " ";
+        $sql .= "`".((string)$field->name)."` ";
+        $sql .= ((string)$field->type) ." ";
         if (isset($field->nullable)) {
             $sql .= "null ";
-        } else {
+        }
+        else {
             $sql .= "NOT null ";
             if (!empty($field->default_value) && strpos(strtolower((string)$field->type), 'text') === false) {
-                $sql .= "DEFAULT '" . ((string)$field->default_value) . "' ";
-            } elseif (strpos((string)$field->type, 'varchar') !== false) {
+                $sql .= "DEFAULT '".((string)$field->default_value)."' ";
+            }
+            elseif (strpos((string)$field->type, 'varchar') !== false) {
                 $sql .= "DEFAULT '' ";
             }
         }
@@ -444,19 +436,21 @@ class Mana_Db_Model_Setup_V13012122 extends Mana_Db_Model_Setup_Abstract
         return $sql;
     }
 
-    protected function _renderIndex($field)
-    {
+    protected function _renderIndex($field) {
         $sql = '';
         if (!empty($field->primary)) {
             $sql .= "PRIMARY KEY ";
-        } elseif (!empty($field->unique)) {
+        }
+        elseif (!empty($field->unique)) {
             $sql .= "UNIQUE KEY `" . ((string)$field->name) . "` ";
-        } else {
+        }
+        else {
             $sql .= "KEY `" . ((string)$field->name) . "` ";
         }
         if (empty($field->indexed_fields)) {
             $sql .= "(`" . ((string)$field->name) . "`) ";
-        } else {
+        }
+        else {
             $indexedFields = array();
             foreach ($field->indexed_fields as $indexedField) {
                 $indexedFields[] = "`$indexedField`";
@@ -467,17 +461,16 @@ class Mana_Db_Model_Setup_V13012122 extends Mana_Db_Model_Setup_Abstract
         return $sql;
     }
 
-    protected function _renderConstraint($context, $field)
-    {
+    protected function _renderConstraint($context, $field) {
         $sql = '';
-        $sql .= "`FK_{$context->getTable()}_" . ((string)$field->name) . "` ";
-        $sql .= "FOREIGN KEY (`" . ((string)$field->name) . "`) ";
-        $sql .= "REFERENCES `{$this->getTable((string)$field->foreign->entity)}` (`" . ((string)$field->foreign->field) . "`) ";
-        if (!empty($field->foreign->on_delete)) {
+	    $sql .= "`FK_{$context->getTable()}_". ((string)$field->name)."` ";
+	    $sql .= "FOREIGN KEY (`" . ((string)$field->name). "`) ";
+	    $sql .= "REFERENCES `{$this->getTable((string)$field->foreign->entity)}` (`".((string)$field->foreign->field)."`) ";
+	    if (!empty($field->foreign->on_delete)) {
             $sql .= "ON DELETE " . ((string)$field->foreign->on_delete) . " ";
         }
         if (!empty($field->foreign->on_update)) {
-            $sql .= "ON UPDATE " . ((string)$field->foreign->on_update) . " ";
+            $sql .= "ON UPDATE ".((string)$field->foreign->on_update)." ";
         }
 
         return $sql;

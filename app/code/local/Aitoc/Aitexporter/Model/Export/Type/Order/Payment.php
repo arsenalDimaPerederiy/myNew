@@ -1,18 +1,17 @@
 <?php
-
 /**
  * Orders Export and Import
  *
  * @category:    Aitoc
  * @package:     Aitoc_Aitexporter
- * @version      1.2.8
+ * @version      1.2.9
  * @license:     ou1zlIlUK4jGhUJZLohhJ5b8jdvumX7FXHqMPgZHkF
- * @copyright:   Copyright (c) 2014 AITOC, Inc. (http://www.aitoc.com)
+ * @copyright:   Copyright (c) 2015 AITOC, Inc. (http://www.aitoc.com)
  */
 class Aitoc_Aitexporter_Model_Export_Type_Order_Payment extends Aitoc_Aitexporter_Model_Export_Type_Complex implements Aitoc_Aitexporter_Model_Export_Type_Interface
 {
     /**
-     *
+     * 
      * @param SimpleXMLElement $orderXml
      * @param Mage_Sales_Model_Order $order
      * @param Varien_Object $exportConfig
@@ -21,17 +20,21 @@ class Aitoc_Aitexporter_Model_Export_Type_Order_Payment extends Aitoc_Aitexporte
     {
         /* @var $order Mage_Sales_Model_Order */
 
-        if (empty($exportConfig['entity_type']['order_payment']['order_payment'])) {
+        if (empty($exportConfig['entity_type']['order_payment']['order_payment']))
+        {
             return false;
         }
 
         $paymentsXml = $orderXml->addChild('payments');
 
-        foreach ($order->getPaymentsCollection() as $payment) {
+        foreach ($order->getPaymentsCollection() as $payment)
+        {
             $paymentXml = $paymentsXml->addChild('payment');
 
-            foreach ($payment->getData() as $field => $value) {
-                if (is_array($value)) {
+            foreach ($payment->getData() as $field => $value)
+            {
+                if(is_array($value))
+                {
                     $value = serialize($value);
                 }
                 $paymentXml->addChild($field, (string)$value);
@@ -42,7 +45,7 @@ class Aitoc_Aitexporter_Model_Export_Type_Order_Payment extends Aitoc_Aitexporte
     }
 
     /**
-     *
+     * 
      * @see Aitoc_Aitexporter_Model_Export_Type_Complex::getChildTypes()
      * @param Varien_Object $exportConfig
      * @return array
@@ -50,9 +53,10 @@ class Aitoc_Aitexporter_Model_Export_Type_Order_Payment extends Aitoc_Aitexporte
     public function getChildTypes(Varien_Object $exportConfig)
     {
         $entityTypes = $exportConfig->getEntityType() ? $exportConfig->getEntityType() : array();
-        $childTypes = isset($entityTypes['order_payment']) ? $entityTypes['order_payment'] : array();
+        $childTypes  = isset($entityTypes['order_payment']) ? $entityTypes['order_payment'] : array();
 
-        if (isset($childTypes['order_payment'])) {
+        if (isset($childTypes['order_payment']))
+        {
             unset($childTypes['order_payment']);
         }
 

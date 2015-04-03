@@ -73,4 +73,9 @@ class Aitoc_Aitsys_Model_Observer extends Aitoc_Aitsys_Abstract_Model
         $important = new Aitoc_Aitsys_Model_News_Important();
         $important->loadData();
     }
+
+    public function updateNotification()
+    {
+        return Mage::getModel('aitsys/feed')->checkUpdate();
+    }
 }

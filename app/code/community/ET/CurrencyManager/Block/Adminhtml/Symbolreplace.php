@@ -1,5 +1,4 @@
 <?php
-
 /**
  * NOTICE OF LICENSE
  *
@@ -17,6 +16,7 @@
  * @contacts   support@etwebsolutions.com
  * @license    http://shop.etwebsolutions.com/etws-license-free-v1/   ETWS Free License (EFL1)
  */
+
 class ET_CurrencyManager_Block_Adminhtml_Symbolreplace extends Mage_Adminhtml_Block_System_Config_Form_Field
 {
     protected $_addRowButtonHtml = array();
@@ -202,7 +202,7 @@ class ET_CurrencyManager_Block_Adminhtml_Symbolreplace extends Mage_Adminhtml_Bl
             $key = explode("/", $key);
             $key = array_shift($key);
             //$value = Mage::app()->getConfig()->getNode('default/currencymanager/general/symbolreplace/'.$key);
-            $value = Mage::app()->getConfig()->getNode('default/currencymanager/general/' . $key);
+            $value = Mage::app()->getConfig()->getNode('default/currencymanager/general/'.$key);
             return (string)$value;
         }
         return $value;
@@ -220,7 +220,7 @@ class ET_CurrencyManager_Block_Adminhtml_Symbolreplace extends Mage_Adminhtml_Bl
                 ->setType('button')
                 ->setClass('add ' . $this->_getDisabled())
                 ->setLabel($this->__($title))
-                //$this->__('Add')
+            //$this->__('Add')
                 ->setOnClick("Element.insert($('" . $container . "'), {bottom: $('" . $template . "').innerHTML})")
                 ->setDisabled($this->_getDisabled())
                 ->toHtml();
@@ -235,7 +235,7 @@ class ET_CurrencyManager_Block_Adminhtml_Symbolreplace extends Mage_Adminhtml_Bl
                 ->setType('button')
                 ->setClass('delete v-middle ' . $this->_getDisabled())
                 ->setLabel($this->__($title))
-                //$this->__('Remove')
+            //$this->__('Remove')
                 ->setOnClick("Element.remove($(this).up('" . $selector . "'))")
                 ->setDisabled($this->_getDisabled())
                 ->toHtml();

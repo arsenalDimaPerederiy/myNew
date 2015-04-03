@@ -131,31 +131,64 @@ class ManaPro_FilterSeoLinks_Model_Observer extends Mage_Core_Helper_Abstract {
 
 				$filter = $filterItem->getFilter(); /**Mage_Catalog_Model_Layer_Filter_Attribute**/
 				$options  = $filterItem->getItems();
-				//if($filter->getRequestVar() != 'price') {
-					$_appliedFiltersArray[] = $filter->getRequestVar()."-".$filterItem->getValue();
-				//} else {
-					//$_splashPagePrice = array(serialize(array('ids'=>array($_currentCategoryId)));
-				//}
+				$_appliedFiltersArray[] = $filter->getRequestVar()."-".$filterItem->getValue();
+
 
 			}
+			
+
+			foreach($_appliedFiltersArray as $item) {
+				$data = explode("-",$item);
+				if($data[0] == 'price') {
+					$priceData = explode(',',$data[1]);
+					$min = ($priceData[0] > 0) ? $priceData[0] : Null;
+					$max = ($priceData[1] > 400) ? Null : $priceData[1];
+					$_splashPagePrice = serialize(array('price'=>array('min' => $min, 'max' => $max)));
+				}
+				
+				if($data[0] == 'color') { 
+					$_splashPageColor = serialize(array('color'=>array('value' => array($data[1]), 'operator' => 'OR', 'apply_to' => "", 'include_in_layered_nav' => (int)'')));
+				}
+			
+			}
+			
+			$_splashPageColor = (!isset($_splashPageColor)) ? 'a:0:{}' : $_splashPageColor;
+			$_splashPagePrice = (!isset($_splashPagePrice)) ? 'a:0:{}' : $_splashPagePrice;
 
 			$_currentCategoryId = Mage::registry('current_category')->getId();	
 			$_splashPageCategory = array(serialize(array('ids'=>array($_currentCategoryId),'operator'=>'AND')), serialize(array('ids'=>array($_currentCategoryId),'operator'=>'OR')));
 			$splashPageCollection = Mage::getResourceModel('splash/page_collection')
 								->addFieldToFilter('category_filters', array('in' => $_splashPageCategory))
+								->addFieldToFilter('price_filters', array('eq' => $_splashPagePrice))
+								->addFieldToFilter('option_filters', array('eq' => $_splashPageColor))
 								->load();
+								//echo stripslashes($splashPageCollection->getSelect()->__toString());
 								
-			$currentSplashPage = false;				
-			foreach ($splashPageCollection as $splashPage) {
+			$currentSplashPage = false;	
+			if(count($splashPageCollection) == 1) {
+				
+				foreach ($splashPageCollection as $splashPage) {
+					$currentSplashPage = $splashPage;
+				}
+				//echo $splashPage->getId();
+				//var_dump($_priceBol);
+				if(!Mage::registry('current_splash_page')) {
+					Mage::register('current_splash_page', $splashPage);
+				}
+			}			
+			
+			/*foreach ($splashPageCollection as $splashPage) {
 
 				$optionData = unserialize($splashPage->getOptionFilters());
+				//print_r($optionData);
 				$optionKey =  key($optionData);
 				$_splashPageMatch = 0;
 				$_priceFilter = false;
 				foreach($_appliedFiltersArray as $item) {
-					
-					if($optionKey."-".$optionData[$optionKey]['value'][0] == $item) {
-						$_splashPageMatch++;
+					if(isset($optionKey)){
+						if($optionKey."-".$optionData[$optionKey]['value'][0] == $item) {
+							$_splashPageMatch++;
+						}
 					}
 				
 				}
@@ -166,7 +199,7 @@ class ManaPro_FilterSeoLinks_Model_Observer extends Mage_Core_Helper_Abstract {
 				$_priceBol = (count($priceData)) ? true : false;
 				foreach($_appliedFiltersArray as $item) {
 					$data = explode("-",$item);
-					if($data[0] == 'price') {
+					if($data[0] == 'price' && isset($priceKey)) {
 						$min = ($priceData[$priceKey]['min']) ? $priceData[$priceKey]['min'] : 0;
 						$max = ($priceData[$priceKey]['max']) ? $priceData[$priceKey]['max'] : 9000;
 						$priceData = explode(',',$data[1]);
@@ -179,6 +212,7 @@ class ManaPro_FilterSeoLinks_Model_Observer extends Mage_Core_Helper_Abstract {
 				
 				}
 
+				//echo count($_appliedFiltersArray)."-".$_splashPageMatch."+".$_priceBol."+".$_priceFilter."<br/>";
 				if((count($_appliedFiltersArray) > 0) && ($_splashPageMatch == count($_appliedFiltersArray)) && (($_priceBol == false) || (($_priceBol == true) && ($_priceFilter == true)))) {
 					$currentSplashPage = $splashPage;
 					//echo $splashPage->getId();
@@ -189,7 +223,7 @@ class ManaPro_FilterSeoLinks_Model_Observer extends Mage_Core_Helper_Abstract {
 				}
 
 
-			}
+			}*/
 			
 			if($currentSplashPage) {
 				$head

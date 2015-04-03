@@ -6,9 +6,9 @@
  * @author      Ben Tideswell <help@fishpig.co.uk>
  */
 
-$this->startSetup();
-
-$this->run("
+	$this->startSetup();
+	
+	$this->run("
 		CREATE TABLE IF NOT EXISTS {$this->getTable('attributesplash_attribute_option_extra')} (
 			`entity_id` int(11) unsigned NOT NULL auto_increment,
 			`option_id` int (11) unsigned NOT NULL default 0,
@@ -30,5 +30,5 @@ $this->run("
 		
 		ALTER TABLE {$this->getTable('attributesplash_attribute_option_extra')} ADD UNIQUE (option_id,store_id);
 	");
-
-$this->endSetup();
+	
+	$this->endSetup();

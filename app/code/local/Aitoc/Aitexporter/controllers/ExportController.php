@@ -4,9 +4,9 @@
  *
  * @category:    Aitoc
  * @package:     Aitoc_Aitexporter
- * @version      1.2.8
+ * @version      1.2.9
  * @license:     ou1zlIlUK4jGhUJZLohhJ5b8jdvumX7FXHqMPgZHkF
- * @copyright:   Copyright (c) 2014 AITOC, Inc. (http://www.aitoc.com)
+ * @copyright:   Copyright (c) 2015 AITOC, Inc. (http://www.aitoc.com)
  */
 class Aitoc_Aitexporter_ExportController extends Mage_Adminhtml_Controller_Action
 {
@@ -23,8 +23,7 @@ class Aitoc_Aitexporter_ExportController extends Mage_Adminhtml_Controller_Actio
      *
      */
     public function indexAction()
-    {	
-
+    {
         $this->_initAction();
         $profileId    = (int)$this->getRequest()->getParam('profile');
         Mage::register('current_profile_id', $profileId);

@@ -55,7 +55,6 @@
 "Minimum number of digits after the decimal point:","Минимальное кол-во знаков после запятой:"
 "Discard zeroes, leaving specified number of them. Cannot be greater than Display Precision setting. Default: 2. Available values: 1, 2, 3, 4.<br>Examples:<br>for value = 0<br> 9.0000 => 9<br> 9.9999 => 9.9999<br> 9.9000 => 9.9<br><br> for value = 2<br> 9.0000 => 9.00<br> 9.9999 => 9.9999<br> 9.9000 => 9.90","Отбросить нули, оставив указанное количество. Не может быть больше параметра Точность отображения. По умолчанию: 2. Доступные значения: 1, 2, 3, 4.<br>Примеры:<br>при значении = 0<br> 9.0000 => 9<br> 9.9999 => 9.9999<br> 9.9000 => 9.9<br><br> при значении = 2<br> 9.0000 => 9.00<br> 9.9999 => 9.9999<br> 9.9000 => 9.90"
 "Unlike Display Precision, this setting discards only zeroes.<br>Example:<br>99.99 => 99.99<br>99.00 => 99","В отличии от Точности отображения данная настройка отбрасывает не все символы после запятой, а только нули.<br>Пример:<br>99.99 => 99.99<br>99.00 => 99"
-
 "Extension:","Модуль:"
 "<strong>%s</strong> (version %s)","<strong>%s</strong> (версия %s)"
 "License:","Лицензия:"

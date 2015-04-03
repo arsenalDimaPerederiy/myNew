@@ -41,8 +41,10 @@ class Aitoc_Aitsys_Helper_Strings extends Aitoc_Aitsys_Helper_Data
             {
                 $conflictString[] = $aitClass.': '.implode(', ', $otherClass);
             }
-            $string = Mage::helper('aitsys')->__('%s has a conflict with %s in the following classes %s. ', implode(', ', $conflictModules), $module->getInfo()->getLabel(),  implode(', ', $conflictString));
-            $string .= Mage::helper('aitsys')->__('You may try enabling our Automatic conflict resolution system under <a href="%s">Manage Class rewrites</a> or if you are familiar with web development you can edit the affected classes yourself. If none of the above helps please submit a <a href="%s">support ticket</a>', Mage::getModel('adminhtml/url')->getUrl('*/rewriter'), Mage::helper('aitsys')->getModuleSupportLink($module, true));
+            $string = Mage::helper('aitsys')->__('Please <a href="%s">enable</a> our Automatic conflict resolution system under <a href="%s">Manage Class rewrites</a> by clicking the Enable button ',Mage::getModel('adminhtml/url')->getUrl('*/rewriter/enable'),Mage::getModel('adminhtml/url')->getUrl('*/rewriter') );
+            $string .= '<span class="noBold">'.Mage::helper('aitsys')->__('to resolve the following issues: %s has a conflict with %s in the following classes %s. ', implode(', ', $conflictModules), $module->getInfo()->getLabel(),  implode(', ', $conflictString));
+            $string .= '<br>'.Mage::helper('aitsys')->__('Or if you are familiar with web development you can edit the affected classes yourself manually.');
+            $string .= '<br>'.Mage::helper('aitsys')->__('If none of the above helps please submit a <a href="%s">support ticket</a>', Mage::helper('aitsys')->getModuleSupportLink($module, true)).'</span>';
             return $string;
         }
         return false;

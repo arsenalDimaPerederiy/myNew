@@ -72,8 +72,7 @@
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
-                            <comment>pixel. If it's 0 or empty, the system will set vertical menu: 200px; horizontal
-                                menu: default Magento menu width
+                            <comment>pixel. If it's 0 or empty, the system will set vertical menu: 200px; horizontal menu: default Magento menu width
                             </comment>
                         </menu_width>
                         <menu_height>
@@ -83,8 +82,7 @@
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
-                            <comment>pixel. This is height of a menu item. If it's 0 or empty, the system will set
-                                automatically
+                            <comment>pixel. This is height of a menu item. If it's 0 or empty, the system will set automatically
                                 default height is 55px.
                             </comment>
                         </menu_height>
@@ -92,12 +90,12 @@
                             <!-- <label>Reindex</label>-->
                             <frontend_type>hidden</frontend_type>
                             <sort_order>6</sort_order>
-                        </reindex>
+                        </reindex>	
                         <template>
                             <frontend_type>textarea</frontend_type>
-                            <sort_order>7</sort_order>
-                        </template>
-                    </fields>
+                            <sort_order>7</sort_order>                                        
+                        </template>				
+                    </fields>                                                                               
                 </general>
                 <implement translate="label">
                     <label>Implement Code</label>

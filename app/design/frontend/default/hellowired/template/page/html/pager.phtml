@@ -34,7 +34,6 @@
 <?php if($this->getCollection()->getSize()): ?>
 
     <?php if($this->getUseContainer()): ?>
-
     <div class="pager">
     <?php endif ?>
 
@@ -61,70 +60,58 @@
     </div>
     <?php endif ?>
 
-
-
     <?php if($this->getLastPageNum()>1): ?>
     <div class="pages">
-
+        <strong><?php echo $this->__('Page:') ?></strong>
         <ol>
-
-
         <?php if (!$this->isFirstPage()): ?>
+			<?php $posQuery = explode('?', $this->getPreviousPageUrl()); ?>
             <li class="pager-arrows">
-		<?php if(Mage::registry('current_category')): ?>
-			<?php if($this->getCurrentPage()==2): ?>
-				<?php $pagerPrevUrl=Mage::registry('current_category')->getUrl(); ?>
-			<?php else: ?>
-				<?php $pagerPrevUrl = $this->getPreviousPageUrl(); ?>
-			<?php endif; ?>
-		<?php else: ?>
-			<?php $pagerPrevUrl = $this->getPreviousPageUrl(); ?>
-		<?php endif; ?>
-                <a rel="prev" class="<?php if ($this->isFirstPage()): ?>previous-disabled<?php endif;?> previous<?php if(!$this->getAnchorTextForPrevious()): ?> i-previous<?php endif;?>" <?php if ($this->isFirstPage()): ?>onclick="return false;"<?php endif;?> href="<?php echo $pagerPrevUrl ?>" >
-                    <i class="fa fa-arrow-left"></i>
-                    <?php echo $this->__('Previous') ?>
+				<?php if(Mage::registry('current_category')): ?>
+					<?php if($this->getCurrentPage()==2): ?>
+						<?php $pagerPrevUrl = ($posQuery > 1) ? str_replace('page-1','',$posQuery[0]) : str_replace('page-1','',$this->getPreviousPageUrl()); ?>
+					<?php else: ?>
+						<?php $pagerPrevUrl = ($posQuery > 1) ? $posQuery[0] : $this->getPreviousPageUrl(); ?>
+					<?php endif; ?>
+				<?php elseif(Mage::app()->getRequest()->getModuleName() =='catalogsearch'): ?>
+					<?php $pagerPrevUrl = $this->getPreviousPageUrl(); ?>
+				<?php else: ?>
+					<?php $pagerPrevUrl = ($posQuery > 1) ? $posQuery[0] : $this->getPreviousPageUrl(); ?>
+				<?php endif; ?>
+                <a rel="prev" class="<?php if ($this->isFirstPage()): ?>previous-disabled<?php endif;?> previous<?php if(!$this->getAnchorTextForPrevious()): ?> i-previous<?php endif;?>" <?php if ($this->isFirstPage()): ?>onclick="return false;"<?php endif;?> href="<?php echo $pagerPrevUrl ?>" title="<?php echo $this->__('Previous') ?>">
                 </a>
             </li>
-        <?php endif;?><!--esli tek str pervaya-->
-
-
-
-
-        <?php if (($this->getCurrentPage()>2)&&($this->getLastPageNum()>3)): ?>
-            <li><a class="first" href="<?php echo $this->getFirstPageUrl() ?>">1</a></li>
-            <li class="point">....</li>
         <?php endif;?>
 
+        <?php if ($this->canShowFirst()): ?>
+            <li><a class="first" href="<?php echo $this->getFirstPageUrl() ?>">1</a></li>
+        <?php endif;?>
 
         <?php if ($this->canShowPreviousJump()): ?>
             <li><a  class="previous_jump" title="" href="<?php echo $this->getPreviousJumpUrl() ?>">...</a></li>
         <?php endif;?>
 
-
-
-
         <?php $_pageNumb=1; ?>
         <?php foreach ($this->getFramePages() as $_page): ?>
-
+			<?php $posQuery = explode('?', $this->getPageUrl($_page)); ?>
             <?php if ($this->isPageCurrent($_page)): ?>
                 <li class="current"><?php echo $_page ?></li>
             <?php else: ?>
-
-		<?php if(Mage::registry('current_category')): ?>
-			<?php if($_page==1): ?>
-				<?php $pagerUrl=Mage::registry('current_category')->getUrl(); ?>
-			<?php else: ?>
-				<?php $pagerUrl = $this->getPageUrl($_page); ?>
-			<?php endif; ?>
-		<?php else: ?>
-			<?php $pagerUrl = $this->getPageUrl($_page); ?>
-		<?php endif; ?>
-                <li><a <?php if($_pageNumb == 2): ?>rel="prev"<?php endif;?> <?php if($_pageNumb == 4): ?>rel="next"<?php endif;?> href="<?php echo $pagerUrl ?>"><?php echo $_page ?></a></li>
+				<?php if(Mage::registry('current_category')): ?>
+					<?php if($_page==1): ?>						
+						<?php $pagerUrl = ($posQuery > 1) ? str_replace('page-1','',$posQuery[0]) : str_replace('page-1','',$this->getPageUrl($_page)); ?>
+					<?php else: ?>
+						<?php $pagerUrl = ($posQuery > 1) ? $posQuery[0] : $this->getPageUrl($_page); ?>
+					<?php endif; ?>
+				<?php elseif(Mage::app()->getRequest()->getModuleName() =='catalogsearch'): ?>
+					<?php $pagerUrl = $this->getPageUrl($_page); ?>
+				<?php else: ?>
+					<?php $pagerUrl = ($posQuery > 1) ? $posQuery[0] : $this->getPageUrl($_page); ?>
+				<?php endif; ?>
+                <li><a href="<?php echo $pagerUrl ?>"><?php echo $_page ?></a></li>
             <?php endif;?>
             <?php $_pageNumb++; ?>
         <?php endforeach;?>
-
-
 
 
         <?php if ($this->canShowNextJump()): ?>
@@ -135,35 +122,30 @@
           <li><a class="last" href="<?php echo $this->getLastPageUrl() ?>"><?php echo $this->getLastPageNum() ?></a></li>
         <?php endif;?>
 
+        <?php if (!$this->isLastPage()): ?>
 
-
-        <?php if (($this->getCurrentPage()<$this->getLastPageNum()-1)&&($this->getLastPageNum()>3)): ?>
-            <li class="point">....</li>
-            <li>
-                <a class="last" href="<?php echo $this->getLastPageUrl()?>">
-                    <?php  echo $this->getLastPageNum()?>
+			<?php $posQuery = explode('?', $this->getNextPageUrl()); ?>
+            <li class="pager-arrows">
+				<?php if(Mage::registry('current_category')): ?>
+					<?php if($this->getCurrentPage()==2): ?>
+						<?php $nextPageUrl = ($posQuery > 1) ? str_replace('page-1','',$posQuery[0]) : str_replace('page-1','',$this->getNextPageUrl()); ?>
+					<?php else: ?>
+						<?php $nextPageUrl = ($posQuery > 1) ? $posQuery[0] : $this->getNextPageUrl(); ?>
+					<?php endif; ?>
+				<?php elseif(Mage::app()->getRequest()->getModuleName() =='catalogsearch'): ?>
+					<?php $nextPageUrl = $this->getNextPageUrl(); ?>
+				<?php else: ?>
+					<?php $nextPageUrl = ($posQuery > 1) ? $posQuery[0] : $this->getNextPageUrl(); ?>
+				<?php endif; ?>
+                <a rel="next" class="<?php if ($this->isLastPage()): ?>next-disabled<?php endif;?> next<?php if(!$this->getAnchorTextForNext()): ?> i-next<?php endif; ?>" <?php if ($this->isLastPage()): ?>onclick="return false;"<?php endif;?> href="<?php echo $nextPageUrl ?>" title="<?php echo $this->__('Next') ?>">
                 </a>
             </li>
-        <?php endif; ?>
-
-        <?php if (!$this->isLastPage()): ?>
-			<li class="pager-arrows">
-				<a rel="next" class="<?php if ($this->isLastPage()): ?>next-disabled<?php endif;?> next<?php if(!$this->getAnchorTextForNext()): ?> i-next<?php endif; ?>" <?php if ($this->isLastPage()): ?>onclick="return false;"<?php endif;?> href="<?php echo $this->getNextPageUrl() ?>" >
-                    <?php echo $this->__('Next') ?>
-                    <i class="fa fa-arrow-right"></i>
-				</a>
-			</li>
 		<?php endif; ?>
-
-
         
         </ol>
 
     </div>
     <?php endif; ?>
-
-
-
 
     <?php if($this->getUseContainer()): ?>
     </div>

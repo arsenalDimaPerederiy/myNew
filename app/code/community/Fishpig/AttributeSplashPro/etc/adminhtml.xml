@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <config>
-	<menu>
+	<!--menu>
 		<attributeSplash translate="title" module="splash">
 			<title>Splash</title>
 			<sort_order>31</sort_order>
@@ -40,5 +40,5 @@
 				</children>
 			</admin>
 		</resources>
-	</acl>
+	</acl-->
 </config>

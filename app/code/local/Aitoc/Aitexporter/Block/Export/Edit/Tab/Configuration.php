@@ -4,9 +4,9 @@
  *
  * @category:    Aitoc
  * @package:     Aitoc_Aitexporter
- * @version      1.2.8
+ * @version      1.2.9
  * @license:     ou1zlIlUK4jGhUJZLohhJ5b8jdvumX7FXHqMPgZHkF
- * @copyright:   Copyright (c) 2014 AITOC, Inc. (http://www.aitoc.com)
+ * @copyright:   Copyright (c) 2015 AITOC, Inc. (http://www.aitoc.com)
  */
 class Aitoc_Aitexporter_Block_Export_Edit_Tab_Configuration extends Aitoc_Aitexporter_Block_Export_Edit_Tab_Abstract
 {
@@ -62,7 +62,7 @@ class Aitoc_Aitexporter_Block_Export_Edit_Tab_Configuration extends Aitoc_Aitexp
     {
         if (!$this->_mediumDateFormat) 
         {
-            $this->_mediumDateFormat = Mage::app()->getLocale()->getDateStrFormat(Mage_Core_Model_Locale::FORMAT_TYPE_MEDIUM);
+            $this->_mediumDateFormat = Mage::app()->getLocale()->getDateStrFormat(Mage_Core_Model_Locale::FORMAT_TYPE_SHORT);
         }
 
         return $this->_mediumDateFormat;

@@ -1,22 +1,19 @@
 <?php
-/**
+/** 
  * @category    Mana
  * @package     Mana_Seo
  * @copyright   Copyright (c) http://www.manadev.com
  * @license     http://www.manadev.com/license  Proprietary License
  */
-
 /**
  * @author Mana Team
  *
  */
-class Mana_Seo_Adminhtml_Mana_Seo_UrlController extends Mana_Admin_Controller_V2_Controller
-{
+class Mana_Seo_Adminhtml_Mana_Seo_UrlController extends Mana_Admin_Controller_V2_Controller {
     /**
      * @return Mana_Seo_Model_Url
      */
-    protected function _registerModel()
-    {
+    protected function _registerModel() {
         if (!($model = Mage::registry('m_edit_model'))) {
             $model = $this->dbHelper()->getModel('mana_seo/url');
             $model->load($this->getRequest()->getParam('id'));
@@ -27,8 +24,7 @@ class Mana_Seo_Adminhtml_Mana_Seo_UrlController extends Mana_Admin_Controller_V2
         return $model;
     }
 
-    protected function _processChanges()
-    {
+    protected function _processChanges() {
         // data
         $model = $this->_registerModel();
 
@@ -40,8 +36,7 @@ class Mana_Seo_Adminhtml_Mana_Seo_UrlController extends Mana_Admin_Controller_V2
         }
     }
 
-    public function indexAction()
-    {
+    public function indexAction() {
         // page
         $this->_title('MANAdev')->_title($this->__('SEO URL Keys'));
 
@@ -60,8 +55,7 @@ class Mana_Seo_Adminhtml_Mana_Seo_UrlController extends Mana_Admin_Controller_V2
         $this->renderLayout();
     }
 
-    public function gridAction()
-    {
+    public function gridAction() {
         // layout
         $this->addActionLayoutHandles();
         $this->loadLayoutUpdates();
@@ -72,8 +66,7 @@ class Mana_Seo_Adminhtml_Mana_Seo_UrlController extends Mana_Admin_Controller_V2
         $this->renderLayout();
     }
 
-    public function editAction()
-    {
+    public function editAction() {
         $model = $this->_registerModel();
 
         // page
@@ -94,8 +87,7 @@ class Mana_Seo_Adminhtml_Mana_Seo_UrlController extends Mana_Admin_Controller_V2
         $this->renderLayout();
     }
 
-    public function saveAction()
-    {
+    public function saveAction() {
         // data
         $model = $this->_registerModel();
         $response = new Varien_Object();
@@ -115,7 +107,8 @@ class Mana_Seo_Adminhtml_Mana_Seo_UrlController extends Mana_Admin_Controller_V2
                 $messages->addError($error);
             }
             $response->setData('failed', true);
-        } catch (Exception $e) {
+        }
+        catch (Exception $e) {
             $messages->addError($e->getMessage());
             $response->setData('failed', true);
         }
@@ -129,8 +122,7 @@ class Mana_Seo_Adminhtml_Mana_Seo_UrlController extends Mana_Admin_Controller_V2
     /**
      * @return Mana_Seo_Helper_Data
      */
-    public function seoHelper()
-    {
+    public function seoHelper() {
         return Mage::helper('mana_seo');
     }
 

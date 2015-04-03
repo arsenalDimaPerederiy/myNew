@@ -38,7 +38,6 @@ Default layout, loads most of the pages
 
 
 
-
                 <action method="addJs"><script>prototype/prototype.js</script></action>
                 <action method="addJs" ifconfig="dev/js/deprecation"><script>prototype/deprecation.js</script></action>
                 <action method="addJs"><script>prototype/validation.js</script></action>
@@ -54,13 +53,6 @@ Default layout, loads most of the pages
                 <action method="addJs"><script>mage/cookies.js</script></action>
 				<action method="addJs"><script>magebuzz/jquery/jquery-latest.js</script></action>
 
-
-                <action method="addJs"><script>prototype/window.js</script></action>
-                <action method="addJs"><script>Webinse/Oauth.js</script></action>
-                <action method="addItem"><type>js_css</type><name>prototype/windows/themes/default.css</name></action>
-                <action method="addCss"><name>lib/prototype/windows/themes/magento.css</name></action>
-                <action method="addCss"><stylesheet>css/webinseStyle/style.css</stylesheet></action>
-
 				<!--action method="addItem"><type>skin_js</type><name>js/hello.jquery.js</name></action>
 				<action method="addItem"><type>skin_js</type><name>js/jquery.cycle.all.js</name></action>
 				<action method="addItem"><type>skin_js</type><name>js/custom.js</name></action-->
@@ -71,8 +63,9 @@ Default layout, loads most of the pages
 
 
                 <!--action method="addJs"><script>magestore/jquery.nivo.slider.js</script></action-->
-                <action method="addCss"><stylesheet>css/font-awesome.min.css</stylesheet></action>
+
                 <action method="addCss"><stylesheet>css/default.css</stylesheet></action>
+
                 <action method="addCss"><stylesheet>css/widgets.css</stylesheet></action>
                 <action method="addCss"><stylesheet>css/styles.css</stylesheet></action>
                 <action method="addCss"><stylesheet>css/custom.css</stylesheet></action>
@@ -129,8 +122,8 @@ Default layout, loads most of the pages
             </block>
 			
 			<block type="reports/product_viewed" name="bottom.reports.product.viewed" as="viewedproducts" template="reports/product_viewed_list.phtml" />
-			<block type="mostpopular/category" name="catalog.product.recommend" as="recommended" template="reports/recommend.phtml"/>
-			
+			<!--block type="mostpopular/category" name="catalog.product.recommend" as="recommended" template="reports/recommend.phtml"/-->
+			<block type="catalogextensions/mostviewed_list" name="bestsellers_list" as="recommendedd" template="reports/recommendnew.phtml" />
             <block type="page/html_footer" name="footer" as="footer" template="page/html/footer.phtml">
                 <block type="page/html_wrapper" name="bottom.container" as="bottomContainer" translate="label">
                     <label>Page Footer</label>

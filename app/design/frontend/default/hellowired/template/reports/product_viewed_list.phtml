@@ -52,7 +52,7 @@ $i=0;
 				<li class="item" >              
 					<div class="product-content">
 						<a href="<?php echo $_item->getProductUrl() ?>" class="product-image"><img src="<?php echo $this->helper('catalog/image')->init($_item, 'thumbnail')->resize(182,234) ?>"  alt="<?php echo $this->__('Photo - %s. Product code: %s', trim(str_replace(',', '', $_item->getName())),$_item->getSku()); ?>" width="182" height="234" /></a>
-						<h2 class="product-name"><a onclick="setProductColor('<?php echo $_item->getId() ?>')" href="<?php echo $_item->getProductUrl() ?>" title="<?php echo $this->htmlEscape($_item->getName()) ?>"><?php echo $this->htmlEscape($_item->getName()) ?></a></h2>
+						<div class="product-name"><a onclick="setProductColor('<?php echo $_item->getId() ?>')" href="<?php echo $_item->getProductUrl() ?>" title="<?php echo $this->htmlEscape($_item->getName()) ?>"><?php echo $this->htmlEscape($_item->getName()) ?></a></div>
 
 						<?php if($_price!=$_finalPrice): ?>
 						  <?php $discont=($_regularPrice-$_finalPrice)/$_regularPrice; ?>

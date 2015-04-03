@@ -71,7 +71,7 @@ updateLinks:function(){
     }
     
     var shoppingCartForm = $$('div.cart form').first();
-    if (shoppingCartForm) shoppingCartForm.writeAttribute('onchange', 'javascript:iCart.updateShoppingCart(); return false;');
+    if (shoppingCartForm) shoppingCartForm.writeAttribute('onsubmit', 'javascript:iCart.updateShoppingCart(); return false;');
     
     if (typeof coShippingMethodForm!='undefined') {
         coShippingMethodForm.submit=function(){
@@ -215,7 +215,6 @@ updateShoppingCart:function() {
         }.bind(this)
     });
 },
-
 
 updateCart:function(url,el) {
     if(confirm(this.confirmDeleteCart)){

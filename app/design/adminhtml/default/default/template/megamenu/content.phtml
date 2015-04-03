@@ -5,98 +5,83 @@
     <div class="entry-edit-head">
         <h4 class="icon-head head-edit-form fieldset-legend">
             <?php echo Mage::helper('adminhtml')->__('Content Information') ?>
-        </h4>
+        </h4>            
     </div>
     <div class="fieldset">
         <table class="form-list" cellspacing="0">
             <tbody>
-            <tr>
-                <td class="label">
-                    <label for="menu_type">
-                        <?php echo Mage::helper('adminhtml')->__('Menu Type') ?>
-                        <span class="required">*</span>
-                    </label>
-                </td>
-                <td class="value">
-                    <?php $menutypeOptions = Mage::helper('megamenu')->getMenutypeOptions() ?>
-                    <select id="menu_type" name="menu_type"
-                            class="required-entry required-entry select validation-failed"
-                            onchange="reloadTemplate(this.value,'<?php echo $urlLoad ?>');">
-                        <option
-                            value=""><?php echo Mage::helper('adminhtml')->__('-- Please choose Menu Type --') ?></option>
-                        <?php foreach ($menutypeOptions as $_option): ?>
-                            <option value="<?php echo $_option['value'] ?>"><?php echo $_option['label'] ?></option>
-                        <?php endforeach; ?>
-                    </select>
-                </td>
-            </tr>
-            <tr>
-                <td class="label">
-                    <label for="template_id">
-                        <?php echo Mage::helper('adminhtml')->__('Template') ?>
-                        <span class="required">*</span>
-                    </label>
-                </td>
-                <td class="value">
-                    <select id="template_id"
-                            onchange="loadTemplate(this, '<?php echo $this->getUrl('megamenu/index/loadTemplate') ?>')"
-                            name="template_id" class="required-entry required-entry select validation-failed">
-                        <option id="template_id_default"
-                                value="-1"><?php echo Mage::helper('adminhtml')->__('-- Please choose template --') ?></option>
-                    </select>
-                </td>
-            </tr>
+                <tr>
+                    <td class="label">
+                        <label for="menu_type">
+                            <?php echo Mage::helper('adminhtml')->__('Menu Type') ?>
+                            <span class="required">*</span>
+                        </label>
+                    </td>
+                    <td class="value">
+                        <?php $menutypeOptions = Mage::helper('megamenu')->getMenutypeOptions() ?>
+                        <select id="menu_type" name="menu_type" class="required-entry required-entry select validation-failed" onchange="reloadTemplate(this.value,'<?php echo $urlLoad ?>');">
+                            <option value=""><?php echo Mage::helper('adminhtml')->__('-- Please choose Menu Type --') ?></option>
+                            <?php foreach ($menutypeOptions as $_option): ?>	
+                                <option value="<?php echo $_option['value'] ?>"><?php echo $_option['label'] ?></option>
+                            <?php endforeach; ?>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="label">
+                        <label for="template_id">
+                            <?php echo Mage::helper('adminhtml')->__('Template') ?>
+                            <span class="required">*</span>
+                        </label>
+                    </td>
+                    <td class="value">
+                        <select id="template_id" onchange="loadTemplate(this, '<?php echo $this->getUrl('megamenu/index/loadTemplate') ?>')" name="template_id" class="required-entry required-entry select validation-failed">
+                            <option id="template_id_default" value="-1"><?php echo Mage::helper('adminhtml')->__('-- Please choose template --') ?></option>
+                        </select>
+                    </td>
+                </tr>
             <script type="text/javascript">
-                function hoveronLayout(el) {
-                    var sib_hover = el.nextSibling;
-                    sib_hover.setStyle({'background': '#000', 'opacity': '0.1'});
+                function hoveronLayout(el){
+                    var  sib_hover=el.nextSibling;
+                    sib_hover.setStyle({'background':'#000','opacity':'0.1'});
                 }
-                function hoveroutLayout(el) {
-                    var sib_hover = el.nextSibling;
-                    sib_hover.setStyle({'background': '#fff', 'opacity': '0.5'});
+                function hoveroutLayout(el){
+                    var  sib_hover=el.nextSibling;
+                    sib_hover.setStyle({'background':'#fff','opacity':'0.5'});
                 }
             </script>
             <tr style="display:none">
                 <td class="label"><label for="layout"><?php echo $this->__('Layout') ?></label></td>
                 <td class="value">
                     <div id="layout" class="layout">
-
+                        
                     </div>
                 </td>
             </tr>
             <tr>
                 <td class="label">
-                    <label for="colum"><?php echo $this->__('Number of Columns') ?><span
-                            class="required">*</span></label>
+                    <label for="colum"><?php echo $this->__('Number of Columns') ?><span class="required">*</span></label>
                 </td>
                 <td class="value">
-                    <input type="text" class="input-text"
-                           value="<?php if (isset($data['colum']) && $data['colum']) echo $data['colum']; ?>"
-                           name="colum" id="colum">
-
+                    <input type="text" class="input-text" value="<?php if(isset($data['colum']) && $data['colum']) echo $data['colum']; ?>" name="colum" id="colum">                   
                     <p id="note_colum" class="note">
-                        <span><a id="colum_number_tooltip"
-                                 href="JavaScript:void(0);"><?php echo $this->__('What is this ?') ?></a> <br><?php echo $this->__('Example:3') ?>
+                        <span><a id="colum_number_tooltip" href="JavaScript:void(0);"><?php echo $this->__('What is this ?') ?></a> <br><?php echo $this->__('Example:3') ?>
                             <script type="text/javascript">
-                                tip = new Tooltip("colum_number_tooltip", "<?php echo Mage::getBaseUrl('media') ?>megamenu/product_columns.png");
+                                tip = new Tooltip("colum_number_tooltip","<?php echo Mage::getBaseUrl('media') ?>megamenu/product_columns.png");
                             </script>
                         </span>
                     </p>
                 </td>
-            </tr>
+             </tr>
             <tr style="">
                 <td class="label">
                     <label for="size_colum"><?php echo $this->__('Size of Column') ?><span class="required">*</span>
                     </label>
                 </td>
                 <td class="value">
-                    <input type="text" class="validate-greater-than-zero input-text required-entry"
-                           value="<?php if (isset($data['size_colum']) && $data['size_colum']) echo $data['size_colum'] ?>"
-                           name="size_colum" id="size_colum"><span>(px)</span>
-
+                    <input type="text" class="validate-greater-than-zero input-text required-entry" value="<?php if(isset($data['size_colum']) && $data['size_colum']) echo $data['size_colum'] ?>" name="size_colum" id="size_colum"><span>(px)</span>                     
                     <p id="note_size_colum" class="note">
-                        <span><a id="size_colum_tooltip"
-                                 href="JavaScript:void(0);"><?php echo $this->__('What is this ?') ?></a> <br><?php echo $this->__('Example:230') ?>
+                        <span><a id="size_colum_tooltip" href="JavaScript:void(0);"><?php echo $this->__('What is this ?') ?></a> <br><?php echo $this->__('Example:230') ?>
                             <script type="text/javascript">
                                 tip = new Tooltip("size_colum_tooltip", "<?php echo Mage::getBaseUrl('media') ?>megamenu/product_column_size.png");
                             </script>
@@ -108,44 +93,29 @@
                 <td class="label">
                     <label for="size_megamenu"><?php echo $this->__('Content Size') ?></label></td>
                 <td class="value">
-                    <input type="text" class="input-text"
-                           value="<?php if (isset($data['size_megamenu']) && $data['size_megamenu']) echo $data['size_megamenu'] ?>"
-                           name="size_megamenu" id="size_megamenu"><span>(px)</span>
-
-                    <p id="note_size_megamenu" class="note"><span><a id="size_megamenu_tooltip"
-                                                                     href="JavaScript:void(0);"><?php echo $this->__('What is this ?') ?></a><br><?php echo $this->__("pixel. If it's 0 or empty, the system will compute the menu bar size") ?>
+                    <input type="text" class="input-text" value="<?php if(isset($data['size_megamenu']) && $data['size_megamenu']) echo $data['size_megamenu'] ?>" name="size_megamenu" id="size_megamenu"><span>(px)</span>                     
+                    <p id="note_size_megamenu" class="note"><span><a id="size_megamenu_tooltip" href="JavaScript:void(0);"><?php echo $this->__('What is this ?') ?></a><br><?php echo $this->__("pixel. If it's 0 or empty, the system will compute the menu bar size") ?>
                             <script type="text/javascript">
                                 tip = new Tooltip("size_megamenu_tooltip", "<?php echo Mage::getBaseUrl('media') ?>megamenu/menu_size.png");
                             </script></span></p>
                 </td>
             </tr>
             <tr>
-                <?php if (isset($data['item_icon']) && $data['item_icon']) $path = Mage::getBaseUrl('media') . 'megamenu' . '/' . $data['item_icon']; ?>
+                <?php if(isset($data['item_icon']) && $data['item_icon']) $path = Mage::getBaseUrl('media') . 'megamenu' . '/' . $data['item_icon']; ?>
                 <td class="label"><label for="item_icon"><?php echo $this->__('Menu Item Icon') ?></label></td>
                 <td class="value">
-                    <?php if (isset($data['item_icon']) && $data['item_icon']): ?>
-                        <a onclick="imagePreview('item_icon_image'); return false;"
-                           href="<?php if (isset($data['item_icon']) && $data['item_icon']) echo $path; ?>">
-                            <img width="22" height="22" class="small-image-preview v-middle"
-                                 alt="megamenu/<?php echo $data['item_icon'] ?>"
-                                 title="megamenu/<?php echo $data['item_icon'] ?>" id="item_icon_image"
-                                 src="<?php if ($data['item_icon']) echo $path; ?>">
+                    <?php if ( isset($data['item_icon']) && $data['item_icon']): ?>
+                        <a onclick="imagePreview('item_icon_image'); return false;" href="<?php if(isset($data['item_icon']) && $data['item_icon']) echo $path; ?>">
+                            <img width="22" height="22" class="small-image-preview v-middle" alt="megamenu/<?php echo $data['item_icon'] ?>" title="megamenu/<?php echo $data['item_icon'] ?>" id="item_icon_image" src="<?php if ($data['item_icon']) echo $path; ?>">
                         </a>
                     <?php endif; ?>
-                    <input type="file" class="input-file" title="Menu Item Icon"
-                           value="<?php if (isset($data['item_icon']) && $data['item_icon']) echo $data['item_icon'] ?>"
-                           name="item_icon" id="item_icon">
-
-                    <p style="z-index:100" class="note" id="note_colum">
-                        <?php echo $this->__('13 x 13 px is recommended') ?>
-                        </span>
-                    </p>
+                    <input type="file" class="input-file" title="Menu Item Icon" value="<?php if(isset($data['item_icon']) && $data['item_icon']) echo $data['item_icon'] ?>" name="item_icon" id="item_icon">
+                        <p style="z-index:100" class="note" id="note_colum">
+                            <?php echo $this->__('13 x 13 px is recommended')?>
+                        </span> 
+                        </p>
                     <?php if (isset($data['item_icon']) && $data['item_icon']): ?>
-                        <span class="delete-image"><input type="checkbox" id="item_icon_delete" class="checkbox"
-                                                          value="1" name="item_icon[delete]"><label
-                                for="item_icon_delete"> Delete Image</label><input type="hidden"
-                                                                                   value="<?php if ($data['item_icon']) echo $data['item_icon'] ?>"
-                                                                                   name="item_icon[value]"></span>
+                        <span class="delete-image"><input type="checkbox" id="item_icon_delete" class="checkbox" value="1" name="item_icon[delete]"><label for="item_icon_delete"> Delete Image</label><input type="hidden" value="<?php if ($data['item_icon']) echo $data['item_icon'] ?>" name="item_icon[value]"></span>                    
                     <?php endif; ?>
                 </td>
             </tr>
@@ -154,56 +124,45 @@
                     <label for="position"><?php echo $this->__('Custom Content Position') ?></label>
                 </td>
                 <td class="value">
-                    <input type="checkbox" onclick="CheckValue()"
-                           value="<?php if (isset($data['position']) && $data['position']) echo $data['position'] ?>"
-                           name="position" id="position">
-
+                    <input type="checkbox" onclick="CheckValue()" value="<?php if(isset($data['position']) && $data['position']) echo $data['position'] ?>" name="position" id="position">
                     <div class="zoom" id="zoom" style="">
-                        <img src="<?php echo Mage::getBaseUrl('media') ?>megamenu/slider_btn_zoom_out.gif"
-                             alt="Zoom Out" title="Zoom Out" class="btn-zoom-out" id="zoom_out">
-
+                        <img src="<?php echo Mage::getBaseUrl('media') ?>megamenu/slider_btn_zoom_out.gif" alt="Zoom Out" title="Zoom Out" class="btn-zoom-out" id="zoom_out">
                         <div id="track">
                             <div id="handle" class="selected" style="left: 94px;"></div>
                         </div>
-                        <img src="<?php echo Mage::getBaseUrl('media') ?>megamenu/slider_btn_zoom_in.gif" alt="Zoom In"
-                             title="Zoom In" class="btn-zoom-in" id="zoom_in">
-                        <script type="text/javascript">
-                            Event.observe(window, 'load', function () {
-                                if ($('position').checked == true) {
-                                    $('zoom').show();
+                        <img src="<?php echo Mage::getBaseUrl('media') ?>megamenu/slider_btn_zoom_in.gif" alt="Zoom In" title="Zoom In" class="btn-zoom-in" id="zoom_in">                    
+                        <script type="text/javascript">                                     
+                            Event.observe(window,'load',function(){
+                                if($('position').checked == true){
+                                    $('zoom').show(); 
                                     $('value').show();
-                                } else {
+                                }else{
                                     $('zoom').hide();
                                     $('value').hide();
-                                }
-                            });
-                            function CheckValue() {
-                                if ($('position').checked == true) {
-                                    $('zoom').show();
-                                    $('value').show();
-                                }
-                                else {
-                                    $('zoom').hide();
-                                    $('value').hide();
-                                }
-                            }
+                                }     
+                            });      
+                            function CheckValue(){
+                                if($('position').checked == true)
+                                { $('zoom').show(); $('value').show();}
+                                else{ $('zoom').hide(); $('value').hide();}
+                            }                   
                         </script>
                     </div>
                     <div id="value"></div>
-                    <script type="text/javascript">
-                        var sliderbar = new Slider('track', 'handle', 'zoom_in', 'zoom_out');
-                        if ($('position').value == '') {
-                            $('position').checked = false;
-                            $('handle').style.left = 0 + "px";
-                            document.getElementById("value").innerHTML = "Margin left is 0 px";
-                        } else {
+                    <script type="text/javascript">                                  
+                        var sliderbar= new Slider('track', 'handle', 'zoom_in', 'zoom_out');                                    
+                        if($('position').value == ''){
+                            $('position').checked = false;   
+                            $('handle').style.left = 0 +"px"; 
+                            document.getElementById("value").innerHTML="Margin left is 0 px";  
+                        }else{
                             $('position').checked = true;
                             var size = $('position').value;
                             var pos = parseFloat(size);
-                            $('handle').style.left = pos * 2 + "px";
-                            document.getElementById("value").innerHTML = "Margin left is " + pos + "% of page width";
+                            $('handle').style.left = pos*2 +"px";                                    
+                            document.getElementById("value").innerHTML="Margin left is "+pos+"% of page width";  
                         }
-                    </script>
+                    </script>            
                 </td>
             </tr>
             </tbody>
@@ -213,12 +172,12 @@
 <?php echo $this->getChildHtml('header_and_footer'); ?>
 <?php echo $this->getChildHtml('featured_item'); ?>
 <?php echo $this->getChildHtml('main_content'); ?>
-<script type="text/javascript">
+<script type="text/javascript">	
     var var_menu_type = '<?php if(isset($data['menu_type']) && $data['menu_type']) echo $data['menu_type']; ?>';
     var var_template_id = '<?php if(isset($data['template_id']) && $data['template_id'])echo $data['template_id']; ?>';
-    if (var_menu_type != '') {
+    if(var_menu_type != ''){
         $('menu_type').value = var_menu_type;
-        Event.observe('edit_form', 'click', reloadTemplate(var_menu_type, '<?php echo $urlLoad ?>', var_template_id, 'template_id', '<?php echo $this->getUrl('megamenu/index/loadTemplate') ?>'));
+        Event.observe('edit_form', 'click', reloadTemplate(var_menu_type,'<?php echo $urlLoad ?>',var_template_id,'template_id','<?php echo $this->getUrl('megamenu/index/loadTemplate') ?>'));
     }
-
+        
 </script>

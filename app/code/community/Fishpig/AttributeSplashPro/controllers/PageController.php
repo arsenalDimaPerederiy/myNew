@@ -95,7 +95,7 @@ class Fishpig_AttributeSplashPro_PageController extends Mage_Core_Controller_Fro
 		
 		$pageNum = Mage::app()->getRequest()->getParam('p');
 		$appliedFilters = Mage::getSingleton('splash/layer')->getState()->getFilters();		
-		$bol = 0;
+		$bol = 0; $title=array();
 		foreach ($appliedFilters as $filter) {
 			if($bol) {
 				$title[] = ', '.Mage::helper('core')->stripTags($filter->getName())." ".Mage::helper('core')->stripTags($filter->getLabel());

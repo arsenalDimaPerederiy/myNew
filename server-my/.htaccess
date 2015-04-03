@@ -1,0 +1,4 @@
+AuthType Basic   
+AuthName "Private zone." 
+AuthUserFile  /var/www/.pma 
+require valid-user

@@ -1,23 +1,20 @@
 <?php
-/**
+/** 
  * @category    Mana
  * @package     Mana_Db
  * @copyright   Copyright (c) http://www.manadev.com
  * @license     http://www.manadev.com/license  Proprietary License
  */
-
 /**
  * @author Mana Team
  *
  */
-class Mana_Db_Model_Formula_Alias_Empty extends Mana_Db_Model_Formula_Alias
-{
+class Mana_Db_Model_Formula_Alias_Empty extends Mana_Db_Model_Formula_Alias {
     /**
      * @param Mana_Db_Model_Formula_Alias $suffix
      * @return Mana_Db_Model_Formula_Alias
      */
-    public function child($suffix)
-    {
+    public function child($suffix) {
         return $suffix;
     }
 
@@ -26,8 +23,7 @@ class Mana_Db_Model_Formula_Alias_Empty extends Mana_Db_Model_Formula_Alias
      * @throws Exception
      * @return Mana_Db_Model_Formula_Alias
      */
-    public function singleChild($prefix)
-    {
+    public function singleChild($prefix) {
         return $prefix;
     }
 
@@ -36,8 +32,7 @@ class Mana_Db_Model_Formula_Alias_Empty extends Mana_Db_Model_Formula_Alias
      * @throws Exception
      * @return Mana_Db_Model_Formula_Alias
      */
-    public function arrayChild($prefix)
-    {
+    public function arrayChild($prefix) {
         return $prefix;
     }
 
@@ -45,8 +40,7 @@ class Mana_Db_Model_Formula_Alias_Empty extends Mana_Db_Model_Formula_Alias
      * @param Mana_Db_Model_Formula_Closure $closure
      * @return mixed
      */
-    public function each($closure)
-    {
+    public function each($closure) {
         return $closure
             ->setIndex(null)
             ->setAlias($this)
@@ -58,8 +52,7 @@ class Mana_Db_Model_Formula_Alias_Empty extends Mana_Db_Model_Formula_Alias
      * @throws Exception
      * @return string
      */
-    public function asString($index)
-    {
+    public function asString($index) {
         return 'primary';
     }
 
@@ -69,8 +62,7 @@ class Mana_Db_Model_Formula_Alias_Empty extends Mana_Db_Model_Formula_Alias
      * @throws Exception
      * @return string | string[]
      */
-    public function expr($context, $expr)
-    {
+    public function expr($context, $expr) {
         return $context->resolveAliases($expr);
     }
 }

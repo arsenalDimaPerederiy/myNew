@@ -11,8 +11,7 @@
  * @author Mana Team
  *
  */
-class Mana_Seo_Rewrite_Store extends Mage_Core_Model_Store
-{
+class Mana_Seo_Rewrite_Store extends Mage_Core_Model_Store {
     /**
      * This method is used to generate URL for store switcher (or language switcher) blocks, typically located in page header
      * or page footer. `$this` is store to which the URL should switch our user, whereas `Mage::app()->getRequest()` represents
@@ -20,8 +19,7 @@ class Mana_Seo_Rewrite_Store extends Mage_Core_Model_Store
      * @param bool $fromStore
      * @return string
      */
-    public function getCurrentUrl($fromStore = true)
-    {
+    public function getCurrentUrl($fromStore = true) {
         // we only change generation of store URLs on layered navigation enabled pages
         if ($parsedUrl = Mage::registry('m_parsed_url')) {
             // get instance of a model which can generate URL for target store
@@ -46,8 +44,8 @@ class Mana_Seo_Rewrite_Store extends Mage_Core_Model_Store
 
             // get base URL of this store
             $storeUrl = Mage::app()->getStore()->isCurrentlySecure()
-                ? $this->getUrl('', array('_secure' => true))
-                : $this->getUrl('');
+                    ? $this->getUrl('', array('_secure' => true))
+                    : $this->getUrl('');
 
             // retrieve name of session id URL query parameter, typically "SID"
             $sidQueryParam = $this->_getSession()->getSessionIdQueryParam();
@@ -77,8 +75,9 @@ class Mana_Seo_Rewrite_Store extends Mage_Core_Model_Store
             // generate and return URL for target store
             $url = $urlModel->getUrl($parsedUrl->getRoute(), $params);
             return $url;
-        } else {
+        }
+        else {
             return parent::getCurrentUrl($fromStore);
         }
-    }
+	}
 }

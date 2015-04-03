@@ -33,42 +33,36 @@
 ?>
 
 <ol>
-    <?php if (!$this->isFirstPage()): ?>
-        <li><a rel="prev" class="previous" href="<?php echo $this->getPreviousPageUrl() ?>"
-               title="<?php echo $this->__('Previous') ?>"><img
-                    src="<?php echo $this->getSkinUrl('images/pager_arrow_left.gif') ?>"
-                    alt="<?php echo $this->__('Previous') ?>" class="v-middle"/></a></li>
-    <?php endif; ?>
+<?php if (!$this->isFirstPage()): ?>
+    <li><a rel="prev" class="previous" href="<?php echo $this->getPreviousPageUrl() ?>" title="<?php echo $this->__('Previous') ?>"><img src="<?php echo $this->getSkinUrl('images/pager_arrow_left.gif') ?>" alt="<?php echo $this->__('Previous') ?>" class="v-middle" /></a></li>
+<?php endif;?>
 
-    <?php if ($this->canShowFirst()): ?>
-        <li><a class="first" href="<?php echo $this->getFirstPageUrl() ?>">1</a></li>
-    <?php endif; ?>
+<?php if ($this->canShowFirst()): ?>
+    <li><a class="first" href="<?php echo $this->getFirstPageUrl() ?>">1</a></li>
+<?php endif;?>
 
-    <?php if ($this->canShowPreviousJump()): ?>
-        <li><a class="previous_jump" title="" href="<?php echo $this->getPreviousJumpUrl() ?>">...</a></li>
-    <?php endif; ?>
+<?php if ($this->canShowPreviousJump()): ?>
+    <li><a class="previous_jump" title="" href="<?php echo $this->getPreviousJumpUrl() ?>">...</a></li>
+<?php endif;?>
 
-    <?php foreach ($this->getFramePages() as $_page): ?>
-        <?php if ($this->isPageCurrent($_page)): ?>
-            <li class="current"><?php echo $_page ?></li>
-        <?php else: ?>
-            <li><a href="<?php echo $this->getPageUrl($_page) ?>"><?php echo $_page ?></a></li>
-        <?php endif; ?>
-    <?php endforeach; ?>
+<?php foreach ($this->getFramePages() as $_page): ?>
+    <?php if ($this->isPageCurrent($_page)): ?>
+        <li class="current"><?php echo $_page ?></li>
+    <?php else: ?>
+        <li><a href="<?php echo $this->getPageUrl($_page) ?>"><?php echo $_page ?></a></li>
+    <?php endif;?>
+<?php endforeach;?>
 
 
-    <?php if ($this->canShowNextJump()): ?>
-        <li><a class="next_jump" title="" href="<?php echo $this->getNextJumpUrl() ?>">...</a></li>
-    <?php endif; ?>
+<?php if ($this->canShowNextJump()): ?>
+    <li><a class="next_jump" title="" href="<?php echo $this->getNextJumpUrl() ?>">...</a></li>
+<?php endif;?>
 
-    <?php if ($this->canShowLast()): ?>
-    <li><a class="last" href="<?php echo $this->getLastPageUrl() ?>"><?php echo $this->getLastPageNum() ?></a>
-    <li>
-        <?php endif; ?>
+<?php if ($this->canShowLast()): ?>
+  <li><a class="last" href="<?php echo $this->getLastPageUrl() ?>"><?php echo $this->getLastPageNum() ?></a><li>
+<?php endif;?>
 
-        <?php if (!$this->isLastPage()): ?>
-    <li><a class="next" rel="next" href="<?php echo $this->getNextPageUrl() ?>" title="<?php echo $this->__('Next') ?>"><img
-                src="<?php echo $this->getSkinUrl('images/pager_arrow_right.gif') ?>"
-                alt="<?php echo $this->__('Next') ?>" class="v-middle"/></a></li>
-<?php endif; ?>
+<?php if (!$this->isLastPage()): ?>
+    <li><a class="next" rel="next" href="<?php echo $this->getNextPageUrl() ?>" title="<?php echo $this->__('Next') ?>"><img src="<?php echo $this->getSkinUrl('images/pager_arrow_right.gif') ?>" alt="<?php echo $this->__('Next') ?>" class="v-middle" /></a></li>
+<?php endif;?>
 </ol>

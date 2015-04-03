@@ -7,23 +7,24 @@
         }
         return str;
     }
+	
 
 
     function CloudZoom(jWin, opts) {
         var sImg = jQuery('img', jWin);
-        var img1;
-        var img2;
+        var	img1;
+        var	img2;
         var zoomDiv = null;
-        var $mouseTrap = null;
-        var lens = null;
-        var $tint = null;
-        var softFocus = null;
-        var $ie6Fix = null;
-        var zoomImage;
+        var	$mouseTrap = null;
+        var	lens = null;
+        var	$tint = null;
+        var	softFocus = null;
+        var	$ie6Fix = null;
+        var	zoomImage;
         var controlTimer = 0;
         var cw, ch;
         var destU = 0;
-        var destV = 0;
+        var	destV = 0;
         var currV = 0;
         var currU = 0;
         var filesLoaded = 0;
@@ -81,10 +82,10 @@
                 $mouseTrap = null;
             }
             /*if ($zoomClone) {
-             $zoomClone.unbind();
-             $zoomClone.remove();
-             $zoomClone = null;
-             }*/
+                $zoomClone.unbind();
+                $zoomClone.remove();
+                $zoomClone = null;
+            }*/
             if (zoomDiv) {
                 zoomDiv.remove();
                 zoomDiv = null;
@@ -159,22 +160,22 @@
         this.init = function () {
             // Remove loading message (if present);
             jQuery('.cloud-zoom-loading', jWin.parent()).remove();
-            jQuery('.cloud-zoom-big-clone').each(function () {
-                jQuery(this).remove();
-            });
+			jQuery('.cloud-zoom-big-clone').each(function(){
+					jQuery(this).remove();
+				});
 
 
             /* Add a box (mouseTrap) over the small image to trap mouse events.
-             It has priority over zoom window to avoid issues with inner zoom.
-             We need the dummy background image as IE does not trap mouse events on
-             transparent parts of a div.
-             */
+It has priority over zoom window to avoid issues with inner zoom.
+We need the dummy background image as IE does not trap mouse events on
+transparent parts of a div.
+*/
 
 
-            $mouseTrap = jWin.parent().append(format("<div class='mousetrap' style='background-image:url(\"" + opts.transparentImage + "\");z-index:999;position:absolute;width:%0px;height:%1px;left:%2px;top:%3px;\'></div>", sImg.outerWidth(), sImg.outerHeight(), 0, 0)).find(':last');
-            jWin.parent().append('<div style="position: absolute; left: 0px; top: 0px; width: 845px; height: 515px; background-image: url(&quot;' + zoomImage.src + '&quot;); z-index: 100; background-position: 0px -527px;" class="cloud-zoom-big-clone zoomClone" id="cloud-zoom-big-clone"></div>').find(':last');
-
-
+			$mouseTrap = jWin.parent().append(format("<div class='mousetrap' style='background-image:url(\""+ opts.transparentImage +"\");z-index:999;position:absolute;width:%0px;height:%1px;left:%2px;top:%3px;\'></div>", sImg.outerWidth(), sImg.outerHeight(), 0, 0)).find(':last');
+			jWin.parent().append('<div style="position: absolute; left: 0px; top: 0px; width: 845px; height: 515px; background-image: url(&quot;'+ zoomImage.src +'&quot;); z-index: 100; background-position: 0px -527px;" class="cloud-zoom-big-clone zoomClone" id="cloud-zoom-big-clone"></div>').find(':last');
+           
+			
             //////////////////////////////////////////////////////////////////////
             /* Do as little as possible in mousemove event to prevent slowdown. */
             $mouseTrap.bind('mousemove', this, function (event) {
@@ -182,35 +183,35 @@
                 mx = event.pageX;
                 my = event.pageY;
             });
-
+			
             jQuery('.cloud-zoom-gallery').bind('click', this, function (event) {
                 // Just update the mouse position
-                jQuery('.cloud-zoom-big-clone').each(function () {
-                    jQuery(this).remove();
-                });
+				jQuery('.cloud-zoom-big-clone').each(function(){
+					jQuery(this).remove();
+				});
             });
             //////////////////////////////////////////////////////////////////////
             /*$mouseTrap.bind('mouseleave', this, function (event) {
-             clearTimeout(controlTimer);
-             //event.data.removeBits();
-             if(lens) { lens.fadeOut(299); }
-             if($tint) { $tint.fadeOut(299); }
-             if(softFocus) { softFocus.fadeOut(299); }
-             zoomDiv.fadeOut(300, function () {
-             ctx.fadedOut();
-             });
-             return false;
-             });*/
+                clearTimeout(controlTimer);
+                //event.data.removeBits();
+                if(lens) { lens.fadeOut(299); }
+                if($tint) { $tint.fadeOut(299); }
+                if(softFocus) { softFocus.fadeOut(299); }
+                zoomDiv.fadeOut(300, function () {
+                    ctx.fadedOut();
+                });
+                return false;
+            });*/
             //////////////////////////////////////////////////////////////////////
 
             $mouseTrap.bind('mouseenter', this, function (event) {
-
-                //jQuery('#fancyboxImage img').css('display', 'block');
-                //jQuery('#cloud-zoom-big-clone').remove();
-                jQuery('.cloud-zoom-big-clone').each(function () {
-                    jQuery(this).remove();
-                });
-
+				
+				//jQuery('#fancyboxImage img').css('display', 'block');
+				//jQuery('#cloud-zoom-big-clone').remove();
+				jQuery('.cloud-zoom-big-clone').each(function(){
+					jQuery(this).remove();
+				});
+				
                 mx = event.pageX;
                 my = event.pageY;
                 zw = event.data;
@@ -274,7 +275,7 @@
                 }
 
                 // Fix ie6 select elements wrong z-index bug. Placing an iFrame over the select element solves the issue...
-                var browserCheck = /(msie) ([\w.]+)/.exec(navigator.userAgent);
+                var browserCheck = /(msie) ([\w.]+)/.exec( navigator.userAgent );
                 if (browserCheck) {
                     if ((browserCheck[1] || "") == 'msie' && (browserCheck[2] || "0" ) < 7) {
                         $ie6Fix = jQuery('<iframe frameborder="0" src="#"></iframe>').css({
@@ -293,8 +294,7 @@
                 if (lens) {
                     lens.remove();
                     lens = null;
-                }
-                /* Work out size of cursor */
+                } /* Work out size of cursor */
                 cw = (sImg.outerWidth() / zoomImage.width) * zoomDiv.width();
                 ch = (sImg.outerHeight() / zoomImage.height) * zoomDiv.height();
 
@@ -326,17 +326,15 @@
                 if (!noTrans) {
                     lens.css('opacity', opts.lensOpacity);
                 }
-                if (opts.position !== 'inside') {
-                    lens.fadeIn(500);
-                }
+                if ( opts.position !== 'inside' ) { lens.fadeIn(500); }
 
                 // Start processing.
                 zw.controlLoop();
 
                 return; // Don't return false here otherwise opera will not detect change of the mouse pointer type.
             });
-
-
+			
+			
         };
 
         img1 = new Image();
@@ -356,15 +354,14 @@
         // IE6 background image flicker fix
         try {
             document.execCommand("BackgroundImageCache", false, true);
-        } catch (e) {
-        }
+        } catch (e) {}
         this.each(function () {
-            var relOpts, opts;
+            var	relOpts, opts;
             // Hmm...eval...slap on wrist.
             eval('var a = {' + jQuery(this).attr('rel') + '}');
             relOpts = a;
 
-            if (jQuery(this).is('.cloud-zoom')) {
+            if (jQuery(this).is('.cloud-zoom')) { 
                 opts = jQuery.extend({}, jQuery.fn.CloudZoom.defaults, options);
                 opts = jQuery.extend({}, opts, relOpts);
 
@@ -374,7 +371,7 @@
                 });
                 jQuery('img', jQuery(this)).css({
                     'display': 'block',
-                    'opacity': '0'
+					'opacity': '0'
                 });
 
 
@@ -384,7 +381,10 @@
                     jQuery(this).wrap('<div class="cloud-zoom-wrap"></div>');
                 }
                 jQuery(this).data('zoom', new CloudZoom(jQuery(this), opts));
-
+				
+				
+				
+					
 
             } else if (jQuery(this).is('.cloud-zoom-gallery')) {
 
@@ -400,13 +400,14 @@
                     // Change the small image to point to the new small image.
                     jQuery('#' + data.useZoom + ' img').attr('src', event.data.data('relOpts').smallImage);
                     // Init a new zoom with the new images.
-                    //jQuery('#' + event.data.data('relOpts').useZoom).attr('href', event.data.data('relOpts').smallImage);
-                    //jQuery('#' + event.data.data('relOpts').useZoom).attr('src', event.data.data('relOpts').smallImage);
-
+					//jQuery('#' + event.data.data('relOpts').useZoom).attr('href', event.data.data('relOpts').smallImage);
+					//jQuery('#' + event.data.data('relOpts').useZoom).attr('src', event.data.data('relOpts').smallImage);
+					
                     jQuery('#' + event.data.data('relOpts').useZoom).CloudZoom();
-                    //jQuery('#cloud-zoom-big').css('background-image', 'url(' + event.data.data('relOpts').smallImage + ')');
-
-
+					//jQuery('#cloud-zoom-big').css('background-image', 'url(' + event.data.data('relOpts').smallImage + ')');
+					
+					
+					 
                     return false;
                 });
             }

@@ -24,7 +24,8 @@
  */
 var CentinelAuthenticate = Class.create();
 CentinelAuthenticate.prototype = {
-    initialize: function (blockId, iframeId) {
+    initialize : function(blockId, iframeId)
+    {
         this._isAuthenticationStarted = false;
         this._relatedBlocks = new Array();
         this.centinelBlockId = blockId;
@@ -34,43 +35,50 @@ CentinelAuthenticate.prototype = {
         }
     },
 
-    isAuthenticationStarted: function () {
+    isAuthenticationStarted : function()
+    {
         return this._isAuthenticationStarted;
     },
 
-    addRelatedBlock: function (blockId) {
+    addRelatedBlock : function(blockId)
+    {
         this._relatedBlocks[this._relatedBlocks.size()] = blockId;
     },
 
-    _hideRelatedBlocks: function () {
+    _hideRelatedBlocks : function()
+    {
         for (var i = 0; i < this._relatedBlocks.size(); i++) {
             $(this._relatedBlocks[i]).hide();
         }
     },
 
-    _showRelatedBlocks: function () {
+    _showRelatedBlocks : function()
+    {
         for (var i = 0; i < this._relatedBlocks.size(); i++) {
             $(this._relatedBlocks[i]).show();
         }
     },
 
-    _isRelatedBlocksLoaded: function () {
+    _isRelatedBlocksLoaded : function()
+    {
         for (var i = 0; i < this._relatedBlocks.size(); i++) {
-            if (!$(this._relatedBlocks[i])) {
+            if(!$(this._relatedBlocks[i])) {
                 return false;
             }
         }
         return true;
     },
 
-    _isCentinelBlocksLoaded: function () {
-        if (!$(this.centinelBlockId) || !$(this.iframeId)) {
+    _isCentinelBlocksLoaded : function()
+    {
+        if(!$(this.centinelBlockId) || !$(this.iframeId)) {
             return false;
         }
         return true;
     },
 
-    start: function (authenticateUrl) {
+    start : function(authenticateUrl)
+    {
         if (this._isRelatedBlocksLoaded() && this._isCentinelBlocksLoaded()) {
             this._hideRelatedBlocks();
             $(this.iframeId).src = authenticateUrl;
@@ -79,7 +87,8 @@ CentinelAuthenticate.prototype = {
         }
     },
 
-    success: function () {
+    success : function()
+    {
         if (this._isRelatedBlocksLoaded() && this._isCentinelBlocksLoaded()) {
             this._showRelatedBlocks();
             $(this.centinelBlockId).hide();
@@ -87,7 +96,8 @@ CentinelAuthenticate.prototype = {
         }
     },
 
-    cancel: function () {
+    cancel : function()
+    {
         if (this._isAuthenticationStarted) {
             if (this._isRelatedBlocksLoaded()) {
                 this._showRelatedBlocks();

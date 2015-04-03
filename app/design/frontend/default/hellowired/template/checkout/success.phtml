@@ -27,6 +27,7 @@
 
 <div class="extended-checkout">
 
+
 <?php
 if (!Mage::getSingleton('customer/session')->isLoggedIn() || Mage::getSingleton('core/session')->getAuthorizeLogin())
     $steps[count($steps)+1] = array('title' => '<span class="step'.(count($steps)+1).'">'.$this->helper('extended')->__("Authorization").'</span>','link' => 'javascript: void(0);' , 'class' => '');
@@ -56,6 +57,7 @@ $steps[count($steps)+1] = array('title' => '<span class="step'.(count($steps)+1)
 
 <?php $orderLoaded = Mage::getModel('sales/order')->loadByIncrementId($this->getOrderId()); ?>
 
+
 <?php $items = $orderLoaded->getAllItems(); ?>
 <?php foreach ($orderLoaded->getAllItems() as $itemId => $item): ?>
 
@@ -65,9 +67,11 @@ $steps[count($steps)+1] = array('title' => '<span class="step'.(count($steps)+1)
 			<?php $_cat = Mage::getModel('catalog/category')->load($category_id) ; ?>
 			<?php $categoryName = $_cat->getName(); ?>
 		<?php endforeach; ?>
+
+
+		
 	<?php endif; ?>
 <?php endforeach; ?>
-
 
 <?php endif;?>
 <p><?php echo $this->helper('extended')->__("Thanks for your order, shortly manager will contact you by phone.") ?></p>

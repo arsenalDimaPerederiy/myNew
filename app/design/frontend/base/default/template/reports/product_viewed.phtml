@@ -45,7 +45,7 @@ $i=0;
 		<ul class="products-grid" id="recenlty-carousel">
 			<?php foreach ($_items as $_item): ?>
 				<?php $_price = $_taxHelper->getPrice($_item, $_item->getPrice()) ?>
-				<?php $_regularPrice = $_taxHelper->getPrice($_item, $_item->getPrice(), $_simplePricesTax) ?>
+				<?php $_regularPrice = $_taxHelper->getPrice($_item, $_item->getPrice()) ?>
 				<?php $_finalPrice = $_taxHelper->getPrice($_item, $_item->getFinalPrice()) ?>
 				<?php $_finalPriceInclTax = $_taxHelper->getPrice($_item, $_item->getFinalPrice(), true) ?>
 				<li class="item" >              
