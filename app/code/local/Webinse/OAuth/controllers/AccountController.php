@@ -67,8 +67,7 @@ class Webinse_OAuth_AccountController extends Mage_Customer_AccountController
     public function loginAction()
     {
         if ($this->_getSession()->isLoggedIn()) {
-            $this->_redirect('*/*/');
-            return;
+            $this->_Error();
         }
 
         if(Mage::getStoreConfig('OAuth/Ajax_login_setup/loginAjax')){
@@ -82,54 +81,81 @@ class Webinse_OAuth_AccountController extends Mage_Customer_AccountController
 
     public function loginOauthVkAction()
     {
-        if ($this->_getSession()->isLoggedIn()) {
-            $this->_redirect('*/*/');
-            return;
-        }
-        $code = $this->getRequest()->getParam('code');
+        try{
+            if ($this->_getSession()->isLoggedIn()) {
+                $this->_Error();
+            }
+            $code = $this->getRequest()->getParam('code');
 
-        if (isset($code)) {
-            $this->network = new Webinse_OAuth_Model_OauthLib_OauthVk(Mage::getUrl('customer/account/loginOauthVk/'));
-            $this->network->setCode($code);
-            $this->loginOauth();
-            $this->_loginPostRedirect();
+            if (isset($code)) {
+                $this->network = new Webinse_OAuth_Model_OauthLib_OauthVk(Mage::getUrl('customer/account/loginOauthVk/'));
+                $this->network->setCode($code);
+                $this->loginOauth();
+                $this->_loginPostRedirect();
 
-        }else{
-            $this->_redirectUrl(Mage::getSingleton('core/session')->getLastUrl());
+            }else{
+                throw new Exception('Vk error code');
+            }
         }
+        catch(Exception $e){
+            Mage::logException($e);
+            Mage::getSingleton('adminhtml/session')->addError($e->getMessage());
+            $this->_Error();
+        }
+
 
     }
 
     public function loginOauthFAction()
     {
-        if ($this->_getSession()->isLoggedIn()) {
-            $this->_redirect('*/*/');
-            return;
-        }
-        $code = $this->getRequest()->getParam('code');
+        try{
+            if ($this->_getSession()->isLoggedIn()) {
+                $this->_Error();
+            }
+            $code = $this->getRequest()->getParam('code');
 
-        if (isset($code)) {
-            $this->network = new Webinse_OAuth_Model_OauthLib_OauthF(Mage::getUrl('customer/account/loginOauthF'));
-            $this->network->setCode($code);
-            $this->loginOauth();
-            $this->_loginPostRedirect();
+            if (isset($code)) {
+                $this->network = new Webinse_OAuth_Model_OauthLib_OauthF(Mage::getUrl('customer/account/loginOauthF'));
+                $this->network->setCode($code);
+                $this->loginOauth();
+                $this->_loginPostRedirect();
+            }
+            else{
+                throw new Exception('f invalid code');
+            }
         }
+        catch(Exception $e){
+            Mage::logException($e);
+            Mage::getSingleton('adminhtml/session')->addError($e->getMessage());
+            $this->_Error();
+        }
+
     }
 
     public function loginOauthGAction()
     {
-        if ($this->_getSession()->isLoggedIn()) {
-            $this->_redirect('*/*/');
-            return;
-        }
-        $code = $this->getRequest()->getParam('code');
+        try{
+            if ($this->_getSession()->isLoggedIn()) {
+                $this->_Error();
+            }
+            $code = $this->getRequest()->getParam('code');
 
-        if (isset($code)) {
-            $this->network = new Webinse_OAuth_Model_OauthLib_OauthG(Mage::getUrl('customer/account/loginOauthG'));
-            $this->network->setCode($code);
-            $this->loginOauth();
-            $this->_loginPostRedirect();
+            if (isset($code)) {
+                $this->network = new Webinse_OAuth_Model_OauthLib_OauthG(Mage::getUrl('customer/account/loginOauthG'));
+                $this->network->setCode($code);
+                $this->loginOauth();
+                $this->_loginPostRedirect();
+            }
+            else{
+                throw new Exception('G error code');
+            }
         }
+       catch(Exception $e){
+           Mage::logException($e);
+           Mage::getSingleton('adminhtml/session')->addError($e->getMessage());
+           $this->_Error();
+       }
+
     }
 
     public function loginOauth()
@@ -189,7 +215,7 @@ class Webinse_OAuth_AccountController extends Mage_Customer_AccountController
         catch(Exception $e){
             Mage::logException($e);
             Mage::getSingleton('adminhtml/session')->addError($e->getMessage());
-            $this->_redirect(Mage::getSingleton('core/session')->getLastUrl());
+            $this->_Error();
         }
         $this->_getSession()->loginById($customerId);//load user
     }
@@ -283,6 +309,10 @@ class Webinse_OAuth_AccountController extends Mage_Customer_AccountController
             $this->getResponse()->setBody(Mage::helper('core')->jsonEncode($jsonArray));
         }
 
+    }
+
+    public function _Error(){
+        $this->norouteAction();
     }
 
 }

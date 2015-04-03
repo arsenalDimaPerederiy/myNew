@@ -1,13 +1,18 @@
 function PopOauthWindow(e){
-    new Ajax.Request(e.href, {
-        method: 'post',
-        onSuccess: function(transport) {
-            var response = transport.responseText;
-            showPopup(response);
-            return false;
-        }
-    });
-
+    if($('ajaxLogin').value=='ajax'){
+        new Ajax.Request(e.href, {
+            method: 'post',
+            onSuccess: function(transport) {
+                var response = transport.responseText;
+                showPopup(response);
+                return false;
+            }
+        });
+    }
+    else{
+        window.location= e.href;
+    }
+return true;
 };
 
 

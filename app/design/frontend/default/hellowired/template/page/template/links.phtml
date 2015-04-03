@@ -29,6 +29,7 @@
  * @see Mage_Page_Block_Template_Links
  */
 ?>
+<?php echo Mage::helper('customer')->getLoginType()?>
 <?php $_links = $this->getLinks(); ?>
 <?php if(count($_links)>0): ?>
     <ul class="links"<?php if($this->getName()): ?> id="<?php echo $this->getName() ?>"<?php endif;?>>

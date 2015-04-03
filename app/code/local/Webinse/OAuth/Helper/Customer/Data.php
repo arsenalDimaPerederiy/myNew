@@ -9,7 +9,12 @@ class Webinse_OAuth_Helper_Customer_Data extends Mage_Customer_Helper_Data {
     const ROUTE_ACCOUNT_LOGIN_AJAX = 'customer/account/loginOauth';
 
 public function getLoginType(){
-    return "dfghdfg";
+   if(Mage::getStoreConfig('OAuth/Ajax_login_setup/loginAjax')){
+       return '<input type='.'"'.'hidden'.'" id='.'"'.'ajaxLogin'.'" value='.'"'.'ajax'.'"'.'>';
+   }
+    else{
+        return '<input type='.'"'.'hidden'.'" id='.'"'.'ajaxLogin'.'" value='.'"'.'login'.'"'.'>';
+    }
 }
 
 }
