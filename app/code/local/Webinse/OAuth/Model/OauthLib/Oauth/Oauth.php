@@ -49,8 +49,8 @@ class Webinse_OAuth_Model_OauthLib_Oauth_Oauth{
                 ->setLastname($this->userInfoArray['last_name'])
                 ->setEmail($this->email)
                 ->setPassword($this->GeneratePassword());
-
-            if($customer->save()){
+            $customer->save();
+            if(!$customer->getId()){
                 $this->customer_id=$customer->getId();
             }
             else{
@@ -75,7 +75,8 @@ class Webinse_OAuth_Model_OauthLib_Oauth_Oauth{
             $CustomerId=$socialRecord->getCustomerId();
             $customer = Mage::getModel("customer/customer")->load($CustomerId);
             $customer->setEmail($this->email);
-            if(!$customer->save()){
+            $customer->save();
+            if(!$customer->getId()){
                 throw new Exception('new customer not create');
             }
         }
@@ -101,6 +102,25 @@ class Webinse_OAuth_Model_OauthLib_Oauth_Oauth{
         );
         $this->SocialNetworkModel->setSocialNetworkNewRecord($socialData);
     }
+
+    public function getCustomerEmail($model){
+        $customer = $model->getFirstItem()->getCustomerId();
+        $StoreId = $model->getFirstItem()->getStoreId();
+        $websiteId = $model->getFirstItem()->getWebsiteId();
+
+        $customerModel = Mage::getModel('customer/customer')
+            ->setWebsiteId($websiteId)
+            ->setStoreId($StoreId);
+        $customerModel->load($customer);
+        if($customerModel->getId()){
+            $this->email=$customerModel->getEmail();
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
     public function GetUserBySocialId(){
         return $this->SocialNetworkModel->getRecordsByUserId($this->userId);
     }

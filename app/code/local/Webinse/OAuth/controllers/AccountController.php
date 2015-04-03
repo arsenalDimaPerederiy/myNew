@@ -175,15 +175,9 @@ class Webinse_OAuth_AccountController extends Mage_Customer_AccountController
                     $this->network->createUserEmail();
                 } //esli net mila to mi ego sozdayom
                 else {
-                    $customer = $model->getFirstItem()->getCustomerId();
-                    $StoreId = $model->getFirstItem()->getStoreId();
-                    $websiteId = $model->getFirstItem()->getWebsiteId();
-
-                    $customerModel = Mage::getModel('customer/customer')
-                        ->setWebsiteId($websiteId)
-                        ->setStoreId($StoreId);
-                    $customerModel->load($customer);
-                    $this->network->email = $customer->getEmail();
+                    if(!$this->network->getCustomerEmail($model)){
+                        throw new Exception($this->network->class_id.' '.'getCustomerEmail error');
+                    }
                 }
                 //ili ishem polizovatela s takim user id
             }
