@@ -49,7 +49,6 @@
         </div>
 
 
-		
         <div class="product-shop">
             <div class="product-name">
                 <h1><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?> | <?php echo $this->__('SKU') ?> <?php echo $this->htmlEscape($_product->getSku()) ?></h1>
@@ -57,7 +56,6 @@
 
 
             <?php echo $this->getChildHtml('prices') ?>
-			
 			<?php if ($_product->isSaleable() && $this->hasOptions()):?>
 				<?php echo $this->getChildChildHtml('container2', '', true, true) ?>
 			<?php endif;?>
@@ -65,7 +63,7 @@
             <?php if(!$_product->isSaleable()): ?>
             <div class="not-available"> <?php echo $this->__('Already sold') ?></div>
             <?php endif; ?>
-       
+
 
             <?php if (!$this->hasOptions()):?>
 
@@ -89,15 +87,15 @@
 				</div>
 			</div>
 			<?php echo $this->getLayout()->createBlock('core/template')->setTemplate('socialshare/socialbar.phtml')->toHtml(); ?>
-    
+
 			<div class="product-collateral">
 				<?php echo $this->getChildHtml('info_tabs') ?>
 				<?php //echo $this->getChildHtml('product_additional_data') ?>
 			</div>
-			
-    
+
+
         </div>
-		
+
         <div class="product-img-box">
             <?php echo $this->getChildHtml('media') ?>
         </div>
@@ -115,28 +113,28 @@
             }.bind(productAddToCartForm);
     //]]>
     </script>
-	
+
     <script type="text/javascript">
 		jQuery(document).ready(function($) {
 
-			jQuery.getJSON( "<?php echo Mage::getBaseUrl(); ?>colorselectorplus/index/stock/id/<?php echo $_product->getId() ?>", function( data ) { 
-				jQuery.each( data, function( key, val ) { 
-					if(val['status']) { 
+			jQuery.getJSON( "<?php echo Mage::getBaseUrl(); ?>colorselectorplus/index/stock/id/<?php echo $_product->getId() ?>", function( data ) {
+				jQuery.each( data, function( key, val ) {
+					if(val['status']) {
 						if(jQuery( ".instock .instock-data .stock-info" ).hasClass( "not-available-block" ) = true) {
-							jQuery( ".instock .instock-data .stock-info" ).removeClass( "not-available-block" ).addClass( "available" ).text(val['label']);	
+							jQuery( ".instock .instock-data .stock-info" ).removeClass( "not-available-block" ).addClass( "available" ).text(val['label']);
 							jQuery(".product-shop .product-options-bottom").show();
 						}
-					} else { 
+					} else {
 						if(jQuery( ".stock-info" ).hasClass( "available" )) {
-							jQuery( ".instock .instock-data .stock-info" ).removeClass( "available" ).addClass( "not-available-block" );	
+							jQuery( ".instock .instock-data .stock-info" ).removeClass( "available" ).addClass( "not-available-block" );
 							jQuery(".product-shop .product-options-bottom").hide();
 						}
 					}
 				});
 
 
-			});		
-	
+			});
+
 		});
     </script>
     </div>

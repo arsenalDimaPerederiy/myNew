@@ -135,10 +135,15 @@ Category layered navigation layout
 			<action method="addJs"><script>accordion/jquery.lazy.min.js</script></action>					
         </reference>
         <reference name="left">
-            <block type="catalog/layer_view" name="catalog.leftnav" after="leftnav" template="catalog/layer/view.phtml"/>
+            <block type="catalog/layer_view" name="catalog.leftnav" after="leftnav"
+                   template="catalog/layer/view.phtml"/>
             <block type="cms/block" name="left_category_banner" after="mana.catalog.leftnav">
-                <action method="setBlockId"><block_id>left_category_banner</block_id></action>
+                <action method="setBlockId">
+                    <block_id>left_category_banner</block_id>
+                </action>
             </block>
+            <block type="core/template" name="trotsky" after="mana.catalog.leftnav"
+                   template="WebinseAll/trotsky.phtml"></block>
         </reference>
         <reference name="content">
             <block type="catalog/category_view" name="category.products" template="catalog/category/view.phtml">

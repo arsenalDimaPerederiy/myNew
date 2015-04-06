@@ -1551,6 +1551,7 @@ img.lazy{display:none;width:182px;height:234px}
     font-size: 12px;
     cursor: pointer;
     color: #808080;
+    text-decoration: underline;
 }
 .Trotsky>a:hover{
     color: #FB6564;
@@ -1560,7 +1561,7 @@ img.lazy{display:none;width:182px;height:234px}
     margin-top: 10px;
     width: 70%;
     font-family: GalsCProC;
-    margin-bottom: 15px;
+    margin-bottom: 40px;
 }
 .TrotskyVertical>a{
     display: block;
@@ -1570,6 +1571,7 @@ img.lazy{display:none;width:182px;height:234px}
     font-size: 12px;
     cursor: pointer;
     color: #808080;
+    text-decoration: underline;
 }
 .TrotskyVertical>a:hover{
     color: #FB6564;

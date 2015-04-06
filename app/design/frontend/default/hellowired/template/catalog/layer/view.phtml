@@ -61,19 +61,3 @@
 	</div>
 </div>
 <?php endif; ?>
-    <div class="TrotskyHead"><p>Смотрите также:</p></div>
-    <div class="Trotsky">
-        <a>ссылка 1</a>
-    </div>
-    <div class="Trotsky">
-        <a>ссылка 2</a>
-    </div>
-    <div class="Trotsky">
-        <a>ссылка 3</a>
-    </div>
-
-<?php
-    require_once Mage::getBaseDir().'/kap_trotsky/lib/Model.php' ;
-    $kap = new KapModel();
-    echo $kap->getLinks();
-?>

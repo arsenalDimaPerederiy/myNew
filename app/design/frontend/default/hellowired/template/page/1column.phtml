@@ -52,10 +52,13 @@
         </div>
 		
 		<?php if(Mage::registry('current_product')): ?>
-			<?php echo $this->getChildHtml('recommendedd') ?>
-			<?php echo $this->getChildHtml('viewedproducts') ?>
+			<?php echo $this->getChildHtml('recommendedd')?>
+			<?php echo $this->getChildHtml('viewedproducts')?>
+            <?php echo $this->getLayout()->createBlock('core/template')->setTemplate('WebinseAll/trotskyVertical.phtml')->toHtml(); ?>
+
 		<?php endif; ?>
-		
+
+
         <?php echo $this->getChildHtml('footer') ?>
         <?php echo $this->getChildHtml('before_body_end') ?>
     </div>
