@@ -1,0 +1,12 @@
+<?php
+
+return array(
+    'data_dir'  => 'tmp/',
+    'crypt_key' => '12345',
+    'db' => array(
+        //'dsn' => 'mysql:host=localhost;dbname=kap',
+        //'user' => 'root',
+        //'pass' => '',
+        //'table_prefix' => 'trotsky_',
+    ),
+);

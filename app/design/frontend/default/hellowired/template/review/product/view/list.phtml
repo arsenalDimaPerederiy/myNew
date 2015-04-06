@@ -63,9 +63,9 @@
         <?php echo $this->getChildHtml('toolbar') ?>
     <?php endif;?>
     <?php echo $this->getChildHtml('review_form') ?>
-<?php 
+<?php
     $layout = Mage::getSingleton('core/layout');
     $block = $layout->getBlock('content')->getChild('product.info')->getChild('info_tabs')->getChild('review_form');
     echo $block->toHtml();
-?> 
+?>
 </div>

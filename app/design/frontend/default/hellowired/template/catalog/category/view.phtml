@@ -44,7 +44,7 @@
     <?php if($this->IsRssCatalogEnable() && $this->IsTopCategory()): ?>
         <a href="<?php echo $this->getRssLink() ?>" class="link-rss"><?php echo $this->__('Subscribe to RSS Feed') ?></a>
     <?php endif; ?>
-    
+
 </div>
 
 <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
@@ -59,8 +59,8 @@
 		<?php if($pageNum > 1): ?>
 			<div class="category-description std"><div class="category_bannner4"><div class="middle black-text category_bannner_inner" style="background: #ddd; height: 130px;">
 				<h1 class="seo-title"><?php echo Mage::registry('current_splash_page')->getName()." - страница ".$pageNum; ?></h1>
-			</div></div></div>		
-		<?php else: ?>	
+			</div></div></div>
+		<?php else: ?>
 			<div class="category-description std"><div class="category_bannner4"><div class="middle black-text category_bannner_inner" style="background: #ddd; padding: 0px;">
 				<h1 class="seo-title"><?php echo Mage::registry('current_splash_page')->getName() ?></h1>
 			</div></div></div>
