@@ -1531,23 +1531,23 @@ img.lazy{display:none;width:182px;height:234px}
 
 
 
-
 .TrotskyHead{
+    margin-top: 10px;
     width: 100%;
     font-size: 13px;
-    font-family: GalsCProC;
+    font-family: Tahoma;
+    margin-bottom: 10px;
 }
-.TrotskyHead>p{
-    text-indent: 1.5;
-}
+
 .Trotsky{
     width: 100%;
     margin-top: 10px;
     text-align: left;
-    font-family: GalsCProC;
+    font-family: Tahoma;
     margin-bottom: 20px;
 }
 .Trotsky>a{
+    margin-left: 10px;
     font-size: 12px;
     cursor: pointer;
     color: #808080;
@@ -1560,7 +1560,7 @@ img.lazy{display:none;width:182px;height:234px}
 .TrotskyVertical{
     margin-top: 10px;
     width: 70%;
-    font-family: GalsCProC;
+    font-family: Tahoma;
     margin-bottom: 40px;
 }
 .TrotskyVertical>a{
