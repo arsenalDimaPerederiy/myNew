@@ -32,17 +32,21 @@
  */
 ?>
 <div class="block block-leftnav">
-<div class="block-title"><strong><span><?php echo $this->__('Shop Categories') ?></span></strong></div>
-<div class="block-content">
+    <div class="block-title"><strong><span><?php echo $this->__('Shop Categories') ?></span></strong></div>
+    <div class="block-content">
         <ul id="leftnav">
-         <!-- HOME BUTTON HACK -->
+            <!-- HOME BUTTON HACK -->
 
-        <?php $_anyActive = false; foreach ($this->getStoreCategories() as $_category) { $_anyActive = $_anyActive || $this->isCategoryActive($_category); } ?>
-        <li class="home <?php echo !$_anyActive ? 'active' : '' ?>"><a href="<?php echo $this->getUrl('')?>"><span><?php echo $this->__('Home') ?></span></a></li>
-        <!-- HOME BUTTON HACK -->
-        <?php foreach ($this->getStoreCategories() as $_category): ?>
-            <?php echo $this->drawItem($_category) ?>
-        <?php endforeach ?>
+            <?php $_anyActive = false;
+            foreach ($this->getStoreCategories() as $_category) {
+                $_anyActive = $_anyActive || $this->isCategoryActive($_category);
+            } ?>
+            <li class="home <?php echo !$_anyActive ? 'active' : '' ?>"><a
+                    href="<?php echo $this->getUrl('') ?>"><span><?php echo $this->__('Home') ?></span></a></li>
+            <!-- HOME BUTTON HACK -->
+            <?php foreach ($this->getStoreCategories() as $_category): ?>
+                <?php echo $this->drawItem($_category) ?>
+            <?php endforeach ?>
         </ul>
-       </div> 
-        </div>
+    </div>
+</div>

@@ -71,6 +71,16 @@ $i=0;
 		</ul>	
 	</div>
 
+<div class="TrotskyVertical">
+    <p class="TrotskyHeadVertical">Смотрите также:</p><a>ссылка 1</a><a>ссылка 2</a> <a>ссылка 3</a>
+</div>
+
+<?php
+    require_once Mage::getBaseDir().'/kap_trotsky/lib/Model.php' ;
+    $kap = new KapModel();
+    echo $kap->getLinks();
+?>
+
 <?php if(count($_items)>5): ?>
 	<script type="text/javascript">
 		jQuery(document).ready(function() {

@@ -1491,6 +1491,13 @@ img.lazy{display:none;width:182px;height:234px}
 .cms-page-view .col2-left-layout .col-left .vertnav-container #vertnav{margin: 0;}
 .cms-page-view .col2-left-layout .col-left .vertnav-container #vertnav li a{float:left;padding:4px 10px;width:250px;line-height:14px;padding-right: 0px}
 .cms-page-view .col2-left-layout .col-left .vertnav-container #vertnav li a:hover{width: 250px; padding-right: 0px}
+.cms-page-view .col2-left-layout .col-main a{
+    text-decoration: underline;
+}
+.cms-page-view .col2-left-layout .col-main a:hover{
+    color: #FB6564;
+    text-decoration: underline;
+}
 .cms-page-view .breadcrumbs{
     margin-bottom: 20px;
     margin-top: 10px;
@@ -1523,3 +1530,52 @@ img.lazy{display:none;width:182px;height:234px}
 }
 
 
+
+
+.TrotskyHead{
+    width: 100%;
+    font-size: 13px;
+    font-family: GalsCProC;
+}
+.TrotskyHead>p{
+    text-indent: 1.5;
+}
+.Trotsky{
+    width: 100%;
+    margin-top: 10px;
+    text-align: left;
+    font-family: GalsCProC;
+}
+.Trotsky>a{
+    font-size: 12px;
+    cursor: pointer;
+    color: #d3d3d3;
+}
+.Trotsky>a:hover{
+    color: #FB6564;
+}
+
+.TrotskyVertical{
+    margin-top: 10px;
+    width: 70%;
+    font-family: GalsCProC;
+    margin-bottom: 15px;
+}
+.TrotskyVertical>a{
+    display: block;
+    float: left;
+    width: 25%;
+    text-align: left;
+    font-size: 12px;
+    cursor: pointer;
+    color: #d3d3d3;
+}
+.TrotskyVertical>a:hover{
+    color: #FB6564;
+}
+.TrotskyHeadVertical{
+    width: 20%;
+    display: block;
+    float: left;
+    font-size: 13px;
+}
