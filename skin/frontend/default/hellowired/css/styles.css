@@ -1549,7 +1549,7 @@ img.lazy{display:none;width:182px;height:234px}
 .Trotsky>a{
     font-size: 12px;
     cursor: pointer;
-    color: #d3d3d3;
+    color: #808080;
 }
 .Trotsky>a:hover{
     color: #FB6564;
@@ -1568,7 +1568,7 @@ img.lazy{display:none;width:182px;height:234px}
     text-align: left;
     font-size: 12px;
     cursor: pointer;
-    color: #d3d3d3;
+    color: #808080;
 }
 .TrotskyVertical>a:hover{
     color: #FB6564;
