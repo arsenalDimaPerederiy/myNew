@@ -257,7 +257,10 @@ class KapModel
         if($encoding && $encoding != 'UTF-8')
             $result = iconv('UTF-8', $encoding, $result);
 
-        return $result;
+        if(!empty($result))
+            return $result;
+        else
+            return '';
     }
 
     public function getParam($name, $default = false)
