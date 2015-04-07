@@ -5,9 +5,9 @@ return array(
     'crypt_key' => '12345', // ключ  для шифрованию логов
     'db' => array(
         // если вместо sqlite необходимо использовать mysql нужно установить эти значения
-        'dsn' => 'mysql:host=localhost;dbname=ashop_db',
-        'user' => 'root',
-        'pass' => 'admin123',
+        'dsn' => 'mysql:host=localhost;dbname=dev_ashop',
+        'user' => 'zKDcYMV2KPepL7LT',
+        'pass' => 'dev_ashop',
         'table_prefix' => '',
     ),
 );
