@@ -1545,7 +1545,8 @@ img.lazy{display:none;width:182px;height:234px}
 
 }
 .Trotsky>a{
-    margin-left: 10px;
+    display: block;
+    padding-left: 10px;
     font-size: 12px;
     cursor: pointer;
     color: #808080;
