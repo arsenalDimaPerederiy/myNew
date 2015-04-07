@@ -245,7 +245,7 @@ class KapModel
                     $result[] = '<div class="Trotsky">'.'<a href="'.$link['target_url'].'">'.$link['phrase'].'</a>'.'</div>';
                 }
                 else{
-                    $result[] = '<a href="'.$link['target_url'].'">'.$link['phrase'].'</a>';
+                    $result[] = '<a href="'.$link['target_url'].'">'.$link['phrase'].'</a> ';
                 }
             }
         }
