@@ -8,6 +8,7 @@
     box-shadow:         0px 0px 10px 5px rgba(250, 250, 250, 0.75);
     background: #fff;
     overflow: hidden;
+    font-family: GalsCProC;
 }
 #modal_window .magento_w{
     width: 0;
@@ -50,6 +51,21 @@
 #modal_window{
     font-family: "GalsC Pro";
 }
+
+#modal_window .magento_close{
+    width: 32px;
+    height: 32px;
+    background: url(images/close.png) no-repeat;
+}
+
+
+
+
+
+
+
+
+
 /*
 other class
 */
@@ -65,24 +81,23 @@ other class
     -moz-box-shadow:    0px 0px 5px 2px rgba(255, 191, 63, 0.75);
     box-shadow:         0px 0px 5px 2px rgba(255, 191, 63, 0.75);
 }
-#modal_window_table_content{
-    width: 400px;
-    height: 600px;
-}
+
 
 /*login*/
 #modal_window .mainWindow{
-    width: 400px;
-    height: 600px;
+    width: 100%;
+}
+#modal_window #modal-login-form{
+    display: block;
+    width: 100%;
+    height: 250px;
 }
 
 #modal_window #modal-login-form-main .modal-login-head{
     width: 370px;
     font-size: 16px;
-    font-family: GalsCProC;
-    margin-top: 30px;
-}
 
+}
 #modal_window #modal-login-form-main .validation-advice{
     padding-top: 10px;
     font-size: 12px;
@@ -91,17 +106,17 @@ other class
 
 #modal_window #modal-login-form-main .modal-login-input{
     width: 270px;
-    height: 35px;
+    height: 30px;
     display: inline-block;
     margin-top: 20px;
-    border-radius: 5px;
+    font-size: 14px;
 }
+
 #modal_window #modal-login-form-main .foogot{
     width: 370px;
     font-size: 12px;
 }
 #modal_window #modal-login-form-main .buttonLogn{
-    font-family: GalsCProC;
     font-size:16px;
     margin-top: 30px;
     width: 175px;
@@ -111,6 +126,7 @@ other class
     text-align: center;
     text-transform: uppercase;
     letter-spacing: 2px;
+    margin-bottom: 10px;
 }
 
 #modal_window #modal-login-form-main button:hover{
@@ -126,20 +142,27 @@ other class
     margin-top: 30px;
     font-size: 14px;
     font-weight: 700;
-    font-family: GalsCProC;
 }
 
 
 
 #modal_window .modal-login-footer{
+    padding-top: 15px;
+    padding-bottom: 15px;
     width: 100%;
     text-align: center;
     font-size: 16px;
+    background: #e6e6e6;
+    color: #515151;
 }
 
 #modal_window .modal-login-footer a{
     display: block;
     width: 100%;
+}
+#modal_window .modal-login-footer a h3{
+    margin-bottom: 0px;
+    text-decoration: underline;
 }
 
 
@@ -153,7 +176,6 @@ other class
 }
 
 #modal_window #modal-create-form-main form{
-    height: 605px;
     display: block;
     width: 70%;
     margin-right: auto;
@@ -251,8 +273,15 @@ other class
 
 .SocialBlock{
     width: 100%;
-    height: 250px;
+    height: 150px;
     text-align: center;
+}
+.SocialBlock>h2{
+   margin-top: 20px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    font-size: 16px;
+    font-weight: 400;
 }
 
 .SocialBlockBlock {

@@ -17,7 +17,7 @@ return true;
 
 
 function showPopup(data) {
-    oPopup = new Window({id: 'modal_window',className: 'magento', width:400, height:600, destroyOnClose: true,
+    oPopup = new Window({id: 'modal_window',className: 'magento', width:400, height:510, destroyOnClose: true,
         showEffectOptions: {
         duration: 0
     },
