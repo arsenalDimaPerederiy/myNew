@@ -251,6 +251,8 @@ class KapModel
         }
         if($type=='v'){
             $result = $this->getParam('title', '<ul style="margin-top: 10px"><li><div class="Trotsky TrotskyHead">Смотрите также:</div></li></ul>  ').$start.implode($tag, $result).$end;
+        }else{
+            $result = $start.implode($tag, $result).$end;
         }
 
         $encoding = $this->getParam('encoding', 'UTF-8');
