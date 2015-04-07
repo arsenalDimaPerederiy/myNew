@@ -213,7 +213,7 @@ class KapModel
             $start = '<ul><li>';
             $end = '</li></ul>';
 
-            $tag = '</li><li>';
+            $tag = '</li><div class="Trotsky"></div><li>';
         }
         elseif($delimeter == 'ol-li')
         {
