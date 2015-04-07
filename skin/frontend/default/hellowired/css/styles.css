@@ -1532,19 +1532,18 @@ img.lazy{display:none;width:182px;height:234px}
 
 
 .TrotskyHead{
-    margin-top: 10px;
-    width: 100%;
-    font-size: 13px;
-    font-family: Tahoma;
-    margin-bottom: 10px;
+    font-family: tahoma, helvetica, sans-serif;
+    font-size: 12px;
+    margin-top: 15px;
+    margin-bottom: 3px;
 }
 
 .Trotsky{
     width: 100%;
-    margin-top: 10px;
+    margin-top: 3px;
     text-align: left;
-    font-family: Tahoma;
-    margin-bottom: 20px;
+    font-family: tahoma, helvetica, sans-serif;
+
 }
 .Trotsky>a{
     margin-left: 10px;
@@ -1557,10 +1556,12 @@ img.lazy{display:none;width:182px;height:234px}
     color: #FB6564;
 }
 
+
+
 .TrotskyVertical{
     margin-top: 10px;
     width: 70%;
-    font-family: Tahoma;
+    font-family: tahoma, helvetica, sans-serif;
     margin-bottom: 40px;
 }
 .TrotskyVertical>a{
@@ -1581,4 +1582,5 @@ img.lazy{display:none;width:182px;height:234px}
     display: block;
     float: left;
     font-size: 13px;
+    font-family: tahoma, helvetica, sans-serif;
 }
