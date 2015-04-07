@@ -235,7 +235,7 @@ class KapModel
         if($type=='g'){
             $start='<div class="recently-block TrotskyVertical">'.'<p class="TrotskyHeadVertical">Смотрите также:</p>';
             $end='<div />';
-            $tag = ', ';
+            $tag = '';
         }
 
         foreach($links as $link)
@@ -245,7 +245,7 @@ class KapModel
                     $result[] = '<div class="Trotsky">'.'<a href="'.$link['target_url'].'">'.$link['phrase'].'</a>'.'</div>';
                 }
                 else{
-                    $result[] = '<a href="'.$link['target_url'].'">'.$link['phrase'].'</a> ';
+                    $result[] = '<a href="'.$link['target_url'].'">'.$link['phrase'].'</a>';
                 }
             }
         }
