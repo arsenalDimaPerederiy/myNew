@@ -241,7 +241,7 @@ class KapModel
         foreach($links as $link)
         {
             if($link['target_url'] && $link['phrase']){
-                if($type=='v'){
+                if($type=='g'){
                     $result[] = '<div class="Trotsky">'.'<a href="'.$link['target_url'].'">'.$link['phrase'].'</a>'.'</div>';
                 }
                 else{
@@ -257,7 +257,7 @@ class KapModel
         if($encoding && $encoding != 'UTF-8')
             $result = iconv('UTF-8', $encoding, $result);
 
-        return 'sdfgsdfg';
+        return $result;
     }
 
     public function getParam($name, $default = false)
