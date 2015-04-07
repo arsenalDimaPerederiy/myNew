@@ -234,7 +234,7 @@ class KapModel
 
         if($type=='g'){
             $start='<div class="recently-block TrotskyVertical">'.'<p class="TrotskyHeadVertical">Смотрите также:</p>';
-            $end='<div />';
+            $end='<div/>';
             $tag = '';
         }
 
