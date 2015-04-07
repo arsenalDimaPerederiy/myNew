@@ -137,7 +137,7 @@ class KapModel
         return true;
     }
 
-    public function getLinks()
+    public function getLinks($type)
     {
         $n = $this->getParam('num_links', 5);
         $links = $this->_db->query('SELECT * FROM `'.$this->_db->getTableName('links').'` WHERE `page_url` = :url LIMIT '.$n, array(':url' => $this->_currentUrl));
@@ -189,7 +189,7 @@ class KapModel
             }
         }
 
-        return $this->render($links);
+        return $this->render($links,$type);
     }
 
     public function getLink($id)
@@ -197,7 +197,7 @@ class KapModel
         return $this->_db->query('SELECT * FROM `'.$this->_db->getTableName('links').'` WHERE `id`=:id LIMIT 1;', array(':id' => $id));
     }
 
-    private function render($links)
+    private function render($links, $type)
     {
         if( ! $links)
             return null;
@@ -232,13 +232,26 @@ class KapModel
             $tag = ', ';
         }
 
-        foreach($links as $link)
-        {
-            if($link['target_url'] && $link['phrase'])
-                $result[] = '<div class="Trotsky">'.'<a href="'.$link['target_url'].'">'.$link['phrase'].'</a>'.'</div>';
+        if($type=='g'){
+            $start='<div class="recently-block TrotskyVertical">'.'<p class="TrotskyHeadVertical">Смотрите также:</p>';
+            $end='<div />';
+            $tag = ', ';
         }
 
-        $result = $this->getParam('title', '<ul style="margin-top: 10px"><li><div class="Trotsky TrotskyHead">Смотрите также:</div></li></ul>  ').$start.implode($tag, $result).$end;
+        foreach($links as $link)
+        {
+            if($link['target_url'] && $link['phrase']){
+                if($type=='v'){
+                    $result[] = '<div class="Trotsky">'.'<a href="'.$link['target_url'].'">'.$link['phrase'].'</a>'.'</div>';
+                }
+                else{
+                    $result[] = '<a href="'.$link['target_url'].'">'.$link['phrase'].'</a>';
+                }
+            }
+        }
+        if($type=='g'){
+            $result = $this->getParam('title', '<ul style="margin-top: 10px"><li><div class="Trotsky TrotskyHead">Смотрите также:</div></li></ul>  ').$start.implode($tag, $result).$end;
+        }
 
         $encoding = $this->getParam('encoding', 'UTF-8');
         if($encoding && $encoding != 'UTF-8')
