@@ -111,8 +111,8 @@ class Webinse_OAuth_Model_OauthLib_Oauth_Oauth{
 
     public function getCustomerEmail($model){
         $customer = $model->getFirstItem()->getCustomerId();
-        $StoreId = $model->getFirstItem()->getStoreId();
-        $websiteId = $model->getFirstItem()->getWebsiteId();
+        $StoreId = $this->store;
+        $websiteId = $this->websiteId;
 
         $customerModel = Mage::getModel('customer/customer')
             ->setWebsiteId($websiteId)

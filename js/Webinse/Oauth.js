@@ -17,7 +17,7 @@ return true;
 
 
 function showPopup(data) {
-    oPopup = new Window({id: 'modal_window',className: 'magento', width:400, height:510, destroyOnClose: true,
+    oPopup = new Window({id: 'modal_window',className: 'magento', width:400, height:515, destroyOnClose: true,
         showEffectOptions: {
         duration: 0
     },
@@ -102,5 +102,11 @@ function CreateAccountHide(){
     $('modal-login-form-main').show();
     $('modal-create-form-main').hide();
 }
-
-
+function ForgotPasswordShow(){
+    $('modal-forgot-password-form').show();
+    $('modal-login-form-main').hide();
+}
+function ForgotPasswordHide(){
+    $('modal-forgot-password-form').hide();
+    $('modal-login-form-main').show();
+}

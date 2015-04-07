@@ -105,6 +105,7 @@ other class
 }
 
 #modal_window #modal-login-form-main .modal-login-input{
+    text-align: center;
     width: 270px;
     height: 30px;
     display: inline-block;
@@ -112,13 +113,17 @@ other class
     font-size: 14px;
 }
 
-#modal_window #modal-login-form-main .foogot{
-    width: 370px;
-    font-size: 12px;
+#modal_window #modal-login-form-main .fogotPassword{
+    margin-top: 10px;
+    display: block;
+    font-weight: 100;
+}
+#modal_window #modal-login-form-main .fogotPassword:hover{
+    color: #FB6564;
 }
 #modal_window #modal-login-form-main .buttonLogn{
     font-size:16px;
-    margin-top: 30px;
+    margin-top: 20px;
     width: 175px;
     height: 40px;
     background-color: #008000;
@@ -157,8 +162,12 @@ other class
 }
 
 #modal_window .modal-login-footer a{
+    cursor: pointer;
     display: block;
     width: 100%;
+}
+#modal_window .modal-login-footer a:hover{
+   color: #FB6564;
 }
 #modal_window .modal-login-footer a h3{
     margin-bottom: 0px;
@@ -173,9 +182,13 @@ other class
 
 #modal_window #modal-create-form-main h2{
     text-align: center;
+    font-size: 16px;
+    text-transform: uppercase;
 }
 
 #modal_window #modal-create-form-main form{
+    height: 405px;
+    text-align: center;
     display: block;
     width: 70%;
     margin-right: auto;
@@ -183,10 +196,9 @@ other class
     text-align: center;
 }
 #modal_window #modal-create-form-main input {
-    border-radius: 5px;
     margin-top: 10px;
     width: 100%;
-    height: 30px;
+    height: 20px;
 }
 #modal_window #modal-create-form-main input:focus {
     background-color: rgb(250, 255, 189);
@@ -205,21 +217,21 @@ other class
     height: 15px;
 }
 #modal_window #modal-create-form-main div>label{
-    width: 260px;
+    width: 240px;
     float: left;
     display: block;
     text-align: right;
-    font-size: 14px;
+    font-size: 12px;
 }
 #modal_window #modal-create-form-main button{
     margin-right: auto;
     margin-left: auto;
-    margin-top: 30px;
-    width: 75%;
-    height: 50px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    width: 50%;
+    height: 30px;
     text-align: center;
-    font-size: 16px;
-    border-radius: 5px;
+    font-size: 14px;
     border: 1px solid #ff6c00;
     background: #f99b1c;
     font-weight: 800;
