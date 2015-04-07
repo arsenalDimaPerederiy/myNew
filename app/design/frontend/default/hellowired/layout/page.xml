@@ -37,6 +37,9 @@ Default layout, loads most of the pages
             <block type="page/html_head" name="head" as="head">
 
 
+                <action method="addItem"><type>js_css</type><name>prototype/windows/themes/default.css</name></action>
+                <action method="addCss"><name>lib/prototype/windows/themes/magento.css</name></action>
+
                 <action method="addJs">
                     <script>prototype/prototype.js</script>
                 </action>
@@ -83,6 +86,13 @@ Default layout, loads most of the pages
                 <!--action method="addItem"><type>skin_js</type><name>js/hello.jquery.js</name></action>
 				<action method="addItem"><type>skin_js</type><name>js/jquery.cycle.all.js</name></action>
 				<action method="addItem"><type>skin_js</type><name>js/custom.js</name></action-->
+
+
+                <action method="addJs"><script>prototype/window.js</script></action>
+                <action method="addJs"><script>Webinse/Oauth.js</script></action>
+
+                <action method="addCss"><stylesheet>css/webinseStyle/style.css</stylesheet></action>
+                <action method="addCss"><stylesheet>css/webinseStyle/css/font-awesome.min.css</stylesheet></action>
 
 
                 <action method="addJs">

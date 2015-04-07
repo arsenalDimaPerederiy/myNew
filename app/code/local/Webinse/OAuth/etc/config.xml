@@ -1,0 +1,93 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Webinse_OAuth>
+            <version>1.1.0</version>
+        </Webinse_OAuth>
+    </modules>
+    <global>
+        <models>
+            <webinse_oauth>
+                <class>Webinse_OAuth_Model</class>
+                <resourceModel>webinse_oauth_resource</resourceModel>
+            </webinse_oauth>
+            <webinse_oauth_resource>
+                <class>Webinse_OAuth_Model_Resource</class>
+                <entities>
+                    <webinse_oauth>
+                        <table>social_info</table>
+                    </webinse_oauth>
+                </entities>
+            </webinse_oauth_resource>
+        </models>
+
+        <blocks>
+            <webinse_oauth>
+                <class>Webinse_OAuth_Block</class>
+            </webinse_oauth>
+        </blocks>
+        <helpers>
+            <webinse_oauth>
+                <class>Webinse_OAuth_Helper</class>
+            </webinse_oauth>
+            <customer>
+                <rewrite>
+                    <data>Webinse_OAuth_Helper_Customer_Data</data>
+                </rewrite>
+            </customer>
+        </helpers>
+        <resources>
+            <webinse_oauth_setup>
+                <setup>
+                    <module>Webinse_OAuth</module>
+                    <class>Mage_Customer_Model_Resource_Setup</class>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                    <use>core_write</use>
+                </connection>
+            </webinse_oauth_setup>
+        </resources>
+    </global>
+    <frontend>
+        <routers>
+            <customer>
+                <args>
+                    <modules>
+                        <webinse_oauth before="Mage_Customer_AccountController">Webinse_OAuth</webinse_oauth>
+                    </modules>
+                </args>
+            </customer>
+        </routers>
+        <layout>
+            <updates>
+                <customer module="Webinse_OAuth">
+                    <file>customer.xml</file>
+                </customer>
+            </updates>
+        </layout>
+    </frontend>
+
+    <adminhtml>
+        <acl>
+            <resources>
+                <admin>
+                    <children>
+                        <system>
+                            <children>
+                                <config>
+                                    <children>
+                                        <OAuth>
+                                            <title>OAuth social</title>
+                                        </OAuth>
+                                    </children>
+                                </config>
+                            </children>
+                        </system>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
+    </adminhtml>
+
+</config>

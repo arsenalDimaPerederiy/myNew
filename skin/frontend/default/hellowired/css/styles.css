@@ -1530,55 +1530,13 @@ img.lazy{display:none;width:182px;height:234px}
 }
 
 
-
-.TrotskyHead{
-    margin-top: 10px;
-    width: 100%;
-    font-size: 13px;
-    font-family: Tahoma;
-    margin-bottom: 10px;
-}
-
-.Trotsky{
-    width: 100%;
-    margin-top: 10px;
-    text-align: left;
-    font-family: Tahoma;
-    margin-bottom: 20px;
-}
-.Trotsky>a{
-    margin-left: 10px;
-    font-size: 12px;
-    cursor: pointer;
-    color: #808080;
-    text-decoration: underline;
-}
-.Trotsky>a:hover{
-    color: #FB6564;
-}
-
-.TrotskyVertical{
-    margin-top: 10px;
-    width: 70%;
-    font-family: Tahoma;
-    margin-bottom: 40px;
-}
-.TrotskyVertical>a{
-    display: block;
-    float: left;
-    width: 25%;
-    text-align: left;
-    font-size: 12px;
-    cursor: pointer;
-    color: #808080;
-    text-decoration: underline;
-}
-.TrotskyVertical>a:hover{
-    color: #FB6564;
-}
-.TrotskyHeadVertical{
-    width: 20%;
-    display: block;
-    float: left;
-    font-size: 13px;
-}
+/*trotsky style*/
+.TrotskyHead{margin-top: 10px;width: 100%;font-size: 13px;font-family: Tahoma;margin-bottom: 10px;}
+.Trotsky{width: 100%;margin-top: 10px;text-align: left;font-family: Tahoma;margin-bottom: 20px;}
+.Trotsky>a{margin-left: 10px;font-size: 12px;cursor: pointer;color: #808080;text-decoration: underline;}
+.Trotsky>a:hover{color: #FB6564;}
+.TrotskyVertical{margin-top: 10px;width: 70%;font-family: Tahoma;margin-bottom: 40px;}
+.TrotskyVertical>a{display: block;float: left;width: 25%;text-align: left;font-size: 12px;cursor: pointer;color: #808080;text-decoration: underline;}
+.TrotskyVertical>a:hover{color: #FB6564;}
+.TrotskyHeadVertical{width: 20%;display: block;float: left;font-size: 13px;}
+/*trotsky style*/
