@@ -220,7 +220,7 @@ class KapModel
             $start = '<ol><li>';
             $end = '</li></ol>';
 
-            $tag = '</li><li>';
+            $tag = '</li><div class="Trotsky"></div><li>';
         }
         elseif($delimeter == 'br')
         {
@@ -238,7 +238,7 @@ class KapModel
                 $result[] = '<a href="'.$link['target_url'].'">'.$link['phrase'].'</a>';
         }
 
-        $result = $this->getParam('title', '<strong>Links:</strong>').$start.implode($tag, $result).$end;
+        $result = $this->getParam('title', '<ul style="margin-top: 10px"><li><div class="Trotsky TrotskyHead">Смотрите также:</div></li></ul>  ').$start.implode($tag, $result).$end;
 
         $encoding = $this->getParam('encoding', 'UTF-8');
         if($encoding && $encoding != 'UTF-8')
