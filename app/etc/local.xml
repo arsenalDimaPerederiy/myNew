@@ -41,8 +41,8 @@
             <default_setup>
                 <connection>
                     <host><![CDATA[localhost]]></host>
-                    <username><![CDATA[zKDcYMV2KPepL7LT]]></username>
-                    <password><![CDATA[dev_ashop]]></password>
+                    <username><![CDATA[dev_ashop]]></username>
+                    <password><![CDATA[zKDcYMV2KPepL7LT]]></password>
                     <dbname><![CDATA[dev_ashop]]></dbname>
                                                                                 
                     <initStatements><![CDATA[SET NAMES utf8]]></initStatements>
