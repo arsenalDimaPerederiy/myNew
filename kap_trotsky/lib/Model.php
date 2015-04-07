@@ -242,7 +242,7 @@ class KapModel
         {
             if($link['target_url'] && $link['phrase']){
                 if($type=='g'){
-                    $result[] = '<div class="Trotsky">'.'<a href="'.$link['target_url'].'">'.$link['phrase'].'</a>'.'</div>';
+                    $result[] = '<div class="TrotskyVertical">'.'<a href="'.$link['target_url'].'">'.$link['phrase'].'</a>'.'</div>';
                 }
                 else{
                     $result[] = '<a href="'.$link['target_url'].'">'.$link['phrase'].'</a>';
