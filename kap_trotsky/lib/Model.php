@@ -242,17 +242,17 @@ class KapModel
         {
             if($link['target_url'] && $link['phrase']){
                 if($type=='g'){
-                    $result[] = '<div class="TrotskyVertical">'.'<a href="'.$link['target_url'].'">'.$link['phrase'].'</a>'.'</div>';
+                    $result[] = '<a href="'.$link['target_url'].'">'.$link['phrase'].'</a>';
                 }
                 else{
-                    $result[] = '<a href="'.$link['target_url'].'">'.$link['phrase'].'</a>';
+                    $result[] = '<div class="Trotsky">'.'<a href="'.$link['target_url'].'">'.$link['phrase'].'</a>'.'</div>';
                 }
             }
         }
-        if($type=='v'){
-            $result = $this->getParam('title', '<ul style="margin-top: 10px"><li><div class="Trotsky TrotskyHead">Смотрите также:</div></li></ul>  ').$start.implode($tag, $result).$end;
-        }else{
+        if($type=='g'){
             $result = $start.implode($tag, $result).$end;
+        }else{
+            $result = $this->getParam('title', '<ul style="margin-top: 10px"><li><div class="Trotsky TrotskyHead">Смотрите также:</div></li></ul>  ').$start.implode($tag, $result).$end;
         }
 
         $encoding = $this->getParam('encoding', 'UTF-8');
