@@ -213,14 +213,14 @@ class KapModel
             $start = '<ul><li>';
             $end = '</li></ul>';
 
-            $tag = '</li><div class="Trotsky"></div><li>';
+            $tag = '</li><li>';
         }
         elseif($delimeter == 'ol-li')
         {
             $start = '<ol><li>';
             $end = '</li></ol>';
 
-            $tag = '</li><div class="Trotsky"></div><li>';
+            $tag = '</li><li>';
         }
         elseif($delimeter == 'br')
         {
@@ -235,7 +235,7 @@ class KapModel
         foreach($links as $link)
         {
             if($link['target_url'] && $link['phrase'])
-                $result[] = '<a href="'.$link['target_url'].'">'.$link['phrase'].'</a>';
+                $result[] = '<div class="Trotsky">'.'<a href="'.$link['target_url'].'">'.$link['phrase'].'</a>'.'</div>';
         }
 
         $result = $this->getParam('title', '<ul style="margin-top: 10px"><li><div class="Trotsky TrotskyHead">Смотрите также:</div></li></ul>  ').$start.implode($tag, $result).$end;
