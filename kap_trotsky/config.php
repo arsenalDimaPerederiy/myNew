@@ -7,7 +7,7 @@ return array(
         // если вместо sqlite необходимо использовать mysql нужно установить эти значения
         'dsn' => 'mysql:host=localhost;dbname=dev_ashop',
         'user' => 'dev_ashop',
-        'pass' => 'admin123',
-        'table_prefix' => 'zKDcYMV2KPepL7LT',
+        'pass' => 'zKDcYMV2KPepL7LT',
+        'table_prefix' => '',
     ),
 );
