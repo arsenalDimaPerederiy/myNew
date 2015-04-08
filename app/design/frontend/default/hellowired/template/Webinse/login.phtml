@@ -1,0 +1,82 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magento.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magento.com for more information.
+ *
+ * @category    design
+ * @package     rwd_default
+ * @copyright   Copyright (c) 2006-2014 X.commerce, Inc. (http://www.magento.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php
+/**
+ * Customer login form template
+ *
+ * @see app/design/frontend/base/default/template/customer/form/login.phtml
+ */
+/** @var $this Mage_Customer_Block_Form_Login */
+?>
+
+<div id="modal-login-form-main">
+    <div class="aling-central-modal modal-login-head">
+        <h1>ВХОД В A-SHOP</h1>
+    </div>
+    <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+    <form title="<?php echo Mage::getUrl('customer/account/loginAjax') ?>"
+          action="<?php echo $this->getPostActionUrl() ?>"
+          method="post" id="modal-login-form"
+          onsubmit="formModalValidation(this); return false;"
+          class="aling-central-modal">
+        <div>
+            <?php echo $this->getBlockHtml('formkey'); ?>
+            <input type="email" name="login[username]"
+                   value="<?php echo $this->escapeHtml($this->getUsername()) ?>"
+                   id="email"
+                   title="<?php echo $this->__('Email Address') ?>"
+                   placeholder="Введите E-mail"
+                   class="input-text required-entry validate-formLoginModal modal-login-input"/>
+
+            <input type="password" name="login[password]"
+                   value="<?php echo $this->escapeHtml($this->getUsername()) ?>"
+                   id="pass"
+                   title="<?php echo $this->__('Email Address') ?>"
+                   placeholder="Пароль"
+                   class="input-text required-entry validate-password validate-formLoginModal modal-login-input"/>
+        </div>
+        <a href="" class="fogotPassword" onclick="ForgotPasswordShow(); return false;"><?php echo $this->__('Forgot Your Password?') ?></a>
+        <button type="submit" title="<?php echo $this->__('Login') ?>" name="submit" id="send2"
+                class="aling-central-modal buttonLogn">
+            <span><span><?php echo $this->__('Login') ?></span></span></button>
+
+    </form>
+
+    <?php
+        $socialBlock = $this->getChild('social.icons');
+        echo $socialBlock->_toHtml();
+    ?>
+    <div class="modal-login-footer">
+        <a title="<?php echo $this->__('Create an Account') ?>" onclick="CreateAccountShow();">
+            <h3><?php echo $this->__('Create an Account') ?></h3></a>
+    </div>
+</div>
+
+
+
+
+

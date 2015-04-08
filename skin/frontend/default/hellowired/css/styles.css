@@ -1500,6 +1500,7 @@ img.lazy{display:none;width:182px;height:234px}
 .cms-page-view .std ul li{margin-left: 20px;list-style: disc;margin-top: 5px;}
 .cms-page-view .footer-container{margin-top: 50px;}
 
+
 .TrotskyHead{font-family: tahoma, helvetica, sans-serif;font-size: 12px;margin-bottom: 3px;}
 .Trotsky{width: 100%;margin-top: 3px;text-align: left;font-family: tahoma, helvetica, sans-serif;}
 .Trotsky>a{display: block;padding-left: 10px;font-size: 12px;cursor: pointer;color: #808080;text-decoration: underline;}
@@ -1508,3 +1509,4 @@ img.lazy{display:none;width:182px;height:234px}
 .TrotskyVertical>a{display: block;float: left;width: 25%;text-align: left;font-size: 12px;cursor: pointer;color: #808080;text-decoration: underline;}
 .TrotskyVertical>a:hover{color: #FB6564;}
 .TrotskyHeadVertical{width: 20%;display: block;float: left;font-size: 13px;font-family: tahoma, helvetica, sans-serif;}
+
