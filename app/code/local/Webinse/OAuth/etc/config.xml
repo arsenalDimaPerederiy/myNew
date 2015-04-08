@@ -62,7 +62,7 @@
         <layout>
             <updates>
                 <customer module="Webinse_OAuth">
-                    <file>customer.xml</file>
+                    <file>Webinse_OAuth.xml</file>
                 </customer>
             </updates>
         </layout>

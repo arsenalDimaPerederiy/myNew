@@ -88,13 +88,6 @@ Default layout, loads most of the pages
 				<action method="addItem"><type>skin_js</type><name>js/custom.js</name></action-->
 
 
-                <action method="addJs"><script>prototype/window.js</script></action>
-                <action method="addJs"><script>Webinse/Oauth.js</script></action>
-
-                <action method="addCss"><stylesheet>css/webinseStyle/style.css</stylesheet></action>
-                <action method="addCss"><stylesheet>css/webinseStyle/css/font-awesome.min.css</stylesheet></action>
-
-
                 <action method="addJs">
                     <script>magebuzz/jquery/jquery.bxSlider.js</script>
                 </action>

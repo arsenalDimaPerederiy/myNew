@@ -28,7 +28,7 @@ class Webinse_OAuth_AccountController extends Mage_Customer_AccountController
             'confirm',
             'confirmation'
         );
-        $newOpenAction = array('loginOauthVk,loginOauthF,loginOauthG,createCustomer,loginAjax');
+        $newOpenAction = array('loginOauthVk,loginOauthF,loginOauthG,createCustomer,loginAjax,forgotPasswordPostAjax');
 
         $allActions = array_merge($ExitsopenActions, $newOpenAction);
 
@@ -71,9 +71,21 @@ class Webinse_OAuth_AccountController extends Mage_Customer_AccountController
         }
 
         if(Mage::getStoreConfig('OAuth/Ajax_login_setup/loginAjax')){
-            $block = $this->loadLayout()->getLayout()->createBlock('customer/form_login')->setTemplate('Webinse/login.phtml');
+
+            $block = $this->loadLayout()->getLayout()->createBlock('core/template')->setTemplate('Webinse/mainOauthTemplate.phtml');
+
+            $login_block = $this->loadLayout()->getLayout()->createBlock('customer/form_login','login.form')->setTemplate('Webinse/login.phtml');
+
             $soc_block = $this->loadLayout()->getLayout()->createBlock('webinse_oauth/oauthData','social.icons');
-            $block->append($soc_block);
+            $forgot_block = $this->loadLayout()->getLayout()->createBlock('customer/account_forgotpassword','forgot.form')->setTemplate('Webinse/forgot_password_form.phtml');
+            $create_block =  $this->loadLayout()->getLayout()->createBlock('customer/form_register','create.form')->setTemplate('Webinse/create_form.phtml');
+
+            $login_block->append($soc_block);
+
+            $block ->append($login_block)
+                   ->append($forgot_block)
+                   ->append($create_block);
+
             $this->getResponse()->setBody($block->toHtml());
         }
         else{
@@ -228,7 +240,15 @@ class Webinse_OAuth_AccountController extends Mage_Customer_AccountController
                 $jsonArray['href']=Mage::getBaseUrl();
             }
             else{
+
                 $email = $this->getRequest()->getPost('email');
+
+                if(preg_match ('/test.loc/', $email)!=0){
+                    $jsonArray['error']='Вы не можете авторизироватся через данный email.';
+                    $this->getResponse()->setBody(Mage::helper('core')->jsonEncode($jsonArray));
+                    return;
+                }
+
                 $password = $this->getRequest()->getPost('password');
 
                 if (!empty($email) && !empty($password)) {
@@ -305,6 +325,60 @@ class Webinse_OAuth_AccountController extends Mage_Customer_AccountController
                 }
             }
             $this->getResponse()->setBody(Mage::helper('core')->jsonEncode($jsonArray));
+        }
+    }
+
+    public function forgotPasswordPostAjaxAction(){
+        if ($this->getRequest()->isAjax()){
+            $jsonArray = array();
+            $session = $this->_getSession();
+            $this->getResponse()->setHeader('Content-type', 'application/json');
+
+            if ($session->isLoggedIn()) {
+                $jsonArray['href']=Mage::getBaseUrl();
+
+            }
+            else{
+                $email = (string) $this->getRequest()->getPost('email');
+                if ($email) {
+                    if (!Zend_Validate::is($email, 'EmailAddress')) {
+                        $this->_getSession()->setForgottenEmail($email);
+                        $jsonArray['error']=$this->__('Invalid email address.');
+                        $this->getResponse()->setBody(Mage::helper('core')->jsonEncode($jsonArray));
+                        return;
+                    }
+
+                    /** @var $customer Mage_Customer_Model_Customer */
+                    $customer = $this->_getModel('customer/customer')
+                        ->setWebsiteId(Mage::app()->getStore()->getWebsiteId())
+                        ->loadByEmail($email);
+
+                    if ($customer->getId()) {
+                        try {
+                            $newResetPasswordLinkToken =  $this->_getHelper('customer')->generateResetPasswordLinkToken();
+                            $customer->changeResetPasswordLinkToken($newResetPasswordLinkToken);
+                            $customer->sendPasswordResetConfirmationEmail();
+                        } catch (Exception $exception) {
+                            $jsonArray['error']=$exception->getMessage();
+                            $this->getResponse()->setBody(Mage::helper('core')->jsonEncode($jsonArray));
+                            return;
+                        }
+                    }
+                    else {
+                        $jsonArray['error']=$this->__('Please enter your email.');
+                        $this->getResponse()->setBody(Mage::helper('core')->jsonEncode($jsonArray));
+                        return;
+                    }
+
+                    $jsonArray['message']=$this->_getHelper('customer')
+                        ->__('If there is an account associated with %s you will receive an email with a link to reset your password.',
+                            $this->_getHelper('customer')->escapeHtml($email));
+
+                    $this->getResponse()->setBody(Mage::helper('core')->jsonEncode($jsonArray));
+
+                    return;
+                }
+            }
         }
     }
 

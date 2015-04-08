@@ -94,6 +94,42 @@ function ModalFormCreate(element){
     }
 }
 
+function ForgotPassword(element){
+    var validator = new Validation(element.id);
+
+    Validation.add('validate-ForgotPasswordModal','',function(v){
+        return true;
+    });
+
+    if(validator.validate()) {
+
+        new Ajax.Request(element.title, {
+            method: 'post',
+            parameters:{email: $('email_address').value},
+            onSuccess: function(transport) {
+                var response = transport.responseJSON;
+                if(response['error']){
+                    Validation.add('validate-ForgotPasswordModal',response['error'],function(v){
+                        return false;
+                    });
+                    validator.validate();
+                }
+                if(response['message']){
+
+                    $('ok_message').update(response['message']);
+                    $('ok_message').setStyle({
+                        color: 'green'
+                    });
+                    $('email_address').value='';
+                    $('ok_message').innerHTML;
+                }
+            }
+        });
+
+    }
+}
+
+
 function CreateAccountShow(){
     $('modal-login-form-main').hide();
     $('modal-create-form-main').show();
