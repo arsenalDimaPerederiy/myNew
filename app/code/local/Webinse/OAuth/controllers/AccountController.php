@@ -175,6 +175,7 @@ class Webinse_OAuth_AccountController extends Mage_Customer_AccountController
 
     public function loginOauth()
     {
+        $message = array();
         try{
             if(!$this->network->getToken('GET')){
                 throw new Exception($this->network->class_id.' '.'Token not received');
@@ -188,6 +189,7 @@ class Webinse_OAuth_AccountController extends Mage_Customer_AccountController
                 $model = $this->network->GetUserBySocialIdSocId();
                 if ($model->count() == 0) {
                     $this->network->createUserEmail();
+                    $message[]=$this->__('You have been set random email. Please change it to true');
                 } //esli net mila to mi ego sozdayom
                 else {
                     if(!$this->network->getCustomerEmail($model)){
@@ -204,6 +206,7 @@ class Webinse_OAuth_AccountController extends Mage_Customer_AccountController
                     throw new Exception($this->network->class_id.' '.'new customer not create');
                 }
                 $customerId=$this->network->customer_id;
+                $message[]=Mage::helper('customer')->__('Welcome! Your email has been sent an email with access to your account as a gift');
             }
 
             $userByThisSocial = $this->network->GetUserBySocialIdSocId();/*get record by user_id in social network and code social network (vk,f)*/
@@ -225,6 +228,15 @@ class Webinse_OAuth_AccountController extends Mage_Customer_AccountController
             Mage::logException($e);
             Mage::getSingleton('adminhtml/session')->addError($e->getMessage());
             $this->_Error();
+        }
+        $session=$this->_getSession();
+        if(empty($message)){
+            $session->addSuccess($this->__('Welcome back, %s %s',$this->network->userInfoArray['first_name'],$this->network->userInfoArray['last_name']));
+        }
+        else{
+            foreach($message as $var){
+                $session->addSuccess($var);
+            }
         }
         $this->_getSession()->loginById($customerId);//load user
     }
@@ -292,6 +304,13 @@ class Webinse_OAuth_AccountController extends Mage_Customer_AccountController
                 $jsonArray['href']=Mage::getBaseUrl();
             }
             else{
+
+                if(preg_match ('/.loc/', $this->getRequest()->getParam('email'))!=0){
+                    $jsonArray['error']='Вы не можете зарегестрироваться через данный email.';
+                    $this->getResponse()->setBody(Mage::helper('core')->jsonEncode($jsonArray));
+                    return;
+                }
+
                 $customer = $this->_getCustomer();
 
                 try {
@@ -306,6 +325,7 @@ class Webinse_OAuth_AccountController extends Mage_Customer_AccountController
 
                         if($session->isLoggedIn()){
                             $jsonArray['href']=Mage::getUrl('customer/account/index');
+                            $session->addSuccess($this->__('Thank you for registering with %s.', Mage::app()->getStore()->getFrontendName()));
                         }
                         else{
                             $jsonArray['href']=Mage::getBaseUrl();
@@ -337,7 +357,6 @@ class Webinse_OAuth_AccountController extends Mage_Customer_AccountController
 
             if ($session->isLoggedIn()) {
                 $jsonArray['href']=Mage::getBaseUrl();
-
             }
             else{
                 $email = (string) $this->getRequest()->getPost('email');
@@ -387,4 +406,7 @@ class Webinse_OAuth_AccountController extends Mage_Customer_AccountController
         $this->norouteAction();
     }
 
+    public function SessionMessage(){
+         return $this->_getSession();
+    }
 }
