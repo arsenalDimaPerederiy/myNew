@@ -1515,5 +1515,36 @@ font-weight: normal}
     margin-top: -160px;
 }
 .product-content .product-buttons{
-    margin-top: -117px;
+    margin-top: -125px;
+}
+.products-grid li:hover .coverlay {
+    border: none;
+    overflow: auto;
+    left: 0px;
+    padding: 0px;
+    position: relative;
+    width: auto;
+}
+
+.products-grid.display-grid-3 li:hover .coverlay{
+    border: none;
+    overflow: auto;
+    left: 0px;
+    padding: 0px;
+    position: relative;
+    width: auto;
+    top: 0px;
+}
+
+.display-grid-3 .product-buttons .add-to-cart-btn button{
+    background: none;
+    width: 200px;
+    height: 30px;
+
+}
+.display-grid-3 .product-buttons .add-to-cart-btn button h3{
+
+    color: #000000;
+    font-weight: normal;
+    font-family: "Times New Roman";
 }
