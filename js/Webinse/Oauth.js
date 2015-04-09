@@ -28,7 +28,7 @@ function showPopup(data) {
     oPopup.getContent().update(data);
     oPopup.setZIndex(2000);
     oPopup.showCenter(true);
-
+    $('modal_window_close').insert({before:'<div id="oblogka" class="mainWindow aling-central-modal" style="display: none; width: 100%;height: 100%; z-index:20000; position: absolute;margin-right: auto; margin-left: auto; background-color: #000000; opacity: 0.5"><i class="fa fa-spinner fa-pulse fa-5x" style="margin-top: 65%; color: #ffffff"></i></div>'});
 }
 
 
@@ -36,12 +36,7 @@ function formModalValidation(e){
 
     var validator = new Validation(e.id);
 
-    Validation.add('validate-formLoginModal','',function(v){
-        return true;
-    });
-
     if(validator.validate()) {
-
         new Ajax.Request(e.title, {
             method: 'post',
             parameters:{email: $('email').value, password: $('pass').value},
@@ -52,10 +47,16 @@ function formModalValidation(e){
                     Validation.add('validate-formLoginModal',response['error'],function(v){
                         return false;
                     });
-                    validator.validate();
-                }
-                if(response['href']){
 
+                }
+                else{
+                    Validation.add('validate-formLoginModal','',function(v){
+                        return true;
+                    });
+                }
+                validator.validate();
+
+                if(response['href']){
                     window.location.href = response['href'];
                 }
             },
@@ -71,10 +72,6 @@ function formModalValidation(e){
 function ModalFormCreate(element){
     var validator = new Validation(element.id);
 
-    Validation.add('validate-formCreateModal','',function(v){
-        return true;
-    });
-
     if(validator.validate()) {
 
         new Ajax.Request(element.title, {
@@ -87,8 +84,14 @@ function ModalFormCreate(element){
                     Validation.add('validate-formCreateModal',response['error'],function(v){
                         return false;
                     });
-                    validator.validate();
                 }
+                    else{
+                        Validation.add('validate-formCreateModal','',function(v){
+                            return true;
+                        });
+                    }
+                    validator.validate();
+
                 if(response['href']){
                     window.location.href = response['href'];
                 }
@@ -104,10 +107,6 @@ function ModalFormCreate(element){
 function ForgotPassword(element){
     var validator = new Validation(element.id);
 
-    Validation.add('validate-ForgotPasswordModal','',function(v){
-        return true;
-    });
-
     if(validator.validate()) {
 
         new Ajax.Request(element.title, {
@@ -120,8 +119,15 @@ function ForgotPassword(element){
                     Validation.add('validate-ForgotPasswordModal',response['error'],function(v){
                         return false;
                     });
-                    validator.validate();
+
                 }
+                else{
+                    Validation.add('validate-ForgotPasswordModal','',function(v){
+                        return true;
+                    });
+                }
+                validator.validate();
+
                 if(response['message']){
 
                     $('ok_message').update(response['message']);
