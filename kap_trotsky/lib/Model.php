@@ -202,7 +202,7 @@ class KapModel
         if( ! $links)
             return null;
 
-        $delimeter = $this->getParam('delimeter', 'ul-li');
+        $delimeter =  'ul-li';
 
         $result = array();
         $start = '';
@@ -252,17 +252,16 @@ class KapModel
         if($type=='g'){
             $result = $start.implode($tag, $result).$end;
         }else{
-            $result = $this->getParam('title', '<ul style="margin-top: 10px"><li><div class="Trotsky TrotskyHead">Смотрите также:</div></li></ul>  ').$start.implode($tag, $result).$end;
+            $start='<ul style="margin-top: 10px"><li><div class="Trotsky TrotskyHead">Смотрите также:</div></li></ul>'.'<ul><li>';
+            $result = $start.implode($tag, $result).$end;
         }
 
         $encoding = $this->getParam('encoding', 'UTF-8');
         if($encoding && $encoding != 'UTF-8')
             $result = iconv('UTF-8', $encoding, $result);
 
-        if(!empty($result))
-            return $result;
-        else
-            return '';
+        return $result;
+
     }
 
     public function getParam($name, $default = false)

@@ -46,6 +46,7 @@ function formModalValidation(e){
             method: 'post',
             parameters:{email: $('email').value, password: $('pass').value},
             onSuccess: function(transport) {
+                $('oblogka').hide();
                 var response = transport.responseJSON;
                 if(response['error']){
                     Validation.add('validate-formLoginModal',response['error'],function(v){
@@ -57,6 +58,9 @@ function formModalValidation(e){
 
                     window.location.href = response['href'];
                 }
+            },
+            onLoading: function(){
+                $('oblogka').show();
             }
         });
 
@@ -78,6 +82,7 @@ function ModalFormCreate(element){
             parameters:{email: $('emailReg').value, password: $('password').value, firstname: $('firstname').value, lastname: $('lastname').value, confirmation: $('confirmation').value, persistent_remember_me: $('is_subscribed').value},
             onSuccess: function(transport) {
                 var response = transport.responseJSON;
+                $('oblogka').hide();
                 if(response['error']){
                     Validation.add('validate-formCreateModal',response['error'],function(v){
                         return false;
@@ -85,9 +90,11 @@ function ModalFormCreate(element){
                     validator.validate();
                 }
                 if(response['href']){
-
                     window.location.href = response['href'];
                 }
+            },
+            onLoading: function(){
+                $('oblogka').show();
             }
         });
 
@@ -108,6 +115,7 @@ function ForgotPassword(element){
             parameters:{email: $('email_address').value},
             onSuccess: function(transport) {
                 var response = transport.responseJSON;
+                $('oblogka').hide();
                 if(response['error']){
                     Validation.add('validate-ForgotPasswordModal',response['error'],function(v){
                         return false;
@@ -123,6 +131,9 @@ function ForgotPassword(element){
                     $('email_address').value='';
                     $('ok_message').innerHTML;
                 }
+            },
+            onLoading: function(){
+                $('oblogka').show();
             }
         });
 

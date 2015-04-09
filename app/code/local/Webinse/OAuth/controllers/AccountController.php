@@ -290,7 +290,6 @@ class Webinse_OAuth_AccountController extends Mage_Customer_AccountController
 
             if ($session->isLoggedIn()) {
                 $jsonArray['href']=Mage::getBaseUrl();
-
             }
             else{
                 $customer = $this->_getCustomer();
@@ -302,7 +301,9 @@ class Webinse_OAuth_AccountController extends Mage_Customer_AccountController
                         $customer->cleanPasswordsValidationData();
                         $customer->save();
                         $this->_dispatchRegisterSuccess($customer);
+
                         $session->login($this->getRequest()->getParam('email'),$this->getRequest()->getParam('password'));
+
                         if($session->isLoggedIn()){
                             $jsonArray['href']=Mage::getUrl('customer/account/index');
                         }

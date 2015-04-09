@@ -1496,7 +1496,8 @@ img.lazy{display:none;width:182px;height:234px}
 .cms-page-view .breadcrumbs{margin-bottom: 20px;margin-top: 10px;}
 .cms-page-view h1{font-family: "Galsc pro";margin-bottom: 5px;margin-top: 5px;}
 .cms-page-view h2{font-family: "Galsc pro";text-transform: uppercase;font-size: 18px;margin-bottom: 7px;margin-top: 7px;}
-.cms-page-view .std h3{font-family: "Galsc pro";margin-top: 10px;margin-bottom: 10px;font-size: 16px;}
+.cms-page-view .std h3{font-family: "Galsc pro";margin-top: 10px;margin-bottom: 10px;font-size: 16px;
+font-weight: normal}
 .cms-page-view .std ul li{margin-left: 20px;list-style: disc;margin-top: 5px;}
 .cms-page-view .footer-container{margin-top: 50px;}
 
