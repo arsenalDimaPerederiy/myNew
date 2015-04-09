@@ -189,7 +189,7 @@ class Webinse_OAuth_AccountController extends Mage_Customer_AccountController
                 $model = $this->network->GetUserBySocialIdSocId();
                 if ($model->count() == 0) {
                     $this->network->createUserEmail();
-                    $message[]=$this->__('You have been set random email. Please change it to true');
+                    $message[]='Вы авторизированые на тестовом email. Пожалуйсто смените его';
                 } //esli net mila to mi ego sozdayom
                 else {
                     if(!$this->network->getCustomerEmail($model)){
@@ -206,7 +206,6 @@ class Webinse_OAuth_AccountController extends Mage_Customer_AccountController
                     throw new Exception($this->network->class_id.' '.'new customer not create');
                 }
                 $customerId=$this->network->customer_id;
-                $message[]=Mage::helper('customer')->__('Welcome! Your email has been sent an email with access to your account as a gift');
             }
 
             $userByThisSocial = $this->network->GetUserBySocialIdSocId();/*get record by user_id in social network and code social network (vk,f)*/
@@ -231,7 +230,7 @@ class Webinse_OAuth_AccountController extends Mage_Customer_AccountController
         }
         $session=$this->_getSession();
         if(empty($message)){
-            $session->addSuccess($this->__('Welcome back, %s %s',$this->network->userInfoArray['first_name'],$this->network->userInfoArray['last_name']));
+            $session->addSuccess($this->__('Добро пожаловать, %s %s',$this->network->userInfoArray['first_name'],$this->network->userInfoArray['last_name']));
         }
         else{
             foreach($message as $var){
@@ -256,7 +255,7 @@ class Webinse_OAuth_AccountController extends Mage_Customer_AccountController
                 $email = $this->getRequest()->getPost('email');
 
                 if(preg_match ('/test.loc/', $email)!=0){
-                    $jsonArray['error']='Вы не можете авторизироватся через данный email.';
+                    $jsonArray['error']=$this->__('Вы не можете войти с этим email');
                     $this->getResponse()->setBody(Mage::helper('core')->jsonEncode($jsonArray));
                     return;
                 }
@@ -269,12 +268,8 @@ class Webinse_OAuth_AccountController extends Mage_Customer_AccountController
                     }
                     catch (Mage_Core_Exception $e) {
                         switch ($e->getCode()) {
-                            case Mage_Customer_Model_Customer::EXCEPTION_EMAIL_NOT_CONFIRMED:
-                                $value = $this->_getHelper('customer')->getEmailConfirmationUrl($login['username']);
-                                $message = $this->_getHelper('customer')->__('This account is not confirmed. <a href="%s">Click here</a> to resend confirmation email.', $value);
-                                break;
                             case Mage_Customer_Model_Customer::EXCEPTION_INVALID_EMAIL_OR_PASSWORD:
-                                $message = $e->getMessage();
+                                $message = 'Логин и пароль не подходят друг-другу';
                                 break;
                             default:
                                 $message = $e->getMessage();
@@ -283,7 +278,7 @@ class Webinse_OAuth_AccountController extends Mage_Customer_AccountController
                     }
 
                 } else {
-                    $jsonArray['error']='Login and password are incorrect.';
+                    $jsonArray['error']='Логин и пароль некоректны';
                 }
                 if($session->isLoggedIn()){
                     $jsonArray['href']=Mage::getUrl('customer/account/index');
@@ -306,13 +301,11 @@ class Webinse_OAuth_AccountController extends Mage_Customer_AccountController
             else{
 
                 if(preg_match ('/.loc/', $this->getRequest()->getParam('email'))!=0){
-                    $jsonArray['error']='Вы не можете зарегестрироваться через данный email.';
+                    $jsonArray['error']='Вы не можете зарегестрироваться по этому email';
                     $this->getResponse()->setBody(Mage::helper('core')->jsonEncode($jsonArray));
                     return;
                 }
-
                 $customer = $this->_getCustomer();
-
                 try {
                     $errors = $this->_getCustomerErrors($customer);
 
@@ -325,7 +318,7 @@ class Webinse_OAuth_AccountController extends Mage_Customer_AccountController
 
                         if($session->isLoggedIn()){
                             $jsonArray['href']=Mage::getUrl('customer/account/index');
-                            $session->addSuccess($this->__('Thank you for registering with %s.', Mage::app()->getStore()->getFrontendName()));
+                            $session->addSuccess('Спасибо вам за регистрацию в '. Mage::app()->getStore()->getFrontendName());
                         }
                         else{
                             $jsonArray['href']=Mage::getBaseUrl();
@@ -336,7 +329,7 @@ class Webinse_OAuth_AccountController extends Mage_Customer_AccountController
                 } catch (Mage_Core_Exception $e) {
                     $session->setCustomerFormData($this->getRequest()->getPost());
                     if ($e->getCode() === Mage_Customer_Model_Customer::EXCEPTION_EMAIL_EXISTS) {
-                        $jsonArray['error'] = $this->__('There is already an account with this email address.');
+                        $jsonArray['error'] = 'Уже есть акаунт с таким email';
                     } else {
                         $jsonArray['error'] = $e->getMessage();
                     }
@@ -363,7 +356,7 @@ class Webinse_OAuth_AccountController extends Mage_Customer_AccountController
                 if ($email) {
                     if (!Zend_Validate::is($email, 'EmailAddress')) {
                         $this->_getSession()->setForgottenEmail($email);
-                        $jsonArray['error']=$this->__('Invalid email address.');
+                        $jsonArray['error']='Неверный email';
                         $this->getResponse()->setBody(Mage::helper('core')->jsonEncode($jsonArray));
                         return;
                     }
@@ -385,14 +378,12 @@ class Webinse_OAuth_AccountController extends Mage_Customer_AccountController
                         }
                     }
                     else {
-                        $jsonArray['error']=$this->__('Please enter your email.');
+                        $jsonArray['error']='пожалуйста введите свой email';
                         $this->getResponse()->setBody(Mage::helper('core')->jsonEncode($jsonArray));
                         return;
                     }
 
-                    $jsonArray['message']=$this->_getHelper('customer')
-                        ->__('If there is an account associated with %s you will receive an email with a link to reset your password.',
-                            $this->_getHelper('customer')->escapeHtml($email));
+                    $jsonArray['message']='На данный email '.$this->_getHelper('customer')->escapeHtml($email).'выслано письмо с сылкой для изменения пароляю';
 
                     $this->getResponse()->setBody(Mage::helper('core')->jsonEncode($jsonArray));
 

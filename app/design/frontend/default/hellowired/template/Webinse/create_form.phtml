@@ -7,19 +7,19 @@
             type="text"
             name="firstname"
             id="firstname"
-            placeholder="<?php echo $this->__('Name') ?>"
+            placeholder="Введите Имя<?php //echo $this->__('Name') ?>"
             class="input-text required-entry validate-data"
             >
         <input type="text"
                name="lastname"
                id="lastname"
-               placeholder="<?php echo $this->__('Family') ?>"
+               placeholder="Введите Фамилию<?php //echo $this->__('Family') ?>"
                class="input-text required-entry validate-data"
             >
         <input type="email"
                name="email"
                id="emailReg"
-               placeholder="<?php echo $this->__('Email') ?>"
+               placeholder="Введите email<?php //echo $this->__('Email') ?>"
                class="input-text required-entry validate-email validate-formCreateModal"
             >
 
@@ -36,7 +36,7 @@
         <input type="password"
                name="password"
                id="password"
-               placeholder="<?php echo $this->__('Password') ?>"
+               placeholder="Введите пароль<?php //echo $this->__('Password') ?>"
                class="input-text required-entry validate-password"
             >
         <input type="password"
@@ -47,12 +47,13 @@
             >
 
         <button type="submit" title="<?php echo $this->__('Submit') ?>">
-            <?php echo $this->__('Submit') ?>
+            Регистрация
+            <?php //echo $this->__('Submit') ?>
         </button>
 
     </form>
     <div class="modal-login-footer">
-        <a title="<?php echo $this->__('Login an Account') ?>" onclick="CreateAccountHide();">
-            <h3><?php echo $this->__('Login an Account') ?></h3></a>
+        <a title="<?php echo $this->__('Авторизация') ?>" onclick="CreateAccountHide();">
+            <h3><?php echo $this->__('Авторизация') ?></h3></a>
     </div>
 </div>

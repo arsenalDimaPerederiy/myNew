@@ -49,20 +49,20 @@
                    value="<?php echo $this->escapeHtml($this->getUsername()) ?>"
                    id="email"
                    title="<?php echo $this->__('Email Address') ?>"
-                   placeholder="Введите E-mail"
+                   placeholder="Введите email адресс"
                    class="input-text required-entry validate-formLoginModal modal-login-input"/>
 
             <input type="password" name="login[password]"
                    value="<?php echo $this->escapeHtml($this->getUsername()) ?>"
                    id="pass"
-                   title="<?php echo $this->__('Email Address') ?>"
-                   placeholder="Пароль"
+                   title="<?php echo $this->__('Enter your password') ?>"
+                   placeholder="Введите пароль"
                    class="input-text required-entry validate-password validate-formLoginModal modal-login-input"/>
         </div>
-        <a href="" class="fogotPassword" onclick="ForgotPasswordShow(); return false;"><?php echo $this->__('Forgot Your Password?') ?></a>
-        <button type="submit" title="<?php echo $this->__('Login') ?>" name="submit" id="send2"
+        <a href="" class="fogotPassword" onclick="ForgotPasswordShow(); return false;"><?php echo $this->__('Забыли пароль ?') ?></a>
+        <button type="submit" title="<?php echo $this->__('Войти') ?>" name="submit" id="send2"
                 class="aling-central-modal buttonLogn">
-            <span><span><?php echo $this->__('Login') ?></span></span></button>
+            <span><span><?php echo $this->__('Войти') ?></span></span></button>
 
     </form>
 
