@@ -71,6 +71,9 @@ function formModalValidation(e){
 
 function ModalFormCreate(element){
     var validator = new Validation(element.id);
+    Validation.add('validate-formCreateModal','',function(v){
+        return true;
+    });
 
     if(validator.validate()) {
 
