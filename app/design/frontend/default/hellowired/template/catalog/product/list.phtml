@@ -214,7 +214,9 @@ color.click();
 				<div class="product-buttons" style="display:none;" id="product-buttons-block-<?php echo $_product->getId() ?>">
 					<div class="add-to-cart-btn">
 						<?php if($_product->isSaleable()): ?>
-							<button type="button" title="<?php echo $this->__('Add to Cart') ?>" class="button btn-cart" onclick="ga('send', 'pageview', 'window-<?php echo $_product->getSku() ?>.html'); setLocation('<?php echo $this->getAddToCartUrl($_product) ?>')"></button>
+							<button type="button" title="<?php echo $this->__('Add to Cart') ?>" class="button btn-cart" onclick="ga('send', 'pageview', 'window-<?php echo $_product->getSku() ?>.html'); setLocation('<?php echo $this->getAddToCartUrl($_product) ?>')">
+                                <h3>Быстрый просмотр</h3>
+							</button>
 						<?php else: ?>
 							<p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
 						<?php endif; ?>
