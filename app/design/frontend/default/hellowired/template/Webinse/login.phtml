@@ -50,7 +50,7 @@
                    id="email"
                    title="<?php echo $this->__('Email Address') ?>"
                    placeholder="Введите email адресс"
-                   class="input-text required-entry validate-formLoginModal modal-login-input"/>
+                   class="input-text required-entry validate-formLoginModal validate-formLoginModalEm modal-login-input"/>
 
             <input type="password" name="login[password]"
                    value="<?php echo $this->escapeHtml($this->getUsername()) ?>"
@@ -58,8 +58,7 @@
 
                    title="<?php echo $this->__('Enter your password') ?>"
                    placeholder="Введите пароль"
-                   class="input-text required-entry validate-password validate-formLoginModal modal-login-input"/>
-
+                   class="input-text required-entry validate-password modal-login-input"/>
         </div>
         <a href="" class="fogotPassword" onclick="ForgotPasswordShow(); return false;"><?php echo $this->__('Забыли пароль ?') ?></a>
         <button type="submit" title="<?php echo $this->__('Войти') ?>" name="submit" id="send2"
