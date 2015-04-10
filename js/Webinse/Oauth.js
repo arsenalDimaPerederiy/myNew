@@ -35,7 +35,12 @@ function showPopup(data) {
 function formModalValidation(e){
 
     var validator = new Validation(e.id);
-
+    Validation.add('validate-formLoginModal','',function(v){
+        return true;
+    });
+    Validation.add('validate-formLoginModal','',function(v){
+        return true;
+    });
     if(validator.validate()) {
         new Ajax.Request(e.title, {
             method: 'post',
@@ -51,6 +56,17 @@ function formModalValidation(e){
                 }
                 else{
                     Validation.add('validate-formLoginModal','',function(v){
+                        return true;
+                    });
+                }
+                if(response['erMail']){
+                    Validation.add('validate-formLoginModalEm',response['erMail'],function(v){
+                        return false;
+                    });
+
+                }
+                else{
+                    Validation.add('validate-formLoginModalEm','',function(v){
                         return true;
                     });
                 }
@@ -74,7 +90,9 @@ function ModalFormCreate(element){
     Validation.add('validate-formCreateModal','',function(v){
         return true;
     });
-
+    Validation.add('validate-formCreateModalEm','',function(v){
+        return true;
+    });
     if(validator.validate()) {
 
         new Ajax.Request(element.title, {
@@ -93,6 +111,16 @@ function ModalFormCreate(element){
                             return true;
                         });
                     }
+                if(response['erMail']){
+                    Validation.add('validate-formCreateModalEm',response['erMail'],function(v){
+                        return false;
+                    });
+                }
+                else{
+                    Validation.add('validate-formCreateModalEm','',function(v){
+                        return true;
+                    });
+                }
                     validator.validate();
 
                 if(response['href']){

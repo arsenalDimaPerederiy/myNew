@@ -254,8 +254,8 @@ class Webinse_OAuth_AccountController extends Mage_Customer_AccountController
 
                 $email = $this->getRequest()->getPost('email');
 
-                if(preg_match ('/test.loc/', $email)!=0){
-                    $jsonArray['error']=$this->__('Вы не можете войти с этим email');
+                if($m=$this->mail_check($email)){
+                    $jsonArray['erMail']=$m;
                     $this->getResponse()->setBody(Mage::helper('core')->jsonEncode($jsonArray));
                     return;
                 }
@@ -300,8 +300,8 @@ class Webinse_OAuth_AccountController extends Mage_Customer_AccountController
             }
             else{
 
-                if(preg_match ('/.loc/', $this->getRequest()->getParam('email'))!=0){
-                    $jsonArray['error']='Вы не можете зарегестрироваться по этому email';
+                if($m=$this->mail_check($this->getRequest()->getParam('email'))){
+                    $jsonArray['erMail']=$m;
                     $this->getResponse()->setBody(Mage::helper('core')->jsonEncode($jsonArray));
                     return;
                 }
@@ -397,7 +397,24 @@ class Webinse_OAuth_AccountController extends Mage_Customer_AccountController
         $this->norouteAction();
     }
 
-    public function SessionMessage(){
-         return $this->_getSession();
+
+    public function mail_check($email){
+
+        if (!eregi("^[\._a-za-z0-9-]+@[\.a-za-z0-9-]+\.[a-z]{2,6}$", $email)){
+            return 'Неверно введёный email';
+        }
+
+        else {
+            if(preg_match ('/test.loc/', $email)!=0){
+                return 'Вы не можете войти с этим email';
+            }
+            $arr = explode("@" , $email);
+            $host = $arr[1];
+            if (!getmxrr($host, $mxhostsarr)) { return 'Такой email не существует';}
+            else {
+                return false;
+            }
+        }
+        return false;
     }
 }
