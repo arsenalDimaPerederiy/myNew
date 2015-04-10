@@ -38,7 +38,7 @@ function formModalValidation(e){
     Validation.add('validate-formLoginModal','',function(v){
         return true;
     });
-    Validation.add('validate-formLoginModal','',function(v){
+    Validation.add('validate-formLoginModalEm','',function(v){
         return true;
     });
     if(validator.validate()) {
