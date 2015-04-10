@@ -1528,7 +1528,7 @@ font-weight: normal}
     font-family: inherit;
 }
 .product-buttons .add-to-cart-btn button:hover{
-    background-color: red;
+    background-color: #ff4040;
 }
 .product-buttons .add-to-cart-btn button h3{
     font-size: 10px;
@@ -1548,7 +1548,7 @@ font-weight: normal}
     font-family: inherit;
 }
 .display-grid-3 .product-buttons .add-to-cart-btn button:hover{
-    background-color: red;
+    background-color: #ff4040;
 }
 .display-grid-3 .product-buttons .add-to-cart-btn button h3{
     font-size: 12px;
