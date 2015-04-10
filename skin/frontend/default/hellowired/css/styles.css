@@ -1513,9 +1513,11 @@ font-weight: normal}
 
 .display-grid-3 .product-content .product-buttons{
     margin-top: -160px;
+    font-family: inherit;
 }
 .product-content .product-buttons{
     margin-top: -125px;
+    font-family: inherit;
 }
 .product-buttons .add-to-cart-btn button{
     text-align: center;
@@ -1523,6 +1525,7 @@ font-weight: normal}
     width: 150px;
     height: 30px;
     background-color: #ff6666;
+    font-family: inherit;
 }
 .product-buttons .add-to-cart-btn button:hover{
     background-color: red;
@@ -1531,10 +1534,9 @@ font-weight: normal}
     font-size: 10px;
     color: #ffffff;
     font-weight: normal;
-    font-family: GalsCProC;
+    font-family: inherit;
     margin-bottom: 0px;
     text-transform: uppercase;
-    letter-spacing: 1px;
 }
 
 .display-grid-3 .product-buttons .add-to-cart-btn button{
@@ -1543,6 +1545,7 @@ font-weight: normal}
     width: 200px;
     height: 40px;
     background-color: #ff6666;
+    font-family: inherit;
 }
 .display-grid-3 .product-buttons .add-to-cart-btn button:hover{
     background-color: red;
@@ -1551,8 +1554,7 @@ font-weight: normal}
     font-size: 12px;
     color: #ffffff;
     font-weight: normal;
-    font-family: GalsCProC;
+    font-family: inherit;
     margin-bottom: 0px;
     text-transform: uppercase;
-    letter-spacing: 1px;
 }
