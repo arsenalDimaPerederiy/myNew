@@ -106,11 +106,11 @@ function ModalFormCreate(element){
                         return false;
                     });
                 }
-                    else{
-                        Validation.add('validate-formCreateModal','',function(v){
-                            return true;
-                        });
-                    }
+                else{
+                    Validation.add('validate-formCreateModal','',function(v){
+                        return true;
+                    });
+                }
                 if(response['erMail']){
                     Validation.add('validate-formCreateModalEm',response['erMail'],function(v){
                         return false;
@@ -121,6 +121,7 @@ function ModalFormCreate(element){
                         return true;
                     });
                 }
+
                     validator.validate();
 
                 if(response['href']){
