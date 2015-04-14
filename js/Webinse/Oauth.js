@@ -41,7 +41,7 @@ function showPopup(data) {
 
     myObserver = {
         onShow: function(eventName, win) {
-            var str = '<div id="oblogka" class="mainWindow aling-central-modal" style="width: 100%;height: 100%; z-index:20000; position: absolute;margin-right: auto; margin-left: auto; ">';
+            var str = '<div id="oblogka" class="mainWindow aling-central-modal" style="display: none; width: 100%;height: 100%; z-index:20000; position: absolute;margin-right: auto; margin-left: auto; ">';
             str+='<img style="margin-top: 85%;" src="'+$('SkinUrl').value+'" /></div>';
             $('modal_window_close').insert({before:str});
             $('modal_window_minimize').remove();
