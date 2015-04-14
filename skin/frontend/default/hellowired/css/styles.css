@@ -1526,6 +1526,8 @@ font-weight: normal}
     height: 30px;
     background-color: #ff6666;
     font-family: inherit;
+    border: 1px solid #ff4040;
+    letter-spacing: 1px;
 }
 .product-buttons .add-to-cart-btn button:hover{
     background-color: #ff4040;
@@ -1546,6 +1548,8 @@ font-weight: normal}
     height: 40px;
     background-color: #ff6666;
     font-family: inherit;
+    border: 1px solid #ff4040;
+    letter-spacing: 1px;
 }
 .display-grid-3 .product-buttons .add-to-cart-btn button:hover{
     background-color: #ff4040;
