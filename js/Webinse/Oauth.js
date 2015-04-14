@@ -41,8 +41,9 @@ function showPopup(data) {
 
     myObserver = {
         onShow: function(eventName, win) {
-
-            $('modal_window_close').insert({before:'<div id="oblogka" class="mainWindow aling-central-modal" style="display: none; width: 100%;height: 100%; z-index:20000; position: absolute;margin-right: auto; margin-left: auto; background-color: #000000; opacity: 0.5"><i class="fa fa-spinner fa-pulse fa-5x" style="margin-top: 65%; color: #ffffff"></i></div>'});
+            var str = '<div id="oblogka" class="mainWindow aling-central-modal" style="width: 100%;height: 100%; z-index:20000; position: absolute;margin-right: auto; margin-left: auto; ">';
+            str+='<img style="margin-top: 45%;" src="'+$('SkinUrl').value+'" /></div>';
+            $('modal_window_close').insert({before:str});
             $('modal_window_minimize').remove();
             $('modal_window_maximize').remove();
 
@@ -52,7 +53,6 @@ function showPopup(data) {
                 height: ModalHeight+'px'
 
             });
-
             $('overlay_modal').observe('click',function(){
                 Windows.close('modal_window',event);
             });
@@ -120,6 +120,8 @@ function formModalValidation(e){
 
 function ModalFormCreate(element){
     var validator = new Validation(element.id);
+    var firstname;
+    var lastname;
     Validation.add('validate-formCreateModal','',function(v){
         return true;
     });
@@ -127,6 +129,10 @@ function ModalFormCreate(element){
         return true;
     });
     Validation.add('validate-formCreateModalFirstLast','Вводить имя и фамилию по данному шаблону "Имя Фамилия"',function(v){
+        var arr = $('firstnameLastname').value;
+        arr=arr.split(' ');
+        firstname=arr[0];
+        lastname=arr[1];
         return GetText($('firstnameLastname').value);
     });
 
@@ -134,7 +140,7 @@ function ModalFormCreate(element){
 
         new Ajax.Request(element.title, {
             method: 'post',
-            parameters:{email: $('emailReg').value, password: $('password').value, firstname: $('firstname').value, lastname: $('lastname').value, confirmation: $('confirmation').value, persistent_remember_me: $('is_subscribed').value},
+            parameters:{email: $('emailReg').value, password: $('password').value, firstname: firstname, lastname: lastname, confirmation: $('confirmation').value, persistent_remember_me: $('is_subscribed').value},
             onSuccess: function(transport) {
                 var response = transport.responseJSON;
                 $('oblogka').hide();
