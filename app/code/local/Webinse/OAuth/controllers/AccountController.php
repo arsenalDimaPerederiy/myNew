@@ -173,6 +173,18 @@ class Webinse_OAuth_AccountController extends Mage_Customer_AccountController
 
     }
 
+    public function logoutAction()
+    {
+        if ($this->_getSession()->isLoggedIn()) {
+            $this->_getSession()->logout()
+                ->setBeforeAuthUrl(Mage::getUrl());
+            $this->_redirect('*/*/logoutSuccess');
+        }
+        else{
+            $this->_Error();
+        }
+    }
+
     public function loginOauth()
     {
         $message = array();
@@ -206,6 +218,7 @@ class Webinse_OAuth_AccountController extends Mage_Customer_AccountController
                     throw new Exception($this->network->class_id.' '.'new customer not create');
                 }
                 $customerId=$this->network->customer_id;
+                $message[]='Смените пожалуйста пароль';
             }
 
             $userByThisSocial = $this->network->GetUserBySocialIdSocId();/*get record by user_id in social network and code social network (vk,f)*/
