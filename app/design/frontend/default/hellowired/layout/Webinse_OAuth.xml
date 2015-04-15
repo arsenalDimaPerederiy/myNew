@@ -48,10 +48,18 @@ Supported layout update handles (special):
 
     <default>
         <reference name="head">
-            <action method="addJs"><script>prototype/window.js</script></action>
-            <action method="addJs"><script>Webinse/Oauth.js</script></action>
-            <action method="addCss"><stylesheet>css/webinseStyle/style.css</stylesheet></action>
-            <action method="addCss"><stylesheet>css/webinseStyle/css/font-awesome.min.css</stylesheet></action>
+            <action method="addJs">
+                <script>prototype/window.js</script>
+            </action>
+            <action method="addJs">
+                <script>Webinse/Oauth.js</script>
+            </action>
+            <action method="addCss">
+                <stylesheet>css/webinseStyle/style.css</stylesheet>
+            </action>
+            <action method="addCss">
+                <stylesheet>css/webinseStyle/css/font-awesome.min.css</stylesheet>
+            </action>
         </reference>
         <!-- Mage_Customer -->
         <reference name="top.links">
@@ -222,6 +230,7 @@ Supported layout update handles (special):
         </reference>
         <reference name="my.account.wrapper">
             <block type="customer/form_edit" name="customer_edit" template="customer/form/edit.phtml"/>
+            <block type="customer/address_book" name="address_book" after="customer_edit" template="customer/address/book.phtml"/>
         </reference>
     </customer_account_edit>
 
@@ -232,6 +241,12 @@ Supported layout update handles (special):
     <customer_account translate="label">
         <label>Customer My Account (All Pages)</label>
         <!-- Mage_Customer -->
+        <reference name="head">
+            <action method="addJs">
+                <script>Webinse/customer.js</script>
+            </action>
+        </reference>
+
         <reference name="root">
             <action method="setTemplate"><template>page/2columns-left.phtml</template></action>
         </reference>
@@ -243,14 +258,17 @@ Supported layout update handles (special):
         </reference>
 
         <reference name="left">
-            <block type="customer/account_navigation" name="customer_account_navigation" before="-" template="customer/account/navigation.phtml">
-                <action method="addLink" translate="label" module="customer"><name>account</name><path>customer/account/</path><label>Account Dashboard</label></action>
-                <action method="addLink" translate="label" module="customer"><name>account_edit</name><path>customer/account/edit/</path><label>Account Information</label></action>
-                <action method="addLink" translate="label" module="customer"><name>address_book</name><path>customer/address/</path><label>Address Book</label></action>
+            <block type="customer/account_navigation" name="customer_account_navigation" before="-"
+                   template="customer/account/navigation.phtml">
+                <action method="addLink" translate="label" module="customer">
+                    <name>account_edit</name>
+                    <path>customer/account/edit/</path>
+                    <label>My Account Data</label>
+                </action>
             </block>
             <remove name="tags_popular"/>
-            <remove name="leftnav" />
-            <remove name="left.permanent.callout" />
+            <remove name="catalog.leftnav2"/>
+            <remove name="left.permanent.callout"/>
         </reference>
     </customer_account>
 
@@ -262,18 +280,28 @@ Supported layout update handles (special):
         <label>Customer My Account Dashboard</label>
         <update handle="customer_account"/>
         <!-- Mage_Customer -->
+
         <reference name="root">
-            <action method="setTemplate"><template>page/2columns-left.phtml</template></action>
+            <action method="setTemplate">
+                <template>page/2columns-left.phtml</template>
+            </action>
         </reference>
+
         <reference name="my.account.wrapper">
-            <block type="customer/account_dashboard" name="customer_account_dashboard" template="customer/account/dashboard.phtml">
-                <block type="customer/account_dashboard_hello" name="customer_account_dashboard_hello" as="hello" template="customer/account/dashboard/hello.phtml"/>
-                <block type="core/template" name="customer_account_dashboard_top" as="top" />
-                <block type="customer/account_dashboard_info" name="customer_account_dashboard_info" as="info" template="customer/account/dashboard/info.phtml"/>
-                <block type="customer/account_dashboard_newsletter" name="customer_account_dashboard_newsletter" as="newsletter" template="customer/account/dashboard/newsletter.phtml"/>
-                <block type="customer/account_dashboard_address" name="customer_account_dashboard_address" as="address" template="customer/account/dashboard/address.phtml"/>
-                <block type="core/template" name="customer_account_dashboard_info1" as="info1" />
-                <block type="core/template" name="customer_account_dashboard_info2" as="info2" />
+            <block type="customer/account_dashboard" name="customer_account_dashboard"
+                   template="customer/account/dashboard.phtml">
+                <block type="customer/account_dashboard_hello" name="customer_account_dashboard_hello" as="hello"
+                       template="customer/account/dashboard/hello.phtml"/>
+                <block type="core/template" name="customer_account_dashboard_top" as="top"/>
+                <block type="customer/account_dashboard_info" name="customer_account_dashboard_info" as="info"
+                       template="customer/account/dashboard/info.phtml"/>
+                <block type="customer/account_dashboard_newsletter" name="customer_account_dashboard_newsletter"
+                       as="newsletter" template="customer/account/dashboard/newsletter.phtml"/>
+                <block type="customer/account_dashboard_address" name="customer_account_dashboard_address" as="address"
+                       template="customer/account/dashboard/address.phtml"/>
+                <block type="core/template" name="customer_account_dashboard_info1" as="info1"/>
+                <block type="core/template" name="customer_account_dashboard_info2" as="info2"/>
+
             </block>
         </reference>
 

@@ -14,12 +14,12 @@ $size = $this->getData('size');
  */
 $template = $this->getData('template');
 ?>
-<?php 
-if($size == null):  
+<?php
+if($size == null):
     $size = 'auto';?>
 <div id="" class="block-megamenu" style="width:<?php echo $size ?> !important;">
 <?php else:?>
     <div id="" class="block-megamenu" style="width:<?php echo $size ?>px !important;">
-<?php endif; ?>    
+<?php endif; ?>
      <?php echo $this->getTemplateBlock($template);?>
 </div>
