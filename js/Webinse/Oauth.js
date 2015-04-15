@@ -129,18 +129,19 @@ function ModalFormCreate(element){
         return true;
     });
     Validation.add('validate-formCreateModalFirstLast','Вводить имя и фамилию по данному шаблону "Имя Фамилия"',function(v){
-        var arr = $('firstnameLastname').value;
-        arr=arr.split(' ');
-        firstname=arr[0];
-        lastname=arr[1];
         return GetText($('firstnameLastname').value);
     });
 
     if(validator.validate()) {
 
+        var arr = $('firstnameLastname').value;
+        arr=arr.split(' ');
+        firstname=arr[0];
+        lastname=arr[1];
+
         new Ajax.Request(element.title, {
             method: 'post',
-            parameters:{email: $('emailReg').value, password: $('password').value, firstname: firstname, lastname: lastname, confirmation: $('confirmation').value, persistent_remember_me: $('is_subscribed').value},
+            parameters:{email: $('emailReg').value, password: $('password').value, firstname: firstname, lastname: lastname, confirmation: $('confirmation').value, is_subscribed: $('is_subscribed').value},
             onSuccess: function(transport) {
                 var response = transport.responseJSON;
                 $('oblogka').hide();

@@ -49,6 +49,7 @@ class Webinse_OAuth_Model_OauthLib_Oauth_Oauth{
                 ->setLastname($this->userInfoArray['last_name'])
                 ->setEmail($this->email)
                 ->setPassword($this->GeneratePassword());
+            $customer->setIsSubscribed(1);
             $customer->save();
             if($customer->getId()){
                 $this->customer_id=$customer->getId();
