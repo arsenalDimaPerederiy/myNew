@@ -201,7 +201,7 @@ class Webinse_OAuth_AccountController extends Mage_Customer_AccountController
                 $model = $this->network->GetUserBySocialIdSocId();
                 if ($model->count() == 0) {
                     $this->network->createUserEmail();
-                    $message[]='Вы авторизированые на тестовом email. Пожалуйсто смените его';
+                    $message[]='Вы авторизированые на тестовом email. Пожалуйста смените его';
                 } //esli net mila to mi ego sozdayom
                 else {
                     if(!$this->network->getCustomerEmail($model)){
@@ -218,7 +218,7 @@ class Webinse_OAuth_AccountController extends Mage_Customer_AccountController
                     throw new Exception($this->network->class_id.' '.'new customer not create');
                 }
                 $customerId=$this->network->customer_id;
-                $message[]='Смените пожалуйста пароль';
+                $message[]='Ваш пароль был автоматически сгенерированю Пожалуйста смените его.';
             }
 
             $userByThisSocial = $this->network->GetUserBySocialIdSocId();/*get record by user_id in social network and code social network (vk,f)*/
@@ -391,7 +391,7 @@ class Webinse_OAuth_AccountController extends Mage_Customer_AccountController
                         }
                     }
                     else {
-                        $jsonArray['error']='пожалуйста введите свой email';
+                        $jsonArray['error']='Пожалуйста введите свой email';
                         $this->getResponse()->setBody(Mage::helper('core')->jsonEncode($jsonArray));
                         return;
                     }
